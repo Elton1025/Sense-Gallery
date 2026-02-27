@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_photos">
+
+    <fragment
+        android:id="@+id/nav_photos"
+        android:name="com.example.sensegallery.ui.PhotosFragment"
+        android:label="Photos" />
+
+    <fragment
+        android:id="@+id/nav_clusters"
+        android:name="com.example.sensegallery.ui.ClustersFragment"
+        android:label="Clusters">
+        <action
+            android:id="@+id/action_nav_clusters_to_nav_cluster_detail"
+            app:destination="@id/nav_cluster_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_cluster_detail"
+        android:name="com.example.sensegallery.ui.ClusterDetailFragment"
+        android:label="Cluster Detail">
+        <argument
+            android:name="clusterId"
+            app:argType="long" />
+        <argument
+            android:name="clusterName"
+            app:argType="string" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_nav_cluster_detail"
+        app:destination="@id/nav_cluster_detail" />
+
+    <fragment
+        android:id="@+id/nav_photo_viewer"
+        android:name="com.example.sensegallery.ui.PhotoViewerFragment"
+        android:label="Photo">
+        <argument
+            android:name="initialPosition"
+            app:argType="integer" />
+        <argument
+            android:name="clusterId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_nav_photo_viewer"
+        app:destination="@id/nav_photo_viewer" />
+
+</navigation>

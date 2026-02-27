@@ -1,0 +1,519 @@
+﻿--------- beginning of main
+02-20 17:24:01.377 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:01.386 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:01.386 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:01.386 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:01.386 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:01.386 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:01.386 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:01.386 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:01.386 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:01.386 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:01.386 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:01.386 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:01.386 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:01.386 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:01.386 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:01.386 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 534ms
+02-20 17:24:01.386 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:01.386 30443 31989 I FacePipelineProcessor: [END] Photo 7 ΓÇö 0 faces (534ms total)
+02-20 17:24:01.390  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpcdncdnjustjaredcomwpcontentuploadsheadlineseltonjohnstillstandingbrooklynnewyearsjpg.jpg. Uid: 10244
+02-20 17:24:01.393  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpcdncdnjustjaredcomwpcontentuploadsheadlineseltonjohnstillstandingbrooklynnewyearsjpg.jpg. Uid: 10244
+02-20 17:24:01.396 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:01.396 30443 31989 I FacePipelineProcessor: [START] Photo 8 (300x300)
+02-20 17:24:01.396 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+--------- beginning of system
+02-20 17:24:01.406  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10244; state: DISABLED
+02-20 17:24:01.406  1507  4042 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.example.sensegallery/.MainActivity} from uid 2000
+02-20 17:24:01.407  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 265464455; UID 10244; state: DISABLED
+02-20 17:24:01.407  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 265452344; UID 10244; state: DISABLED
+02-20 17:24:01.407  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 266124927; UID 10244; state: DISABLED
+02-20 17:24:01.407  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 265451093; UID 10244; state: DISABLED
+02-20 17:24:01.408  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 265456536; UID 10244; state: DISABLED
+02-20 17:24:01.408  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 255940284; UID 10244; state: DISABLED
+02-20 17:24:01.408  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 236283604; UID 10244; state: DISABLED
+02-20 17:24:01.408  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 263959004; UID 10244; state: DISABLED
+02-20 17:24:01.408  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 264304459; UID 10244; state: DISABLED
+02-20 17:24:01.408  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 264301586; UID 10244; state: DISABLED
+02-20 17:24:01.408  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 254631730; UID 10244; state: DISABLED
+02-20 17:24:01.408  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 273509367; UID 10244; state: DISABLED
+02-20 17:24:01.409  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 263259275; UID 10244; state: DISABLED
+02-20 17:24:01.409  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 194480991; UID 10244; state: ENABLED
+02-20 17:24:01.410  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10244; state: ENABLED
+02-20 17:24:01.410  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 184838306; UID 10244; state: DISABLED
+02-20 17:24:01.410  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 185004937; UID 10244; state: DISABLED
+02-20 17:24:01.412  1507  4042 D ActivityTrigger: ActivityTrigger activityPauseTrigger 
+02-20 17:24:01.415  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 194833441; UID 10244; state: ENABLED
+02-20 17:24:01.417  1507  4042 I ActivityTaskManager: The Process com.example.sensegallery Already Exists in BG. So sending its PID: 30443
+02-20 17:24:01.417  1507  4042 W ActivityTaskManager: Tried to set launchTime (0) < mLastActivityLaunchTime (43943573)
+02-20 17:24:01.418  1507  4042 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:24:01.418  1507  4042 D CompatibilityInfo: applicationDensity - 440
+02-20 17:24:01.418  1507  4042 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:24:01.497 30443 31958 W Parcel  : Expecting binder but got null!
+02-20 17:24:01.501  1507  4042 D CoreBackPreview: Window{904b944 u0 com.example.sensegallery/com.example.sensegallery.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@346fb62, mPriority=0}
+02-20 17:24:01.519 30443 31958 E OpenGLRenderer: Unable to match the desired swap behavior.
+02-20 17:24:01.525  1507  1818 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:24:01.525  1507  1818 D CompatibilityInfo: applicationDensity - 440
+02-20 17:24:01.525  1507  1818 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:24:01.608  1507  1804 I ActivityTaskManager: Displayed com.example.sensegallery/.MainActivity: +200ms
+02-20 17:24:01.633  1507  4215 W Parcel  : Expecting binder but got null!
+02-20 17:24:01.641  1507  4215 W Parcel  : Expecting binder but got null!
+02-20 17:24:01.727  4682  4682 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():2113 
+02-20 17:24:01.728  4682  4682 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 0, locked = false
+02-20 17:24:01.729  4682  4682 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1384 onStartInput(EditorInfo{EditorInfo{packageName=com.example.sensegallery, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=-1, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+02-20 17:24:01.730  4682  4682 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 1, locked = false
+02-20 17:24:01.936 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:01.945 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:01.945 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:01.945 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:01.945 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:01.945 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:01.945 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:01.945 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:01.945 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:01.945 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:01.945 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:01.945 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:01.945 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:01.945 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:01.945 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:01.945 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 549ms
+02-20 17:24:01.945 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:01.945 30443 31989 I FacePipelineProcessor: [END] Photo 8 ΓÇö 0 faces (549ms total)
+02-20 17:24:01.951  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpcdncdnjustjaredcomwpcontentuploadsheadlineseltonjohnsupportsbrucejennerstransitiontowomanjpg.jpg. Uid: 10244
+02-20 17:24:01.954  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpcdncdnjustjaredcomwpcontentuploadsheadlineseltonjohnsupportsbrucejennerstransitiontowomanjpg.jpg. Uid: 10244
+02-20 17:24:01.956 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:01.956 30443 31989 I FacePipelineProcessor: [START] Photo 9 (300x300)
+02-20 17:24:01.956 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:02.173  1507  1808 W Choreographer: Frame time is 0.054793 ms in the future!  Check that graphics HAL is generating vsync timestamps using the correct timebase.
+02-20 17:24:02.486 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:02.495 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:02.495 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:02.495 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:02.495 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:02.495 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:02.495 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:02.495 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:02.495 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:02.495 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:02.495 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:02.495 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:02.495 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:02.495 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:02.495 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:02.495 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 539ms
+02-20 17:24:02.495 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:02.495 30443 31989 I FacePipelineProcessor: [END] Photo 9 ΓÇö 0 faces (539ms total)
+02-20 17:24:02.499  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpcdnlyricssongonlyricsnetwpcontentuploadsEltonJohnDiscographyCDreleasesjpg.jpg. Uid: 10244
+02-20 17:24:02.502  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpcdnlyricssongonlyricsnetwpcontentuploadsEltonJohnDiscographyCDreleasesjpg.jpg. Uid: 10244
+02-20 17:24:02.504 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:02.504 30443 31989 I FacePipelineProcessor: [START] Photo 10 (300x300)
+02-20 17:24:02.504 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:03.028 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:03.037 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:03.037 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:03.037 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:03.037 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:03.037 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:03.037 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:03.037 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:03.037 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:03.037 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:03.037 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:03.037 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:03.037 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:03.037 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:03.037 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:03.037 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 533ms
+02-20 17:24:03.037 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:03.037 30443 31989 I FacePipelineProcessor: [END] Photo 10 ΓÇö 0 faces (533ms total)
+02-20 17:24:03.037 30443 31989 D FaceProcessingWorker: Processed 10/25 photos. Faces found: 0
+02-20 17:24:03.043  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTIwNjANjMMDINzIxNjcjpg.jpg. Uid: 10244
+02-20 17:24:03.046  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTIwNjANjMMDINzIxNjcjpg.jpg. Uid: 10244
+02-20 17:24:03.048 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:03.048 30443 31989 I FacePipelineProcessor: [START] Photo 11 (300x300)
+02-20 17:24:03.048 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:03.533  3742  3742 W ThreadPoolForeg: type=1400 audit(0.0:9154): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=29792 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+02-20 17:24:03.573 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:03.582 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:03.582 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:03.582 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:03.582 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:03.582 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:03.582 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:03.582 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:03.582 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:03.582 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:03.582 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:03.582 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:03.582 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:03.582 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:03.582 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:03.582 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 534ms
+02-20 17:24:03.582 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:03.582 30443 31989 I FacePipelineProcessor: [END] Photo 11 ΓÇö 0 faces (534ms total)
+02-20 17:24:03.585  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpaurorasblogcomwpcontentuploadsjerryseinfeldpublicityshotjpg.jpg. Uid: 10244
+02-20 17:24:03.590  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpaurorasblogcomwpcontentuploadsjerryseinfeldpublicityshotjpg.jpg. Uid: 10244
+02-20 17:24:03.592 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:03.592 30443 31989 I FacePipelineProcessor: [START] Photo 12 (240x260)
+02-20 17:24:03.592 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:03.778  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:24:03.778  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:24:04.126 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:04.135 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:04.135 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:04.135 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:04.135 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:04.135 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:04.135 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:04.135 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:04.135 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:04.135 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:04.135 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:04.135 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:04.135 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:04.135 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:04.135 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:04.135 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 543ms
+02-20 17:24:04.135 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:04.135 30443 31989 I FacePipelineProcessor: [END] Photo 12 ΓÇö 0 faces (543ms total)
+02-20 17:24:04.202  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpblognjcomentertainmentimpactcelebritiesmediumjerrybjpg.jpg. Uid: 10244
+02-20 17:24:04.214  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpblognjcomentertainmentimpactcelebritiesmediumjerrybjpg.jpg. Uid: 10244
+02-20 17:24:04.220 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:04.220 30443 31989 I FacePipelineProcessor: [START] Photo 13 (240x364)
+02-20 17:24:04.220 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:04.560  2452  2703 W Parcel  : Expecting binder but got null!
+02-20 17:24:04.564  1507  1679 D CoreBackPreview: Window{4a66a0d u0 Toast}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@e2367d3, mPriority=0}
+02-20 17:24:04.573  2452  2703 E OpenGLRenderer: Unable to match the desired swap behavior.
+02-20 17:24:04.767 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:04.776 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:04.776 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:04.776 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:04.776 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:04.776 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:04.776 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:04.776 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:04.776 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:04.776 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:04.776 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:04.776 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:04.776 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:04.776 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:04.776 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:04.776 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 556ms
+02-20 17:24:04.776 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:04.776 30443 31989 I FacePipelineProcessor: [END] Photo 13 ΓÇö 0 faces (556ms total)
+02-20 17:24:04.785  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpcdncdnjustjaredcomwpcontentuploadsheadlinesjerryseinfeldmakesbrianwilliamsjokejpg.jpg. Uid: 10244
+02-20 17:24:04.788  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpcdncdnjustjaredcomwpcontentuploadsheadlinesjerryseinfeldmakesbrianwilliamsjokejpg.jpg. Uid: 10244
+02-20 17:24:04.791 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:04.791 30443 31989 I FacePipelineProcessor: [START] Photo 14 (300x300)
+02-20 17:24:04.791 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:05.333 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:05.338 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=1; index=1
+02-20 17:24:05.338 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=1; index=1
+02-20 17:24:05.338 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:169)
+02-20 17:24:05.338 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:05.338 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:05.338 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:05.338 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:05.338 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:05.338 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:05.338 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:05.338 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:05.338 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:05.338 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:05.338 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:05.338 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 547ms
+02-20 17:24:05.338 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:05.338 30443 31989 I FacePipelineProcessor: [END] Photo 14 ΓÇö 0 faces (547ms total)
+02-20 17:24:05.344  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpcdnssninsidercomwpcontentuploadsjerryseinfeldxjpg.jpg. Uid: 10244
+02-20 17:24:05.347  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpcdnssninsidercomwpcontentuploadsjerryseinfeldxjpg.jpg. Uid: 10244
+02-20 17:24:05.349 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:05.349 30443 31989 I FacePipelineProcessor: [START] Photo 15 (224x337)
+02-20 17:24:05.349 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:05.927 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:05.936 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:05.936 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:05.936 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:05.936 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:05.936 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:05.936 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:05.936 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:05.936 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:05.936 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:05.936 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:05.936 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:05.936 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:05.936 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:05.936 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:05.936 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 587ms
+02-20 17:24:05.936 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:05.936 30443 31989 I FacePipelineProcessor: [END] Photo 15 ΓÇö 0 faces (587ms total)
+02-20 17:24:05.945  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpassetsrollingstonecomassetsarticlemadonnadavidbowiechangedthecourseofmylifeforeversmallsquarexmadonnabowiejpg.jpg. Uid: 10244
+02-20 17:24:05.949  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpassetsrollingstonecomassetsarticlemadonnadavidbowiechangedthecourseofmylifeforeversmallsquarexmadonnabowiejpg.jpg. Uid: 10244
+02-20 17:24:05.951 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:05.951 30443 31989 I FacePipelineProcessor: [START] Photo 16 (200x200)
+02-20 17:24:05.951 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:06.486 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:06.495 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:06.495 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:06.495 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:06.495 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:06.495 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:06.495 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:06.495 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:06.495 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:06.495 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:06.495 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:06.495 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:06.495 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:06.495 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:06.495 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:06.495 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 544ms
+02-20 17:24:06.495 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:06.495 30443 31989 I FacePipelineProcessor: [END] Photo 16 ΓÇö 0 faces (544ms total)
+02-20 17:24:06.499  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpassetsrollingstonecomassetsimagesalbumreviewaffaceabdcccaeedjpg.jpg. Uid: 10244
+02-20 17:24:06.503  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpassetsrollingstonecomassetsimagesalbumreviewaffaceabdcccaeedjpg.jpg. Uid: 10244
+02-20 17:24:06.504 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:06.504 30443 31989 I FacePipelineProcessor: [START] Photo 17 (300x300)
+02-20 17:24:06.504 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:07.043 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:07.052 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:07.052 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:07.052 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:07.052 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:07.052 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:07.052 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:07.052 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:07.052 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:07.052 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:07.052 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:07.052 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:07.052 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:07.052 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:07.052 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:07.052 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 548ms
+02-20 17:24:07.052 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:07.052 30443 31989 I FacePipelineProcessor: [END] Photo 17 ΓÇö 0 faces (548ms total)
+02-20 17:24:07.056  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpcdncdnjustjaredcomwpcontentuploadsheadlinesmadonnatalksparisattackstearsjpg.jpg. Uid: 10244
+02-20 17:24:07.060  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpcdncdnjustjaredcomwpcontentuploadsheadlinesmadonnatalksparisattackstearsjpg.jpg. Uid: 10244
+02-20 17:24:07.062 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:07.062 30443 31989 I FacePipelineProcessor: [START] Photo 18 (300x300)
+02-20 17:24:07.062 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:07.154  1507  2838 D CoreBackPreview: Window{4a66a0d u0 Toast}: Setting back callback null
+02-20 17:24:07.157  1507  2838 W InputManager-JNI: Input channel object '4a66a0d Toast (client)' was disposed without first being removed with the input manager!
+02-20 17:24:07.162  1507  2838 W NotificationService: Toast already killed. pkg=com.example.sensegallery token=android.os.BinderProxy@e00ac3c
+02-20 17:24:07.601 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:07.610 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:07.610 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:07.610 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:07.610 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:07.610 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:07.610 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:07.610 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:07.610 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:07.610 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:07.610 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:07.610 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:07.610 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:07.610 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:07.610 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:07.610 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 548ms
+02-20 17:24:07.610 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:07.610 30443 31989 I FacePipelineProcessor: [END] Photo 18 ΓÇö 0 faces (548ms total)
+02-20 17:24:07.620  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpcdnfuncheapcomwpcontentuploadsVOGUEjpg.jpg. Uid: 10244
+02-20 17:24:07.624  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpcdnfuncheapcomwpcontentuploadsVOGUEjpg.jpg. Uid: 10244
+02-20 17:24:07.625 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:07.625 30443 31989 I FacePipelineProcessor: [START] Photo 19 (218x218)
+02-20 17:24:07.625 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:08.161 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:08.170 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:08.170 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:08.170 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:08.170 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:08.170 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:08.170 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:08.170 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:08.170 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:08.170 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:08.170 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:08.170 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:08.170 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:08.170 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:08.170 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:08.170 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 545ms
+02-20 17:24:08.170 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:08.170 30443 31989 I FacePipelineProcessor: [END] Photo 19 ΓÇö 0 faces (545ms total)
+02-20 17:24:08.175  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpecximagesamazoncomimagesIfmaBKWLACULSRjpg.jpg. Uid: 10244
+02-20 17:24:08.179  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpecximagesamazoncomimagesIfmaBKWLACULSRjpg.jpg. Uid: 10244
+02-20 17:24:08.180 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:08.180 30443 31989 I FacePipelineProcessor: [START] Photo 20 (244x320)
+02-20 17:24:08.180 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:08.352  3742  3742 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.inappreach.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+02-20 17:24:08.721 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:08.729 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:08.729 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:08.729 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:08.729 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:08.729 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:08.729 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:08.729 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:08.729 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:08.729 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:08.729 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:08.729 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:08.729 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:08.729 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:08.729 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:08.729 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 549ms
+02-20 17:24:08.730 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:08.730 30443 31989 I FacePipelineProcessor: [END] Photo 20 ΓÇö 0 faces (549ms total)
+02-20 17:24:08.730 30443 31989 D FaceProcessingWorker: Processed 20/25 photos. Faces found: 0
+02-20 17:24:08.740  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTIOTcwODQNTUzNjQMzcjpg.jpg. Uid: 10244
+02-20 17:24:08.745  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTIOTcwODQNTUzNjQMzcjpg.jpg. Uid: 10244
+02-20 17:24:08.746 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:08.747 30443 31989 I FacePipelineProcessor: [START] Photo 21 (300x300)
+02-20 17:24:08.747 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:09.294 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:09.303 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:09.303 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:09.303 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:09.303 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:09.303 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:09.303 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:09.303 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:09.303 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:09.303 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:09.303 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:09.303 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:09.303 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:09.303 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:09.303 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:09.303 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 556ms
+02-20 17:24:09.303 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:09.303 30443 31989 I FacePipelineProcessor: [END] Photo 21 ΓÇö 0 faces (556ms total)
+02-20 17:24:09.308  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpcdncdnjustjaredcomwpcontentuploadsheadlinesmindykalingcomedypilotjpg.jpg. Uid: 10244
+02-20 17:24:09.311  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpcdncdnjustjaredcomwpcontentuploadsheadlinesmindykalingcomedypilotjpg.jpg. Uid: 10244
+02-20 17:24:09.313 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:09.313 30443 31989 I FacePipelineProcessor: [START] Photo 22 (300x300)
+02-20 17:24:09.313 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:09.852 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:09.862 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:09.862 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:09.862 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:09.862 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:09.862 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:09.862 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:09.862 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:09.862 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:09.862 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:09.862 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:09.862 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:09.862 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:09.862 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:09.862 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:09.862 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 549ms
+02-20 17:24:09.862 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:09.862 30443 31989 I FacePipelineProcessor: [END] Photo 22 ΓÇö 0 faces (549ms total)
+02-20 17:24:09.867  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpcdnpastemagazinecomwwwarticlesmindykalingndbookjpg.jpg. Uid: 10244
+02-20 17:24:09.871  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpcdnpastemagazinecomwwwarticlesmindykalingndbookjpg.jpg. Uid: 10244
+02-20 17:24:09.873 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:09.873 30443 31989 I FacePipelineProcessor: [START] Photo 23 (300x300)
+02-20 17:24:09.873 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:10.386  1507  1507 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@c95d17e
+02-20 17:24:10.440 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:10.449 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:10.449 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:10.449 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:10.449 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:10.449 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:10.449 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:10.449 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:10.449 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:10.449 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:10.449 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:10.449 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:10.449 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:10.449 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:10.449 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:10.449 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 576ms
+02-20 17:24:10.449 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:10.449 30443 31989 I FacePipelineProcessor: [END] Photo 23 ΓÇö 0 faces (576ms total)
+02-20 17:24:10.454  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpcdnpastemagazinecomwwwarticlesmindyprojectjpg.jpg. Uid: 10244
+02-20 17:24:10.456  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpcdnpastemagazinecomwwwarticlesmindyprojectjpg.jpg. Uid: 10244
+02-20 17:24:10.458 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:10.458 30443 31989 I FacePipelineProcessor: [START] Photo 24 (320x240)
+02-20 17:24:10.458 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:10.998 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:11.007 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:11.007 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:11.007 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:11.007 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:11.007 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:11.007 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:11.007 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:11.007 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:11.007 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:11.007 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:11.007 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:11.007 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:11.007 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:11.007 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:11.007 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 549ms
+02-20 17:24:11.007 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:11.007 30443 31989 I FacePipelineProcessor: [END] Photo 24 ΓÇö 0 faces (549ms total)
+02-20 17:24:11.013  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpdbrbzkkbdsdcloudfrontnetwpcontentuploadsMindyKalingjpg.jpg. Uid: 10244
+02-20 17:24:11.017  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpdbrbzkkbdsdcloudfrontnetwpcontentuploadsMindyKalingjpg.jpg. Uid: 10244
+02-20 17:24:11.018 30443 31989 I FacePipelineProcessor: ========================================
+02-20 17:24:11.018 30443 31989 I FacePipelineProcessor: [START] Photo 25 (230x278)
+02-20 17:24:11.018 30443 31989 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:24:11.565 30443 31989 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:24:11.574 30443 31989 E FaceDetectionHelper: RetinaFace detection failed: length=4; index=4
+02-20 17:24:11.574 30443 31989 E FaceDetectionHelper: java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+02-20 17:24:11.574 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FaceDetectionHelper.detectFaces(FaceDetectionHelper.java:184)
+02-20 17:24:11.574 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processPhoto(FacePipelineProcessor.java:156)
+02-20 17:24:11.574 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.ai.FacePipelineProcessor.processAllPhotos(FacePipelineProcessor.java:111)
+02-20 17:24:11.574 30443 31989 E FaceDetectionHelper: 	at com.example.sensegallery.workers.FaceProcessingWorker.doWork(FaceProcessingWorker.java:49)
+02-20 17:24:11.574 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:11.574 30443 31989 E FaceDetectionHelper: 	at androidx.work.Worker$startWork$1.invoke(Worker.kt:64)
+02-20 17:24:11.574 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.future$lambda$2$lambda$1(Worker.kt:100)
+02-20 17:24:11.574 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt.$r8$lambda$06LNzu7McnKR6G06fSbfQ2BCegc(Unknown Source:0)
+02-20 17:24:11.574 30443 31989 E FaceDetectionHelper: 	at androidx.work.WorkerKt$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+02-20 17:24:11.574 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+02-20 17:24:11.574 30443 31989 E FaceDetectionHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+02-20 17:24:11.574 30443 31989 E FaceDetectionHelper: 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:24:11.574 30443 31989 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 556ms
+02-20 17:24:11.574 30443 31989 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:24:11.574 30443 31989 I FacePipelineProcessor: [END] Photo 25 ΓÇö 0 faces (556ms total)
+02-20 17:24:11.574 30443 31989 D FacePipelineProcessor: Pipeline complete: 0 faces from 25 photos
+02-20 17:24:11.574 30443 31989 D FaceProcessingWorker: Detection complete. Found 0 faces.
+02-20 17:24:11.580 30443 31989 D FaceProcessingWorker: Starting clustering phase...
+02-20 17:24:11.581 30443 31989 I FaceClusterer: Starting HAC clustering (Average Linkage, threshold=1.1)...
+02-20 17:24:11.583 30443 31989 I FaceClusterer: No faces or clusters to process.
+02-20 17:24:11.583 30443 31989 D FaceProcessingWorker: Face processing work finished successfully.
+02-20 17:24:11.585 30443 31963 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=5b9bd499-99a9-4635-9f8e-80c2c5a082cf, tags={ com.example.sensegallery.workers.FaceProcessingWorker } ]
+02-20 17:24:11.586 30443 30443 D WM-Processor: Processor 5b9bd499-99a9-4635-9f8e-80c2c5a082cf executed; reschedule = false
+02-20 17:24:11.586 30443 30443 D WM-SystemJobService: 5b9bd499-99a9-4635-9f8e-80c2c5a082cf executed on JobScheduler
+02-20 17:24:11.589 30443 31963 D WM-GreedyScheduler: Cancelling work ID 5b9bd499-99a9-4635-9f8e-80c2c5a082cf
+02-20 17:24:11.593 30443 31963 D WM-PackageManagerHelper: androidx.work.impl.background.systemalarm.RescheduleReceiver disabled
+02-20 17:24:12.600  1507  1919 I AppsFilter: interaction: PackageSetting{fea5d59 com.localmind.assistant/10216} -> PackageSetting{d2bcdc5 com.example.sensegallery/10244} BLOCKED
+02-20 17:24:12.621  1507  2143 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS | 
+02-20 17:24:12.623  1507  1507 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.google.android.dialer: DDC.oR@B2I
+02-20 17:24:12.628  2452  2452 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+02-20 17:24:12.630  1507  2125 I RoleService: Granting default roles...
+02-20 17:24:12.635 26546 26640 D IconPackManager: Received intent action android.intent.action.PACKAGE_CHANGED for com.example.sensegallery
+02-20 17:24:12.640  1507  1804 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:24:12.640  1507  1804 D CompatibilityInfo: applicationDensity - 440
+02-20 17:24:12.640  1507  1804 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:24:12.644  1507  1679 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:24:12.644  1507  1679 D CompatibilityInfo: applicationDensity - 440
+02-20 17:24:12.644  1507  1679 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:24:12.650 25891 31979 W Role    : Cannot get ApplicationInfo for default holder: com.google.android.contacts
+02-20 17:24:12.654  2702  2702 D CarrierSvcBindHelper: onPackageModified: com.example.sensegallery
+02-20 17:24:12.656  2702  2702 D CarrierSvcBindHelper: No carrier app for: 0
+02-20 17:24:12.656  2702  2702 D CarrierSvcBindHelper: No carrier app for: 1
+02-20 17:24:12.661 25891 31979 W Role    : Cannot get ApplicationInfo for default holder: com.google.android.gms.supervision
+02-20 17:24:12.663 25891 31979 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+02-20 17:24:12.665  2702  2702 D ImsResolver: maybeAddedImsService, packageName: com.example.sensegallery
+02-20 17:24:12.671 25891 26493 I PermissionControllerServiceImpl: Updating user sensitive for uid 10244
+02-20 17:24:12.688 25891 31979 W Role    : Cannot get ApplicationInfo for default holder: com.android.gallery3d

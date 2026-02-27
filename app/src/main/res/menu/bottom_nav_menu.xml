@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_photos"
+        android:icon="@drawable/ic_photo_library"
+        android:title="Photos" />
+    <item
+        android:id="@+id/nav_clusters"
+        android:icon="@drawable/ic_people"
+        android:title="Clusters" />
+</menu>

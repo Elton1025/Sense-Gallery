@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Sense Gallery</string>
+    <string name="photo_thumbnail">Photo thumbnail</string>
+    <string name="no_photos_found">No photos found on this device</string>
+    <string name="permission_denied_message">Photo access is required to display your gallery. Please grant the permission in Settings.</string>
+    <string name="process_faces">Scan for faces</string>
+    <string name="processing_faces">Processing faces…</string>
+    <string name="processing_progress">Processing photo %1$d of %2$d (%3$d faces found)</string>
+    <string name="processing_complete">Done! Found %1$d faces in %2$d photos.</string>
+    <string name="processing_error">Face processing failed: %1$s</string>
+</resources>

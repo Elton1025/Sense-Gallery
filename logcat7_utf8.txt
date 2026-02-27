@@ -1,0 +1,1546 @@
+﻿--------- beginning of main
+02-20 17:38:47.694 26461 26529 W eixl    : No hotword model!
+02-20 17:38:47.694 26461 26529 I eixl    : No hotword model! Hotword Detection is not running! We don't need to stop it.
+02-20 17:38:47.694 26461 26529 I eixl    : (REDACTED) Get the next action %s for requester %s.
+02-20 17:38:47.694 26461 26529 I eixl    : (REDACTED) Hotword detection is running : %b, no further operation required.
+02-20 17:38:47.695 26461 26529 I ejal    : #addDspHotwordPropertiesToRequestHandlingMetadata
+02-20 17:38:47.695 26461 26532 I ejal    : (REDACTED) #addDspHotwordPropertiesToRequestHandlingMetadata: properties=%s
+02-20 17:38:47.695 26461 26532 I eixl    : #logRequestHandlingNonErrorEndEvent. Reset requestIdOfFirstError, firstStartErrorCausesRetry and numOfRetriesDoneForHotwordDetectorStartErrors!
+02-20 17:38:47.695 26461 26532 I eixl    : #onConfigUpdate inside sequencer
+02-20 17:38:47.695 26461 26532 I eixl    : (REDACTED) getAllConfigAndTakeAction called because of %s
+02-20 17:38:47.701 21241 21283 I Finsky  : [2281] AIM: AppInfoManager-Perf > ItemModel > CacheSize=23, cacheHitCount=0, cacheMissCount=0, total appsWithNoServerDataCount=0. Missed  in cache (limit 10) : []
+02-20 17:38:47.702 26461 26529 I dpje    : (REDACTED) GetContext(%s, %s): Fetch from the %s surface finished with status: %s
+02-20 17:38:47.702 21241 21283 I Finsky  : [2281] AIM: AppInfoManager-Perf > ItemModel > CacheSize=23, cacheHitCount=0, cacheMissCount=0, total appsWithNoServerDataCount=0. Missed  in cache (limit 10) : []
+02-20 17:38:47.702 26461 26529 I dyba    : (REDACTED) ContextResult succeeded for ContextKey: %s. %s
+02-20 17:38:47.703 26461 26529 I dybm    : (REDACTED) Updating context input '%s' with dynamic class '%s' containing %s entities. %s
+02-20 17:38:47.703 21241 21283 I Finsky  : [2281] AIM: AppInfoManager-Perf > getApps > data collection finished
+02-20 17:38:47.704 21241 21283 I Finsky  : [2281] AIM: AppInfoManager-Perf > maybeDestroyAppInfoManager is called. actives = 1
+02-20 17:38:47.704 26461 26529 I dybm    : (REDACTED) Clearing context input '%s'. %s
+02-20 17:38:47.704 26461 26529 I dybg    : (REDACTED) Sending speech biasing context update to SODA with locale %s. %s
+02-20 17:38:47.705 26461 26533 I eiul    : (REDACTED) #getSodaAsrUpdateRequest inserting app domain: %s
+02-20 17:38:47.705 26461 26502 I ejmi    : #updateAndGetSnapshot
+02-20 17:38:47.706 26461 26535 I ejmi    : (REDACTED) Listening for responses for locale %s
+02-20 17:38:47.706 26461 26535 I ejmi    : (REDACTED) >>> [%s] Emitting request locale: %s, secondaryLocales: %s, resources: %s, requestClient: %s
+02-20 17:38:47.707 23019 26594 I ejpc    : SRM: AccountScoped session starting on service-side.
+02-20 17:38:47.707 23019 26594 I ejmv    : (REDACTED) <<< [%s] Received request for primary locale %s. Secondary locales: '%s'
+02-20 17:38:47.707 23019 26594 I ejmv    : (REDACTED) <<< [%s] Requested resources IDs: %s. Note that this is a noop because we currently return all resource for each request.
+02-20 17:38:47.707 23019 26589 I ejls    : (REDACTED) [%s] #getAndUpdateSodaResourceCollection
+02-20 17:38:47.707 23019 26593 I ejls    : (REDACTED) [%s] #getImmediateResourceStates with locale %s. Secondary locales: %s
+02-20 17:38:47.708 23019 26593 I ejls    : (REDACTED) [%s] SRM initial state enabled (for hotword).
+02-20 17:38:47.708 23019 26593 I elrg    : (REDACTED) MDD.getFileGroup(%s)
+02-20 17:38:47.709 23019 26593 I ejjd    : (REDACTED) [%s] #updateResource begin
+02-20 17:38:47.709 23019 26593 I ejjd    : (REDACTED) [%s] #updateResource end
+02-20 17:38:47.709 23019 26592 I DefaultLPManager: #getAvailablePackages
+02-20 17:38:47.710 23019 26579 I cuge    : Getting hotwordModelConfig
+02-20 17:38:47.710 23019 26592 I elvm    : #getDownloadableLanguagePacks
+02-20 17:38:47.710 23019 26592 I elwe    : (REDACTED) Loaded languagepack (LP) flag value from latest config %s: %s
+02-20 17:38:47.710 23019 26592 W SystemLPSourceImpl: #getAvailablePackages: Note there is not reason to call this method, as getInstalledPackages() returns the same LanguagePacks for this impl.
+02-20 17:38:47.710 23019 26592 W LegacyLPSourceImpl: #getAvailablePackages: Note there is no reason to call this method, as getInstalledPackages() returns the same LanguagePacks for this impl.
+02-20 17:38:47.710 26461 26536 I dpje    : (REDACTED) GetContext(%s, %s): Fetch from the %s surface finished with status: %s
+02-20 17:38:47.710 23019 32749 W ejvt    : Hotword settings PDS is not populated - defaulting to DECLINED.
+02-20 17:38:47.711 23019 26583 I LegacyLPSourceImpl: (REDACTED) Parsing legacy read-only LanguagePack metadata file: %s
+02-20 17:38:47.711 26461 26536 I dyba    : (REDACTED) ContextResult succeeded for ContextKey: %s. %s
+02-20 17:38:47.712 23019 26588 I DefaultLPManager: #getRequestedPackages
+02-20 17:38:47.712 23019 26588 I ZipLPPopulator: #addNewFileGroups
+02-20 17:38:47.712 23019 26588 I elvm    : #getDownloadableLanguagePacks
+02-20 17:38:47.712 26461 26536 I dybm    : (REDACTED) Updating context input '%s' with dynamic class '%s' containing %s entities. %s
+02-20 17:38:47.712 23019 26588 I elwe    : (REDACTED) Loaded languagepack (LP) flag value from latest config %s: %s
+02-20 17:38:47.713 23019 26588 W SystemLPSourceImpl: #getRequestedPackages: There is not reason to call this method, as the result is always empty.
+02-20 17:38:47.713 23019 26588 W LegacyLPSourceImpl: #getRequestedPackages: There is no reason to call this method, as the result is always empty.
+02-20 17:38:47.713 26461 26536 I dybm    : (REDACTED) Clearing context input '%s'. %s
+02-20 17:38:47.713 26461 26536 I dybg    : (REDACTED) Sending speech biasing context update to SODA with locale %s. %s
+02-20 17:38:47.713 23019 26589 I DefaultLPManager: #getAvailablePackages
+02-20 17:38:47.713 23019 26589 I elvm    : #getDownloadableLanguagePacks
+02-20 17:38:47.713 26461 26536 I ejmi    : (REDACTED) <<< [%s] Reading SodaResourceManager message with initial resourceIds: '%s.'
+02-20 17:38:47.713 23019 26589 I elwe    : (REDACTED) Loaded languagepack (LP) flag value from latest config %s: %s
+02-20 17:38:47.714 26461 26536 I eiul    : (REDACTED) #getSodaAsrUpdateRequest inserting app domain: %s
+02-20 17:38:47.714 23019 26589 W SystemLPSourceImpl: #getAvailablePackages: Note there is not reason to call this method, as getInstalledPackages() returns the same LanguagePacks for this impl.
+02-20 17:38:47.714 23019 26589 W LegacyLPSourceImpl: #getAvailablePackages: Note there is no reason to call this method, as getInstalledPackages() returns the same LanguagePacks for this impl.
+02-20 17:38:47.714 23019 26593 I LPRequestState: (REDACTED) [%s] #resolveDesiredLanguagePacks
+02-20 17:38:47.714 23019 26595 I ejls    : (REDACTED) [%s] #getInstalledLanguagePacks
+02-20 17:38:47.714 23019 26594 I ejls    : Skipping stopword download due to disablement by flag.
+02-20 17:38:47.714 23019 26589 I DefaultLPManager: #getInstalledPackages
+02-20 17:38:47.714 23019 26580 I LegacyLPSourceImpl: (REDACTED) Parsing legacy read-only LanguagePack metadata file: %s
+02-20 17:38:47.714 23019 26589 I elvm    : #getInstalledPackages from MDD
+02-20 17:38:47.715 23019 26589 I elvm    : #GetLanguagePackList
+02-20 17:38:47.715 23019 26589 I elvm    : MDD.getFileGroupsByFilter(langpack-domain_xx-XX_ver_zipfile)
+02-20 17:38:47.715 23019 26580 W elrg    : No downloaded contextual models.
+02-20 17:38:47.715 23019 26580 I LegacyLPSourceImpl: (REDACTED) Parsing legacy read-only LanguagePack metadata file: %s
+02-20 17:38:47.715 23019 26595 I ZipLPPopulator: #addNewFileGroups complete
+02-20 17:38:47.715 23019 26589 I elvm    : #getPendingPackages from MDD
+02-20 17:38:47.715 23019 26589 I elvm    : #GetLanguagePackList
+02-20 17:38:47.715 23019 26589 I elvm    : MDD.getFileGroupsByFilter(langpack-domain_xx-XX_ver_zipfile)
+02-20 17:38:47.715 26461 26533 I ejmi    : (REDACTED) <<< [%s] Reading SodaResourceManager message with updated resourceIds: %s. Total set: %s
+02-20 17:38:47.717 23019 26579 I cuge    : MDD.refreshFileGroups(hotwordFileGroupPopulator)
+02-20 17:38:47.717 23019 26579 I cufq    : (REDACTED) MDD.addFileGroup(%s)
+02-20 17:38:47.718 23019 26589 I ejbk    : (REDACTED) HDM.HotwordService: hotwordDebugToastDecision: %s, tag: %s
+02-20 17:38:47.719 26461 26536 I eixl    : getHotwordConfigResponse returned.
+02-20 17:38:47.719 26461 26536 I eiym    : (REDACTED) Operational mode passed in HotwordConfig is %s
+02-20 17:38:47.719 26461 26536 I ejaw    : #getHotwordInfo called.
+02-20 17:38:47.719 26461 26536 I ejat    : Account not changed, ignore update.
+02-20 17:38:47.719 26461 26536 I ejaw    : Not fetching hotword info from SRM
+02-20 17:38:47.719 26461 26536 I eixl    : getHotwordInfo and getHotwordSettingState returned.
+02-20 17:38:47.720 26461 26536 I ejaf    : (REDACTED) No need to try to get the fallback locale. for keyphrase %s, locale %s
+02-20 17:38:47.720 26461 26536 I ejal    : (REDACTED) #getDspAvailableResult locale : %s, dsp locale : %s, keyphrase : %s, DSP keyphrase : %s, isKeyphraseAndLocaleSupported : %b, canUseDownloadDspModel : %b. forceUniversalDspHotwordModel : %b
+--------- beginning of system
+02-20 17:38:47.720 26461 26536 W KeyphraseEnrollmentInfo: No enrollment application supports the given keyphrase/locale: 'Y Google'/en_US
+02-20 17:38:47.720 26461 26536 I ejal    : (REDACTED) isDspHotwordSupportedByPlatform = %s, isDspHotwordModelAvailable = %s
+02-20 17:38:47.720 23019 26570 I cuge    : Getting hotwordModelConfig
+02-20 17:38:47.720 26461 26536 I eixl    : (REDACTED) getAllConfigAndTakeAction dspAvailable: %b, disableDspInTest: %b
+02-20 17:38:47.720 26461 26536 I eivj    : (REDACTED) hotword enrollment state is enrolled:  %b, speakerId model exist: %b.
+02-20 17:38:47.720 26461 26536 I eivj    : (REDACTED) Hotword enrollment state : %s.
+02-20 17:38:47.720 26461 26536 I eivj    : (REDACTED) Hotword enrollment state : %s.
+02-20 17:38:47.721 26461 26536 W eixl    : No hotword model!
+02-20 17:38:47.721 26461 26536 I eixl    : No hotword model! Hotword Detection is not running! We don't need to stop it.
+02-20 17:38:47.721 26461 26536 I eixl    : (REDACTED) Get the next action %s for requester %s.
+02-20 17:38:47.721 26461 26536 I eixl    : (REDACTED) Hotword detection is running : %b, no further operation required.
+02-20 17:38:47.721 26461 26536 I ejal    : #addDspHotwordPropertiesToRequestHandlingMetadata
+02-20 17:38:47.722 26461 26533 I ejal    : (REDACTED) #addDspHotwordPropertiesToRequestHandlingMetadata: properties=%s
+02-20 17:38:47.722 26461 26536 I eixl    : #logRequestHandlingNonErrorEndEvent. Reset requestIdOfFirstError, firstStartErrorCausesRetry and numOfRetriesDoneForHotwordDetectorStartErrors!
+02-20 17:38:47.722 23019 26570 I cuge    : MDD.refreshFileGroups(hotwordFileGroupPopulator)
+02-20 17:38:47.722 23019 26570 I cufq    : (REDACTED) MDD.addFileGroup(%s)
+02-20 17:38:47.746  3742 24042 I Icing   : Usage reports ok 1, Failed Usage reports 0, indexed 0, rejected 0
+02-20 17:38:47.749 26461 26476 I hbox:interactor: Background concurrent copying GC freed 65647(2643KB) AllocSpace objects, 0(0B) LOS objects, 76% free, 7495KB/31MB, paused 90us,32us total 361.102ms
+02-20 17:38:47.765  3742  3827 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=null serviceId=30
+02-20 17:38:47.768  3742  3755 I gle.android.gms: Background concurrent copying GC freed 105095(5359KB) AllocSpace objects, 17(724KB) LOS objects, 75% free, 18MB/72MB, paused 312us,67us total 369.131ms
+02-20 17:38:47.778  1507  4043 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.example.sensegallery/.MainActivity} from uid 2000
+02-20 17:38:47.779  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 265464455; UID 10244; state: DISABLED
+02-20 17:38:47.779  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 265452344; UID 10244; state: DISABLED
+02-20 17:38:47.779  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 266124927; UID 10244; state: DISABLED
+02-20 17:38:47.779  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 265451093; UID 10244; state: DISABLED
+02-20 17:38:47.779  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 265456536; UID 10244; state: DISABLED
+02-20 17:38:47.779  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 255940284; UID 10244; state: DISABLED
+02-20 17:38:47.780  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 236283604; UID 10244; state: DISABLED
+02-20 17:38:47.780  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 263959004; UID 10244; state: DISABLED
+02-20 17:38:47.780  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 264304459; UID 10244; state: DISABLED
+02-20 17:38:47.780  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 264301586; UID 10244; state: DISABLED
+02-20 17:38:47.780  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 254631730; UID 10244; state: DISABLED
+02-20 17:38:47.780  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 273509367; UID 10244; state: DISABLED
+02-20 17:38:47.780  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 263259275; UID 10244; state: DISABLED
+02-20 17:38:47.781 23019 26595 I DefaultLPManager: #getPackage
+02-20 17:38:47.782 23019 26595 I ejls    : (REDACTED) [%s] Installed LanguagePacks: %s
+02-20 17:38:47.782 23019 26595 I ejls    : (REDACTED) [%s] Pending pack: %s
+02-20 17:38:47.785  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 194480991; UID 10244; state: ENABLED
+02-20 17:38:47.785  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 174042980; UID 10244; state: DISABLED
+02-20 17:38:47.789  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 184838306; UID 10244; state: DISABLED
+02-20 17:38:47.789  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 185004937; UID 10244; state: DISABLED
+02-20 17:38:47.792  1507  4043 D ActivityTrigger: ActivityTrigger activityPauseTrigger 
+02-20 17:38:47.799  1507  1807 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10244; state: DISABLED
+02-20 17:38:47.799  1507  1807 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10244; state: DISABLED
+02-20 17:38:47.799  1507  1807 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10244; state: DISABLED
+02-20 17:38:47.799  1507  1807 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10244; state: ENABLED
+02-20 17:38:47.799  1507  1819 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10244; state: ENABLED
+02-20 17:38:47.802  2452  2703 W Parcel  : Expecting binder but got null!
+02-20 17:38:47.802  1507  1819 I ActivityManager: Start proc 30446:com.example.sensegallery/u0a244 for next-top-activity {com.example.sensegallery/com.example.sensegallery.MainActivity}
+02-20 17:38:47.804  3742 24042 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+02-20 17:38:47.805  1507  4043 D CoreBackPreview: Window{768f52e u0 Splash Screen com.example.sensegallery}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@482525c, mPriority=0}
+02-20 17:38:47.809  2452  2703 E OpenGLRenderer: Unable to match the desired swap behavior.
+02-20 17:38:47.815 30446 30446 E le.sensegallery: Not starting debugger since process cannot load the jdwp agent.
+02-20 17:38:47.818  3742 24042 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+02-20 17:38:47.823  1507  4038 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:38:47.823  1507  4038 D CompatibilityInfo: applicationDensity - 440
+02-20 17:38:47.823  1507  4038 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:38:47.824  1507  4038 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:38:47.824  1507  4038 D CompatibilityInfo: applicationDensity - 440
+02-20 17:38:47.824  1507  4038 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:38:47.827 30446 30446 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10244; state: ENABLED
+02-20 17:38:47.830 30446 30446 W ziparchive: Unable to open '/data/app/~~ocSi3wXwX2zAgIssijfDLQ==/com.example.sensegallery-jUKvErndlQrhBZ3a-3Ez_Q==/base.dm': No such file or directory
+02-20 17:38:47.830 30446 30446 W ziparchive: Unable to open '/data/app/~~ocSi3wXwX2zAgIssijfDLQ==/com.example.sensegallery-jUKvErndlQrhBZ3a-3Ez_Q==/base.dm': No such file or directory
+02-20 17:38:47.836 23019 32748 I cufq    : (REDACTED) MDD.addFileGroup(%s) returned %b
+02-20 17:38:47.836 23019 32748 I cuge    : MDD refresh completed.
+02-20 17:38:47.837 23019 26592 I cuge    : Trying to get last downloaded model for current locale.
+02-20 17:38:47.837 23019 26592 I cuge    : (REDACTED) MDD.getFileGroup(%s)
+02-20 17:38:47.839 26461 26529 I ejmi    : (REDACTED) <<< [%s] Reading SodaResourceManager message with updated resourceIds: %s. Total set: %s
+02-20 17:38:47.839 26461 26529 I ejmi    : (REDACTED) <<< [%s] SodaResourceManager session emitted all requested resources: %s. Ok to terminate.
+02-20 17:38:47.839 23019 32748 I cufq    : (REDACTED) MDD.addFileGroup(%s) returned %b
+02-20 17:38:47.840 23019 32748 I cuge    : MDD refresh completed.
+02-20 17:38:47.840 23019 26594 I cuge    : Trying to get last downloaded model for current locale.
+02-20 17:38:47.840 23019 26594 I cuge    : (REDACTED) MDD.getFileGroup(%s)
+02-20 17:38:47.841  1507  4038 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10244; state: DISABLED
+02-20 17:38:47.841 23019 26580 I cuge    : (REDACTED) MDD get/download %s returned successful.
+02-20 17:38:47.841 23019 26580 I cuge    : (REDACTED) MDD returned hotwordModelSpec %s
+02-20 17:38:47.842 23019 26579 I cuge    : (REDACTED) MDD get/download %s returned successful.
+02-20 17:38:47.842 23019 26579 I cuge    : (REDACTED) MDD returned hotwordModelSpec %s
+02-20 17:38:47.845 23019 26592 I cuge    : (REDACTED) HotwordModel returned with path: %s
+02-20 17:38:47.846 23019 26592 I cuge    : (REDACTED) Scraping model ID for model of size %d
+02-20 17:38:47.846 23019 26592 I cuge    : (REDACTED) Scraped model ID: %s
+02-20 17:38:47.846 23019 26592 I cuge    : (REDACTED) HotwordModel returned with path: %s
+02-20 17:38:47.847 23019 26579 I ejqt    : (REDACTED) Returning hotword model with ID: %s
+02-20 17:38:47.847 23019 26592 I cuge    : (REDACTED) Scraping model ID for model of size %d
+02-20 17:38:47.847 23019 26592 I cuge    : (REDACTED) Scraped model ID: %s
+02-20 17:38:47.847 23019 26570 I ejqt    : (REDACTED) Returning hotword model with ID: %s
+02-20 17:38:47.857  3742 24042 I Icing   : Indexing done com.google.android.gms-apps
+02-20 17:38:47.861 23019 26594 I ejls    : (REDACTED) [%s] SRM initial state for hotword: '%s'
+02-20 17:38:47.862 23019 26579 I cuge    : Getting hotwordModelConfig
+02-20 17:38:47.862 26461 26529 I ejmi    : (REDACTED) <<< [%s] Reading SodaResourceManager message with initial resourceIds: '%s.'
+02-20 17:38:47.862 26461 26529 I ejmi    : (REDACTED) <<< [%s] SodaResourceManager session emitted all requested resources: %s. Ok to terminate.
+02-20 17:38:47.863 23019 26579 I cuge    : MDD.refreshFileGroups(hotwordFileGroupPopulator)
+02-20 17:38:47.863 23019 26579 I cufq    : (REDACTED) MDD.addFileGroup(%s)
+02-20 17:38:47.865 23019 26592 I ejls    : (REDACTED) [%s] #getLatestServerTisidVoiceprint: %s
+02-20 17:38:47.865 23019 26592 I ejls    : (REDACTED) [%s] Server Tisid voiceprint queries skipped because ServerTisid-specific flag is disabled.
+02-20 17:38:47.865 23019 26589 I cuih    : #getTisidModel
+02-20 17:38:47.866 23019 26592 I cuih    : #initialize
+02-20 17:38:47.866 23019 26592 I cuih    : #getTdsidModel
+02-20 17:38:47.866 23019 32748 I cufq    : (REDACTED) MDD.addFileGroup(%s) returned %b
+02-20 17:38:47.866 23019 32748 I cuge    : MDD refresh completed.
+02-20 17:38:47.867 23019 26588 I cuge    : (REDACTED) Trying to get latest model with timeout: %dms.
+02-20 17:38:47.867 23019 26588 I cuge    : Trying to get latest model bytes.
+02-20 17:38:47.867 23019 26588 I cuge    : (REDACTED) Trying to get preloaded model for matching URL. (locale=%s)
+02-20 17:38:47.867 23019 26588 I cuge    : Preloaded model not available. Attempting download.
+02-20 17:38:47.867 23019 26588 I cuge    : Trying to get latest MDD Model bytes.
+02-20 17:38:47.867 23019 26583 I cuih    : First init for this EnrollmentManager instance.
+02-20 17:38:47.867 23019 26583 I cuih    : Didn't find an initialized EnrollmentManager. Updating config.
+02-20 17:38:47.867 23019 26583 I A       : (REDACTED) updateConfig: Hotword present: %b, LP directory: %s
+02-20 17:38:47.868 23019 26588 I cuge    : (REDACTED) MDD.getFileGroup(%s)
+02-20 17:38:47.870 23019 26588 I cuge    : (REDACTED) MDD.downloadFileGroup(%s)
+02-20 17:38:47.871 23019 26593 I native  : I0000 00:00:1771589327.871621   26593 enrollment_manager_impl.cc:454] UpdateConfigRequest with timeout: 0
+02-20 17:38:47.872 23019 26570 I cuge    : (REDACTED) MDD get/download %s returned successful.
+02-20 17:38:47.872 23019 26570 I cuge    : (REDACTED) MDD returned hotwordModelSpec %s
+02-20 17:38:47.875 23019 26588 I cuge    : (REDACTED) HotwordModel returned with path: %s
+02-20 17:38:47.876 23019 26588 I cuge    : (REDACTED) Scraping model ID for model of size %d
+02-20 17:38:47.876 23019 26588 I cuge    : (REDACTED) Scraped model ID: %s
+02-20 17:38:47.876 23019 26570 I ejqt    : (REDACTED) Returning hotword model with ID: %s
+02-20 17:38:47.877 26461 26529 I ejmi    : (REDACTED) <<< [%s] Reading SodaResourceManager message with updated resourceIds: %s. Total set: %s
+02-20 17:38:47.877 26461 26529 I ejmi    : (REDACTED) <<< [%s] SodaResourceManager session emitted all requested resources: %s. Ok to terminate.
+02-20 17:38:47.882 23019 26595 I cuih    : #getTdsidModel
+02-20 17:38:47.897 23020 23020 I bwtb    : onPause
+02-20 17:38:47.898 23019 26739 E SpeechMicro: Hotword model is single-channel neuralnet.
+02-20 17:38:47.902 23019 26739 I native  : I0000 00:00:1771589327.902252   26739 enrollment_manager_impl.cc:1323] A valid TD-SID creator already exists. No need to re-create.
+02-20 17:38:47.902 23019 26739 W native  : W0000 00:00:1771589327.902604   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:NOT_FOUND: No VOICE_MATCH config found in languagepack.
+02-20 17:38:47.902 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:38:47.902 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:417
+02-20 17:38:47.903 23019 26739 I native  : I0000 00:00:1771589327.903022   26739 enrollment_manager_impl.cc:1343] A valid TI-SID creator already exists. No need to re-create.
+02-20 17:38:47.903 23019 26739 W native  : W0000 00:00:1771589327.903140   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:NOT_FOUND: No VOICE_MATCH config found in languagepack.
+02-20 17:38:47.903 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:38:47.903 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:417
+02-20 17:38:47.903 23019 26739 W native  : W0000 00:00:1771589327.903365   26739 enrollment_manager_impl.cc:1379] Locale changed from "und" to "en-US". NO-OP as per EnrollmentManagerConfig.
+02-20 17:38:47.903  1507  1818 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:38:47.903  1507  1818 D CompatibilityInfo: applicationDensity - 440
+02-20 17:38:47.903  1507  1818 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:38:47.903 23019 26739 E native  : E0000 00:00:1771589327.903629   26739 enrollment_manager_impl.cc:461] CANCELLED: when updating EnrollmentManager config (timed out).
+02-20 17:38:47.903 23019 26594 I A       : (REDACTED) handleResponse for  %s user(s)
+02-20 17:38:47.903 23019 26594 I A       : (REDACTED) Found SodaVmmmClassicWriter. Preparing to propagate model update for status: %s
+02-20 17:38:47.904 23019 26594 I A       : Skipping model update propagation to SodaVmmmClassicWriter since speaker model did not change.
+02-20 17:38:47.904 23019 26594 W A       : Unsuccessful #UpdateConfig request. Clearing cached config.
+02-20 17:38:47.904 23019 26595 I cuih    : #initialize
+02-20 17:38:47.904 23019 26594 W ejls    : (REDACTED) [%s] VoiceMatch Tisid read failed.
+02-20 17:38:47.904 23019 26594 W ejls    : java.lang.IllegalStateException: Locale change detected.
+02-20 17:38:47.904 23019 26594 W ejls    : 	at cuic.apply(PG:531)
+02-20 17:38:47.904 23019 26594 W ejls    : 	at etku.apply(PG:17)
+02-20 17:38:47.904 23019 26594 W ejls    : 	at fdgy.c(PG:3)
+02-20 17:38:47.904 23019 26594 W ejls    : 	at fdgz.run(PG:47)
+02-20 17:38:47.904 23019 26594 W ejls    : 	at cvox.run(PG:5)
+02-20 17:38:47.904 23019 26594 W ejls    : 	at fcec.run(PG:46)
+02-20 17:38:47.904 23019 26594 W ejls    : 	at cvoj.run(PG:81)
+02-20 17:38:47.904 23019 26594 W ejls    : 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:38:47.904 23019 26594 W ejls    : 	at cvpz.run(PG:62)
+02-20 17:38:47.906 23019 26579 I cuih    : First init for this EnrollmentManager instance.
+02-20 17:38:47.906 23019 26579 I cuih    : Didn't find an initialized EnrollmentManager. Updating config.
+02-20 17:38:47.906 23019 26579 I A       : (REDACTED) updateConfig: Hotword present: %b, LP directory: %s
+02-20 17:38:47.907 23019 26595 I native  : I0000 00:00:1771589327.907747   26595 enrollment_manager_impl.cc:454] UpdateConfigRequest with timeout: 0
+02-20 17:38:47.914 26461 26529 I ejmi    : (REDACTED) <<< [%s] Reading SodaResourceManager message with updated resourceIds: %s. Total set: %s
+02-20 17:38:47.914 26461 26529 I ejmi    : (REDACTED) <<< [%s] SodaResourceManager session emitted all requested resources: %s. Ok to terminate.
+02-20 17:38:47.924 23019 26739 E SpeechMicro: Hotword model is single-channel neuralnet.
+02-20 17:38:47.926 23019 26739 I native  : I0000 00:00:1771589327.926308   26739 enrollment_manager_impl.cc:1323] A valid TD-SID creator already exists. No need to re-create.
+02-20 17:38:47.926 23019 26739 W native  : W0000 00:00:1771589327.926577   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:NOT_FOUND: No VOICE_MATCH config found in languagepack.
+02-20 17:38:47.926 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:38:47.926 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:417
+02-20 17:38:47.926 23019 26739 I native  : I0000 00:00:1771589327.926770   26739 enrollment_manager_impl.cc:1343] A valid TI-SID creator already exists. No need to re-create.
+02-20 17:38:47.926 23019 26739 W native  : W0000 00:00:1771589327.926823   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:NOT_FOUND: No VOICE_MATCH config found in languagepack.
+02-20 17:38:47.926 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:38:47.926 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:417
+02-20 17:38:47.926 23019 26739 W native  : W0000 00:00:1771589327.926907   26739 enrollment_manager_impl.cc:1379] Locale changed from "und" to "en-US". NO-OP as per EnrollmentManagerConfig.
+02-20 17:38:47.927 23019 26595 I A       : (REDACTED) handleResponse for  %s user(s)
+02-20 17:38:47.927 23019 26595 I A       : (REDACTED) Found SodaVmmmClassicWriter. Preparing to propagate model update for status: %s
+02-20 17:38:47.927 23019 26595 I A       : Skipping model update propagation to SodaVmmmClassicWriter since speaker model did not change.
+02-20 17:38:47.927 23019 26595 W A       : Unsuccessful #UpdateConfig request. Clearing cached config.
+02-20 17:38:47.927 23019 26739 E native  : E0000 00:00:1771589327.927463   26739 enrollment_manager_impl.cc:461] CANCELLED: when updating EnrollmentManager config (timed out).
+02-20 17:38:47.927 23019 26592 I cuih    : #initialize
+02-20 17:38:47.928 23019 26594 W ejls    : (REDACTED) [%s] VoiceMatch Tdsid read failed.
+02-20 17:38:47.928 23019 26594 W ejls    : java.lang.IllegalStateException: Locale change detected.
+02-20 17:38:47.928 23019 26594 W ejls    : 	at cuic.apply(PG:362)
+02-20 17:38:47.928 23019 26594 W ejls    : 	at etku.apply(PG:17)
+02-20 17:38:47.928 23019 26594 W ejls    : 	at fdgy.c(PG:3)
+02-20 17:38:47.928 23019 26594 W ejls    : 	at fdgz.run(PG:47)
+02-20 17:38:47.928 23019 26594 W ejls    : 	at cvox.run(PG:5)
+02-20 17:38:47.928 23019 26594 W ejls    : 	at fcec.run(PG:46)
+02-20 17:38:47.928 23019 26594 W ejls    : 	at cvoj.run(PG:81)
+02-20 17:38:47.928 23019 26594 W ejls    : 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:38:47.928 23019 26594 W ejls    : 	at cvpz.run(PG:62)
+02-20 17:38:47.928 23019 26592 I ejjd    : (REDACTED) [%s] No SpeakerId model found
+02-20 17:38:47.928 23019 26583 I cuih    : First init for this EnrollmentManager instance.
+02-20 17:38:47.928 23019 26583 I cuih    : Didn't find an initialized EnrollmentManager. Updating config.
+02-20 17:38:47.928 23019 26583 I A       : (REDACTED) updateConfig: Hotword present: %b, LP directory: %s
+02-20 17:38:47.930 23019 26594 I native  : I0000 00:00:1771589327.930082   26594 enrollment_manager_impl.cc:454] UpdateConfigRequest with timeout: 0
+02-20 17:38:47.931 23019 26592 I cuih    : #getTdsidModel
+02-20 17:38:47.940 26461 26535 I ejmi    : (REDACTED) <<< [%s] Reading SodaResourceManager message with updated resourceIds: %s. Total set: %s
+02-20 17:38:47.940 26461 26535 I ejmi    : (REDACTED) <<< [%s] SodaResourceManager session emitted all requested resources: %s. Ok to terminate.
+02-20 17:38:47.943 23019 26739 E SpeechMicro: Hotword model is single-channel neuralnet.
+02-20 17:38:47.944 23019 26739 I native  : I0000 00:00:1771589327.944379   26739 enrollment_manager_impl.cc:1323] A valid TD-SID creator already exists. No need to re-create.
+02-20 17:38:47.944 23019 26739 W native  : W0000 00:00:1771589327.944468   26739 language_pack_utils.cc:222] Neither language pack directory nor config file path is set.
+02-20 17:38:47.944 23019 26739 W native  : W0000 00:00:1771589327.944484   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:INVALID_ARGUMENT: Could not determine LP directory.
+02-20 17:38:47.944 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:38:47.944 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:391
+02-20 17:38:47.944 23019 26739 W native  : W0000 00:00:1771589327.944506   26739 enrollment_manager_impl.cc:1340] Could not determine TI-SID version:INVALID_ARGUMENT: No provided LP directory.
+02-20 17:38:47.944 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:38:47.944 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:310
+02-20 17:38:47.944 23019 26739 W native  : speech/soda/speaker_id/enrollment/enrollment_manager_impl_utils.cc:98
+02-20 17:38:47.944 23019 26739 W native  : W0000 00:00:1771589327.944519   26739 language_pack_utils.cc:222] Neither language pack directory nor config file path is set.
+02-20 17:38:47.944 23019 26739 W native  : W0000 00:00:1771589327.944525   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:INVALID_ARGUMENT: Could not determine LP directory.
+02-20 17:38:47.944 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:38:47.944 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:391
+02-20 17:38:47.944 23019 26739 W native  : W0000 00:00:1771589327.944534   26739 enrollment_manager_impl.cc:1359] Unable to select ASR config path: INVALID_ARGUMENT: No provided LP directory.
+02-20 17:38:47.944 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:38:47.944 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:310
+02-20 17:38:47.944 23019 26739 W native  : W0000 00:00:1771589327.944547   26739 enrollment_manager_impl.cc:1379] Locale changed from "und" to "en-US". NO-OP as per EnrollmentManagerConfig.
+02-20 17:38:47.944 23019 26595 I A       : (REDACTED) handleResponse for  %s user(s)
+02-20 17:38:47.944 23019 26595 I A       : (REDACTED) Found SodaVmmmClassicWriter. Preparing to propagate model update for status: %s
+02-20 17:38:47.944 23019 26595 I A       : Skipping model update propagation to SodaVmmmClassicWriter since speaker model did not change.
+02-20 17:38:47.945 23019 26595 W A       : Unsuccessful #UpdateConfig request. Clearing cached config.
+02-20 17:38:47.945 23019 26739 E native  : E0000 00:00:1771589327.945218   26739 enrollment_manager_impl.cc:461] CANCELLED: when updating EnrollmentManager config (timed out).
+02-20 17:38:47.945 23019 26592 I cuih    : #initialize
+02-20 17:38:47.945 23019 26595 W ejmv    : (REDACTED) [%s] calculateImmediateResourceStates failed.
+02-20 17:38:47.945 23019 26595 W ejmv    : java.lang.IllegalStateException: Locale change detected.
+02-20 17:38:47.945 23019 26595 W ejmv    : 	at cuic.apply(PG:362)
+02-20 17:38:47.945 23019 26595 W ejmv    : 	at etku.apply(PG:17)
+02-20 17:38:47.945 23019 26595 W ejmv    : 	at fdgy.c(PG:3)
+02-20 17:38:47.945 23019 26595 W ejmv    : 	at fdgz.run(PG:47)
+02-20 17:38:47.945 23019 26595 W ejmv    : 	at cvox.run(PG:5)
+02-20 17:38:47.945 23019 26595 W ejmv    : 	at fcec.run(PG:46)
+02-20 17:38:47.945 23019 26595 W ejmv    : 	at cvoj.run(PG:81)
+02-20 17:38:47.945 23019 26595 W ejmv    : 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:38:47.945 23019 26595 W ejmv    : 	at cvpz.run(PG:62)
+02-20 17:38:47.946 23019 26570 I cuih    : First init for this EnrollmentManager instance.
+02-20 17:38:47.946 23019 26570 I cuih    : Didn't find an initialized EnrollmentManager. Updating config.
+02-20 17:38:47.946 23019 26570 I A       : (REDACTED) updateConfig: Hotword present: %b, LP directory: %s
+02-20 17:38:47.948 23019 26595 I native  : I0000 00:00:1771589327.948249   26595 enrollment_manager_impl.cc:454] UpdateConfigRequest with timeout: 0
+02-20 17:38:47.955 23019 26595 I ejjd    : (REDACTED) [%s] All resources wrote to PDS and notified client.
+02-20 17:38:47.956 23019 26595 I ejjd    : (REDACTED) [%s] hotwordLatency: %d, tdsidLatency: %d, All resources latency: %d
+02-20 17:38:47.956 23019 26579 I ejmv    : (REDACTED) [%s] Returning ResourceResponse.
+02-20 17:38:47.957 26461 26533 I ejmi    : (REDACTED) [%s] SRM session terminated after all resources accounted for: %s.
+02-20 17:38:47.960 23019 26739 E SpeechMicro: Hotword model is single-channel neuralnet.
+02-20 17:38:47.961 26461 26500 I eitm    : #updateSodaResourcesWithoutReload
+02-20 17:38:47.961 26461 26535 I eitm    : #updateSodaResourcesWithoutReload inside sequencer
+02-20 17:38:47.962 26461 26537 I eitm    : #checkAsrCompatibility inside sequencer
+02-20 17:38:47.962 26461 26537 I eitm    : (REDACTED) #checkAsrCompatibility initializing Soda. Locale: %s. Expected LP version: %d
+02-20 17:38:47.962 26461 26537 I eitm    : (REDACTED) Soda cache directory: %s
+02-20 17:38:47.962 26461 26537 I eitm    : Hotmatch disabled: flag not enabled
+02-20 17:38:47.962 23019 26739 I native  : I0000 00:00:1771589327.962473   26739 enrollment_manager_impl.cc:1323] A valid TD-SID creator already exists. No need to re-create.
+02-20 17:38:47.962 26461 26537 I ejha    : SODA instance exists and matches params. Updating callbacks and returning preloaded instance.
+02-20 17:38:47.962 23019 26739 W native  : W0000 00:00:1771589327.962638   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:NOT_FOUND: No VOICE_MATCH config found in languagepack.
+02-20 17:38:47.962 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:38:47.962 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:417
+02-20 17:38:47.962 26461 26537 I eitm    : #checkAsrCompatibility successful!
+02-20 17:38:47.962 23019 26739 I native  : I0000 00:00:1771589327.962821   26739 enrollment_manager_impl.cc:1343] A valid TI-SID creator already exists. No need to re-create.
+02-20 17:38:47.962 23019 26739 W native  : W0000 00:00:1771589327.962892   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:NOT_FOUND: No VOICE_MATCH config found in languagepack.
+02-20 17:38:47.962 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:38:47.962 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:417
+02-20 17:38:47.962 23019 26739 W native  : W0000 00:00:1771589327.962976   26739 enrollment_manager_impl.cc:1379] Locale changed from "und" to "en-US". NO-OP as per EnrollmentManagerConfig.
+02-20 17:38:47.962 26461 26502 I eiul    : Compatcheck success for background update.
+02-20 17:38:47.963 26461 26502 I eitm    : #backgroundUpdate
+02-20 17:38:47.963 26461 26502 I eitm    : #backgroundUpdate inside sequencer
+02-20 17:38:47.963 26461 26502 I eitm    : #backgroundUpdate using the existing ASR soda instance.
+02-20 17:38:47.963 23019 26592 I A       : (REDACTED) handleResponse for  %s user(s)
+02-20 17:38:47.963 23019 26592 I A       : (REDACTED) Found SodaVmmmClassicWriter. Preparing to propagate model update for status: %s
+02-20 17:38:47.963 23019 26592 I A       : Skipping model update propagation to SodaVmmmClassicWriter since speaker model did not change.
+02-20 17:38:47.963 23019 26592 W A       : Unsuccessful #UpdateConfig request. Clearing cached config.
+02-20 17:38:47.963 26461 26502 I native  : I0000 00:00:1771589327.963478   26502 context-module-impl.cc:801] Update context input. (Proto:MessageLite at 0x7112a67fc0)
+02-20 17:38:47.963 26461 26502 I native  : I0000 00:00:1771589327.963590   26502 context-module-impl.cc:808] Update context input for public scope. (Proto:MessageLite at 0x7112a67fc0)
+02-20 17:38:47.963 23019 26592 W ejls    : (REDACTED) [%s] VoiceMatch Tdsid read failed.
+02-20 17:38:47.963 23019 26592 W ejls    : java.lang.IllegalStateException: Locale change detected.
+02-20 17:38:47.963 23019 26592 W ejls    : 	at cuic.apply(PG:362)
+02-20 17:38:47.963 23019 26592 W ejls    : 	at etku.apply(PG:17)
+02-20 17:38:47.963 23019 26592 W ejls    : 	at fdgy.c(PG:3)
+02-20 17:38:47.963 23019 26592 W ejls    : 	at fdgz.run(PG:47)
+02-20 17:38:47.963 23019 26592 W ejls    : 	at cvox.run(PG:5)
+02-20 17:38:47.963 23019 26592 W ejls    : 	at fcec.run(PG:46)
+02-20 17:38:47.963 23019 26592 W ejls    : 	at cvoj.run(PG:81)
+02-20 17:38:47.963 23019 26592 W ejls    : 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:38:47.963 23019 26592 W ejls    : 	at cvpz.run(PG:62)
+02-20 17:38:47.963 23019 26592 I ejls    : (REDACTED) [%s] No Tdsid update occurred. Skipping callback(s)
+02-20 17:38:47.963 26461 26502 I eiul    : #backgroundBiasingUpdate succeeded.
+02-20 17:38:47.963 23019 26739 E native  : E0000 00:00:1771589327.963965   26739 enrollment_manager_impl.cc:461] CANCELLED: when updating EnrollmentManager config (timed out).
+02-20 17:38:47.964 26461 26537 I eitm    : #checkAsrCompatibility inside sequencer
+02-20 17:38:47.964 26461 26533 I dybg    : (REDACTED) Sending speech biasing context update to SODA with locale %s. %s
+02-20 17:38:47.964 26461 26530 I eebr    : (REDACTED) AppFlow %s is about to be transmitted
+02-20 17:38:47.964 26461 26537 I eitm    : (REDACTED) #checkAsrCompatibility initializing Soda. Locale: %s. Expected LP version: %d
+02-20 17:38:47.964 26461 26537 I eitm    : (REDACTED) Soda cache directory: %s
+02-20 17:38:47.964 26461 26537 I eitm    : Hotmatch disabled: flag not enabled
+02-20 17:38:47.965 26461 26536 I atda    : #getOobeStatus: OptedIn [CONTEXT ratelimit_period="10 SECONDS" skipped=5 ]
+02-20 17:38:47.965 26461 26529 I eiul    : (REDACTED) #getSodaAsrUpdateRequest inserting app domain: %s
+02-20 17:38:47.965 26461 26537 I ejha    : SODA instance exists and matches params. Updating callbacks and returning preloaded instance.
+02-20 17:38:47.965 26461 26537 I eitm    : #checkAsrCompatibility successful!
+02-20 17:38:47.965 26461 26502 I eiul    : Compatcheck success for background update.
+02-20 17:38:47.965 26461 26502 I eitm    : #backgroundUpdate
+02-20 17:38:47.965 26461 26502 I eitm    : #backgroundUpdate inside sequencer
+02-20 17:38:47.966 26461 26502 I eitm    : #backgroundUpdate using the existing ASR soda instance.
+02-20 17:38:47.966 26461 26502 I native  : I0000 00:00:1771589327.966673   26502 context-module-impl.cc:801] Update context input. (Proto:MessageLite at 0x70577c41c0)
+02-20 17:38:47.966 26461 26502 I native  : I0000 00:00:1771589327.966791   26502 context-module-impl.cc:808] Update context input for public scope. (Proto:MessageLite at 0x70577c41c0)
+02-20 17:38:47.966 26461 26502 I eiul    : #backgroundBiasingUpdate succeeded.
+02-20 17:38:47.967 26461 26533 I dybg    : (REDACTED) Sending speech biasing context update to SODA with locale %s. %s
+02-20 17:38:47.968 26461 26533 I eiul    : (REDACTED) #getSodaAsrUpdateRequest inserting app domain: %s
+02-20 17:38:47.968 26461 26502 I eitm    : #checkAsrCompatibility inside sequencer
+02-20 17:38:47.968 26461 26502 I eitm    : (REDACTED) #checkAsrCompatibility initializing Soda. Locale: %s. Expected LP version: %d
+02-20 17:38:47.968 26461 26502 I eitm    : (REDACTED) Soda cache directory: %s
+02-20 17:38:47.968 26461 26500 I eebr    : (REDACTED) AppFlow %s is about to be transmitted
+02-20 17:38:47.968 26461 26502 I eitm    : Hotmatch disabled: flag not enabled
+02-20 17:38:47.968 26461 26502 I ejha    : SODA instance exists and matches params. Updating callbacks and returning preloaded instance.
+02-20 17:38:47.970 26461 26502 I eitm    : #checkAsrCompatibility successful!
+02-20 17:38:47.970 26461 26502 I eiul    : Compatcheck success for background update.
+02-20 17:38:47.970 26461 26502 I eitm    : #backgroundUpdate
+02-20 17:38:47.970 26461 26502 I eitm    : #backgroundUpdate inside sequencer
+02-20 17:38:47.970 26461 26502 I eitm    : #backgroundUpdate using the existing ASR soda instance.
+02-20 17:38:47.970 26461 26500 I eiul    : #backgroundBiasingUpdate succeeded.
+02-20 17:38:47.971 26461 26502 I eebr    : (REDACTED) AppFlow %s is about to be transmitted
+02-20 17:38:47.972 26461 26534 I dybg    : (REDACTED) SODA speech biasing context update for %s is complete. %s
+02-20 17:38:47.972 26461 26534 I dyar    : (REDACTED) Successfully scheduled context update for key: %s for %s.
+02-20 17:38:47.973 26461 26500 I eitm    : #checkAsrCompatibility inside sequencer
+02-20 17:38:47.973 26461 26500 I eitm    : (REDACTED) #checkAsrCompatibility initializing Soda. Locale: %s. Expected LP version: %d
+02-20 17:38:47.973 26461 26500 I eitm    : (REDACTED) Soda cache directory: %s
+02-20 17:38:47.973 26461 26500 I eitm    : Hotmatch disabled: flag not enabled
+02-20 17:38:47.973 26461 26500 I ejha    : SODA instance exists and matches params. Updating callbacks and returning preloaded instance.
+02-20 17:38:47.973 26461 26500 I eitm    : #checkAsrCompatibility successful!
+02-20 17:38:47.973 26461 26500 I eiul    : Compatcheck success for background update.
+02-20 17:38:47.973 26461 26500 I eitm    : #backgroundUpdate
+02-20 17:38:47.973 26461 26500 I eitm    : #backgroundUpdate inside sequencer
+02-20 17:38:47.974 26461 26500 I eitm    : #backgroundUpdate using the existing ASR soda instance.
+02-20 17:38:47.974 26461 26500 I eiul    : #backgroundBiasingUpdate succeeded.
+02-20 17:38:47.974 26461 26502 I eebr    : (REDACTED) AppFlow %s is about to be transmitted
+02-20 17:38:47.974 26461 26536 I dybg    : (REDACTED) SODA speech biasing context update for %s is complete. %s
+02-20 17:38:47.975 26461 26536 I dyar    : (REDACTED) Successfully scheduled context update for key: %s for %s.
+02-20 17:38:47.976 26461 26502 I eebr    : (REDACTED) AppFlow %s is about to be transmitted
+02-20 17:38:47.977 26461 26502 I eebr    : (REDACTED) AppFlow %s is about to be transmitted
+02-20 17:38:48.030  1507  1670 I system_server: Background concurrent copying GC freed 827013(43MB) AllocSpace objects, 47(1160KB) LOS objects, 75% free, 30MB/121MB, paused 260us,102us total 487.949ms
+02-20 17:38:48.036  1507  1672 W System  : A resource failed to call release. 
+02-20 17:38:48.037  1507  1672 W System  : A resource failed to call close. 
+02-20 17:38:48.038  1507  1672 W System  : A resource failed to call release. 
+02-20 17:38:48.129 30446 30446 V GraphicsEnvironment: ANGLE Developer option for 'com.example.sensegallery' set to: 'default'
+02-20 17:38:48.129 30446 30446 V GraphicsEnvironment: ANGLE GameManagerService for com.example.sensegallery: false
+02-20 17:38:48.129 30446 30446 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+02-20 17:38:48.131 30446 30446 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+02-20 17:38:48.132 30446 30446 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+02-20 17:38:48.136 30446 30446 D WM-WrkMgrInitializer: Initializing WorkManager with default configuration.
+02-20 17:38:48.156  1507  1808 W Choreographer: Frame time is 0.11223 ms in the future!  Check that graphics HAL is generating vsync timestamps using the correct timebase.
+02-20 17:38:48.165  1507  1915 E VerityUtils: Failed to measure fs-verity, errno 1: /data/app/~~ocSi3wXwX2zAgIssijfDLQ==/com.example.sensegallery-jUKvErndlQrhBZ3a-3Ez_Q==/base.apk
+02-20 17:38:48.209 30446 30446 D WM-PackageManagerHelper: Skipping component enablement for androidx.work.impl.background.systemjob.SystemJobService
+02-20 17:38:48.209 30446 30446 D WM-Schedulers: Created SystemJobScheduler and enabled SystemJobService
+02-20 17:38:48.234 30446   324 D WM-ForceStopRunnable: The default process name was not specified.
+02-20 17:38:48.234 30446   324 D WM-ForceStopRunnable: Performing cleanup operations.
+02-20 17:38:48.274 30446   324 D WM-SystemJobScheduler: Reconciling jobs
+02-20 17:38:48.283 30446   324 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10244; state: ENABLED
+02-20 17:38:48.284 30446   324 D WM-ForceStopRunnable: Application was force-stopped, rescheduling.
+02-20 17:38:48.303 30446   330 D WM-PackageManagerHelper: Skipping component enablement for androidx.work.impl.background.systemalarm.RescheduleReceiver
+02-20 17:38:48.308 30446 30446 D AppCompatDelegate: Checking for metadata for AppLocalesMetadataHolderService : Service not found
+02-20 17:38:48.372 30446 30446 D CompatibilityChangeReporter: Compat change id reported: 210923482; UID 10244; state: ENABLED
+02-20 17:38:48.517  1507  1679 D CompatibilityChangeReporter: Compat change id reported: 149924527; UID 10244; state: ENABLED
+02-20 17:38:48.517  1507  1679 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 10244; state: DISABLED
+02-20 17:38:48.518  1507  1679 D CompatibilityChangeReporter: Compat change id reported: 182734110; UID 10244; state: ENABLED
+02-20 17:38:48.524 30446 30446 D CompatibilityChangeReporter: Compat change id reported: 147798919; UID 10244; state: ENABLED
+02-20 17:38:48.530 30446 30446 D CompatibilityChangeReporter: Compat change id reported: 237531167; UID 10244; state: DISABLED
+02-20 17:38:48.532 30446   325 W Parcel  : Expecting binder but got null!
+02-20 17:38:48.533  2452  2703 W Parcel  : Expecting binder but got null!
+02-20 17:38:48.534 30446   324 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10244; state: ENABLED
+02-20 17:38:48.534 30446   324 D WM-SystemJobScheduler: Scheduling work ID 9cac1d66-7c7c-42de-8b10-7b33171d6cddJob ID 4
+02-20 17:38:48.534  1507  1679 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10244; state: ENABLED
+02-20 17:38:48.536  1507  4039 D CoreBackPreview: Window{cea81f2 u0 com.example.sensegallery/com.example.sensegallery.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@47d62b5, mPriority=0}
+02-20 17:38:48.536  1507  4038 D CoreBackPreview: Window{369bff9 u0 Toast}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@a745d4a, mPriority=0}
+02-20 17:38:48.537  1507  1679 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:38:48.537  1507  1679 D CompatibilityInfo: applicationDensity - 440
+02-20 17:38:48.537  1507  1679 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:38:48.539 30446   324 D WM-GreedyScheduler: Starting work for 9cac1d66-7c7c-42de-8b10-7b33171d6cdd
+02-20 17:38:48.541  2452  2703 E OpenGLRenderer: Unable to match the desired swap behavior.
+02-20 17:38:48.546 30446   324 D WM-Processor: Processor: processing WorkGenerationalId(workSpecId=9cac1d66-7c7c-42de-8b10-7b33171d6cdd, generation=0)
+02-20 17:38:48.552 30446   325 I AdrenoGLES-0: QUALCOMM build                   : 324ce1b, If2c1c1f9f5
+02-20 17:38:48.552 30446   325 I AdrenoGLES-0: Build Date                       : 07/23/21
+02-20 17:38:48.552 30446   325 I AdrenoGLES-0: OpenGL ES Shader Compiler Version: EV031.32.02.12
+02-20 17:38:48.552 30446   325 I AdrenoGLES-0: Local Branch                     : mybranchebeb7532-538f-f1b0-a55f-1458d0b52ae8
+02-20 17:38:48.552 30446   325 I AdrenoGLES-0: Remote Branch                    : quic/gfx-adreno.lnx.1.0.r135-rel
+02-20 17:38:48.552 30446   325 I AdrenoGLES-0: Remote Branch                    : NONE
+02-20 17:38:48.552 30446   325 I AdrenoGLES-0: Reconstruct Branch               : NOTHING
+02-20 17:38:48.552 30446   325 I AdrenoGLES-0: Build Config                     : S P 10.0.7 AArch64
+02-20 17:38:48.552 30446   325 I AdrenoGLES-0: Driver Path                      : /vendor/lib64/egl/libGLESv2_adreno.so
+02-20 17:38:48.553 30446   324 D WM-PackageManagerHelper: androidx.work.impl.background.systemalarm.RescheduleReceiver enabled
+02-20 17:38:48.554 30446   325 I AdrenoGLES-0: PFP: 0x016ee187, ME: 0x00000000
+02-20 17:38:48.562   667   688 I SDM     : HWCDisplay::GetColorModeCount: Supported color mode count = 3
+02-20 17:38:48.562   667   688 I SDM     : HWCDisplay::GetColorModes: Supports color mode[0] = 0
+02-20 17:38:48.562   667   688 I SDM     : HWCDisplay::GetColorModes: Supports color mode[1] = 7
+02-20 17:38:48.562   667   688 I SDM     : HWCDisplay::GetColorModes: Supports color mode[2] = 9
+02-20 17:38:48.562   665  2820 E HWComposer: getSupportedContentTypes: getSupportedContentTypes failed for display 4630946471422916225: Unsupported (8)
+02-20 17:38:48.563 30446   325 E OpenGLRenderer: Unable to match the desired swap behavior.
+02-20 17:38:48.563   653   653 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+02-20 17:38:48.563 30446   336 I Gralloc4: mapper 4.x is not supported
+02-20 17:38:48.564   653   653 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device VINTF manifest.
+02-20 17:38:48.564 30446   336 W Gralloc3: mapper 3.x is not supported
+02-20 17:38:48.565   653   653 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.allocator@4.0::IAllocator/default in either framework or device VINTF manifest.
+02-20 17:38:48.565   652   652 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+02-20 17:38:48.565 30446   336 W Gralloc4: allocator 4.x is not supported
+02-20 17:38:48.565   653   653 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.allocator@3.0::IAllocator/default in either framework or device VINTF manifest.
+02-20 17:38:48.565 30446   336 W Gralloc3: allocator 3.x is not supported
+02-20 17:38:48.566 30446   336 I Gralloc2: Adding additional valid usage bits: 0x8202400
+02-20 17:38:48.602  1507  1804 W ziparchive: Unable to open '/data/app/~~ocSi3wXwX2zAgIssijfDLQ==/com.example.sensegallery-jUKvErndlQrhBZ3a-3Ez_Q==/base.dm': No such file or directory
+02-20 17:38:48.603  1507  1804 I ActivityTaskManager: Displayed com.example.sensegallery/.MainActivity: +824ms
+02-20 17:38:48.610 30446 30446 W Glide   : Failed to find GeneratedAppGlideModule. You should include an annotationProcessor compile dependency on com.github.bumptech.glide:compiler in your application and a @GlideModule annotated AppGlideModule implementation or LibraryGlideModules will be silently ignored
+02-20 17:38:48.631  1507  1679 D ConnectivityService: requestNetwork for uid/pid:10244/30446 activeRequest: null callbackRequest: 1363 [NetworkRequest [ REQUEST id=1364, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10244 RequestorUid: 10244 RequestorPkg: com.example.sensegallery UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+02-20 17:38:48.632  1507  2233 D ConnectivityService: NetReassign [1364 : null ΓåÆ 107]
+02-20 17:38:48.633  1507  2225 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=1364, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10244 RequestorUid: 10244 RequestorPkg: com.example.sensegallery UnderlyingNetworks: Null] ]
+02-20 17:38:48.633  1507  2225 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=1364, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10244 RequestorUid: 10244 RequestorPkg: com.example.sensegallery UnderlyingNetworks: Null] ]
+02-20 17:38:48.633  1507  2225 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=1364, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10244 RequestorUid: 10244 RequestorPkg: com.example.sensegallery UnderlyingNetworks: Null] ]
+02-20 17:38:48.633  1507  2225 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=1364, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10244 RequestorUid: 10244 RequestorPkg: com.example.sensegallery UnderlyingNetworks: Null] ]
+02-20 17:38:48.669 30446 30446 D WM-WorkerWrapper: Starting work for com.example.sensegallery.workers.FaceProcessingWorker
+02-20 17:38:48.670 30446   356 D FaceProcessingWorker: Starting face processing work...
+02-20 17:38:48.676 30446   356 D FacePipelineProcessor: Model validated: det_10g.onnx (16 MB)
+02-20 17:38:48.676 30446   356 D FacePipelineProcessor: Model validated: arcface_w600k_r50.onnx (166 MB)
+02-20 17:38:48.691  1507  4043 D CompatibilityChangeReporter: Compat change id reported: 214016041; UID 10244; state: ENABLED
+02-20 17:38:48.693 30446 30446 D WM-SystemJobService: onStartJob for WorkGenerationalId(workSpecId=9cac1d66-7c7c-42de-8b10-7b33171d6cdd, generation=0)
+02-20 17:38:48.694 30446   330 D WM-Processor: Work WorkGenerationalId(workSpecId=9cac1d66-7c7c-42de-8b10-7b33171d6cdd, generation=0) is already enqueued for processing
+02-20 17:38:48.696  4682  4682 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():2113 
+02-20 17:38:48.697  4682  4682 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 0, locked = false
+02-20 17:38:48.697  4682  4682 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1384 onStartInput(EditorInfo{EditorInfo{packageName=com.example.sensegallery, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=-1, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+02-20 17:38:48.698  4682  4682 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 1, locked = false
+02-20 17:38:48.713 30446   356 D FacePipelineProcessor: MediaStore sync: 25 photos in DB
+02-20 17:38:48.744 30446   356 D FaceDetectionHelper: Model already cached: det_10g.onnx
+02-20 17:38:48.787 30446   356 W libc    : Access denied finding property "ro.hardware.chipname"
+02-20 17:38:48.815 30446   356 D FaceDetectionHelper: RetinaFace initialized successfully
+02-20 17:38:48.815 30446   356 D FaceDetectionHelper: Input names: [input.1]
+02-20 17:38:48.815 30446   356 D FaceDetectionHelper: Output names: [448, 471, 494, 451, 474, 497, 454, 477, 500]
+02-20 17:38:48.816 30446   356 D FaceEmbeddingHelper: Initializing ArcFace R50 via ONNX Runtime
+02-20 17:38:48.816 30446   356 D FaceEmbeddingHelper: Model already cached: /data/user/0/com.example.sensegallery/cache/arcface_w600k_r50.onnx (166 MB)
+02-20 17:38:48.816 30446   356 D FaceEmbeddingHelper: Model copied to: /data/user/0/com.example.sensegallery/cache/arcface_w600k_r50.onnx
+02-20 17:38:48.935 23020 23020 I bwtb    : onStop
+02-20 17:38:48.963  1507  4038 D CoreBackPreview: Window{768f52e u0 Splash Screen com.example.sensegallery EXITING}: Setting back callback null
+02-20 17:38:48.963  1507  4039 W InputManager-JNI: Input channel object '768f52e Splash Screen com.example.sensegallery (client)' was disposed without first being removed with the input manager!
+02-20 17:38:49.037  5037  5058 I FontLog : (REDACTED) Received query %s, URI %s
+02-20 17:38:49.037  5037  5058 I FontLog : (REDACTED) Query [%s] resolved to %s
+02-20 17:38:49.038  5037  5058 I FontLog : (REDACTED) Fetch %s end status %s
+02-20 17:38:49.039  5037  5058 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+02-20 17:38:49.042  5037  5058 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+02-20 17:38:49.095 30446   356 D FaceEmbeddingHelper: ArcFace R50 initialized ΓÇö 512-d embeddings
+02-20 17:38:49.095 30446   356 D FaceEmbeddingHelper: Input: [input]
+02-20 17:38:49.095 30446   356 D FaceEmbeddingHelper: Output: [output]
+02-20 17:38:49.097 30446   356 D FacePipelineProcessor: Starting ARCFACE+RETINAFACE pipeline for 25 photos
+02-20 17:38:49.101  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpabsolumentgratuitfreefrimagesbenaffleckjpg.jpg. Uid: 10244
+02-20 17:38:49.103  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpabsolumentgratuitfreefrimagesbenaffleckjpg.jpg. Uid: 10244
+02-20 17:38:49.104 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:49.104 30446   356 I FacePipelineProcessor: [START] Photo 1 (200x300)
+02-20 17:38:49.104 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:38:49.554  1507  1919 I AppsFilter: interaction: PackageSetting{fea5d59 com.localmind.assistant/10216} -> PackageSetting{16448aa com.example.sensegallery/10244} BLOCKED
+02-20 17:38:49.556  1507  2100 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10244; state: ENABLED
+02-20 17:38:49.561  1507  1507 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.google.android.dialer: DDC.oR@B4o
+02-20 17:38:49.563 25891 25909 I PermissionControllerServiceImpl: Updating user sensitive for uid 10244
+02-20 17:38:49.564  2452  2452 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+02-20 17:38:49.565 26546 26640 D IconPackManager: Received intent action android.intent.action.PACKAGE_CHANGED for com.example.sensegallery
+02-20 17:38:49.577  1507  2143 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS | 
+02-20 17:38:49.579  1507  2125 I RoleService: Granting default roles...
+02-20 17:38:49.581  1507  2125 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:38:49.581  1507  2125 D CompatibilityInfo: applicationDensity - 440
+02-20 17:38:49.581  1507  2125 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:38:49.592  2702  2702 D CarrierSvcBindHelper: onPackageModified: com.example.sensegallery
+02-20 17:38:49.593  2702  2702 D CarrierSvcBindHelper: No carrier app for: 0
+02-20 17:38:49.593  2702  2702 D CarrierSvcBindHelper: No carrier app for: 1
+02-20 17:38:49.597 25891   483 W Role    : Cannot get ApplicationInfo for default holder: com.google.android.contacts
+02-20 17:38:49.600  2702  2702 D ImsResolver: maybeAddedImsService, packageName: com.example.sensegallery
+02-20 17:38:49.607 25891   483 W Role    : Cannot get ApplicationInfo for default holder: com.google.android.gms.supervision
+02-20 17:38:49.610 25891   483 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+02-20 17:38:49.637 25891   483 W Role    : Cannot get ApplicationInfo for default holder: com.android.gallery3d
+02-20 17:38:49.677 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:38:49.690 30446   356 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:38:49.690 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:38:49.690 30446   356 D FaceDetectionHelper: Face: conf=0.788 box=[0.196,0.182,0.782,0.769]
+02-20 17:38:49.690 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 586ms
+02-20 17:38:49.692 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:38:49.846  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:38:49.846  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:38:50.313 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 621ms (512-d, 2-pass TTA)
+02-20 17:38:50.319 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 621ms, conf=0.788
+02-20 17:38:50.319 30446   356 I FacePipelineProcessor: [END] Photo 1 ΓÇö 1 face(s) saved (1215ms total)
+02-20 17:38:50.319 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:50.323  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTENDgMDUODczNDcNTcjpg.jpg. Uid: 10244
+02-20 17:38:50.326  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTENDgMDUODczNDcNTcjpg.jpg. Uid: 10244
+02-20 17:38:50.327 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:50.327 30446   356 I FacePipelineProcessor: [START] Photo 2 (300x300)
+02-20 17:38:50.327 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:38:50.363 30446 30446 W FinalizerDaemon: type=1400 audit(0.0:9236): avc: denied { getopt } for path="/dev/socket/usap_pool_primary" scontext=u:r:untrusted_app:s0:c244,c256,c512,c768 tcontext=u:r:zygote:s0 tclass=unix_stream_socket permissive=0 app=com.example.sensegallery
+02-20 17:38:50.848 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:38:50.860 30446   356 D FaceDetectionHelper: Before NMS: 0 candidates
+02-20 17:38:50.860 30446   356 D FaceDetectionHelper: After NMS: 0 faces
+02-20 17:38:50.860 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 533ms
+02-20 17:38:50.860 30446   356 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:38:50.860 30446   356 I FacePipelineProcessor: [END] Photo 2 ΓÇö 0 faces (533ms total)
+02-20 17:38:50.864  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpbpblogspotcomedLMjVpRGkSWexgsXjkNIAAAAAAAADWgFFtAUqBlhAsjpg.jpg. Uid: 10244
+02-20 17:38:50.867  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpbpblogspotcomedLMjVpRGkSWexgsXjkNIAAAAAAAADWgFFtAUqBlhAsjpg.jpg. Uid: 10244
+02-20 17:38:50.869 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:50.869 30446   356 I FacePipelineProcessor: [START] Photo 3 (240x320)
+02-20 17:38:50.869 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:38:50.934 30446 30446 W OnBackInvokedCallback: OnBackInvokedCallback is not enabled for the application.
+02-20 17:38:50.934 30446 30446 W OnBackInvokedCallback: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+02-20 17:38:51.131  1507  4043 D CoreBackPreview: Window{369bff9 u0 Toast}: Setting back callback null
+02-20 17:38:51.134  1507  4043 W InputManager-JNI: Input channel object '369bff9 Toast (client)' was disposed without first being removed with the input manager!
+02-20 17:38:51.137  1507  4043 W NotificationService: Toast already killed. pkg=com.example.sensegallery token=android.os.BinderProxy@358a3d7
+02-20 17:38:51.417 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:38:51.430 30446   356 D FaceDetectionHelper: Before NMS: 3 candidates
+02-20 17:38:51.430 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:38:51.430 30446   356 D FaceDetectionHelper: Face: conf=0.885 box=[0.464,0.106,0.678,0.335]
+02-20 17:38:51.430 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 561ms
+02-20 17:38:51.432 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:38:52.068 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 636ms (512-d, 2-pass TTA)
+02-20 17:38:52.070 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 636ms, conf=0.885
+02-20 17:38:52.070 30446   356 I FacePipelineProcessor: [END] Photo 3 ΓÇö 1 face(s) saved (1201ms total)
+02-20 17:38:52.070 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:52.080  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpcsvkmeuaafdfjpg.jpg. Uid: 10244
+02-20 17:38:52.084  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpcsvkmeuaafdfjpg.jpg. Uid: 10244
+02-20 17:38:52.085 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:52.085 30446   356 I FacePipelineProcessor: [START] Photo 4 (200x264)
+02-20 17:38:52.085 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:38:52.620 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:38:52.633 30446   356 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:38:52.633 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:38:52.633 30446   356 D FaceDetectionHelper: Face: conf=0.783 box=[0.579,0.162,0.772,0.371]
+02-20 17:38:52.633 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 548ms
+02-20 17:38:52.633 30446   356 D FacePipelineProcessor: Skipping tiny face: 38x55
+02-20 17:38:52.633 30446   356 I FacePipelineProcessor: [END] Photo 4 ΓÇö 0 face(s) saved (548ms total)
+02-20 17:38:52.633 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:52.639  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpcsvkmeuadecafjpg.jpg. Uid: 10244
+02-20 17:38:52.641  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpcsvkmeuadecafjpg.jpg. Uid: 10244
+02-20 17:38:52.642 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:52.642 30446   356 I FacePipelineProcessor: [START] Photo 5 (200x300)
+02-20 17:38:52.642 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:38:52.857 21241 21556 I PlayCommon: [2350] Preparing logs for uploading
+02-20 17:38:52.859 21241 21556 W PlayCommon: [2350] No account for auth token provided
+02-20 17:38:52.859 21241 21556 I PlayCommon: [2350] Connecting to server: https://play.googleapis.com/play/log?format=raw&proto_v2=true
+02-20 17:38:53.072 21241 21556 I PlayCommon: [2350] Successfully uploaded logs.
+02-20 17:38:53.211 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:38:53.224 30446   356 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:38:53.224 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:38:53.224 30446   356 D FaceDetectionHelper: Face: conf=0.852 box=[0.304,0.202,0.669,0.587]
+02-20 17:38:53.224 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 582ms
+02-20 17:38:53.226 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:38:53.902 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 676ms (512-d, 2-pass TTA)
+02-20 17:38:53.904 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 676ms, conf=0.852
+02-20 17:38:53.904 30446   356 I FacePipelineProcessor: [END] Photo 5 ΓÇö 1 face(s) saved (1262ms total)
+02-20 17:38:53.904 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:53.911  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTEODAOTcxNjcMjczMjkzjpg.jpg. Uid: 10244
+02-20 17:38:53.914  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTEODAOTcxNjcMjczMjkzjpg.jpg. Uid: 10244
+02-20 17:38:53.916 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:53.916 30446   356 I FacePipelineProcessor: [START] Photo 6 (300x300)
+02-20 17:38:53.916 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:38:53.938 30446 30446 W OnBackInvokedCallback: OnBackInvokedCallback is not enabled for the application.
+02-20 17:38:53.938 30446 30446 W OnBackInvokedCallback: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+02-20 17:38:54.470 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:38:54.483 30446   356 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:38:54.483 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:38:54.484 30446   356 D FaceDetectionHelper: Face: conf=0.803 box=[0.263,0.233,0.726,0.879]
+02-20 17:38:54.484 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 568ms
+02-20 17:38:54.485 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:38:54.494 30446   535 D ProfileInstaller: Installing profile for com.example.sensegallery
+02-20 17:38:55.155 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 670ms (512-d, 2-pass TTA)
+02-20 17:38:55.156 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 670ms, conf=0.803
+02-20 17:38:55.156 30446   356 I FacePipelineProcessor: [END] Photo 6 ΓÇö 1 face(s) saved (1240ms total)
+02-20 17:38:55.156 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:55.167  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpcdncdnjustjaredcomwpcontentuploadsheadlineseltonjohnemmysperformancewatchnowjpg.jpg. Uid: 10244
+02-20 17:38:55.172  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpcdncdnjustjaredcomwpcontentuploadsheadlineseltonjohnemmysperformancewatchnowjpg.jpg. Uid: 10244
+02-20 17:38:55.175 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:55.175 30446   356 I FacePipelineProcessor: [START] Photo 7 (300x300)
+02-20 17:38:55.175 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:38:55.473  5037  5037 W ThreadPoolForeg: type=1400 audit(0.0:9237): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=29792 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+02-20 17:38:55.716 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:38:55.730 30446   356 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:38:55.730 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:38:55.730 30446   356 D FaceDetectionHelper: Face: conf=0.814 box=[0.334,0.100,0.485,0.311]
+02-20 17:38:55.730 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 555ms
+02-20 17:38:55.732 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:38:56.392 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 660ms (512-d, 2-pass TTA)
+02-20 17:38:56.393 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 660ms, conf=0.814
+02-20 17:38:56.393 30446   356 I FacePipelineProcessor: [END] Photo 7 ΓÇö 1 face(s) saved (1218ms total)
+02-20 17:38:56.393 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:56.399  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpcdncdnjustjaredcomwpcontentuploadsheadlineseltonjohnstillstandingbrooklynnewyearsjpg.jpg. Uid: 10244
+02-20 17:38:56.404  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpcdncdnjustjaredcomwpcontentuploadsheadlineseltonjohnstillstandingbrooklynnewyearsjpg.jpg. Uid: 10244
+02-20 17:38:56.407 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:56.407 30446   356 I FacePipelineProcessor: [START] Photo 8 (300x300)
+02-20 17:38:56.407 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:38:56.954 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:38:56.967 30446   356 D FaceDetectionHelper: Before NMS: 5 candidates
+02-20 17:38:56.967 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:38:56.967 30446   356 D FaceDetectionHelper: Face: conf=0.812 box=[0.244,0.137,0.453,0.415]
+02-20 17:38:56.968 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 560ms
+02-20 17:38:56.970 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:38:57.628 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 658ms (512-d, 2-pass TTA)
+02-20 17:38:57.629 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 658ms, conf=0.812
+02-20 17:38:57.629 30446   356 I FacePipelineProcessor: [END] Photo 8 ΓÇö 1 face(s) saved (1223ms total)
+02-20 17:38:57.629 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:57.638  1507  1818 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:38:57.638  1507  1818 D CompatibilityInfo: applicationDensity - 440
+02-20 17:38:57.638  1507  1818 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:38:57.647  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpcdncdnjustjaredcomwpcontentuploadsheadlineseltonjohnsupportsbrucejennerstransitiontowomanjpg.jpg. Uid: 10244
+02-20 17:38:57.651  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpcdncdnjustjaredcomwpcontentuploadsheadlineseltonjohnsupportsbrucejennerstransitiontowomanjpg.jpg. Uid: 10244
+02-20 17:38:57.653 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:57.653 30446   356 I FacePipelineProcessor: [START] Photo 9 (300x300)
+02-20 17:38:57.653 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:38:57.684  1507  1679 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:38:57.684  1507  1679 D CompatibilityInfo: applicationDensity - 440
+02-20 17:38:57.684  1507  1679 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:38:57.693  5037 32736 I NetworkScheduler.Stats: (REDACTED) Task %s/%s started execution. cause:%s exec_start_elapsed_seconds: %s
+02-20 17:38:57.697  3742 25941 I PlayGamesServices[GamesSyncAdapter]: Starting sync for ce7e2165
+02-20 17:38:57.699  3742 25941 I PlayGamesServices[GamesSyncAdapter]: Sync duration for ce7e2165: 1
+02-20 17:38:57.705  5037 32679 I NetworkScheduler.Stats: (REDACTED) Task %s/%s finished executing. cause:%s result: %s elapsed_millis: %s uptime_millis: %s exec_start_elapsed_seconds: %s
+02-20 17:38:57.707  1507  1679 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:38:57.707  1507  1679 D CompatibilityInfo: applicationDensity - 440
+02-20 17:38:57.707  1507  1679 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:38:57.713  3742  3736 W PlayGamesServices[UiUtils]: AppVersion: Cannot find the installed destination app.
+02-20 17:38:57.714  3742  3736 I GetServiceValidatorImpl: (REDACTED) onGetService() from Client SDK version [%s], Module version [%s], PGA version [%s], Account [%s], Calling package [%s], Game package [%s]
+02-20 17:38:57.715  3742  3736 W GetGamesServiceReqFacto: Parsing request with ignored arguments. signInOptionsBundle [Bundle[{com.google.android.gms.signin.internal.serverClientId=null, com.google.android.gms.signin.internal.usePromptModeForAuthCode=true, com.google.android.gms.signin.internal.logSessionId=null, com.google.android.gms.signin.internal.hostedDomain=null, com.google.android.gms.signin.internal.offlineAccessRequested=false, com.google.android.gms.signin.internal.waitForAccessTokenRefresh=false, com.google.android.gms.signin.internal.clientRequestedAccount=Account {name=<<default account>>, type=com.google}, com.google.android.gms.signin.internal.idTokenRequested=false, com.google.android.gms.signin.internal.forceCodeForRefreshToken=false}]], isRetryingSignIn [false], skipWelcomePopup [false], requireGooglePlus [false]
+02-20 17:38:57.715  3742  3736 I GetGamesServiceReqFacto: Replacing request for `games` scope with `games_lite`
+02-20 17:38:57.719  1507  2866 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:38:57.719  1507  2866 D CompatibilityInfo: applicationDensity - 440
+02-20 17:38:57.719  1507  2866 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:38:57.723  3742   540 I SignInPerformer-52: (REDACTED) Handling request [%s], isFirstPartyCaller [%s]
+02-20 17:38:57.724  3742   540 I SignInPerformer-52: Successfully brokered first-party unauthenticated GamesService [CONTEXT service_id=1 ]
+02-20 17:38:57.726  3742   540 I GetGamesServiceV2Op: (REDACTED) Successfully brokered GamesService for request %s
+02-20 17:38:57.727  3742  3736 W PlayGamesServices[UiUtils]: AppVersion: Cannot find the installed destination app.
+02-20 17:38:57.727  3742  3736 W PlayGamesServices[UiUtils]: AppVersionName: Cannot find the installed destination app.
+02-20 17:38:58.225 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:38:58.240 30446   356 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:38:58.240 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:38:58.240 30446   356 D FaceDetectionHelper: Face: conf=0.762 box=[0.465,0.105,0.645,0.370]
+02-20 17:38:58.240 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 587ms
+02-20 17:38:58.242 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:38:58.935 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 693ms (512-d, 2-pass TTA)
+02-20 17:38:58.936 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 693ms, conf=0.762
+02-20 17:38:58.936 30446   356 I FacePipelineProcessor: [END] Photo 9 ΓÇö 1 face(s) saved (1283ms total)
+02-20 17:38:58.937 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:58.941  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpcdnlyricssongonlyricsnetwpcontentuploadsEltonJohnDiscographyCDreleasesjpg.jpg. Uid: 10244
+02-20 17:38:58.944  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/elton_john/httpcdnlyricssongonlyricsnetwpcontentuploadsEltonJohnDiscographyCDreleasesjpg.jpg. Uid: 10244
+02-20 17:38:58.946 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:38:58.946 30446   356 I FacePipelineProcessor: [START] Photo 10 (300x300)
+02-20 17:38:58.946 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:38:59.532 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:38:59.547 30446   356 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:38:59.547 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:38:59.547 30446   356 D FaceDetectionHelper: Face: conf=0.811 box=[0.314,0.246,0.704,0.767]
+02-20 17:38:59.547 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 601ms
+02-20 17:38:59.550 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:00.247 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 697ms (512-d, 2-pass TTA)
+02-20 17:39:00.249 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 697ms, conf=0.811
+02-20 17:39:00.249 30446   356 I FacePipelineProcessor: [END] Photo 10 ΓÇö 1 face(s) saved (1303ms total)
+02-20 17:39:00.249 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:00.249 30446   356 D FaceProcessingWorker: Processed 10/25 photos. Faces found: 8
+02-20 17:39:00.258  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTIwNjANjMMDINzIxNjcjpg.jpg. Uid: 10244
+02-20 17:39:00.262  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTIwNjANjMMDINzIxNjcjpg.jpg. Uid: 10244
+02-20 17:39:00.265 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:00.265 30446   356 I FacePipelineProcessor: [START] Photo 11 (300x300)
+02-20 17:39:00.265 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:00.851 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:00.865 30446   356 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:39:00.865 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:39:00.865 30446   356 D FaceDetectionHelper: Face: conf=0.736 box=[0.237,0.138,0.700,0.879]
+02-20 17:39:00.865 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 600ms
+02-20 17:39:00.867 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:01.559 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 692ms (512-d, 2-pass TTA)
+02-20 17:39:01.560 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 692ms, conf=0.736
+02-20 17:39:01.560 30446   356 I FacePipelineProcessor: [END] Photo 11 ΓÇö 1 face(s) saved (1295ms total)
+02-20 17:39:01.560 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:01.565  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpaurorasblogcomwpcontentuploadsjerryseinfeldpublicityshotjpg.jpg. Uid: 10244
+02-20 17:39:01.568  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpaurorasblogcomwpcontentuploadsjerryseinfeldpublicityshotjpg.jpg. Uid: 10244
+02-20 17:39:01.569 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:01.569 30446   356 I FacePipelineProcessor: [START] Photo 12 (240x260)
+02-20 17:39:01.569 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:01.864  1507  1507 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@c2c99c1
+02-20 17:39:02.150 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:02.164 30446   356 D FaceDetectionHelper: Before NMS: 5 candidates
+02-20 17:39:02.164 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:39:02.164 30446   356 D FaceDetectionHelper: Face: conf=0.875 box=[0.122,0.102,0.429,0.581]
+02-20 17:39:02.164 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 595ms
+02-20 17:39:02.166 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:02.836  3742  3742 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+02-20 17:39:02.863 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 697ms (512-d, 2-pass TTA)
+02-20 17:39:02.867 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 697ms, conf=0.875
+02-20 17:39:02.867 30446   356 I FacePipelineProcessor: [END] Photo 12 ΓÇö 1 face(s) saved (1298ms total)
+02-20 17:39:02.867 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:02.876  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpblognjcomentertainmentimpactcelebritiesmediumjerrybjpg.jpg. Uid: 10244
+02-20 17:39:02.881  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpblognjcomentertainmentimpactcelebritiesmediumjerrybjpg.jpg. Uid: 10244
+02-20 17:39:02.884 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:02.884 30446   356 I FacePipelineProcessor: [START] Photo 13 (240x364)
+02-20 17:39:02.884 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:03.005  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:39:03.005  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:39:03.464 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:03.478 30446   356 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:39:03.478 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:39:03.478 30446   356 D FaceDetectionHelper: Face: conf=0.904 box=[0.234,0.137,0.720,0.662]
+02-20 17:39:03.478 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 594ms
+02-20 17:39:03.481 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:03.966  3742  3742 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.inappreach.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+02-20 17:39:04.173  3742  3742 W ThreadPoolForeg: type=1400 audit(0.0:9238): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=29792 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+02-20 17:39:04.179 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 698ms (512-d, 2-pass TTA)
+02-20 17:39:04.180 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 698ms, conf=0.904
+02-20 17:39:04.180 30446   356 I FacePipelineProcessor: [END] Photo 13 ΓÇö 1 face(s) saved (1296ms total)
+02-20 17:39:04.180 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:04.191  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpcdncdnjustjaredcomwpcontentuploadsheadlinesjerryseinfeldmakesbrianwilliamsjokejpg.jpg. Uid: 10244
+02-20 17:39:04.194  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpcdncdnjustjaredcomwpcontentuploadsheadlinesjerryseinfeldmakesbrianwilliamsjokejpg.jpg. Uid: 10244
+02-20 17:39:04.198 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:04.198 30446   356 I FacePipelineProcessor: [START] Photo 14 (300x300)
+02-20 17:39:04.198 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:04.781 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:04.796 30446   356 D FaceDetectionHelper: Before NMS: 13 candidates
+02-20 17:39:04.796 30446   356 D FaceDetectionHelper: After NMS: 3 faces
+02-20 17:39:04.796 30446   356 D FaceDetectionHelper: Face: conf=0.778 box=[0.412,0.056,0.606,0.367]
+02-20 17:39:04.796 30446   356 D FaceDetectionHelper: Face: conf=0.717 box=[0.935,0.333,0.992,0.425]
+02-20 17:39:04.796 30446   356 D FaceDetectionHelper: Face: conf=0.694 box=[0.009,0.155,0.065,0.247]
+02-20 17:39:04.796 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 3 face(s) found in 598ms
+02-20 17:39:04.798 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:05.491 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 693ms (512-d, 2-pass TTA)
+02-20 17:39:05.492 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 693ms, conf=0.778
+02-20 17:39:05.492 30446   356 D FacePipelineProcessor: Skipping tiny face: 17x27
+02-20 17:39:05.492 30446   356 D FacePipelineProcessor: Skipping tiny face: 16x27
+02-20 17:39:05.492 30446   356 I FacePipelineProcessor: [END] Photo 14 ΓÇö 1 face(s) saved (1294ms total)
+02-20 17:39:05.492 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:05.496  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpcdnssninsidercomwpcontentuploadsjerryseinfeldxjpg.jpg. Uid: 10244
+02-20 17:39:05.500  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/jerry_seinfeld/httpcdnssninsidercomwpcontentuploadsjerryseinfeldxjpg.jpg. Uid: 10244
+02-20 17:39:05.501 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:05.501 30446   356 I FacePipelineProcessor: [START] Photo 15 (224x337)
+02-20 17:39:05.501 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:06.089 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:06.104 30446   356 D FaceDetectionHelper: Before NMS: 5 candidates
+02-20 17:39:06.104 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:39:06.104 30446   356 D FaceDetectionHelper: Face: conf=0.882 box=[0.185,0.155,0.740,0.746]
+02-20 17:39:06.104 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 603ms
+02-20 17:39:06.106 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:06.801 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 695ms (512-d, 2-pass TTA)
+02-20 17:39:06.809 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 695ms, conf=0.882
+02-20 17:39:06.809 30446   356 I FacePipelineProcessor: [END] Photo 15 ΓÇö 1 face(s) saved (1308ms total)
+02-20 17:39:06.809 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:06.813  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpassetsrollingstonecomassetsarticlemadonnadavidbowiechangedthecourseofmylifeforeversmallsquarexmadonnabowiejpg.jpg. Uid: 10244
+02-20 17:39:06.816  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpassetsrollingstonecomassetsarticlemadonnadavidbowiechangedthecourseofmylifeforeversmallsquarexmadonnabowiejpg.jpg. Uid: 10244
+02-20 17:39:06.817 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:06.817 30446   356 I FacePipelineProcessor: [START] Photo 16 (200x200)
+02-20 17:39:06.817 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:07.409 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:07.423 30446   356 D FaceDetectionHelper: Before NMS: 5 candidates
+02-20 17:39:07.424 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:39:07.424 30446   356 D FaceDetectionHelper: Face: conf=0.852 box=[0.310,0.127,0.581,0.494]
+02-20 17:39:07.424 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 607ms
+02-20 17:39:07.425 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:08.118 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 693ms (512-d, 2-pass TTA)
+02-20 17:39:08.122 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 693ms, conf=0.852
+02-20 17:39:08.122 30446   356 I FacePipelineProcessor: [END] Photo 16 ΓÇö 1 face(s) saved (1305ms total)
+02-20 17:39:08.122 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:08.126  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpassetsrollingstonecomassetsimagesalbumreviewaffaceabdcccaeedjpg.jpg. Uid: 10244
+02-20 17:39:08.129  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpassetsrollingstonecomassetsimagesalbumreviewaffaceabdcccaeedjpg.jpg. Uid: 10244
+02-20 17:39:08.132 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:08.132 30446   356 I FacePipelineProcessor: [START] Photo 17 (300x300)
+02-20 17:39:08.132 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:08.680 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:08.693 30446   356 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:39:08.693 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:39:08.694 30446   356 D FaceDetectionHelper: Face: conf=0.793 box=[0.301,0.266,0.686,0.767]
+02-20 17:39:08.694 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 562ms
+02-20 17:39:08.695 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:09.353 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 657ms (512-d, 2-pass TTA)
+02-20 17:39:09.354 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 658ms, conf=0.793
+02-20 17:39:09.354 30446   356 I FacePipelineProcessor: [END] Photo 17 ΓÇö 1 face(s) saved (1222ms total)
+02-20 17:39:09.354 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:09.359  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpcdncdnjustjaredcomwpcontentuploadsheadlinesmadonnatalksparisattackstearsjpg.jpg. Uid: 10244
+02-20 17:39:09.361  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpcdncdnjustjaredcomwpcontentuploadsheadlinesmadonnatalksparisattackstearsjpg.jpg. Uid: 10244
+02-20 17:39:09.363 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:09.363 30446   356 I FacePipelineProcessor: [START] Photo 18 (300x300)
+02-20 17:39:09.363 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:09.929 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:09.943 30446   356 D FaceDetectionHelper: Before NMS: 6 candidates
+02-20 17:39:09.943 30446   356 D FaceDetectionHelper: After NMS: 2 faces
+02-20 17:39:09.943 30446   356 D FaceDetectionHelper: Face: conf=0.910 box=[0.329,0.133,0.643,0.580]
+02-20 17:39:09.943 30446   356 D FaceDetectionHelper: Face: conf=0.561 box=[0.392,0.821,0.593,1.000]
+02-20 17:39:09.943 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 2 face(s) found in 580ms
+02-20 17:39:09.944 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:10.609 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 665ms (512-d, 2-pass TTA)
+02-20 17:39:10.610 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 665ms, conf=0.910
+02-20 17:39:10.611 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:11.278 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 667ms (512-d, 2-pass TTA)
+02-20 17:39:11.280 30446   356 I FacePipelineProcessor:   Face #2 saved ΓÇö ArcFace 667ms, conf=0.561
+02-20 17:39:11.280 30446   356 I FacePipelineProcessor: [END] Photo 18 ΓÇö 2 face(s) saved (1917ms total)
+02-20 17:39:11.280 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:11.290  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpcdnfuncheapcomwpcontentuploadsVOGUEjpg.jpg. Uid: 10244
+02-20 17:39:11.295  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpcdnfuncheapcomwpcontentuploadsVOGUEjpg.jpg. Uid: 10244
+02-20 17:39:11.296 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:11.296 30446   356 I FacePipelineProcessor: [START] Photo 19 (218x218)
+02-20 17:39:11.296 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:11.869 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:11.884 30446   356 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:39:11.884 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:39:11.884 30446   356 D FaceDetectionHelper: Face: conf=0.822 box=[0.273,0.280,0.605,0.747]
+02-20 17:39:11.884 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 588ms
+02-20 17:39:11.885 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:12.552 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 667ms (512-d, 2-pass TTA)
+02-20 17:39:12.554 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 667ms, conf=0.822
+02-20 17:39:12.554 30446   356 I FacePipelineProcessor: [END] Photo 19 ΓÇö 1 face(s) saved (1258ms total)
+02-20 17:39:12.554 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:12.563  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpecximagesamazoncomimagesIfmaBKWLACULSRjpg.jpg. Uid: 10244
+02-20 17:39:12.566  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/madonna/httpecximagesamazoncomimagesIfmaBKWLACULSRjpg.jpg. Uid: 10244
+02-20 17:39:12.568 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:12.568 30446   356 I FacePipelineProcessor: [START] Photo 20 (244x320)
+02-20 17:39:12.568 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:13.138 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:13.153 30446   356 D FaceDetectionHelper: Before NMS: 7 candidates
+02-20 17:39:13.153 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:39:13.153 30446   356 D FaceDetectionHelper: Face: conf=0.791 box=[0.425,0.147,0.749,0.501]
+02-20 17:39:13.153 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 585ms
+02-20 17:39:13.154 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:13.575  1507  1507 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:39:13.575  1507  1507 D CompatibilityInfo: applicationDensity - 440
+02-20 17:39:13.575  1507  1507 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:39:13.580 21241 21241 I Finsky  : [2] SCH: job service start with id 9059.
+02-20 17:39:13.589 21241 32697 I Finsky  : [2859] SCH: Satisfied jobs for 9059 are: 12-1
+02-20 17:39:13.589 21241   550 I Finsky  : [2862] SCH: Job 12-1 starting
+02-20 17:39:13.590 21241 21241 I Finsky  : [2] WM::SCH: Logging work start for 12-1
+02-20 17:39:13.590 21241 21241 I Finsky  : [2] [ContentSync] job started
+02-20 17:39:13.844 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 690ms (512-d, 2-pass TTA)
+02-20 17:39:13.845 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 690ms, conf=0.791
+02-20 17:39:13.845 30446   356 I FacePipelineProcessor: [END] Photo 20 ΓÇö 1 face(s) saved (1277ms total)
+02-20 17:39:13.845 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:13.846 30446   356 D FaceProcessingWorker: Processed 20/25 photos. Faces found: 19
+02-20 17:39:13.850  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTIOTcwODQNTUzNjQMzcjpg.jpg. Uid: 10244
+02-20 17:39:13.855  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTIOTcwODQNTUzNjQMzcjpg.jpg. Uid: 10244
+02-20 17:39:13.857 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:13.857 30446   356 I FacePipelineProcessor: [START] Photo 21 (300x300)
+02-20 17:39:13.857 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:14.132 21241 21241 I Finsky  : [2] App states replicator found 10 unowned apps
+02-20 17:39:14.138 21241 21284 I Finsky  : [2282] Completed 0 account content syncs with 0 successful.
+02-20 17:39:14.138 21241 21241 I Finsky  : [2] [ContentSync] Installation state replication succeeded.
+02-20 17:39:14.138 21241 21241 I Finsky  : [2] SCH: jobFinished: 12-1. TimeElapsed: 549ms.
+02-20 17:39:14.139 21241 21241 I Finsky  : [2] WM::SCH: Logging work end for 12-1
+02-20 17:39:14.152 21241 21283 I Finsky  : [2281] SCH: Scheduling phonesky job Id: 1-1337, CT: 1771582755499, Constraints: [{ L: 43052797, D: 86252797, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+02-20 17:39:14.152 21241 21283 I Finsky  : [2281] SCH: Scheduling phonesky job Id: 34-93, CT: 1771582765001, Constraints: [{ L: 79199939, D: 1375199939, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+02-20 17:39:14.152 21241 21283 I Finsky  : [2281] SCH: Scheduling phonesky job Id: 34-94, CT: 1771582765632, Constraints: [{ L: 604800000, D: 2591999414, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+02-20 17:39:14.157 21241 21281 I Finsky  : [2279] SCH: Scheduling 1 system job(s)
+02-20 17:39:14.157 21241 21281 I Finsky  : [2279] SCH: Scheduling system job Id: 9063, L: 36454139, D: 79654139, C: false, I: false, N: 1
+02-20 17:39:14.164 21241   550 I Finsky  : [2862] SCH: job service finished with id 9059.
+02-20 17:39:14.324 21241 21266 I Finsky  : [2264] Stats for Executor: LightweightExecutor uww@4edc36f[Running, pool size = 4, active threads = 0, queued tasks = 0, completed tasks = 3951]
+02-20 17:39:14.324 21241 21266 I Finsky  : [2264] Stats for Executor: BlockingExecutor uww@1a2387c[Running, pool size = 2, active threads = 0, queued tasks = 0, completed tasks = 452]
+02-20 17:39:14.324 21241 21266 I Finsky  : [2264] Stats for Executor: bgExecutor uww@b300505[Running, pool size = 4, active threads = 0, queued tasks = 0, completed tasks = 9754]
+02-20 17:39:14.443 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:14.458 30446   356 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:39:14.458 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:39:14.458 30446   356 D FaceDetectionHelper: Face: conf=0.829 box=[0.272,0.114,0.685,0.605]
+02-20 17:39:14.458 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 601ms
+02-20 17:39:14.459 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:14.662 21311 21336 I Finsky:background: [2270] Stats for Executor: bgExecutor uww@1e586de[Running, pool size = 4, active threads = 0, queued tasks = 0, completed tasks = 1457]
+02-20 17:39:14.662 21311 21336 I Finsky:background: [2270] Stats for Executor: LightweightExecutor uww@b8640bf[Running, pool size = 4, active threads = 0, queued tasks = 0, completed tasks = 1718]
+02-20 17:39:14.723 21311 21336 I Finsky:background: [2270] Stats for Executor: BlockingExecutor uww@29df38c[Running, pool size = 2, active threads = 0, queued tasks = 0, completed tasks = 462]
+02-20 17:39:15.137 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 678ms (512-d, 2-pass TTA)
+02-20 17:39:15.138 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 678ms, conf=0.829
+02-20 17:39:15.138 30446   356 I FacePipelineProcessor: [END] Photo 21 ΓÇö 1 face(s) saved (1281ms total)
+02-20 17:39:15.138 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:15.150  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpcdncdnjustjaredcomwpcontentuploadsheadlinesmindykalingcomedypilotjpg.jpg. Uid: 10244
+02-20 17:39:15.155  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpcdncdnjustjaredcomwpcontentuploadsheadlinesmindykalingcomedypilotjpg.jpg. Uid: 10244
+02-20 17:39:15.157 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:15.157 30446   356 I FacePipelineProcessor: [START] Photo 22 (300x300)
+02-20 17:39:15.157 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:15.738 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:15.752 30446   356 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:39:15.753 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:39:15.753 30446   356 D FaceDetectionHelper: Face: conf=0.800 box=[0.412,0.116,0.632,0.406]
+02-20 17:39:15.753 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 596ms
+02-20 17:39:15.754 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:16.430 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 676ms (512-d, 2-pass TTA)
+02-20 17:39:16.432 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 676ms, conf=0.800
+02-20 17:39:16.432 30446   356 I FacePipelineProcessor: [END] Photo 22 ΓÇö 1 face(s) saved (1275ms total)
+02-20 17:39:16.432 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:16.436  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpcdnpastemagazinecomwwwarticlesmindykalingndbookjpg.jpg. Uid: 10244
+02-20 17:39:16.439  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpcdnpastemagazinecomwwwarticlesmindykalingndbookjpg.jpg. Uid: 10244
+02-20 17:39:16.441 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:16.441 30446   356 I FacePipelineProcessor: [START] Photo 23 (300x300)
+02-20 17:39:16.441 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:17.059 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:17.074 30446   356 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:39:17.074 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:39:17.074 30446   356 D FaceDetectionHelper: Face: conf=0.812 box=[0.413,0.122,0.602,0.363]
+02-20 17:39:17.074 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 633ms
+02-20 17:39:17.076 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:17.752 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 676ms (512-d, 2-pass TTA)
+02-20 17:39:17.754 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 677ms, conf=0.812
+02-20 17:39:17.754 30446   356 I FacePipelineProcessor: [END] Photo 23 ΓÇö 1 face(s) saved (1313ms total)
+02-20 17:39:17.754 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:17.764  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpcdnpastemagazinecomwwwarticlesmindyprojectjpg.jpg. Uid: 10244
+02-20 17:39:17.767  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpcdnpastemagazinecomwwwarticlesmindyprojectjpg.jpg. Uid: 10244
+02-20 17:39:17.768 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:17.769 30446   356 I FacePipelineProcessor: [START] Photo 24 (320x240)
+02-20 17:39:17.769 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:18.357 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:18.372 30446   356 D FaceDetectionHelper: Before NMS: 8 candidates
+02-20 17:39:18.372 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:39:18.372 30446   356 D FaceDetectionHelper: Face: conf=0.783 box=[0.359,0.154,0.610,0.558]
+02-20 17:39:18.372 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 603ms
+02-20 17:39:18.373 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:19.086 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 713ms (512-d, 2-pass TTA)
+02-20 17:39:19.087 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 713ms, conf=0.783
+02-20 17:39:19.088 30446   356 I FacePipelineProcessor: [END] Photo 24 ΓÇö 1 face(s) saved (1320ms total)
+02-20 17:39:19.088 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:19.098  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpdbrbzkkbdsdcloudfrontnetwpcontentuploadsMindyKalingjpg.jpg. Uid: 10244
+02-20 17:39:19.103  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/mindy_kaling/httpdbrbzkkbdsdcloudfrontnetwpcontentuploadsMindyKalingjpg.jpg. Uid: 10244
+02-20 17:39:19.105 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:19.105 30446   356 I FacePipelineProcessor: [START] Photo 25 (230x278)
+02-20 17:39:19.105 30446   356 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:39:19.706 30446   356 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:39:19.722 30446   356 D FaceDetectionHelper: Before NMS: 3 candidates
+02-20 17:39:19.722 30446   356 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:39:19.722 30446   356 D FaceDetectionHelper: Face: conf=0.792 box=[0.368,0.048,0.626,0.307]
+02-20 17:39:19.722 30446   356 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 617ms
+02-20 17:39:19.723 30446   356 D FacePipelineProcessor: 5-point aligned face to 112├ù112
+02-20 17:39:20.436 30446   356 D FaceEmbeddingHelper: ArcFace embedding: 713ms (512-d, 2-pass TTA)
+02-20 17:39:20.437 30446   356 I FacePipelineProcessor:   Face #1 saved ΓÇö ArcFace 713ms, conf=0.792
+02-20 17:39:20.437 30446   356 I FacePipelineProcessor: [END] Photo 25 ΓÇö 1 face(s) saved (1332ms total)
+02-20 17:39:20.437 30446   356 I FacePipelineProcessor: ========================================
+02-20 17:39:20.438 30446   356 D FacePipelineProcessor: Pipeline complete: 24 faces from 25 photos
+02-20 17:39:20.438 30446   356 D FaceProcessingWorker: Detection complete. Found 24 faces.
+02-20 17:39:20.444 30446   356 D FaceProcessingWorker: Starting clustering phase...
+02-20 17:39:20.445 30446   356 I FaceClusterer: Starting HAC clustering (Average Linkage, threshold=1.1)...
+02-20 17:39:20.447 30446   356 I FaceClusterer: HAC: Initializing distance matrix for 24 nodes...
+02-20 17:39:20.451 30446   356 D FaceClusterer: HAC: Merges performed: 10
+02-20 17:39:20.452 30446   356 I FaceClusterer: HAC: Stopping. Min distance 1.124 > threshold 1.1
+02-20 17:39:20.452 30446   356 I FaceClusterer: HAC complete: 17 merges in 1ms
+02-20 17:39:20.493 30446   356 I FaceClusterer: Clustering phase finished. Faces updated: 24, New clusters: 7
+02-20 17:39:20.494 30446   356 D FaceProcessingWorker: Face processing work finished successfully.
+02-20 17:39:20.495 30446   329 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=9cac1d66-7c7c-42de-8b10-7b33171d6cdd, tags={ com.example.sensegallery.workers.FaceProcessingWorker } ]
+02-20 17:39:20.496 30446 30446 D WM-Processor: Processor 9cac1d66-7c7c-42de-8b10-7b33171d6cdd executed; reschedule = false
+02-20 17:39:20.496 30446 30446 D WM-SystemJobService: 9cac1d66-7c7c-42de-8b10-7b33171d6cdd executed on JobScheduler
+02-20 17:39:20.499 30446   329 D WM-GreedyScheduler: Cancelling work ID 9cac1d66-7c7c-42de-8b10-7b33171d6cdd
+02-20 17:39:20.503 30446   329 D WM-PackageManagerHelper: androidx.work.impl.background.systemalarm.RescheduleReceiver disabled
+02-20 17:39:21.510  1507  1919 I AppsFilter: interaction: PackageSetting{fea5d59 com.localmind.assistant/10216} -> PackageSetting{ee6fbf5 com.example.sensegallery/10244} BLOCKED
+02-20 17:39:21.532  1507  1507 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.google.android.dialer: DDC.oR@B4s
+02-20 17:39:21.532  1507  2143 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS | 
+02-20 17:39:21.534 26546 26640 D IconPackManager: Received intent action android.intent.action.PACKAGE_CHANGED for com.example.sensegallery
+02-20 17:39:21.534  2452  2452 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+02-20 17:39:21.540  1507  1804 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:39:21.540  1507  1804 D CompatibilityInfo: applicationDensity - 440
+02-20 17:39:21.540  1507  1804 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:39:21.543  1507  4034 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:39:21.543  1507  4034 D CompatibilityInfo: applicationDensity - 440
+02-20 17:39:21.543  1507  4034 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:39:21.545  1507  2125 I RoleService: Granting default roles...
+02-20 17:39:21.546  1507  2125 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:39:21.547  1507  2125 D CompatibilityInfo: applicationDensity - 440
+02-20 17:39:21.547  1507  2125 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:39:21.550 25891 25909 I PermissionControllerServiceImpl: Updating user sensitive for uid 10244
+02-20 17:39:21.563  2702  2702 D CarrierSvcBindHelper: onPackageModified: com.example.sensegallery
+02-20 17:39:21.564  2702  2702 D CarrierSvcBindHelper: No carrier app for: 0
+02-20 17:39:21.564  2702  2702 D CarrierSvcBindHelper: No carrier app for: 1
+02-20 17:39:21.565 25891   577 W Role    : Cannot get ApplicationInfo for default holder: com.google.android.contacts
+02-20 17:39:21.567  2702  2702 D ImsResolver: maybeAddedImsService, packageName: com.example.sensegallery
+02-20 17:39:21.573 25891   577 W Role    : Cannot get ApplicationInfo for default holder: com.google.android.gms.supervision
+02-20 17:39:21.574 25891   577 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+02-20 17:39:21.598 25891   577 W Role    : Cannot get ApplicationInfo for default holder: com.android.gallery3d
+02-20 17:39:21.785  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:39:21.785  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:39:24.443 21241 21266 I Finsky  : [2264] Stats for Executor: GrpcBackgroundExecutor uww@9471b14[Running, pool size = 4, active threads = 0, queued tasks = 0, completed tasks = 14]
+02-20 17:39:25.493  5037  5037 W ThreadPoolForeg: type=1400 audit(0.0:9239): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=29792 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+02-20 17:39:29.412  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:39:29.412  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:39:34.183  3742  3742 W ThreadPoolForeg: type=1400 audit(0.0:9240): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=29792 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+02-20 17:39:46.932  1507  1855 V DisplayPowerController[0]: Brightness [0.0] reason changing to: 'manual [ dim ]', previous reason: 'manual'.
+02-20 17:39:46.932  1507  1855 I DisplayPowerController[0]: BrightnessEvent: disp=0, physDisp=local:4630946471422916225, brt=0.0, initBrt=0.021534048, rcmdBrt=NaN, preBrt=NaN, lux=0.0, preLux=0.0, hbmMax=1.0, hbmMode=off, rbcStrength=50, powerFactor=1.0, thrmMax=1.0, wasShortTermModelActive=false, flags=, reason=manual [ dim ], autoBrightness=false
+02-20 17:39:47.302  1507  1855 I DisplayPowerController[0]: BrightnessEvent: disp=0, physDisp=local:4630946471422916225, brt=0.0, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, lux=0.0, preLux=0.0, hbmMax=1.0, hbmMode=off, rbcStrength=50, powerFactor=1.0, thrmMax=1.0, wasShortTermModelActive=false, flags=, reason=manual [ dim ], autoBrightness=false
+02-20 17:39:47.577  3742  3742 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+02-20 17:39:52.969 26461 26528 I hbox:interactor: oneway function results for code 2 on binder at 0x7112a67540 will be dropped but finished with status UNKNOWN_TRANSACTION
+02-20 17:39:53.926  1507  1855 I PowerGroup: Powering off display group due to timeout (groupId= 0, uid= 1000, millisSinceLastUserActivity=60006, lastUserActivityEvent=touch)...
+02-20 17:39:53.927  1507  1855 I PowerManagerService: Going to sleep due to timeout (uid 1000, screenOffTimeout=60000, activityTimeoutWM=-1, maxDimRatio=0.29999995, maxDimDur=7000)...
+02-20 17:39:53.935   667   688 I SDM     : HWCDisplay::GetColorModeCount: Supported color mode count = 3
+02-20 17:39:53.935  4682  4682 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():2113 
+02-20 17:39:53.935   667   688 I SDM     : HWCDisplay::GetColorModes: Supports color mode[0] = 0
+02-20 17:39:53.935   667   688 I SDM     : HWCDisplay::GetColorModes: Supports color mode[1] = 7
+02-20 17:39:53.935   667   688 I SDM     : HWCDisplay::GetColorModes: Supports color mode[2] = 9
+02-20 17:39:53.936   665   901 E HWComposer: getSupportedContentTypes: getSupportedContentTypes failed for display 4630946471422916225: Unsupported (8)
+02-20 17:39:53.940  4682  4682 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 0, locked = false
+02-20 17:39:53.973  1507  1855 V DisplayPowerController[0]: Brightness [0.021534048] reason changing to: 'manual', previous reason: 'manual [ dim ]'.
+02-20 17:39:53.973  1507  1855 I DisplayPowerController[0]: BrightnessEvent: disp=0, physDisp=local:4630946471422916225, brt=0.021534048, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, lux=0.0, preLux=0.0, hbmMax=1.0, hbmMode=off, rbcStrength=50, powerFactor=1.0, thrmMax=1.0, wasShortTermModelActive=false, flags=, reason=manual, autoBrightness=false
+02-20 17:39:53.977  2452  2452 I vol.VolumeDialogImpl: mDialog.dismiss() reason: volume_controller from: com.android.systemui.volume.VolumeDialogImpl$10.onDismissRequested:2
+02-20 17:39:54.392  1507  1855 I DisplayPowerController[0]: Blocking screen off
+02-20 17:39:54.393  1507  1855 I DisplayPowerController[0]: Unblocked screen off after 0 ms
+02-20 17:39:54.401  1507  1855 D ActivityTaskManager: Top Process State changed to PROCESS_STATE_TOP_SLEEPING
+02-20 17:39:54.404  1507  1855 D ActivityTrigger: ActivityTrigger activityPauseTrigger 
+02-20 17:39:54.406  1079  1079 I sensors-hal: activate:147, android.sensor.device_orientation/35 en=0
+02-20 17:39:54.408  1507  1855 V DisplayPowerController[0]: Brightness [0.0] reason changing to: 'screen_off', previous reason: 'manual'.
+02-20 17:39:54.409  1507  1855 I DisplayPowerController[0]: BrightnessEvent: disp=0, physDisp=local:4630946471422916225, brt=0.0, initBrt=0.021534048, rcmdBrt=NaN, preBrt=NaN, lux=0.0, preLux=0.0, hbmMax=1.0, hbmMode=off, rbcStrength=50, powerFactor=1.0, thrmMax=1.0, wasShortTermModelActive=false, flags=, reason=screen_off, autoBrightness=false
+02-20 17:39:54.409  1079  1079 E sensors-hal: ~worker:70, pthread_join iRet = 0
+02-20 17:39:54.409  1079  1079 I sensors-hal: activate:158, android.sensor.device_orientation/35 en=0 completed
+02-20 17:39:54.410   665   665 D SurfaceFlinger: Setting power mode 0 on display 4630946471422916225
+02-20 17:39:54.413  1507  1832 E KernelCpuUidUserSysTimeReader: Negative user/sys time delta for UID=10102
+02-20 17:39:54.413  1507  1832 E KernelCpuUidUserSysTimeReader: Prev times: u=1790000 s=1800000 Curr times: u=1770000 s=1750000
+02-20 17:39:54.413  1507  4037 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10244; state: ENABLED
+02-20 17:39:54.413  2452  2452 D CentralSurfaces: updateQsExpansionEnabled - QS Expand enabled: true
+02-20 17:39:54.413   667   688 I SDM     : DisplayBase::SetDisplayState: Set state = 0, display 26-0
+02-20 17:39:54.417  1507  1807 I InputManager-JNI: Viewport [0] to add: local:4630946471422916225, isActive: false
+02-20 17:39:54.420  1507  2143 I InputReader: Reconfiguring input devices, changes=DISPLAY_INFO | 
+02-20 17:39:54.420  1507  2143 I InputReader: Disabling NVTCapacitiveTouchScreen (device 5) because the associated viewport is not active
+02-20 17:39:54.420  1507  2143 I InputReader: Device reconfigured: id=5, name='NVTCapacitiveTouchScreen', size 1081x2247, orientation 0, mode 0, display id 0
+02-20 17:39:54.420  1507  1808 W SurfaceControl: Invalid layer stack -1
+02-20 17:39:54.420  1507  1808 I DisplayDevice: [0] Layerstack set to -1 for local:4630946471422916225
+02-20 17:39:54.421  1507  1832 E system_server: Cannot read thread CPU times for PID 1507
+02-20 17:39:54.426  5037  5112 I NearbySharing: Screen is locked
+02-20 17:39:54.426  5037  5112 I NearbySharing: Stopping scanning because the screen is locked.
+02-20 17:39:54.427  5037  5112 I NearbySharing: Stopping Fast Init advertisement because Bluetooth is off.
+02-20 17:39:54.427  5037  5112 I NearbySharing: Stopping advertising because Bluetooth is disabled.
+02-20 17:39:54.428  5037  5112 I NearbySharing: Stopping FastInitiation scanning because the screen is locked.
+02-20 17:39:54.428  4682  4682 I PkDeviceHelper: PkDeviceHelper.refreshDevices():87 refreshing devices
+02-20 17:39:54.432  5037  5112 I NearbySharing: Fast Initiation Scanning has stopped
+02-20 17:39:54.432  5037  5112 I NearbySharing: Dismissing HUN as there's no device nearby.
+02-20 17:39:54.500  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:39:54.500  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:39:54.522  1507  1818 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:39:54.522  1507  1818 D CompatibilityInfo: applicationDensity - 440
+02-20 17:39:54.522  1507  1818 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:39:54.570  1309  1340 I ThermalEngine: Battery charging mitigation already at level 0
+02-20 17:39:54.572   667   688 I SDM     : HWCSession::HandleConcurrency: sec_builtin_active 0
+02-20 17:39:54.573   665   665 D SurfaceFlinger: Finished setting power mode 0 on display 4630946471422916225
+02-20 17:39:54.573  1507  2279 D SurfaceControl: Excessive delay in setPowerMode()
+02-20 17:39:54.574  1507  1855 I DisplayPowerController[0]: BrightnessEvent: disp=0, physDisp=local:4630946471422916225, brt=0.0, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, lux=0.0, preLux=0.0, hbmMax=1.0, hbmMode=off, rbcStrength=50, powerFactor=1.0, thrmMax=1.0, wasShortTermModelActive=false, flags=, reason=screen_off, autoBrightness=false
+02-20 17:39:54.575  1507  1855 I DreamManagerService: Entering dreamland.
+02-20 17:39:54.584  1507  1855 I PowerManagerService: Dozing...
+02-20 17:39:54.585  1507  1804 I DreamController: Starting dream: name=ComponentInfo{com.android.systemui/com.android.systemui.doze.DozeService}, isPreviewMode=false, canDoze=true, userId=0, reason='power manager request'
+02-20 17:39:54.588  2452  2452 I vol.VolumeDialogImpl: mDialog.dismiss() reason: volume_controller from: com.android.systemui.volume.VolumeDialogImpl$10.onDismissRequested:2
+02-20 17:39:54.589  1507  1804 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:39:54.589  1507  1804 D CompatibilityInfo: applicationDensity - 440
+02-20 17:39:54.589  1507  1804 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:39:54.600  2452  2452 D SbStateController: setState: requested state KEYGUARD!= upcomingState: SHADE. This usually means the status bar state transition was interrupted before the upcoming state could be applied.
+02-20 17:39:54.604  2452  2452 D CentralSurfaces: updateQsExpansionEnabled - QS Expand enabled: false
+02-20 17:39:54.605  2452  2452 D CentralSurfaces: updateQsExpansionEnabled - QS Expand enabled: false
+02-20 17:39:54.619  2452  2452 D CentralSurfaces: updateQsExpansionEnabled - QS Expand enabled: false
+02-20 17:39:54.623  2452  2452 W OnBackInvokedCallback: OnBackInvokedCallback is not enabled for the application.
+02-20 17:39:54.623  2452  2452 W OnBackInvokedCallback: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+02-20 17:39:54.623  2452  2452 D CentralSurfaces: Received new disable state: enaihbcrso.qingr (unchanged)
+02-20 17:39:54.623  2452  2452 D CentralSurfaces: Received new disable state: enaihbcrso.qingr (unchanged)
+02-20 17:39:54.626  1507  1855 I DisplayPowerController[0]: BrightnessEvent: disp=0, physDisp=local:4630946471422916225, brt=0.0, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, lux=0.0, preLux=0.0, hbmMax=1.0, hbmMode=off, rbcStrength=50, powerFactor=1.0, thrmMax=1.0, wasShortTermModelActive=false, flags=, reason=screen_off, autoBrightness=false
+02-20 17:39:54.630  1079  1109 I sensors-hal: activate:147, android.sensor.accelerometer/46 en=0
+02-20 17:39:54.631  1079  1109 E sensors-hal: ~worker:70, pthread_join iRet = 0
+02-20 17:39:54.631  1079  1109 I sensors-hal: activate:158, android.sensor.accelerometer/46 en=0 completed
+02-20 17:39:54.631  1507  1507 I PowerManagerService: onFlip(): Face up.
+02-20 17:39:54.632  3492  3492 D SenseService: OnReceive intent = Intent { act=android.intent.action.SCREEN_OFF flg=0x50200010 }
+02-20 17:39:54.638  2452  2703 E OpenGLRenderer: Unable to match the desired swap behavior.
+02-20 17:39:54.639  1048  1099 D audio_hw_primary: adev_set_parameters: enter: screen_state=off
+02-20 17:39:54.639  1048  1099 V msm8974_platform: platform_set_parameters: enter: screen_state=off
+02-20 17:39:54.639  1048  1099 D audio_hw_hfp: hfp_set_parameters: enter
+02-20 17:39:54.639  1048  1099 E sound_trigger_hw: sound_trigger_hw_call_back: NULL config for AUDIO_EVENT_GET_PARAM
+02-20 17:39:54.639  1048  1099 D audio_hw_hfp: hfp_set_parameters: enter
+02-20 17:39:54.640  1048  1099 D audio_hw_extn: audio_extn_fm_set_parameters: Enter
+02-20 17:39:54.640  1048  1099 D audio_hw_hfp: hfp_set_parameters: enter
+02-20 17:39:54.640  1048  1099 V ultrasound_extn: ultrasound_extn_set_parameters: enter
+02-20 17:39:54.640  1048  1099 V ultrasound_extn: ultrasound_handle_screen_on_message: enter
+02-20 17:39:54.640  1048  1099 V ultrasound_extn: ultrasound_handle_screen_on_message: exit
+02-20 17:39:54.640  1048  1099 V ultrasound_extn: ultrasound_handle_sensor_fusion_message: enter
+02-20 17:39:54.640  1048  1099 V ultrasound_extn: ultrasound_handle_sensor_fusion_message: exit
+02-20 17:39:54.640  1048  1099 V ultrasound_extn: ultrasound_extn_set_parameters: usecase handling parms:screen_state=off
+02-20 17:39:54.647  2452  2452 D CentralSurfaces: Received new disable state: enaihbcrso.qingr (unchanged)
+02-20 17:39:54.647  2452  2452 W View    : requestLayout() improperly called by com.android.systemui.util.AutoMarqueeTextView{c0e2d0c VFED..C.. ..S...ID 83,0-454,132 #7f0a04be app:id/no_carrier_text} during layout: running second layout pass
+02-20 17:39:54.647  2452  2452 W View    : requestLayout() improperly called by com.android.keyguard.CarrierText{2b83a88 V.ED..... ......ID 0,0-270,86 #7f0a035b app:id/keyguard_carrier_text} during layout: running second layout pass
+02-20 17:39:54.656  2313  2313 D wpa_supplicant: wpa_driver_nl80211_driver_cmd SETSUSPENDMODE 1 len = 0, 4096
+02-20 17:39:54.658   665   682 I BpBinder: onLastStrongRef automatically unlinking death recipients: <uncached descriptor>
+02-20 17:39:54.729  2452  2452 W DataUsageController: Failed to get data usage, remote call failed
+02-20 17:39:54.729  2452  2452 W DataUsageController: Failed to get data usage, no entry data
+02-20 17:39:54.739  2452  2452 D CentralSurfaces: Received new disable state: enaihbcrso.qingr (unchanged)
+02-20 17:39:54.739  2452  2452 D CentralSurfaces: Received new disable state: enaihbcrso.qingr (unchanged)
+02-20 17:39:54.739  2452  2452 D CentralSurfaces: Received new disable state: enaihbcrso.qingr (unchanged)
+02-20 17:39:54.739  2452  2452 D CentralSurfaces: Received new disable state: enaihbcrso.qingr (unchanged)
+02-20 17:39:54.740   665   901 I BpBinder: onLastStrongRef automatically unlinking death recipients: <uncached descriptor>
+02-20 17:39:54.741  2452  2452 I vol.VolumeDialogImpl: mDialog.dismiss() reason: screen_off from: com.android.systemui.volume.VolumeDialogImpl$10.onScreenOff:3
+02-20 17:39:54.741  2452  2452 D vol.VolumeDialogImpl: dismissH: skipping dismiss because isAnimatingDismiss is true and showingStateInconsistent is false
+02-20 17:39:54.751  1507  4049 D SystemServerTiming: getUserSwitchability-0
+02-20 17:39:54.751  1507  4049 D SystemServerTiming: TM.isInCall
+02-20 17:39:54.751  1507  4049 D SystemServerTiming: hasUserRestriction-DISALLOW_USER_SWITCH
+02-20 17:39:54.751  1507  4049 D SystemServerTiming: getInt-ALLOW_USER_SWITCHING_WHEN_SYSTEM_USER_LOCKED
+02-20 17:39:54.752  1507  4049 D SystemServerTiming: isUserUnlocked-USER_SYSTEM
+02-20 17:39:54.752  1507  4039 D SystemServerTiming: getUserSwitchability-0
+02-20 17:39:54.752  1507  4039 D SystemServerTiming: TM.isInCall
+02-20 17:39:54.752  1507  4039 D SystemServerTiming: hasUserRestriction-DISALLOW_USER_SWITCH
+02-20 17:39:54.752  1507  4039 D SystemServerTiming: getInt-ALLOW_USER_SWITCHING_WHEN_SYSTEM_USER_LOCKED
+02-20 17:39:54.752  1507  4039 D SystemServerTiming: isUserUnlocked-USER_SYSTEM
+02-20 17:39:54.757  2452  2452 I QAWController: Re-creating the QAW client to avoid stale.
+02-20 17:39:54.759  2452  2730 E QuickAccessWalletKeyguardQuickAffordanceConfig: Wallet card retrieval error, message: "null"
+02-20 17:39:54.760  2452  2730 D ControlsListingControllerImpl: Subscribing callback, service count: 0
+02-20 17:39:54.766  2452  2730 E QuickAccessWalletKeyguardQuickAffordanceConfig: Wallet card retrieval error, message: "null"
+02-20 17:39:54.767  2452  2730 E QuickAccessWalletKeyguardQuickAffordanceConfig: Wallet card retrieval error, message: "null"
+02-20 17:39:54.767  2452  2730 D ControlsListingControllerImpl: Subscribing callback, service count: 0
+02-20 17:39:54.767  2452  2730 D ControlsListingControllerImpl: Subscribing callback, service count: 0
+02-20 17:39:54.800  4682   589 I DeviceStatusMonitor: DeviceStatusMonitor.handleBroadcast():138 onReceive() : Action = android.intent.action.SCREEN_OFF
+02-20 17:39:54.801  4682   589 I DeviceStatusMonitor: DeviceStatusMonitor.updateCountryInfo():154 updateCountryInfo(), notifyAnyway = false
+02-20 17:39:54.801  4682  4682 I InputBundle: InputBundle.consumeEvent():1037 Skip consuming an event as imeStatus is INACTIVE
+02-20 17:39:54.802  4682  4682 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 0, locked = false
+02-20 17:39:54.822  1507  4039 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:39:54.822  1507  4039 D CompatibilityInfo: applicationDensity - 440
+02-20 17:39:54.822  1507  4039 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:39:55.444  5037  5037 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.libs.gmscorelogger.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+02-20 17:39:55.533  5037  5037 W ThreadPoolForeg: type=1400 audit(0.0:9241): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=29792 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+02-20 17:39:58.981  2452  2452 D CentralSurfaces: Received new disable state: enaihbcrso.qingr (unchanged)
+02-20 17:39:58.981  2452  2452 D CentralSurfaces: Received new disable state: enaihbcrso.qingr (unchanged)
+02-20 17:39:58.981  2452  2452 D CentralSurfaces: Received new disable state: enaihbcrso.qingr (unchanged)
+02-20 17:39:58.981  2452  2452 D CentralSurfaces: Received new disable state: enaihbcrso.qingr (unchanged)
+02-20 17:39:58.986  1507  4038 D SystemServerTiming: getUserSwitchability-0
+02-20 17:39:58.986  1507  4038 D SystemServerTiming: TM.isInCall
+02-20 17:39:58.987  1507  4038 D SystemServerTiming: hasUserRestriction-DISALLOW_USER_SWITCH
+02-20 17:39:58.987  1507  4038 D SystemServerTiming: getInt-ALLOW_USER_SWITCHING_WHEN_SYSTEM_USER_LOCKED
+02-20 17:39:58.987  1507  4038 D SystemServerTiming: isUserUnlocked-USER_SYSTEM
+02-20 17:39:59.029  2452  2452 D CentralSurfaces: Received new disable state: Old: enaihbcrso.qingr | New: enaihbcRso.qingr (changed: R.)
+02-20 17:39:59.531  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:39:59.531  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:40:02.745  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:40:02.745  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:40:03.787  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:40:03.787  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:40:04.223  3742  3742 W ThreadPoolForeg: type=1400 audit(0.0:9242): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=29792 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+02-20 17:40:04.581  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:40:04.581  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:40:04.822  5037 18683 I NearbyPresence: (REDACTED) %s verified [==] new request %s equals to the old request
+02-20 17:40:08.745  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:40:08.745  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:40:10.490  5037  5037 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.libs.gmscorelogger.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+02-20 17:40:13.868  1507  4039 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1222 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3111 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1616 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:492 android.os.Binder.execTransactInternal:1280 
+02-20 17:40:13.869  1507  4039 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1272 android.content.Context.sendBroadcastMultiplePermissions:2282 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3114 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1616 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:492 
+02-20 17:40:13.869  1507  4039 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1272 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3121 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1616 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:492 android.os.Binder.execTransactInternal:1280 
+02-20 17:40:13.870  1507  1818 W BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{220d467 2452:com.android.systemui/u0a174} (pid=2452, uid=10174) requires android.permission.READ_PHONE_STATE due to sender android (uid 1001)
+02-20 17:40:13.870  1507  4039 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1272 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3126 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1616 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:492 android.os.Binder.execTransactInternal:1280 
+02-20 17:40:13.870  1507  1818 W BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to com.android.cellbroadcastreceiver.module/com.android.cellbroadcastreceiver.CellBroadcastReceiver requires android.permission.READ_PHONE_STATE due to sender android (uid 1001)
+02-20 17:40:13.871  2702  2702 D ServiceStateProvider: subId=-1
+02-20 17:40:13.875  1507  1818 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:40:13.875  1507  1818 D CompatibilityInfo: applicationDensity - 440
+02-20 17:40:13.875  1507  1818 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:40:13.876  2452  2452 W KeyguardUpdateMonitorLog: invalid subId in handleServiceStateChange()
+02-20 17:40:13.877 29529 29529 D CellBroadcastReceiver: onReceive Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 cmp=com.android.cellbroadcastreceiver.module/com.android.cellbroadcastreceiver.CellBroadcastReceiver (has extras) }
+02-20 17:40:13.877 29529 29529 D CellBroadcastReceiver: onServiceStateChanged, ss: 1
+02-20 17:40:25.553  5037  5037 W ThreadPoolForeg: type=1400 audit(0.0:9243): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=29792 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+02-20 17:40:28.785  1507  2143 I PowerGroup: Waking up power group from Dozing (groupId=0, uid=1000, reason=WAKE_REASON_WAKE_KEY, details=android.policy:KEY)...
+02-20 17:40:28.786  1507  2143 I PowerManagerService: Waking up from Dozing (uid=1000, reason=WAKE_REASON_WAKE_KEY, details=android.policy:KEY)...
+02-20 17:40:28.791  1507  1507 E ActivityManager: Cancel pending or running compactions as system is awake
+02-20 17:40:28.800  1507  1855 I DisplayPowerController[0]: Blocking screen on until initial contents have been drawn.
+02-20 17:40:28.801  1507  1855 V DisplayPowerController[0]: Brightness [0.021534048] reason changing to: 'manual', previous reason: 'screen_off'.
+02-20 17:40:28.801  1507  1855 I DisplayPowerController[0]: BrightnessEvent: disp=0, physDisp=local:4630946471422916225, brt=0.021534048, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, lux=0.0, preLux=0.0, hbmMax=1.0, hbmMode=off, rbcStrength=50, powerFactor=1.0, thrmMax=1.0, wasShortTermModelActive=false, flags=, reason=manual, autoBrightness=false
+02-20 17:40:28.806  1079  1109 I sensors-hal: batch:180, android.sensor.proximity/11, period=20000000, max_latency=0
+02-20 17:40:28.806  1079  1109 I sensors-hal: batch:189, android.sensor.proximity/11, period=20000000, max_latency=0 request completed
+02-20 17:40:28.806  1079  1109 I sensors-hal: activate:147, android.sensor.proximity/11 en=1
+02-20 17:40:28.806  1079  1109 I sensors-hal: get_qmi_debug_flag:230, support_qmi_debug : false
+02-20 17:40:28.807  1507  1855 I DisplayPowerController[0]: BrightnessEvent: disp=0, physDisp=local:4630946471422916225, brt=0.021534048, initBrt=0.021534048, rcmdBrt=NaN, preBrt=NaN, lux=0.0, preLux=0.0, hbmMax=1.0, hbmMode=off, rbcStrength=50, powerFactor=1.0, thrmMax=1.0, wasShortTermModelActive=false, flags=, reason=manual, autoBrightness=false
+02-20 17:40:28.808   665   665 D SurfaceFlinger: Setting power mode 2 on display 4630946471422916225
+02-20 17:40:28.809   667   688 I SDM     : DisplayBase::SetDisplayState: Set state = 1, display 26-0
+02-20 17:40:28.811  1507  1807 I InputManager-JNI: Viewport [0] to add: local:4630946471422916225, isActive: true
+02-20 17:40:28.814  1079  1109 I sensors-hal: activate:158, android.sensor.proximity/11 en=1 completed
+02-20 17:40:28.815  1507  2143 I InputReader: Reconfiguring input devices, changes=DISPLAY_INFO | 
+02-20 17:40:28.815  1507  1808 I DisplayDevice: [0] Layerstack set to 0 for local:4630946471422916225
+02-20 17:40:28.815  1507  2143 I InputReader: Device reconfigured: id=5, name='NVTCapacitiveTouchScreen', size 1080x2246, orientation 0, mode 1, display id 0
+02-20 17:40:28.823  1079  1109 I sensors-hal: batch:180, android.sensor.accelerometer/46, period=200000000, max_latency=2000000000
+02-20 17:40:28.823  1079  1109 I sensors-hal: batch:189, android.sensor.accelerometer/46, period=200000000, max_latency=2000000000 request completed
+02-20 17:40:28.823  1079  1109 I sensors-hal: activate:147, android.sensor.accelerometer/46 en=1
+02-20 17:40:28.824  1079  1109 I sensors-hal: get_qmi_debug_flag:230, support_qmi_debug : false
+02-20 17:40:28.829  1507  1832 E system_server: Cannot read thread CPU times for PID 1507
+02-20 17:40:28.832  1079  1109 I sensors-hal: activate:158, android.sensor.accelerometer/46 en=1 completed
+02-20 17:40:28.836  4682  4682 I PkDeviceHelper: PkDeviceHelper.refreshDevices():87 refreshing devices
+02-20 17:40:28.841  1048  1618 D audio_hw_primary: adev_set_parameters: enter: screen_state=on
+02-20 17:40:28.841  1048  1618 V msm8974_platform: platform_set_parameters: enter: screen_state=on
+02-20 17:40:28.841  1048  1618 D audio_hw_hfp: hfp_set_parameters: enter
+02-20 17:40:28.841  1048  1618 E sound_trigger_hw: sound_trigger_hw_call_back: NULL config for AUDIO_EVENT_GET_PARAM
+02-20 17:40:28.841  1048  1618 D audio_hw_hfp: hfp_set_parameters: enter
+02-20 17:40:28.841  1048  1618 D audio_hw_extn: audio_extn_fm_set_parameters: Enter
+02-20 17:40:28.841  1048  1618 D audio_hw_hfp: hfp_set_parameters: enter
+02-20 17:40:28.842  1048  1618 V ultrasound_extn: ultrasound_extn_set_parameters: enter
+02-20 17:40:28.842  1048  1618 V ultrasound_extn: ultrasound_handle_screen_on_message: enter
+02-20 17:40:28.842  1048  1618 V ultrasound_extn: ultrasound_handle_screen_on_message: exit
+02-20 17:40:28.842  1048  1618 V ultrasound_extn: ultrasound_handle_sensor_fusion_message: enter
+02-20 17:40:28.842  1048  1618 V ultrasound_extn: ultrasound_handle_sensor_fusion_message: exit
+02-20 17:40:28.842  1048  1618 V ultrasound_extn: ultrasound_extn_set_parameters: usecase handling parms:screen_state=on
+02-20 17:40:28.851  2452  2452 W OnBackInvokedCallback: OnBackInvokedCallback is not enabled for the application.
+02-20 17:40:28.851  2452  2452 W OnBackInvokedCallback: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+02-20 17:40:28.851  2452  2452 D CentralSurfaces: Received new disable state: enaihbcRso.qingr (unchanged)
+02-20 17:40:28.851  2452  2452 D CentralSurfaces: Received new disable state: enaihbcRso.qingr (unchanged)
+02-20 17:40:28.852  2452  2452 D CentralSurfaces: updateQsExpansionEnabled - QS Expand enabled: true
+02-20 17:40:28.853  2452  2452 D CentralSurfaces: updateQsExpansionEnabled - QS Expand enabled: true
+02-20 17:40:28.864  2658  4213 D QCNEJ/WlanStaInfoRelay: Received action: android.net.wifi.RSSI_CHANGED
+02-20 17:40:28.866  2313  2313 D wpa_supplicant: wpa_driver_nl80211_driver_cmd SETSUSPENDMODE 0 len = 0, 4096
+02-20 17:40:28.879  5037  5037 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+02-20 17:40:28.882 26158 26248 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=2495 ]
+02-20 17:40:28.882 26158 26258 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix="RcsEngineImpl[DUAL_REG]:[78bbf740-1da3]>Handler" thread_id=2505 ]
+02-20 17:40:28.882  2452  2452 W View    : requestLayout() improperly called by com.android.keyguard.CarrierText{2b83a88 V.ED..... ......ID 0,0-270,86 #7f0a035b app:id/keyguard_carrier_text} during layout: running second layout pass
+02-20 17:40:28.884  2702  2959 E PhoneInterfaceManager: [PhoneIntfMgr] getCarrierPrivilegeStatusForUid: Invalid subId
+02-20 17:40:28.886 26158 26258 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:0,last3:] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=2505 ]
+02-20 17:40:28.894  1507  1855 I DisplayPowerController[0]: Unblocked screen on after 94 ms
+02-20 17:40:28.895  1079  1109 I sensors-hal: batch:180, android.sensor.device_orientation/35, period=66667000, max_latency=0
+02-20 17:40:28.895  1079  1109 I sensors-hal: batch:189, android.sensor.device_orientation/35, period=66667000, max_latency=0 request completed
+02-20 17:40:28.895  1079  1109 I sensors-hal: activate:147, android.sensor.device_orientation/35 en=1
+02-20 17:40:28.895  1079  1109 I sensors-hal: get_qmi_debug_flag:230, support_qmi_debug : false
+02-20 17:40:28.896  1507  1855 I DisplayPowerController[0]: BrightnessEvent: disp=0, physDisp=local:4630946471422916225, brt=0.021534048, initBrt=0.021534048, rcmdBrt=NaN, preBrt=NaN, lux=0.0, preLux=0.0, hbmMax=1.0, hbmMode=off, rbcStrength=50, powerFactor=1.0, thrmMax=1.0, wasShortTermModelActive=false, flags=, reason=manual, autoBrightness=false
+02-20 17:40:28.899  1079  1109 I sensors-hal: activate:158, android.sensor.device_orientation/35 en=1 completed
+02-20 17:40:28.910  1309  1340 I ThermalEngine: Battery charging mitigation already at level 0
+02-20 17:40:28.973   667   688 I SDM     : HWCSession::HandleConcurrency: sec_builtin_active 0
+02-20 17:40:28.973   665   665 D SurfaceFlinger: Finished setting power mode 2 on display 4630946471422916225
+02-20 17:40:28.974  1507  2279 D SurfaceControl: Excessive delay in setPowerMode()
+02-20 17:40:28.982  1507  1855 I DisplayPowerController[0]: BrightnessEvent: disp=0, physDisp=local:4630946471422916225, brt=0.021534048, initBrt=0.021534048, rcmdBrt=NaN, preBrt=NaN, lux=0.0, preLux=0.0, hbmMax=1.0, hbmMode=off, rbcStrength=50, powerFactor=1.0, thrmMax=1.0, wasShortTermModelActive=false, flags=, reason=manual, autoBrightness=false
+02-20 17:40:28.983  1507  1855 W PowerManagerService: Screen on took 203 ms
+02-20 17:40:28.983  1507  1855 I DreamManagerService: Gently waking up from dream.
+02-20 17:40:29.000  2452  2452 W DataUsageController: Failed to get data usage, remote call failed
+02-20 17:40:29.000  2452  2452 W DataUsageController: Failed to get data usage, no entry data
+02-20 17:40:29.016  2452  2452 W DataUsageController: Failed to get data usage, remote call failed
+02-20 17:40:29.016  2452  2452 W DataUsageController: Failed to get data usage, no entry data
+02-20 17:40:29.021  1507  1507 D FastPairService: onReceive: ACTION_SCREEN_ON or boot complete.
+02-20 17:40:29.021  1507  1507 V FastPairService: invalidateScan: scan is disabled
+02-20 17:40:29.021  1507  1507 E NearbyManager: Cannot stop scan with this callback because it is never registered.
+02-20 17:40:29.023  1507  1681 I DreamManagerService: Leaving dreamland.
+02-20 17:40:29.024  1507  1804 I DreamController: Stopping dream: name=ComponentInfo{com.android.systemui/com.android.systemui.doze.DozeService}, isPreviewMode=false, canDoze=true, userId=0, reason='finished self'(from 'power manager request')
+02-20 17:40:29.027  4682   617 I DeviceStatusMonitor: DeviceStatusMonitor.handleBroadcast():138 onReceive() : Action = android.intent.action.SCREEN_ON
+02-20 17:40:29.027  4682   617 I DeviceStatusMonitor: DeviceStatusMonitor.updateCountryInfo():154 updateCountryInfo(), notifyAnyway = false
+02-20 17:40:29.563  1507  4039 D ActivityTaskManager: Top Process State changed to PROCESS_STATE_TOP
+02-20 17:40:29.566  1507  4039 D CompatibilityChangeReporter: Compat change id reported: 181136395; UID 10244; state: DISABLED
+02-20 17:40:29.566  1507  4039 D CompatibilityChangeReporter: Compat change id reported: 174042936; UID 10244; state: DISABLED
+02-20 17:40:29.572 30446 30446 W OnBackInvokedCallback: OnBackInvokedCallback is not enabled for the application.
+02-20 17:40:29.572 30446 30446 W OnBackInvokedCallback: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+02-20 17:40:29.572  1507  4038 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10244; state: DISABLED
+02-20 17:40:29.573  1507  4038 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 10244; state: DISABLED
+02-20 17:40:29.582  1507  4039 D ConnectivityService: requestNetwork for uid/pid:10244/30446 activeRequest: null callbackRequest: 1365 [NetworkRequest [ REQUEST id=1366, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10244 RequestorUid: 10244 RequestorPkg: com.example.sensegallery UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+02-20 17:40:29.583  1507  2233 D ConnectivityService: NetReassign [1366 : null ΓåÆ 107]
+02-20 17:40:29.586  1507  2225 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=1366, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10244 RequestorUid: 10244 RequestorPkg: com.example.sensegallery UnderlyingNetworks: Null] ]
+02-20 17:40:29.587  1507  2225 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=1366, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10244 RequestorUid: 10244 RequestorPkg: com.example.sensegallery UnderlyingNetworks: Null] ]
+02-20 17:40:29.587  1507  2225 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=1366, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10244 RequestorUid: 10244 RequestorPkg: com.example.sensegallery UnderlyingNetworks: Null] ]
+02-20 17:40:29.587  1507  2225 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=1366, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10244 RequestorUid: 10244 RequestorPkg: com.example.sensegallery UnderlyingNetworks: Null] ]
+02-20 17:40:29.590  2452  2452 D KeyguardViewMediator: handleStartKeyguardExitAnimation startTime=0 fadeoutDuration=0
+02-20 17:40:29.590  2452  2452 D KeyguardUnlock: fadeInSurfaceBehind
+02-20 17:40:29.591  1079  1109 I sensors-hal: activate:147, android.sensor.proximity/11 en=0
+02-20 17:40:29.592  1079  1109 E sensors-hal: ~worker:70, pthread_join iRet = 0
+02-20 17:40:29.592  1079  1109 I sensors-hal: activate:158, android.sensor.proximity/11 en=0 completed
+02-20 17:40:29.593  2452  2452 D KeyguardViewMediator: onKeyguardExitRemoteAnimationFinished
+02-20 17:40:29.593  2452  2452 D KeyguardUnlock: skip finishSurfaceBehindRemoteAnimation surfaceBehindAlpha=1.0
+02-20 17:40:29.601 30446   324 D WM-SystemJobScheduler: Scheduling work ID c4d17c83-a95a-4540-8590-29562bfcc475Job ID 5
+02-20 17:40:29.604  2452  2703 W Parcel  : Expecting binder but got null!
+02-20 17:40:29.605 30446   325 E OpenGLRenderer: Unable to match the desired swap behavior.
+02-20 17:40:29.607  1507  1681 D CoreBackPreview: Window{20db3b1 u0 Toast}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@2c93022, mPriority=0}
+02-20 17:40:29.607  1507  4047 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:40:29.607  1507  4047 D CompatibilityInfo: applicationDensity - 440
+02-20 17:40:29.607  1507  4047 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:40:29.609  2452  2452 D KeyguardViewMediator: onKeyguardExitRemoteAnimationFinished
+02-20 17:40:29.610  2452  2452 D KeyguardViewMediator: onKeyguardExitRemoteAnimationFinished#hideKeyguardViewAfterRemoteAnimation
+02-20 17:40:29.612  2452  2452 D CentralSurfaces: Received new disable state: Old: enaihbcRso.qingr | New: enaihbcrso.qingr (changed: r.)
+02-20 17:40:29.612 30446   324 D WM-GreedyScheduler: Starting work for c4d17c83-a95a-4540-8590-29562bfcc475
+02-20 17:40:29.613  1507  1818 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.USER_PRESENT flg=0x24200010 } to com.google.android.gms/.auth.setup.devicesignals.LockScreenReceiver
+02-20 17:40:29.613  1507  1818 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.USER_PRESENT flg=0x24200010 } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+02-20 17:40:29.613  2452  2452 D SbStateController: setState: requested state SHADE!= upcomingState: KEYGUARD. This usually means the status bar state transition was interrupted before the upcoming state could be applied.
+02-20 17:40:29.613  3492  3492 D SenseService: OnReceive intent = Intent { act=android.intent.action.USER_PRESENT flg=0x24200010 }
+02-20 17:40:29.614  2452  2452 D CentralSurfaces: updateQsExpansionEnabled - QS Expand enabled: true
+02-20 17:40:29.614 30446   324 D WM-Processor: Processor: processing WorkGenerationalId(workSpecId=c4d17c83-a95a-4540-8590-29562bfcc475, generation=0)
+02-20 17:40:29.618  2452  2452 D CentralSurfaces: Received new disable state: enaihbcrso.qingr (unchanged)
+02-20 17:40:29.620 30446   324 D WM-PackageManagerHelper: androidx.work.impl.background.systemalarm.RescheduleReceiver enabled
+02-20 17:40:29.621  5037 18683 I NearbySharing: Screen is unlocked
+02-20 17:40:29.621  5037 18683 I NearbySharing: Uwb feature is off.
+02-20 17:40:29.621  5037 18683 I NearbySharing: Uwb feature is off.
+02-20 17:40:29.621  5037 18683 I NearbySharing: Stopping scanning because Bluetooth is disabled.
+02-20 17:40:29.621  2452  2452 D CentralSurfaces: updateQsExpansionEnabled - QS Expand enabled: true
+02-20 17:40:29.621  1507  1681 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:40:29.622  1507  1681 D CompatibilityInfo: applicationDensity - 440
+02-20 17:40:29.622  1507  1681 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:40:29.623  5037 18683 I NearbySharing: Stopping Fast Init advertisement because Bluetooth is off.
+02-20 17:40:29.623  5037 18683 I NearbySharing: Stopping advertising because Bluetooth is disabled.
+02-20 17:40:29.624 30446 30446 D WM-WorkerWrapper: Starting work for com.example.sensegallery.workers.FaceProcessingWorker
+02-20 17:40:29.625 30446 30446 D WM-SystemJobService: onStartJob for WorkGenerationalId(workSpecId=c4d17c83-a95a-4540-8590-29562bfcc475, generation=0)
+02-20 17:40:29.625 30446   625 D FaceProcessingWorker: Starting face processing work...
+02-20 17:40:29.625 30446   625 D FacePipelineProcessor: Model validated: det_10g.onnx (16 MB)
+02-20 17:40:29.625 30446   625 D FacePipelineProcessor: Model validated: arcface_w600k_r50.onnx (166 MB)
+02-20 17:40:29.626  2452 11418 D KeyguardService: setOccluded(false)
+02-20 17:40:29.626  2452 11418 D KeyguardViewMediator: setOccluded(false)
+02-20 17:40:29.627 30446   329 D WM-Processor: Work WorkGenerationalId(workSpecId=c4d17c83-a95a-4540-8590-29562bfcc475, generation=0) is already enqueued for processing
+02-20 17:40:29.632  5037 18683 I NearbySharing: Fast Initiation Scanning has stopped
+02-20 17:40:29.632  5037 18683 I NearbySharing: Stopping FastInitiation scanning because Bluetooth is disabled.
+02-20 17:40:29.633  5037 18683 I NearbySharing: Dismissing HUN as there's no device nearby.
+02-20 17:40:29.634  1507  1681 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:40:29.634  1507  1681 D CompatibilityInfo: applicationDensity - 440
+02-20 17:40:29.634  1507  1681 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:40:29.635  2452  2703 E OpenGLRenderer: Unable to match the desired swap behavior.
+02-20 17:40:29.645  5037   627 I NearbyMediums: ModuleInitializer handles incoming intent android.intent.action.USER_PRESENT
+02-20 17:40:29.649  1507  2866 D BiometricService: canAuthenticate: User=0, Caller=0, Authenticators=255
+02-20 17:40:29.649  1507  4039 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:40:29.649  1507  4039 D CompatibilityInfo: applicationDensity - 440
+02-20 17:40:29.649  1507  4039 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:40:29.649  1507  2866 D BiometricService/PreAuthInfo: Package: com.google.android.gms Sensor ID: 1008 Modality: 8 Status: 7
+02-20 17:40:29.649  1507  2866 D BiometricService/PreAuthInfo: Package: com.google.android.gms Sensor ID: 0 Modality: 2 Status: 7
+02-20 17:40:29.649  1507  2866 D BiometricService/PreAuthInfo: getCanAuthenticateInternal Modality: 8 AuthenticatorStatus: 7
+02-20 17:40:29.649  1507  2866 D AuthService: canAuthenticate, userId: 0, callingUserId: 0, authenticators: 255, result: 11
+02-20 17:40:29.651  5037  5037 I RCNIntentOperation: RCN is disabled on this network.
+02-20 17:40:29.651  3742  3742 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.auth.cryptauth.cryptauthservice.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+02-20 17:40:29.651  3742  3742 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.auth.cryptauth.cryptauthservice.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+02-20 17:40:29.651 30446   625 D FacePipelineProcessor: MediaStore sync: 25 photos in DB
+02-20 17:40:29.651 30446   625 D FaceDetectionHelper: Model already cached: det_10g.onnx
+02-20 17:40:29.653  1507  4034 D BiometricService: canAuthenticate: User=0, Caller=0, Authenticators=15
+02-20 17:40:29.653  1507  4034 D BiometricService/PreAuthInfo: Package: com.google.android.gms Sensor ID: 1008 Modality: 8 Status: 4
+02-20 17:40:29.653  1507  4034 D BiometricService/PreAuthInfo: Package: com.google.android.gms Sensor ID: 0 Modality: 2 Status: 7
+02-20 17:40:29.653  1507  4034 D BiometricService/PreAuthInfo: getCanAuthenticateInternal Modality: 2 AuthenticatorStatus: 7
+02-20 17:40:29.653  1507  4034 D AuthService: canAuthenticate, userId: 0, callingUserId: 0, authenticators: 15, result: 11
+02-20 17:40:29.655  3742   639 I PersonalSafety: ConnectivityProtectionLockingIntentOperation: cancelled task [CONTEXT service_id=310 ]
+02-20 17:40:29.661   665   682 I BpBinder: onLastStrongRef automatically unlinking death recipients: <uncached descriptor>
+02-20 17:40:29.664  1507  4039 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:40:29.664  1507  4039 D CompatibilityInfo: applicationDensity - 440
+02-20 17:40:29.664  1507  4039 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:40:29.666  3742  3742 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.pay.service.BIND dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+02-20 17:40:29.667  3742  3742 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.pay.service.BIND dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+02-20 17:40:29.668  1507  4034 D SystemServerTiming: getUserSwitchability-0
+02-20 17:40:29.668  1507  4034 D SystemServerTiming: TM.isInCall
+02-20 17:40:29.668  1507  4034 D SystemServerTiming: hasUserRestriction-DISALLOW_USER_SWITCH
+02-20 17:40:29.668  1507  4034 D SystemServerTiming: getInt-ALLOW_USER_SWITCHING_WHEN_SYSTEM_USER_LOCKED
+02-20 17:40:29.668  1507  4034 D SystemServerTiming: isUserUnlocked-USER_SYSTEM
+02-20 17:40:29.671  2452  2452 D KeyguardViewMediator: onKeyguardExitRemoteAnimationFinished#hideKeyguardViewAfterRemoteAnimation
+02-20 17:40:29.672  2452  2452 E KeyguardUnlock: #hideKeyguardViewAfterRemoteAnimation called when keyguard view is not showing. Ignoring...
+02-20 17:40:29.673  2452  2452 D KeyguardViewMediator: handleSetOccluded(false)
+02-20 17:40:29.673  2452  2452 I FalsingManager: {context=DistanceClassifier reason={distanceVectors={dx=42.960205, vx=0.114051, dy=-281.874512, vy=-2.210700}, isHorizontal=false, velocityToDistanceMultiplier=30.000000, horizontalFlingThreshold=403.411011, verticalFlingThreshold=629.209473, horizontalSwipeThreshold=864.000000, verticalSwipeThreshold=1258.419}}
+02-20 17:40:29.673  2452  2452 I FalsingManager: {belief=0.37716842714630855 confidence=1.0}
+02-20 17:40:29.674 30446 30446 W Choreographer: Frame time is 0.150232 ms in the future!  Check that graphics HAL is generating vsync timestamps using the correct timebase.
+02-20 17:40:29.676  1507  1818 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.USER_PRESENT flg=0x24200010 } to com.google.android.gms/.auth.setup.devicesignals.LockScreenReceiver
+02-20 17:40:29.677  1507  1818 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.USER_PRESENT flg=0x24200010 } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+02-20 17:40:29.679  3492  3492 D SenseService: OnReceive intent = Intent { act=android.intent.action.USER_PRESENT flg=0x24200010 }
+02-20 17:40:29.682  4682  4682 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1384 onStartInput(EditorInfo{EditorInfo{packageName=com.example.sensegallery, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=-1, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+02-20 17:40:29.683  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:40:29.683  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:40:29.684  4682  4682 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 1, locked = false
+02-20 17:40:29.685  1507  1818 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:40:29.685  1507  1818 D CompatibilityInfo: applicationDensity - 440
+02-20 17:40:29.685  1507  1818 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:40:29.689  2452  2452 D CentralSurfaces: Received new disable state: enaihbcrso.qingr (unchanged)
+02-20 17:40:29.696  1507  2866 D BiometricService: canAuthenticate: User=0, Caller=0, Authenticators=255
+02-20 17:40:29.696  1507  2866 D BiometricService/PreAuthInfo: Package: com.google.android.gms Sensor ID: 1008 Modality: 8 Status: 7
+02-20 17:40:29.697  1507  2866 D BiometricService/PreAuthInfo: Package: com.google.android.gms Sensor ID: 0 Modality: 2 Status: 7
+02-20 17:40:29.697  1507  2866 D BiometricService/PreAuthInfo: getCanAuthenticateInternal Modality: 8 AuthenticatorStatus: 7
+02-20 17:40:29.697  1507  2866 D AuthService: canAuthenticate, userId: 0, callingUserId: 0, authenticators: 255, result: 11
+02-20 17:40:29.697  1507  4034 D BiometricService: canAuthenticate: User=0, Caller=0, Authenticators=15
+02-20 17:40:29.697  1507  4034 D BiometricService/PreAuthInfo: Package: com.google.android.gms Sensor ID: 1008 Modality: 8 Status: 4
+02-20 17:40:29.697  1507  4034 D BiometricService/PreAuthInfo: Package: com.google.android.gms Sensor ID: 0 Modality: 2 Status: 7
+02-20 17:40:29.697  1507  4034 D BiometricService/PreAuthInfo: getCanAuthenticateInternal Modality: 2 AuthenticatorStatus: 7
+02-20 17:40:29.697  1507  4034 D AuthService: canAuthenticate, userId: 0, callingUserId: 0, authenticators: 15, result: 11
+02-20 17:40:29.698  3742   639 I PersonalSafety: ConnectivityProtectionLockingIntentOperation: cancelled task [CONTEXT service_id=310 ]
+02-20 17:40:29.698  5037   627 I NearbyMediums: ModuleInitializer handles incoming intent android.intent.action.USER_PRESENT
+02-20 17:40:29.702  5037  5037 I RCNIntentOperation: RCN is disabled on this network.
+02-20 17:40:29.706 30446   625 D FaceDetectionHelper: RetinaFace initialized successfully
+02-20 17:40:29.706 30446   625 D FaceDetectionHelper: Input names: [input.1]
+02-20 17:40:29.706 30446   625 D FaceDetectionHelper: Output names: [448, 471, 494, 451, 474, 497, 454, 477, 500]
+02-20 17:40:29.706 30446   625 D FaceEmbeddingHelper: Initializing ArcFace R50 via ONNX Runtime
+02-20 17:40:29.706 30446   625 D FaceEmbeddingHelper: Model already cached: /data/user/0/com.example.sensegallery/cache/arcface_w600k_r50.onnx (166 MB)
+02-20 17:40:29.706 30446   625 D FaceEmbeddingHelper: Model copied to: /data/user/0/com.example.sensegallery/cache/arcface_w600k_r50.onnx
+02-20 17:40:29.722  1507  2866 W InputManager-JNI: Input channel object '749ae79 SnapshotStartingWindow for taskId=175 (client)' was disposed without first being removed with the input manager!
+02-20 17:40:29.813  2452  2730 D ControlsListingControllerImpl: Unsubscribing callback
+02-20 17:40:29.816  2452  2730 D ControlsListingControllerImpl: Unsubscribing callback
+02-20 17:40:29.818  2452  2730 D ControlsListingControllerImpl: Unsubscribing callback
+02-20 17:40:29.979 30446   625 D FaceEmbeddingHelper: ArcFace R50 initialized ΓÇö 512-d embeddings
+02-20 17:40:29.979 30446   625 D FaceEmbeddingHelper: Input: [input]
+02-20 17:40:29.979 30446   625 D FaceEmbeddingHelper: Output: [output]
+02-20 17:40:29.980 30446   625 D FacePipelineProcessor: Starting ARCFACE+RETINAFACE pipeline for 25 photos
+02-20 17:40:29.984  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTENDgMDUODczNDcNTcjpg.jpg. Uid: 10244
+02-20 17:40:29.987  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTENDgMDUODczNDcNTcjpg.jpg. Uid: 10244
+02-20 17:40:29.988 30446   625 I FacePipelineProcessor: ========================================
+02-20 17:40:29.988 30446   625 I FacePipelineProcessor: [START] Photo 2 (300x300)
+02-20 17:40:29.988 30446   625 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:40:30.491 30446   625 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:40:30.503 30446   625 D FaceDetectionHelper: Before NMS: 0 candidates
+02-20 17:40:30.503 30446   625 D FaceDetectionHelper: After NMS: 0 faces
+02-20 17:40:30.503 30446   625 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 515ms
+02-20 17:40:30.503 30446   625 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:40:30.503 30446   625 I FacePipelineProcessor: [END] Photo 2 ΓÇö 0 faces (515ms total)
+02-20 17:40:30.509  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpcsvkmeuaafdfjpg.jpg. Uid: 10244
+02-20 17:40:30.512  8941  9073 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpcsvkmeuaafdfjpg.jpg. Uid: 10244
+02-20 17:40:30.513 30446   625 I FacePipelineProcessor: ========================================
+02-20 17:40:30.513 30446   625 I FacePipelineProcessor: [START] Photo 4 (200x264)
+02-20 17:40:30.513 30446   625 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:40:30.620  1507  1919 I AppsFilter: interaction: PackageSetting{fea5d59 com.localmind.assistant/10216} -> PackageSetting{e05b88a com.example.sensegallery/10244} BLOCKED
+02-20 17:40:30.630  1507  1507 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.google.android.dialer: DDC.oR@B5I
+02-20 17:40:30.634  1507  2143 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS | 
+02-20 17:40:30.637  2452  2452 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+02-20 17:40:30.643 26546 26640 D IconPackManager: Received intent action android.intent.action.PACKAGE_CHANGED for com.example.sensegallery
+02-20 17:40:30.646  1507  1804 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:40:30.646  1507  1804 D CompatibilityInfo: applicationDensity - 440
+02-20 17:40:30.646  1507  1804 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:40:30.650 25891 25909 I PermissionControllerServiceImpl: Updating user sensitive for uid 10244
+02-20 17:40:30.657  5037  5037 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.libs.gmscorelogger.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+02-20 17:40:30.655  1507  2125 I RoleService: Granting default roles...
+02-20 17:40:30.660  1507  2125 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:40:30.660  1507  2125 D CompatibilityInfo: applicationDensity - 440
+02-20 17:40:30.660  1507  2125 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:40:30.672 25891   728 W Role    : Cannot get ApplicationInfo for default holder: com.google.android.contacts
+02-20 17:40:30.675  2702  2702 D CarrierSvcBindHelper: onPackageModified: com.example.sensegallery
+02-20 17:40:30.675  2702  2702 D CarrierSvcBindHelper: No carrier app for: 0
+02-20 17:40:30.676  2702  2702 D CarrierSvcBindHelper: No carrier app for: 1
+02-20 17:40:30.681  2702  2702 D ImsResolver: maybeAddedImsService, packageName: com.example.sensegallery
+02-20 17:40:30.683 25891   728 W Role    : Cannot get ApplicationInfo for default holder: com.google.android.gms.supervision
+02-20 17:40:30.685 25891   728 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+02-20 17:40:30.712 25891   728 W Role    : Cannot get ApplicationInfo for default holder: com.android.gallery3d
+02-20 17:40:31.004 30446   625 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:40:31.016 30446   625 D FaceDetectionHelper: Before NMS: 4 candidates
+02-20 17:40:31.016 30446   625 D FaceDetectionHelper: After NMS: 1 faces
+02-20 17:40:31.016 30446   625 D FaceDetectionHelper: Face: conf=0.783 box=[0.579,0.162,0.772,0.371]
+02-20 17:40:31.016 30446   625 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 1 face(s) found in 503ms
+02-20 17:40:31.016 30446   625 D FacePipelineProcessor: Skipping tiny face: 38x55
+02-20 17:40:31.016 30446   625 I FacePipelineProcessor: [END] Photo 4 ΓÇö 0 face(s) saved (503ms total)
+02-20 17:40:31.016 30446   625 I FacePipelineProcessor: ========================================
+02-20 17:40:31.019 30446   625 D FaceProcessingWorker: Processed 10/25 photos. Faces found: 0
+02-20 17:40:31.021 30446   625 D FaceProcessingWorker: Processed 20/25 photos. Faces found: 0
+02-20 17:40:31.022 30446   625 D FacePipelineProcessor: Pipeline complete: 0 faces from 25 photos
+02-20 17:40:31.023 30446   625 D FaceProcessingWorker: Detection complete. Found 0 faces.
+02-20 17:40:31.030 30446   625 D FaceProcessingWorker: Starting clustering phase...
+02-20 17:40:31.030 30446   625 I FaceClusterer: Starting HAC clustering (Average Linkage, threshold=1.1)...
+02-20 17:40:31.034 30446   625 I FaceClusterer: HAC: Initializing distance matrix for 7 nodes...
+02-20 17:40:31.034 30446   625 I FaceClusterer: HAC: Stopping. Min distance 1.124 > threshold 1.1
+02-20 17:40:31.034 30446   625 I FaceClusterer: HAC complete: 0 merges in 0ms
+02-20 17:40:31.034 30446   625 I FaceClusterer: Clustering phase finished. Faces updated: 0, New clusters: 0
+02-20 17:40:31.034 30446   625 D FaceProcessingWorker: Face processing work finished successfully.
+02-20 17:40:31.036 30446   328 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=c4d17c83-a95a-4540-8590-29562bfcc475, tags={ com.example.sensegallery.workers.FaceProcessingWorker } ]
+02-20 17:40:31.036 30446 30446 D WM-Processor: Processor c4d17c83-a95a-4540-8590-29562bfcc475 executed; reschedule = false
+02-20 17:40:31.037 30446 30446 D WM-SystemJobService: c4d17c83-a95a-4540-8590-29562bfcc475 executed on JobScheduler
+02-20 17:40:31.038 30446   328 D WM-GreedyScheduler: Cancelling work ID c4d17c83-a95a-4540-8590-29562bfcc475
+02-20 17:40:31.043 30446   328 D WM-PackageManagerHelper: androidx.work.impl.background.systemalarm.RescheduleReceiver disabled
+02-20 17:40:31.433  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:40:31.433  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:40:32.044  1507  1919 I AppsFilter: interaction: PackageSetting{fea5d59 com.localmind.assistant/10216} -> PackageSetting{ed90168 com.example.sensegallery/10244} BLOCKED
+02-20 17:40:32.056 25891 26489 I PermissionControllerServiceImpl: Updating user sensitive for uid 10244
+02-20 17:40:32.062  1507  2143 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS | 
+02-20 17:40:32.064 26546 26640 D IconPackManager: Received intent action android.intent.action.PACKAGE_CHANGED for com.example.sensegallery
+02-20 17:40:32.065  1507  1507 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.google.android.dialer: DDC.oR@B5M
+02-20 17:40:32.071  2452  2452 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+02-20 17:40:32.076  1507  2125 I RoleService: Granting default roles...
+02-20 17:40:32.087 25891   728 W Role    : Cannot get ApplicationInfo for default holder: com.google.android.contacts
+02-20 17:40:32.092 25891   728 W Role    : Cannot get ApplicationInfo for default holder: com.google.android.gms.supervision
+02-20 17:40:32.093 25891   728 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+02-20 17:40:32.103  2702  2702 D CarrierSvcBindHelper: onPackageModified: com.example.sensegallery
+02-20 17:40:32.104  2702  2702 D CarrierSvcBindHelper: No carrier app for: 0
+02-20 17:40:32.104  2702  2702 D CarrierSvcBindHelper: No carrier app for: 1
+02-20 17:40:32.107  2702  2702 D ImsResolver: maybeAddedImsService, packageName: com.example.sensegallery
+02-20 17:40:32.110 25891   728 W Role    : Cannot get ApplicationInfo for default holder: com.android.gallery3d
+02-20 17:40:32.155  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:40:32.155  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:40:32.198  1507  2866 D CoreBackPreview: Window{20db3b1 u0 Toast}: Setting back callback null
+02-20 17:40:32.200  1507  4049 W InputManager-JNI: Input channel object '20db3b1 Toast (client)' was disposed without first being removed with the input manager!
+02-20 17:40:32.206  1507  2866 W NotificationService: Toast already killed. pkg=com.example.sensegallery token=android.os.BinderProxy@bb1a0d2
+02-20 17:40:32.791  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:40:32.791  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:40:33.907  5037  5037 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+02-20 17:40:34.243  3742  3742 W ThreadPoolForeg: type=1400 audit(0.0:9244): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=29792 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+02-20 17:40:34.735  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:40:34.735  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:40:39.039  5037  5112 I NearbyPresence: (REDACTED) %s verified [==] new request %s equals to the old request
+02-20 17:40:42.149  1507  4049 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1222 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3111 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1616 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:492 android.os.Binder.execTransactInternal:1280 
+02-20 17:40:42.150  1507  4049 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1272 android.content.Context.sendBroadcastMultiplePermissions:2282 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3114 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1616 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:492 
+02-20 17:40:42.150  1507  4049 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1272 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3121 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1616 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:492 android.os.Binder.execTransactInternal:1280 
+02-20 17:40:42.151  1507  4049 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1272 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3126 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1616 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:492 android.os.Binder.execTransactInternal:1280 
+02-20 17:40:42.151  1507  1818 W BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{220d467 2452:com.android.systemui/u0a174} (pid=2452, uid=10174) requires android.permission.READ_PHONE_STATE due to sender android (uid 1001)
+02-20 17:40:42.152  2702  2702 D ServiceStateProvider: subId=-1
+02-20 17:40:42.152  1507  1818 W BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to com.android.cellbroadcastreceiver.module/com.android.cellbroadcastreceiver.CellBroadcastReceiver requires android.permission.READ_PHONE_STATE due to sender android (uid 1001)
+02-20 17:40:42.153  2452  2452 W KeyguardUpdateMonitorLog: invalid subId in handleServiceStateChange()
+02-20 17:40:42.155  1507  1818 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:40:42.155  1507  1818 D CompatibilityInfo: applicationDensity - 440
+02-20 17:40:42.155  1507  1818 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:40:42.156 29529 29529 D CellBroadcastReceiver: onReceive Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 cmp=com.android.cellbroadcastreceiver.module/com.android.cellbroadcastreceiver.CellBroadcastReceiver (has extras) }
+02-20 17:40:42.157 29529 29529 D CellBroadcastReceiver: onServiceStateChanged, ss: 1
+02-20 17:40:42.948  1507  1507 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@b525f6c
+02-20 17:40:44.732  3742  3742 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.cryptauth.cryptauthservice.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+02-20 17:40:44.753  3742  3742 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.pay.service.BIND dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+02-20 17:40:45.351  1112  1112 I tftp_server: pid=1112 tid=1112 tftp-server : INF :[tftp_server.c, 659] rcvd request [1] [85] [1] [0] [170]
+02-20 17:40:45.352  1112   741 I tftp_server: pid=1112 tid=741 tftp-server : INF :[tftp_server_utils.c, 113] file [readwrite/ota_firewall/ruleset] : [/vendor/rfs/msm/mpss/readwrite/ota_firewall/ruleset]
+02-20 17:40:45.352  1112   741 I tftp_server: pid=1112 tid=741 tftp-server : INF :[tftp_server.c, 1203] OACK options [port: 170] : [7680, 1000, 10, 4, 0, 0, 0, 0]
+02-20 17:40:45.352  1112   741 I tftp_server: pid=1112 tid=741 tftp-server : INF :[tftp_os_la.c, 63] open : [-1] [-1] [384] [0] [/vendor/rfs/msm/mpss/readwrite/ota_firewall/ruleset]
+02-20 17:40:45.353  1112   741 E tftp_server: pid=1112 tid=741 tftp-server : ERR :[tftp_os_la.c, 70] open failed: [2] [No such file or directory]
+02-20 17:40:45.353  1112   741 E tftp_server: pid=1112 tid=741 tftp-server : ERR :[tftp_server.c, 1742] open failed : [-2] [Unknown error -2]
+02-20 17:40:45.353  1112   741 E tftp_server: pid=1112 tid=741 tftp-server : ERR :[tftp_protocol.c, 1231] sending error-pkt. Code = 1, Msg = Err=2 String=No such file or directory
+02-20 17:40:45.353  1112   741 I tftp_server: pid=1112 tid=741 tftp-server : INF :[tftp_server.c, 1809] RRQ Total API = 1585
+02-20 17:40:45.356  1112  1112 I tftp_server: pid=1112 tid=1112 tftp-server : INF :[tftp_server.c, 659] rcvd request [1] [85] [1] [0] [171]
+02-20 17:40:45.356  1112   742 I tftp_server: pid=1112 tid=742 tftp-server : INF :[tftp_server_utils.c, 113] file [readwrite/ota_firewall/ruleset] : [/vendor/rfs/msm/mpss/readwrite/ota_firewall/ruleset]
+02-20 17:40:45.357  1112   742 I tftp_server: pid=1112 tid=742 tftp-server : INF :[tftp_server.c, 1203] OACK options [port: 171] : [7680, 1000, 0, 10, 0, 0, 0, 0]
+02-20 17:40:45.357  1112   742 I tftp_server: pid=1112 tid=742 tftp-server : INF :[tftp_os_la.c, 63] open : [-1] [-1] [384] [0] [/vendor/rfs/msm/mpss/readwrite/ota_firewall/ruleset]
+02-20 17:40:45.357  1112   742 E tftp_server: pid=1112 tid=742 tftp-server : ERR :[tftp_os_la.c, 70] open failed: [2] [No such file or directory]
+02-20 17:40:45.357  1112   742 E tftp_server: pid=1112 tid=742 tftp-server : ERR :[tftp_server.c, 1742] open failed : [-2] [Unknown error -2]
+02-20 17:40:45.357  1112   742 E tftp_server: pid=1112 tid=742 tftp-server : ERR :[tftp_protocol.c, 1231] sending error-pkt. Code = 1, Msg = Err=2 String=No such file or directory
+02-20 17:40:45.357  1112   742 I tftp_server: pid=1112 tid=742 tftp-server : INF :[tftp_server.c, 1809] RRQ Total API = 797
+02-20 17:40:45.679  5037  5037 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.libs.gmscorelogger.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+02-20 17:40:49.209  3742 25941 I gle.android.gms: Explicit concurrent copying GC freed 59892(2795KB) AllocSpace objects, 10(456KB) LOS objects, 50% free, 16MB/33MB, paused 285us,266us total 293.611ms

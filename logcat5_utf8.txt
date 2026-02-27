@@ -1,0 +1,593 @@
+﻿--------- beginning of main
+02-20 17:34:50.952 21241 21280 I Finsky  : [2278] AIM: AppInfoManager-Perf > OnDeviceAppInfo > cacheHitCount=0, cacheMissCount=1. Missed  in cache (limit 10) : [com.example.sensegallery]
+02-20 17:34:50.964 26546 26559 I droid.launcher3: Background concurrent copying GC freed 36437(1635KB) AllocSpace objects, 4(384KB) LOS objects, 81% free, 5496KB/29MB, paused 30.189ms,71us total 220.236ms
+02-20 17:34:50.970  3742 32466 I Auth    : (REDACTED) [SupervisedAccountIntentOperation] onHandleIntent: %s
+02-20 17:34:50.992 21311 32449 I Finsky:background: [2485] Wrote row to frosting DB: 1080
+02-20 17:34:50.995  1507  2310 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:50.995  1507  2310 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:50.995  1507  2310 D CompatibilityInfo: applicationScale - 1.0
+--------- beginning of system
+02-20 17:34:50.996  1507  1915 E VerityUtils: Failed to measure fs-verity, errno 1: /data/app/~~rAXgsH_4p_utuQmpb9cVhQ==/com.example.sensegallery-zGOb9I5Y0_iHRaZOAliAYQ==/base.apk
+02-20 17:34:50.997  1507  4039 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:50.997  1507  4039 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:50.997  1507  4039 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:34:50.998  1507  4049 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:50.998  1507  4049 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:50.998  1507  4049 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:34:51.001  1507  4035 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:51.001  1507  4035 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:51.001  1507  4035 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:34:51.004 21311 21311 I Finsky:background: [2] ahsc - Received: android.intent.action.PACKAGE_ADDED, [CDKpVe1ruwq0wt1jbacQTSrMBH1_H6TC4oorl_dqunQ]
+02-20 17:34:51.010  1507  1670 I system_server: Background concurrent copying GC freed 560547(31MB) AllocSpace objects, 40(1156KB) LOS objects, 75% free, 30MB/122MB, paused 133us,87us total 266.945ms
+02-20 17:34:51.015  1507  1672 W System  : A resource failed to call close. 
+02-20 17:34:51.015  1507  1672 W System  : A resource failed to call HardwareBuffer.close. 
+02-20 17:34:51.015  1507  1672 W System  : A resource failed to call HardwareBuffer.close. 
+02-20 17:34:51.017  1507  1672 W System  : A resource failed to call release. 
+02-20 17:34:51.025 26461 26476 I hbox:interactor: Background concurrent copying GC freed 59699(2233KB) AllocSpace objects, 0(0B) LOS objects, 77% free, 6967KB/30MB, paused 212us,54us total 278.912ms
+02-20 17:34:51.028  3742 32466 I NearbyDiscovery: (REDACTED) processGrantSlicePermission: %s
+02-20 17:34:51.038  1507  2792 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.example.sensegallery/.MainActivity} from uid 2000
+02-20 17:34:51.043  1507  2792 D ActivityTaskManager: Temporarily retain top process state for launching app
+02-20 17:34:51.046  1507  1807 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10244; state: DISABLED
+02-20 17:34:51.046  1507  1807 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10244; state: DISABLED
+02-20 17:34:51.046  1507  1807 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10244; state: DISABLED
+02-20 17:34:51.046  1507  1807 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10244; state: ENABLED
+02-20 17:34:51.047  1507  1819 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10244; state: ENABLED
+02-20 17:34:51.057  1507  1819 I ActivityManager: Start proc 30445:com.example.sensegallery/u0a244 for top-activity {com.example.sensegallery/com.example.sensegallery.MainActivity}
+02-20 17:34:51.059 30445 30445 E le.sensegallery: Not starting debugger since process cannot load the jdwp agent.
+02-20 17:34:51.059  1507  4049 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:51.059  1507  4049 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:51.059  1507  4049 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:34:51.060 21311 21311 I Finsky:background: [2] ahsc - Deduping intent android.intent.action.PACKAGE_ADDED
+02-20 17:34:51.061 21311 21353 I Finsky:background: [2287] RECEIVER_PACKAGE_MONITOR_BACKGROUND#logWorkEndAndFinishGoAsync: SUCCESS
+02-20 17:34:51.061  1507  2792 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package: flg=0x4000010 (has extras) } to com.google.android.apps.nbu.files/.documentbrowser.browselanding.rootcontainerlist.receiver.PackageChangeReceiver_Receiver
+02-20 17:34:51.063  1507  1818 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package: flg=0x4000010 (has extras) } to com.google.android.gms/.gass.chimera.PackageChangeBroadcastReceiver
+02-20 17:34:51.063  1507  1818 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package: flg=0x4000010 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+02-20 17:34:51.066  1507  2792 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:51.066  1507  2792 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:51.066  1507  2792 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:34:51.066  3742  3742 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+02-20 17:34:51.066  3742  3742 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+02-20 17:34:51.067  1507  2792 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:51.067  1507  2792 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:51.067  1507  2792 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:34:51.071  1507  2792 D ActivityTrigger: ActivityTrigger activityPauseTrigger 
+02-20 17:34:51.073 30445 30445 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10244; state: ENABLED
+02-20 17:34:51.076 30445 30445 W ziparchive: Unable to open '/data/app/~~rAXgsH_4p_utuQmpb9cVhQ==/com.example.sensegallery-zGOb9I5Y0_iHRaZOAliAYQ==/base.dm': No such file or directory
+02-20 17:34:51.076 30445 30445 W ziparchive: Unable to open '/data/app/~~rAXgsH_4p_utuQmpb9cVhQ==/com.example.sensegallery-zGOb9I5Y0_iHRaZOAliAYQ==/base.dm': No such file or directory
+02-20 17:34:51.086  1507  4042 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10244; state: DISABLED
+02-20 17:34:51.091 21311 32449 I Finsky:background: [2485] Wrote row to frosting DB: 1081
+02-20 17:34:51.102 21241 21275 I Finsky  : [2273] WM::SCH: Logging work initialize for 12-1
+02-20 17:34:51.121 21241 21275 I Finsky  : [2273] WM::SCH: Logging work initialize for 12-1
+02-20 17:34:51.124 21311 32449 I Finsky:background: [2485] Wrote row to frosting DB: 1082
+02-20 17:34:51.135  1507  4049 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:51.135  1507  4049 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:51.135  1507  4049 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:34:51.145  3742 32490 W SQLiteLog: (28) double-quoted string literal: "com.example.sensegallery"
+02-20 17:34:51.163 21241 21281 I Finsky  : [2279] AIM: AppInfoManager-Perf > OnDeviceAppInfo > cacheHitCount=1, cacheMissCount=0. Missed  in cache (limit 10) : []
+02-20 17:34:51.164 21241 21281 I Finsky  : [2279] AIM: Got app ownership map. App counts: . Unique apps: 0
+02-20 17:34:51.164 21241 21281 E Finsky  : [2279] [Counters] attempted to use a non-positive increment for: 4752
+02-20 17:34:51.169  2452  2473 I ndroid.systemui: Background concurrent copying GC freed 162145(7804KB) AllocSpace objects, 1(132KB) LOS objects, 75% free, 16MB/65MB, paused 118us,104us total 420.451ms
+02-20 17:34:51.174  2452  2475 W System  : A resource failed to call close. 
+02-20 17:34:51.174  5037  5050 I .gms.persistent: Background concurrent copying GC freed 64449(3414KB) AllocSpace objects, 0(0B) LOS objects, 75% free, 15MB/61MB, paused 99us,96us total 433.612ms
+02-20 17:34:51.194 21311 32449 I Finsky:background: [2485] Wrote row to frosting DB: 1083
+02-20 17:34:51.197  1507  4042 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:51.197  1507  4042 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:51.197  1507  4042 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:34:51.200 21241 21280 I Finsky  : [2278] AIM: Got app ownership map. App counts: . Unique apps: 0
+02-20 17:34:51.200 21241 21280 E Finsky  : [2278] [Counters] attempted to use a non-positive increment for: 4752
+02-20 17:34:51.201 21241 21280 E Finsky  : [2278] [Counters] attempted to use a non-positive increment for: 4753
+02-20 17:34:51.201 21241 21280 I Finsky  : [2278] SCH: Scheduling phonesky job Id: 12-1, CT: 1771589090829, Constraints: [{ L: 15000, D: 86400000, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+02-20 17:34:51.202 21241 21280 E Finsky  : [2278] [Counters] attempted to use a non-positive increment for: 4753
+02-20 17:34:51.204  1507  4039 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:51.204  1507  4039 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:51.204  1507  4039 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:34:51.207  3742  3792 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=AppsCorpus serviceId=36
+02-20 17:34:51.209 21311 32449 I Finsky:background: [2485] Wrote row to frosting DB: 1084
+02-20 17:34:51.231  1507  4042 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:51.231  1507  4042 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:51.231  1507  4042 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:34:51.242 21241 21283 I Finsky  : [2281] AIM: AppInfoManager-Perf > ItemModel > CacheSize=23, cacheHitCount=0, cacheMissCount=0, total appsWithNoServerDataCount=0. Missed  in cache (limit 10) : []
+02-20 17:34:51.251 26461 26534 I dpje    : (REDACTED) GetContext(%s, %s): Fetch from the %s surface finished with status: %s
+02-20 17:34:51.252 26461 26534 I dyba    : (REDACTED) ContextResult succeeded for ContextKey: %s. %s
+02-20 17:34:51.254 26461 26534 I dybm    : (REDACTED) Updating context input '%s' with dynamic class '%s' containing %s entities. %s
+02-20 17:34:51.254 26461 26534 I dybm    : (REDACTED) Clearing context input '%s'. %s
+02-20 17:34:51.255 26461 26534 I dybg    : (REDACTED) Sending speech biasing context update to SODA with locale %s. %s
+02-20 17:34:51.256 26461 26533 I eiul    : (REDACTED) #getSodaAsrUpdateRequest inserting app domain: %s
+02-20 17:34:51.257 26461 26502 I ejmi    : #updateAndGetSnapshot
+02-20 17:34:51.257 26461 26532 I ejmi    : (REDACTED) Listening for responses for locale %s
+02-20 17:34:51.259 23019 26589 I ejpc    : SRM: AccountScoped session starting on service-side.
+02-20 17:34:51.260 26461 26536 I ejmi    : (REDACTED) >>> [%s] Emitting request locale: %s, secondaryLocales: %s, resources: %s, requestClient: %s
+02-20 17:34:51.260 23019 26588 I ejmv    : (REDACTED) <<< [%s] Received request for primary locale %s. Secondary locales: '%s'
+02-20 17:34:51.261 23019 26588 I ejmv    : (REDACTED) <<< [%s] Requested resources IDs: %s. Note that this is a noop because we currently return all resource for each request.
+02-20 17:34:51.261 23019 26588 I ejls    : (REDACTED) [%s] #getImmediateResourceStates with locale %s. Secondary locales: %s
+02-20 17:34:51.261 23019 26588 I ejls    : (REDACTED) [%s] SRM initial state enabled (for hotword).
+02-20 17:34:51.261 23019 26588 I ejls    : (REDACTED) [%s] #getAndUpdateSodaResourceCollection
+02-20 17:34:51.262 23019 26588 I DefaultLPManager: #getAvailablePackages
+02-20 17:34:51.262 23019 26588 I elvm    : #getDownloadableLanguagePacks
+02-20 17:34:51.262 23019 26588 I elwe    : (REDACTED) Loaded languagepack (LP) flag value from latest config %s: %s
+02-20 17:34:51.263 23019 26588 W SystemLPSourceImpl: #getAvailablePackages: Note there is not reason to call this method, as getInstalledPackages() returns the same LanguagePacks for this impl.
+02-20 17:34:51.263 23019 26588 W LegacyLPSourceImpl: #getAvailablePackages: Note there is no reason to call this method, as getInstalledPackages() returns the same LanguagePacks for this impl.
+02-20 17:34:51.263  1507  4042 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:51.263  1507  4042 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:51.263  1507  4042 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:34:51.263 23019 26588 I DefaultLPManager: #getRequestedPackages
+02-20 17:34:51.263 23019 26588 I ZipLPPopulator: #addNewFileGroups
+02-20 17:34:51.263 23019 26588 I elvm    : #getDownloadableLanguagePacks
+02-20 17:34:51.263 23019 26588 I elwe    : (REDACTED) Loaded languagepack (LP) flag value from latest config %s: %s
+02-20 17:34:51.264 23019 26588 W SystemLPSourceImpl: #getRequestedPackages: There is not reason to call this method, as the result is always empty.
+02-20 17:34:51.264 23019 26588 W LegacyLPSourceImpl: #getRequestedPackages: There is no reason to call this method, as the result is always empty.
+02-20 17:34:51.264 23019 26588 I DefaultLPManager: #getAvailablePackages
+02-20 17:34:51.264 23019 26588 I elvm    : #getDownloadableLanguagePacks
+02-20 17:34:51.264 23019 26588 I elwe    : (REDACTED) Loaded languagepack (LP) flag value from latest config %s: %s
+02-20 17:34:51.264 23019 26588 W SystemLPSourceImpl: #getAvailablePackages: Note there is not reason to call this method, as getInstalledPackages() returns the same LanguagePacks for this impl.
+02-20 17:34:51.264 23019 26588 W LegacyLPSourceImpl: #getAvailablePackages: Note there is no reason to call this method, as getInstalledPackages() returns the same LanguagePacks for this impl.
+02-20 17:34:51.264 23019 26588 I DefaultLPManager: #getInstalledPackages
+02-20 17:34:51.264  3742  3742 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+02-20 17:34:51.264 23019 26588 I elvm    : #getInstalledPackages from MDD
+02-20 17:34:51.264  3742  3742 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+02-20 17:34:51.265 23019 26588 I elvm    : #GetLanguagePackList
+02-20 17:34:51.265 23019 26588 I elvm    : MDD.getFileGroupsByFilter(langpack-domain_xx-XX_ver_zipfile)
+02-20 17:34:51.265 23019 26588 I ejls    : (REDACTED) [%s] #getInstalledLanguagePacks
+02-20 17:34:51.265 23019 26588 I ejls    : Skipping stopword download due to disablement by flag.
+02-20 17:34:51.265 23019 26588 I elrg    : (REDACTED) MDD.getFileGroup(%s)
+02-20 17:34:51.266 23019 26583 I cuge    : Getting hotwordModelConfig
+02-20 17:34:51.266 23019 26583 I LegacyLPSourceImpl: (REDACTED) Parsing legacy read-only LanguagePack metadata file: %s
+02-20 17:34:51.267 23019 26583 I LegacyLPSourceImpl: (REDACTED) Parsing legacy read-only LanguagePack metadata file: %s
+02-20 17:34:51.267 23019 26588 I ejjd    : (REDACTED) [%s] #updateResource begin
+02-20 17:34:51.267 23019 26583 I LegacyLPSourceImpl: (REDACTED) Parsing legacy read-only LanguagePack metadata file: %s
+02-20 17:34:51.267 23019 26588 I ejjd    : (REDACTED) [%s] #updateResource end
+02-20 17:34:51.268 23019 26583 I cuge    : Getting hotwordModelConfig
+02-20 17:34:51.269 26461 26529 I ejmi    : (REDACTED) <<< [%s] Reading SodaResourceManager message with initial resourceIds: '%s.'
+02-20 17:34:51.269 26461 26529 I ejmi    : (REDACTED) <<< [%s] Reading SodaResourceManager message with updated resourceIds: %s. Total set: %s
+02-20 17:34:51.271 23019 26579 I cuge    : MDD.refreshFileGroups(hotwordFileGroupPopulator)
+02-20 17:34:51.271 23019 26579 I cufq    : (REDACTED) MDD.addFileGroup(%s)
+02-20 17:34:51.272 23019 26579 I cuge    : MDD.refreshFileGroups(hotwordFileGroupPopulator)
+02-20 17:34:51.272 23019 26579 I cufq    : (REDACTED) MDD.addFileGroup(%s)
+02-20 17:34:51.275 23019 26592 I LPRequestState: (REDACTED) [%s] #resolveDesiredLanguagePacks
+02-20 17:34:51.276 23019 26592 I ZipLPPopulator: #addNewFileGroups complete
+02-20 17:34:51.276 23019 26592 I elvm    : #getPendingPackages from MDD
+02-20 17:34:51.276 23019 26592 I elvm    : #GetLanguagePackList
+02-20 17:34:51.276 23019 26592 I elvm    : MDD.getFileGroupsByFilter(langpack-domain_xx-XX_ver_zipfile)
+02-20 17:34:51.277 21241 21281 I Finsky  : [2279] SCH: Scheduling 1 system job(s)
+02-20 17:34:51.281 21241 21281 I Finsky  : [2279] SCH: Scheduling system job Id: 9054, L: 14552, D: 79917019, C: false, I: false, N: 1
+02-20 17:34:51.285 26461 26534 I dpje    : (REDACTED) GetContext(%s, %s): Fetch from the %s surface finished with status: %s
+02-20 17:34:51.286 26461 26534 I dyba    : (REDACTED) ContextResult succeeded for ContextKey: %s. %s
+02-20 17:34:51.288 26461 26534 I dybm    : (REDACTED) Updating context input '%s' with dynamic class '%s' containing %s entities. %s
+02-20 17:34:51.289 26461 26534 I dybm    : (REDACTED) Clearing context input '%s'. %s
+02-20 17:34:51.290 26461 26534 I dybg    : (REDACTED) Sending speech biasing context update to SODA with locale %s. %s
+02-20 17:34:51.291  3742  3827 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=null serviceId=30
+02-20 17:34:51.291 26461 26529 I eiul    : (REDACTED) #getSodaAsrUpdateRequest inserting app domain: %s
+02-20 17:34:51.300  3742  3755 I gle.android.gms: Background concurrent copying GC freed 26775(1683KB) AllocSpace objects, 3(124KB) LOS objects, 75% free, 18MB/73MB, paused 2.194ms,412us total 556.161ms
+02-20 17:34:51.305  3742 26214 I Icing   : Usage reports ok 1, Failed Usage reports 0, indexed 0, rejected 0
+02-20 17:34:51.307 21241 21281 I Finsky  : [2279] AIM: AppInfoManager-Perf > getApps > data collection finished
+02-20 17:34:51.307 21241 21281 I Finsky  : [2279] AIM: AppInfoManager-Perf > maybeDestroyAppInfoManager is called. actives = 2
+02-20 17:34:51.312 21241 21281 I Finsky  : [2279] SCH: Scheduling phonesky job Id: 12-1, CT: 1771589090916, Constraints: [{ L: 15000, D: 86400000, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+02-20 17:34:51.313 21241 21274 I Finsky  : [2272] [ContentSync] finished, scheduled=true
+02-20 17:34:51.318 21241 21283 I Finsky  : [2281] SCH: Scheduling 0 system job(s)
+02-20 17:34:51.325 21241 21280 I Finsky  : [2278] AIM: AppInfoManager-Perf > ItemModel > CacheSize=23, cacheHitCount=0, cacheMissCount=0, total appsWithNoServerDataCount=0. Missed  in cache (limit 10) : []
+02-20 17:34:51.325 21241 21280 I Finsky  : [2278] AIM: AppInfoManager-Perf > ItemModel > CacheSize=23, cacheHitCount=0, cacheMissCount=0, total appsWithNoServerDataCount=0. Missed  in cache (limit 10) : []
+02-20 17:34:51.327 21241 21280 I Finsky  : [2278] AIM: AppInfoManager-Perf > getApps > data collection finished
+02-20 17:34:51.327 21241 21280 I Finsky  : [2278] AIM: AppInfoManager-Perf > maybeDestroyAppInfoManager is called. actives = 1
+02-20 17:34:51.330 21241 21283 I Finsky  : [2281] [ContentSync] finished, scheduled=true
+02-20 17:34:51.336  3742 26214 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+02-20 17:34:51.343 23019 26583 W elrg    : No downloaded contextual models.
+02-20 17:34:51.343 23019 26593 I DefaultLPManager: #getPackage
+02-20 17:34:51.343 23019 26593 I ejls    : (REDACTED) [%s] Installed LanguagePacks: %s
+02-20 17:34:51.343 23019 26593 I ejls    : (REDACTED) [%s] Pending pack: %s
+02-20 17:34:51.346 23019 32453 I cufq    : (REDACTED) MDD.addFileGroup(%s) returned %b
+02-20 17:34:51.347 23019 32453 I cuge    : MDD refresh completed.
+02-20 17:34:51.347 23019 26594 I cuge    : Trying to get last downloaded model for current locale.
+02-20 17:34:51.347 23019 26594 I cuge    : (REDACTED) MDD.getFileGroup(%s)
+02-20 17:34:51.348 23019 32453 I cufq    : (REDACTED) MDD.addFileGroup(%s) returned %b
+02-20 17:34:51.348 23019 32453 I cuge    : MDD refresh completed.
+02-20 17:34:51.348 23019 26588 I cuge    : Trying to get last downloaded model for current locale.
+02-20 17:34:51.348 23019 26588 I cuge    : (REDACTED) MDD.getFileGroup(%s)
+02-20 17:34:51.361  3742 26214 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+02-20 17:34:51.378 30445 30445 V GraphicsEnvironment: ANGLE Developer option for 'com.example.sensegallery' set to: 'default'
+02-20 17:34:51.378 30445 30445 V GraphicsEnvironment: ANGLE GameManagerService for com.example.sensegallery: false
+02-20 17:34:51.378 30445 30445 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+02-20 17:34:51.380 30445 30445 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+02-20 17:34:51.381 30445 30445 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+02-20 17:34:51.385 30445 30445 D WM-WrkMgrInitializer: Initializing WorkManager with default configuration.
+02-20 17:34:51.389  3742 26214 I Icing   : Indexing done com.google.android.gms-apps
+02-20 17:34:51.395 23019 26580 I cuge    : (REDACTED) MDD get/download %s returned successful.
+02-20 17:34:51.396 23019 26580 I cuge    : (REDACTED) MDD returned hotwordModelSpec %s
+02-20 17:34:51.396 23019 26583 I cuge    : (REDACTED) MDD get/download %s returned successful.
+02-20 17:34:51.396 23019 26583 I cuge    : (REDACTED) MDD returned hotwordModelSpec %s
+02-20 17:34:51.401 23019 26594 I cuge    : (REDACTED) HotwordModel returned with path: %s
+02-20 17:34:51.401 23019 26595 I cuge    : (REDACTED) HotwordModel returned with path: %s
+02-20 17:34:51.403 23019 26594 I cuge    : (REDACTED) Scraping model ID for model of size %d
+02-20 17:34:51.403 23019 26595 I cuge    : (REDACTED) Scraping model ID for model of size %d
+02-20 17:34:51.403 23019 26594 I cuge    : (REDACTED) Scraped model ID: %s
+02-20 17:34:51.403 23019 26595 I cuge    : (REDACTED) Scraped model ID: %s
+02-20 17:34:51.403 23019 26570 I ejqt    : (REDACTED) Returning hotword model with ID: %s
+02-20 17:34:51.403 23019 26580 I ejqt    : (REDACTED) Returning hotword model with ID: %s
+02-20 17:34:51.410 26461 26533 I ejmi    : (REDACTED) <<< [%s] Reading SodaResourceManager message with updated resourceIds: %s. Total set: %s
+02-20 17:34:51.410 26461 26533 I ejmi    : (REDACTED) <<< [%s] SodaResourceManager session emitted all requested resources: %s. Ok to terminate.
+02-20 17:34:51.416 23019 26589 I ejls    : (REDACTED) [%s] #getLatestServerTisidVoiceprint: %s
+02-20 17:34:51.416 23019 26589 I ejls    : (REDACTED) [%s] Server Tisid voiceprint queries skipped because ServerTisid-specific flag is disabled.
+02-20 17:34:51.417 23019 26593 I cuih    : #getTisidModel
+02-20 17:34:51.417 23019 26593 I cuih    : #initialize
+02-20 17:34:51.418 23019 26579 I cuih    : First init for this EnrollmentManager instance.
+02-20 17:34:51.418 23019 26579 I cuih    : Didn't find an initialized EnrollmentManager. Updating config.
+02-20 17:34:51.418 23019 26579 I A       : (REDACTED) updateConfig: Hotword present: %b, LP directory: %s
+02-20 17:34:51.423 23019 26589 I native  : I0000 00:00:1771589091.423291   26589 enrollment_manager_impl.cc:454] UpdateConfigRequest with timeout: 0
+02-20 17:34:51.427  1507  1915 E VerityUtils: Failed to measure fs-verity, errno 1: /data/app/~~rAXgsH_4p_utuQmpb9cVhQ==/com.example.sensegallery-zGOb9I5Y0_iHRaZOAliAYQ==/base.apk
+02-20 17:34:51.428 23019 26594 I cuih    : #getTdsidModel
+02-20 17:34:51.428 23019 26595 I ejls    : (REDACTED) [%s] SRM initial state for hotword: '%s'
+02-20 17:34:51.429 26461 26533 I ejmi    : (REDACTED) <<< [%s] Reading SodaResourceManager message with initial resourceIds: '%s.'
+02-20 17:34:51.429 26461 26533 I ejmi    : (REDACTED) <<< [%s] SodaResourceManager session emitted all requested resources: %s. Ok to terminate.
+02-20 17:34:51.429 23019 26570 I cuge    : Getting hotwordModelConfig
+02-20 17:34:51.431 23019 26570 I cuge    : MDD.refreshFileGroups(hotwordFileGroupPopulator)
+02-20 17:34:51.431 23019 26570 I cufq    : (REDACTED) MDD.addFileGroup(%s)
+02-20 17:34:51.433 23019 32453 I cufq    : (REDACTED) MDD.addFileGroup(%s) returned %b
+02-20 17:34:51.433 23019 32453 I cuge    : MDD refresh completed.
+02-20 17:34:51.434 23019 26595 I cuge    : (REDACTED) Trying to get latest model with timeout: %dms.
+02-20 17:34:51.434 23019 26595 I cuge    : Trying to get latest model bytes.
+02-20 17:34:51.434 23019 26595 I cuge    : (REDACTED) Trying to get preloaded model for matching URL. (locale=%s)
+02-20 17:34:51.434 23019 26595 I cuge    : Preloaded model not available. Attempting download.
+02-20 17:34:51.434 23019 26595 I cuge    : Trying to get latest MDD Model bytes.
+02-20 17:34:51.434 23019 26595 I cuge    : (REDACTED) MDD.getFileGroup(%s)
+02-20 17:34:51.436 23019 26588 I cuge    : (REDACTED) MDD.downloadFileGroup(%s)
+02-20 17:34:51.438 23019 26570 I cuge    : (REDACTED) MDD get/download %s returned successful.
+02-20 17:34:51.438 23019 26570 I cuge    : (REDACTED) MDD returned hotwordModelSpec %s
+02-20 17:34:51.444 23019 26594 I cuge    : (REDACTED) HotwordModel returned with path: %s
+02-20 17:34:51.446 23019 26594 I cuge    : (REDACTED) Scraping model ID for model of size %d
+02-20 17:34:51.446 23019 26594 I cuge    : (REDACTED) Scraped model ID: %s
+02-20 17:34:51.446 26461 26533 I ejmi    : (REDACTED) <<< [%s] Reading SodaResourceManager message with updated resourceIds: %s. Total set: %s
+02-20 17:34:51.446 26461 26533 I ejmi    : (REDACTED) <<< [%s] SodaResourceManager session emitted all requested resources: %s. Ok to terminate.
+02-20 17:34:51.447 23019 26579 I ejqt    : (REDACTED) Returning hotword model with ID: %s
+02-20 17:34:51.451 23019 26739 E SpeechMicro: Hotword model is single-channel neuralnet.
+02-20 17:34:51.454 23019 26739 I native  : I0000 00:00:1771589091.453969   26739 enrollment_manager_impl.cc:1323] A valid TD-SID creator already exists. No need to re-create.
+02-20 17:34:51.454 23019 26739 W native  : W0000 00:00:1771589091.454218   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:NOT_FOUND: No VOICE_MATCH config found in languagepack.
+02-20 17:34:51.454 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:34:51.454 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:417
+02-20 17:34:51.454 23019 26739 I native  : I0000 00:00:1771589091.454646   26739 enrollment_manager_impl.cc:1343] A valid TI-SID creator already exists. No need to re-create.
+02-20 17:34:51.454 23019 26739 W native  : W0000 00:00:1771589091.454753   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:NOT_FOUND: No VOICE_MATCH config found in languagepack.
+02-20 17:34:51.454 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:34:51.454 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:417
+02-20 17:34:51.454 23019 26739 W native  : W0000 00:00:1771589091.454958   26739 enrollment_manager_impl.cc:1379] Locale changed from "und" to "en-US". NO-OP as per EnrollmentManagerConfig.
+02-20 17:34:51.455 23019 26594 I cuih    : #getTdsidModel
+02-20 17:34:51.455 23019 26739 E native  : E0000 00:00:1771589091.455187   26739 enrollment_manager_impl.cc:461] CANCELLED: when updating EnrollmentManager config (timed out).
+02-20 17:34:51.455 23019 26594 I A       : (REDACTED) handleResponse for  %s user(s)
+02-20 17:34:51.455 23019 26594 I A       : (REDACTED) Found SodaVmmmClassicWriter. Preparing to propagate model update for status: %s
+02-20 17:34:51.455 23019 26594 I A       : Skipping model update propagation to SodaVmmmClassicWriter since speaker model did not change.
+02-20 17:34:51.455 23019 26594 W A       : Unsuccessful #UpdateConfig request. Clearing cached config.
+02-20 17:34:51.456 23019 26589 I cuih    : #initialize
+02-20 17:34:51.456 23019 26595 W ejls    : (REDACTED) [%s] VoiceMatch Tisid read failed.
+02-20 17:34:51.456 23019 26595 W ejls    : java.lang.IllegalStateException: Locale change detected.
+02-20 17:34:51.456 23019 26595 W ejls    : 	at cuic.apply(PG:531)
+02-20 17:34:51.456 23019 26595 W ejls    : 	at etku.apply(PG:17)
+02-20 17:34:51.456 23019 26595 W ejls    : 	at fdgy.c(PG:3)
+02-20 17:34:51.456 23019 26595 W ejls    : 	at fdgz.run(PG:47)
+02-20 17:34:51.456 23019 26595 W ejls    : 	at cvox.run(PG:5)
+02-20 17:34:51.456 23019 26595 W ejls    : 	at fcec.run(PG:46)
+02-20 17:34:51.456 23019 26595 W ejls    : 	at cvoj.run(PG:81)
+02-20 17:34:51.456 23019 26595 W ejls    : 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:34:51.456 23019 26595 W ejls    : 	at cvpz.run(PG:62)
+02-20 17:34:51.456 23019 26579 I cuih    : First init for this EnrollmentManager instance.
+02-20 17:34:51.457 23019 26579 I cuih    : Didn't find an initialized EnrollmentManager. Updating config.
+02-20 17:34:51.457 23019 26579 I A       : (REDACTED) updateConfig: Hotword present: %b, LP directory: %s
+02-20 17:34:51.459 23019 26595 I native  : I0000 00:00:1771589091.459453   26595 enrollment_manager_impl.cc:454] UpdateConfigRequest with timeout: 0
+02-20 17:34:51.459 30445 30445 D WM-PackageManagerHelper: Skipping component enablement for androidx.work.impl.background.systemjob.SystemJobService
+02-20 17:34:51.459 30445 30445 D WM-Schedulers: Created SystemJobScheduler and enabled SystemJobService
+02-20 17:34:51.465 26461 26536 I ejmi    : (REDACTED) <<< [%s] Reading SodaResourceManager message with updated resourceIds: %s. Total set: %s
+02-20 17:34:51.465 26461 26536 I ejmi    : (REDACTED) <<< [%s] SodaResourceManager session emitted all requested resources: %s. Ok to terminate.
+02-20 17:34:51.482 23019 26739 E SpeechMicro: Hotword model is single-channel neuralnet.
+02-20 17:34:51.484 30445 32522 D WM-ForceStopRunnable: The default process name was not specified.
+02-20 17:34:51.485 23019 26739 I native  : I0000 00:00:1771589091.485379   26739 enrollment_manager_impl.cc:1323] A valid TD-SID creator already exists. No need to re-create.
+02-20 17:34:51.485 23019 26739 W native  : W0000 00:00:1771589091.485632   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:NOT_FOUND: No VOICE_MATCH config found in languagepack.
+02-20 17:34:51.485 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:34:51.485 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:417
+02-20 17:34:51.485 30445 32522 D WM-ForceStopRunnable: Performing cleanup operations.
+02-20 17:34:51.486 23019 26739 I native  : I0000 00:00:1771589091.486019   26739 enrollment_manager_impl.cc:1343] A valid TI-SID creator already exists. No need to re-create.
+02-20 17:34:51.486 23019 26739 W native  : W0000 00:00:1771589091.486103   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:NOT_FOUND: No VOICE_MATCH config found in languagepack.
+02-20 17:34:51.486 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:34:51.486 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:417
+02-20 17:34:51.486 23019 26739 W native  : W0000 00:00:1771589091.486298   26739 enrollment_manager_impl.cc:1379] Locale changed from "und" to "en-US". NO-OP as per EnrollmentManagerConfig.
+02-20 17:34:51.486 23019 26739 E native  : E0000 00:00:1771589091.486514   26739 enrollment_manager_impl.cc:461] CANCELLED: when updating EnrollmentManager config (timed out).
+02-20 17:34:51.486 23019 26594 I A       : (REDACTED) handleResponse for  %s user(s)
+02-20 17:34:51.486 23019 26594 I A       : (REDACTED) Found SodaVmmmClassicWriter. Preparing to propagate model update for status: %s
+02-20 17:34:51.486 23019 26594 I A       : Skipping model update propagation to SodaVmmmClassicWriter since speaker model did not change.
+02-20 17:34:51.486 23019 26594 W A       : Unsuccessful #UpdateConfig request. Clearing cached config.
+02-20 17:34:51.487 23019 26588 I cuih    : #initialize
+02-20 17:34:51.487 23019 26594 W ejls    : (REDACTED) [%s] VoiceMatch Tdsid read failed.
+02-20 17:34:51.487 23019 26594 W ejls    : java.lang.IllegalStateException: Locale change detected.
+02-20 17:34:51.487 23019 26594 W ejls    : 	at cuic.apply(PG:362)
+02-20 17:34:51.487 23019 26594 W ejls    : 	at etku.apply(PG:17)
+02-20 17:34:51.487 23019 26594 W ejls    : 	at fdgy.c(PG:3)
+02-20 17:34:51.487 23019 26594 W ejls    : 	at fdgz.run(PG:47)
+02-20 17:34:51.487 23019 26594 W ejls    : 	at cvox.run(PG:5)
+02-20 17:34:51.487 23019 26594 W ejls    : 	at fcec.run(PG:46)
+02-20 17:34:51.487 23019 26594 W ejls    : 	at cvoj.run(PG:81)
+02-20 17:34:51.487 23019 26594 W ejls    : 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:34:51.487 23019 26594 W ejls    : 	at cvpz.run(PG:62)
+02-20 17:34:51.487 23019 26588 I ejjd    : (REDACTED) [%s] No SpeakerId model found
+02-20 17:34:51.488 23019 26570 I cuih    : First init for this EnrollmentManager instance.
+02-20 17:34:51.488 23019 26570 I cuih    : Didn't find an initialized EnrollmentManager. Updating config.
+02-20 17:34:51.488 23019 26570 I A       : (REDACTED) updateConfig: Hotword present: %b, LP directory: %s
+02-20 17:34:51.488 23019 26594 I cuih    : #getTdsidModel
+02-20 17:34:51.490 23019 26588 I native  : I0000 00:00:1771589091.490454   26588 enrollment_manager_impl.cc:454] UpdateConfigRequest with timeout: 0
+02-20 17:34:51.495 26461 26532 I ejmi    : (REDACTED) <<< [%s] Reading SodaResourceManager message with updated resourceIds: %s. Total set: %s
+02-20 17:34:51.495 26461 26532 I ejmi    : (REDACTED) <<< [%s] SodaResourceManager session emitted all requested resources: %s. Ok to terminate.
+02-20 17:34:51.506 23019 26594 I ejjd    : (REDACTED) [%s] All resources wrote to PDS and notified client.
+02-20 17:34:51.506 23019 26594 I ejjd    : (REDACTED) [%s] hotwordLatency: %d, tdsidLatency: %d, All resources latency: %d
+02-20 17:34:51.506 23019 26580 I ejmv    : (REDACTED) [%s] Returning ResourceResponse.
+02-20 17:34:51.507 26461 26532 I ejmi    : (REDACTED) [%s] SRM session terminated after all resources accounted for: %s.
+02-20 17:34:51.508 26461 26502 I eitm    : #updateSodaResourcesWithoutReload
+02-20 17:34:51.509 26461 26532 I eitm    : #updateSodaResourcesWithoutReload inside sequencer
+02-20 17:34:51.509 26461 26537 I eitm    : #checkAsrCompatibility inside sequencer
+02-20 17:34:51.509 26461 26537 I eitm    : (REDACTED) #checkAsrCompatibility initializing Soda. Locale: %s. Expected LP version: %d
+02-20 17:34:51.509 26461 26537 I eitm    : (REDACTED) Soda cache directory: %s
+02-20 17:34:51.509 26461 26537 I eitm    : Hotmatch disabled: flag not enabled
+02-20 17:34:51.510 26461 26537 I ejha    : SODA instance exists and matches params. Updating callbacks and returning preloaded instance.
+02-20 17:34:51.510 26461 26537 I eitm    : #checkAsrCompatibility successful!
+02-20 17:34:51.510 26461 26537 I eiul    : Compatcheck success for background update.
+02-20 17:34:51.510 26461 26537 I eitm    : #backgroundUpdate
+02-20 17:34:51.510 26461 26500 I eitm    : #backgroundUpdate inside sequencer
+02-20 17:34:51.510 26461 26500 I eitm    : #backgroundUpdate using the existing ASR soda instance.
+02-20 17:34:51.511 26461 26500 I native  : I0000 00:00:1771589091.511508   26500 context-module-impl.cc:801] Update context input. (Proto:MessageLite at 0x705798cbc0)
+02-20 17:34:51.511 26461 26500 I native  : I0000 00:00:1771589091.511677   26500 context-module-impl.cc:808] Update context input for public scope. (Proto:MessageLite at 0x705798cbc0)
+02-20 17:34:51.512 26461 26500 I eiul    : #backgroundBiasingUpdate succeeded.
+02-20 17:34:51.512 26461 26535 I dybg    : (REDACTED) Sending speech biasing context update to SODA with locale %s. %s
+02-20 17:34:51.512 26461 26502 I eitm    : #checkAsrCompatibility inside sequencer
+02-20 17:34:51.512 26461 26502 I eitm    : (REDACTED) #checkAsrCompatibility initializing Soda. Locale: %s. Expected LP version: %d
+02-20 17:34:51.513 26461 26502 I eitm    : (REDACTED) Soda cache directory: %s
+02-20 17:34:51.513 26461 26536 I eiul    : (REDACTED) #getSodaAsrUpdateRequest inserting app domain: %s
+02-20 17:34:51.513 26461 26500 I eebr    : (REDACTED) AppFlow %s is about to be transmitted
+02-20 17:34:51.513 26461 26502 I eitm    : Hotmatch disabled: flag not enabled
+02-20 17:34:51.513 26461 26502 I ejha    : SODA instance exists and matches params. Updating callbacks and returning preloaded instance.
+02-20 17:34:51.513 23019 26739 E SpeechMicro: Hotword model is single-channel neuralnet.
+02-20 17:34:51.514 26461 26536 I atda    : #getOobeStatus: OptedIn [CONTEXT ratelimit_period="10 SECONDS" skipped=5 ]
+02-20 17:34:51.514 26461 26502 I eitm    : #checkAsrCompatibility successful!
+02-20 17:34:51.514 26461 26502 I eiul    : Compatcheck success for background update.
+02-20 17:34:51.515 26461 26502 I eitm    : #backgroundUpdate
+02-20 17:34:51.515 26461 26502 I eitm    : #backgroundUpdate inside sequencer
+02-20 17:34:51.515 26461 26502 I eitm    : #backgroundUpdate using the existing ASR soda instance.
+02-20 17:34:51.515 26461 26502 I native  : I0000 00:00:1771589091.515800   26502 context-module-impl.cc:801] Update context input. (Proto:MessageLite at 0x705798cbe0)
+02-20 17:34:51.515 26461 26502 I native  : I0000 00:00:1771589091.515958   26502 context-module-impl.cc:808] Update context input for public scope. (Proto:MessageLite at 0x705798cbe0)
+02-20 17:34:51.516 26461 26502 I eiul    : #backgroundBiasingUpdate succeeded.
+02-20 17:34:51.516 23019 26739 I native  : I0000 00:00:1771589091.516763   26739 enrollment_manager_impl.cc:1323] A valid TD-SID creator already exists. No need to re-create.
+02-20 17:34:51.516 23019 26739 W native  : W0000 00:00:1771589091.516844   26739 language_pack_utils.cc:222] Neither language pack directory nor config file path is set.
+02-20 17:34:51.516 23019 26739 W native  : W0000 00:00:1771589091.516872   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:INVALID_ARGUMENT: Could not determine LP directory.
+02-20 17:34:51.516 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:34:51.516 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:391
+02-20 17:34:51.516 23019 26739 W native  : W0000 00:00:1771589091.516906   26739 enrollment_manager_impl.cc:1340] Could not determine TI-SID version:INVALID_ARGUMENT: No provided LP directory.
+02-20 17:34:51.516 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:34:51.516 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:310
+02-20 17:34:51.516 23019 26739 W native  : speech/soda/speaker_id/enrollment/enrollment_manager_impl_utils.cc:98
+02-20 17:34:51.516 23019 26739 W native  : W0000 00:00:1771589091.516934   26739 language_pack_utils.cc:222] Neither language pack directory nor config file path is set.
+02-20 17:34:51.516 23019 26739 W native  : W0000 00:00:1771589091.516952   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:INVALID_ARGUMENT: Could not determine LP directory.
+02-20 17:34:51.516 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:34:51.516 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:391
+02-20 17:34:51.516 23019 26739 W native  : W0000 00:00:1771589091.516975   26739 enrollment_manager_impl.cc:1359] Unable to select ASR config path: INVALID_ARGUMENT: No provided LP directory.
+02-20 17:34:51.516 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:34:51.516 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:310
+02-20 17:34:51.517 23019 26739 W native  : W0000 00:00:1771589091.517003   26739 enrollment_manager_impl.cc:1379] Locale changed from "und" to "en-US". NO-OP as per EnrollmentManagerConfig.
+02-20 17:34:51.517 23019 26739 E native  : E0000 00:00:1771589091.517237   26739 enrollment_manager_impl.cc:461] CANCELLED: when updating EnrollmentManager config (timed out).
+02-20 17:34:51.517 26461 26535 I dybg    : (REDACTED) Sending speech biasing context update to SODA with locale %s. %s
+02-20 17:34:51.517 23019 26588 I A       : (REDACTED) handleResponse for  %s user(s)
+02-20 17:34:51.517 23019 26588 I A       : (REDACTED) Found SodaVmmmClassicWriter. Preparing to propagate model update for status: %s
+02-20 17:34:51.517 23019 26588 I A       : Skipping model update propagation to SodaVmmmClassicWriter since speaker model did not change.
+02-20 17:34:51.517 23019 26588 W A       : Unsuccessful #UpdateConfig request. Clearing cached config.
+02-20 17:34:51.517 26461 26537 I eitm    : #checkAsrCompatibility inside sequencer
+02-20 17:34:51.518 26461 26532 I eiul    : (REDACTED) #getSodaAsrUpdateRequest inserting app domain: %s
+02-20 17:34:51.518 26461 26537 I eitm    : (REDACTED) #checkAsrCompatibility initializing Soda. Locale: %s. Expected LP version: %d
+02-20 17:34:51.518 26461 26537 I eitm    : (REDACTED) Soda cache directory: %s
+02-20 17:34:51.518 23019 26588 I cuih    : #initialize
+02-20 17:34:51.518 26461 26537 I eitm    : Hotmatch disabled: flag not enabled
+02-20 17:34:51.518 26461 26537 I ejha    : SODA instance exists and matches params. Updating callbacks and returning preloaded instance.
+02-20 17:34:51.518 23019 26592 W ejmv    : (REDACTED) [%s] calculateImmediateResourceStates failed.
+02-20 17:34:51.518 23019 26592 W ejmv    : java.lang.IllegalStateException: Locale change detected.
+02-20 17:34:51.518 23019 26592 W ejmv    : 	at cuic.apply(PG:362)
+02-20 17:34:51.518 23019 26592 W ejmv    : 	at etku.apply(PG:17)
+02-20 17:34:51.518 23019 26592 W ejmv    : 	at fdgy.c(PG:3)
+02-20 17:34:51.518 23019 26592 W ejmv    : 	at fdgz.run(PG:47)
+02-20 17:34:51.518 23019 26592 W ejmv    : 	at cvox.run(PG:5)
+02-20 17:34:51.518 23019 26592 W ejmv    : 	at fcec.run(PG:46)
+02-20 17:34:51.518 23019 26592 W ejmv    : 	at cvoj.run(PG:81)
+02-20 17:34:51.518 23019 26592 W ejmv    : 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:34:51.518 23019 26592 W ejmv    : 	at cvpz.run(PG:62)
+02-20 17:34:51.518 26461 26537 I eitm    : #checkAsrCompatibility successful!
+02-20 17:34:51.518 26461 26502 I eebr    : (REDACTED) AppFlow %s is about to be transmitted
+02-20 17:34:51.519 23019 26580 I cuih    : First init for this EnrollmentManager instance.
+02-20 17:34:51.519 23019 26580 I cuih    : Didn't find an initialized EnrollmentManager. Updating config.
+02-20 17:34:51.519 26461 26502 I eiul    : Compatcheck success for background update.
+02-20 17:34:51.519 23019 26580 I A       : (REDACTED) updateConfig: Hotword present: %b, LP directory: %s
+02-20 17:34:51.519 26461 26502 I eitm    : #backgroundUpdate
+02-20 17:34:51.519 26461 26537 I eitm    : #backgroundUpdate inside sequencer
+02-20 17:34:51.519 26461 26537 I eitm    : #backgroundUpdate using the existing ASR soda instance.
+02-20 17:34:51.520 26461 26537 I eiul    : #backgroundBiasingUpdate succeeded.
+02-20 17:34:51.520 26461 26534 I dybg    : (REDACTED) SODA speech biasing context update for %s is complete. %s
+02-20 17:34:51.521 26461 26502 I eebr    : (REDACTED) AppFlow %s is about to be transmitted
+02-20 17:34:51.521 26461 26534 I dyar    : (REDACTED) Successfully scheduled context update for key: %s for %s.
+02-20 17:34:51.521 23019 26588 I native  : I0000 00:00:1771589091.521434   26588 enrollment_manager_impl.cc:454] UpdateConfigRequest with timeout: 0
+02-20 17:34:51.522 26461 26502 I eitm    : #checkAsrCompatibility inside sequencer
+02-20 17:34:51.522 26461 26502 I eitm    : (REDACTED) #checkAsrCompatibility initializing Soda. Locale: %s. Expected LP version: %d
+02-20 17:34:51.522 26461 26502 I eitm    : (REDACTED) Soda cache directory: %s
+02-20 17:34:51.522 26461 26502 I eitm    : Hotmatch disabled: flag not enabled
+02-20 17:34:51.522 26461 26502 I ejha    : SODA instance exists and matches params. Updating callbacks and returning preloaded instance.
+02-20 17:34:51.523 26461 26530 I eebr    : (REDACTED) AppFlow %s is about to be transmitted
+02-20 17:34:51.523 26461 26502 I eitm    : #checkAsrCompatibility successful!
+02-20 17:34:51.523 26461 26500 I eiul    : Compatcheck success for background update.
+02-20 17:34:51.523 26461 26500 I eitm    : #backgroundUpdate
+02-20 17:34:51.523 26461 26500 I eitm    : #backgroundUpdate inside sequencer
+02-20 17:34:51.523 26461 26500 I eitm    : #backgroundUpdate using the existing ASR soda instance.
+02-20 17:34:51.524 26461 26500 I eiul    : #backgroundBiasingUpdate succeeded.
+02-20 17:34:51.524 26461 26535 I dybg    : (REDACTED) SODA speech biasing context update for %s is complete. %s
+02-20 17:34:51.525 26461 26502 I eebr    : (REDACTED) AppFlow %s is about to be transmitted
+02-20 17:34:51.525 26461 26535 I dyar    : (REDACTED) Successfully scheduled context update for key: %s for %s.
+02-20 17:34:51.526 26461 26530 I eebr    : (REDACTED) AppFlow %s is about to be transmitted
+02-20 17:34:51.541 30445 32522 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10244; state: ENABLED
+02-20 17:34:51.542 30445 32522 D WM-ForceStopRunnable: Application was force-stopped, rescheduling.
+02-20 17:34:51.544 23019 26739 E SpeechMicro: Hotword model is single-channel neuralnet.
+02-20 17:34:51.547 23019 26739 I native  : I0000 00:00:1771589091.547470   26739 enrollment_manager_impl.cc:1323] A valid TD-SID creator already exists. No need to re-create.
+02-20 17:34:51.547 23019 26739 W native  : W0000 00:00:1771589091.547791   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:NOT_FOUND: No VOICE_MATCH config found in languagepack.
+02-20 17:34:51.547 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:34:51.547 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:417
+02-20 17:34:51.548 23019 26739 I native  : I0000 00:00:1771589091.548178   26739 enrollment_manager_impl.cc:1343] A valid TI-SID creator already exists. No need to re-create.
+02-20 17:34:51.548 23019 26739 W native  : W0000 00:00:1771589091.548261   26739 enrollment_manager_impl_utils.cc:85] No standalone TI-SID pipeline config found:NOT_FOUND: No VOICE_MATCH config found in languagepack.
+02-20 17:34:51.548 23019 26739 W native  : === Source Location Trace: === 
+02-20 17:34:51.548 23019 26739 W native  : speech/soda/utils/language_pack_utils.cc:417
+02-20 17:34:51.548 23019 26739 W native  : W0000 00:00:1771589091.548586   26739 enrollment_manager_impl.cc:1379] Locale changed from "und" to "en-US". NO-OP as per EnrollmentManagerConfig.
+02-20 17:34:51.548 23019 26739 E native  : E0000 00:00:1771589091.548872   26739 enrollment_manager_impl.cc:461] CANCELLED: when updating EnrollmentManager config (timed out).
+02-20 17:34:51.549 23019 26588 I A       : (REDACTED) handleResponse for  %s user(s)
+02-20 17:34:51.549 23019 26588 I A       : (REDACTED) Found SodaVmmmClassicWriter. Preparing to propagate model update for status: %s
+02-20 17:34:51.549 23019 26588 I A       : Skipping model update propagation to SodaVmmmClassicWriter since speaker model did not change.
+02-20 17:34:51.549 23019 26588 W A       : Unsuccessful #UpdateConfig request. Clearing cached config.
+02-20 17:34:51.550 23019 26588 W ejls    : (REDACTED) [%s] VoiceMatch Tdsid read failed.
+02-20 17:34:51.550 23019 26588 W ejls    : java.lang.IllegalStateException: Locale change detected.
+02-20 17:34:51.550 23019 26588 W ejls    : 	at cuic.apply(PG:362)
+02-20 17:34:51.550 23019 26588 W ejls    : 	at etku.apply(PG:17)
+02-20 17:34:51.550 23019 26588 W ejls    : 	at fdgy.c(PG:3)
+02-20 17:34:51.550 23019 26588 W ejls    : 	at fdgz.run(PG:47)
+02-20 17:34:51.550 23019 26588 W ejls    : 	at cvox.run(PG:5)
+02-20 17:34:51.550 23019 26588 W ejls    : 	at fcec.run(PG:46)
+02-20 17:34:51.550 23019 26588 W ejls    : 	at cvoj.run(PG:81)
+02-20 17:34:51.550 23019 26588 W ejls    : 	at java.lang.Thread.run(Thread.java:1012)
+02-20 17:34:51.550 23019 26588 W ejls    : 	at cvpz.run(PG:62)
+02-20 17:34:51.550 23019 26588 I ejls    : (REDACTED) [%s] No Tdsid update occurred. Skipping callback(s)
+02-20 17:34:51.561 30445 32530 D WM-PackageManagerHelper: Skipping component enablement for androidx.work.impl.background.systemalarm.RescheduleReceiver
+02-20 17:34:51.567 30445 30445 D AppCompatDelegate: Checking for metadata for AppLocalesMetadataHolderService : Service not found
+02-20 17:34:51.571  1507  1807 W ActivityTaskManager: Activity top resumed state loss timeout for ActivityRecord{35fef50 u0 com.example.sensegallery/.MainActivity} t174}
+02-20 17:34:51.572  1507  1807 W ActivityTaskManager: Activity pause timeout for ActivityRecord{35fef50 u0 com.example.sensegallery/.MainActivity} t174}
+02-20 17:34:51.626 30445 30445 D CompatibilityChangeReporter: Compat change id reported: 210923482; UID 10244; state: ENABLED
+02-20 17:34:51.677  1507  1818 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:51.677  1507  1818 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:51.677  1507  1818 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:34:51.774  1507  4035 D CompatibilityChangeReporter: Compat change id reported: 149924527; UID 10244; state: ENABLED
+02-20 17:34:51.775  1507  4035 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 10244; state: DISABLED
+02-20 17:34:51.775  1507  4035 D CompatibilityChangeReporter: Compat change id reported: 182734110; UID 10244; state: ENABLED
+02-20 17:34:51.781 30445 30445 D CompatibilityChangeReporter: Compat change id reported: 147798919; UID 10244; state: ENABLED
+02-20 17:34:51.787 30445 30445 D CompatibilityChangeReporter: Compat change id reported: 237531167; UID 10244; state: DISABLED
+02-20 17:34:51.790 30445 32525 W Parcel  : Expecting binder but got null!
+02-20 17:34:51.792 30445 32522 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10244; state: ENABLED
+02-20 17:34:51.792 30445 32522 D WM-SystemJobScheduler: Scheduling work ID 01c47931-2ebd-4f1a-924f-e32cdd593f05Job ID 2
+02-20 17:34:51.792  1507  4035 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10244; state: ENABLED
+02-20 17:34:51.793  1507  4047 D CoreBackPreview: Window{d37c6e u0 com.example.sensegallery/com.example.sensegallery.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@da1e9a5, mPriority=0}
+02-20 17:34:51.796  1507  4035 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:51.796  1507  4035 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:51.796  1507  4035 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:34:51.797  2452  2703 W Parcel  : Expecting binder but got null!
+02-20 17:34:51.799 30445 32522 D WM-GreedyScheduler: Starting work for 01c47931-2ebd-4f1a-924f-e32cdd593f05
+02-20 17:34:51.802  1507  4039 D CoreBackPreview: Window{3ce7107 u0 Toast}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@7f4a85d, mPriority=0}
+02-20 17:34:51.804 30445 32522 D WM-Processor: Processor: processing WorkGenerationalId(workSpecId=01c47931-2ebd-4f1a-924f-e32cdd593f05, generation=0)
+02-20 17:34:51.812 30445 32522 D WM-PackageManagerHelper: androidx.work.impl.background.systemalarm.RescheduleReceiver enabled
+02-20 17:34:51.816  2452  2703 E OpenGLRenderer: Unable to match the desired swap behavior.
+02-20 17:34:51.828 30445 30445 D WM-WorkerWrapper: Starting work for com.example.sensegallery.workers.FaceProcessingWorker
+02-20 17:34:51.829 30445 32536 D FaceProcessingWorker: Starting face processing work...
+02-20 17:34:51.829 30445 30445 D WM-SystemJobService: onStartJob for WorkGenerationalId(workSpecId=01c47931-2ebd-4f1a-924f-e32cdd593f05, generation=0)
+02-20 17:34:51.832 30445 32530 D WM-Processor: Work WorkGenerationalId(workSpecId=01c47931-2ebd-4f1a-924f-e32cdd593f05, generation=0) is already enqueued for processing
+02-20 17:34:51.837 30445 32536 D FacePipelineProcessor: Model validated: det_10g.onnx (16 MB)
+02-20 17:34:51.837 30445 32536 D FacePipelineProcessor: Model validated: arcface_w600k_r50.onnx (166 MB)
+02-20 17:34:51.875 30445 32536 D FacePipelineProcessor: MediaStore sync: 25 photos in DB
+02-20 17:34:51.962 30445 32536 D FaceDetectionHelper: Model already cached: det_10g.onnx
+02-20 17:34:52.082 30445 32536 W libc    : Access denied finding property "ro.hardware.chipname"
+02-20 17:34:52.137 23019 26591 D WM-DelayedWorkTracker: Scheduling work d5f0786a-a080-443c-a7cd-2dcdeecb5e24
+02-20 17:34:52.137 23019 26591 D WM-GreedyScheduler: Starting work for d5f0786a-a080-443c-a7cd-2dcdeecb5e24
+02-20 17:34:52.141 23019 26570 D WM-Processor: oba: processing WorkGenerationalId(workSpecId=d5f0786a-a080-443c-a7cd-2dcdeecb5e24, generation=0)
+02-20 17:34:52.146 23019 23019 D WM-WorkerWrapper: Starting work for com.google.apps.tiktok.contrib.work.TikTokListenableWorker
+02-20 17:34:52.147 23019 23019 I xom     : Local calendar periodic scheduler worker starts.
+02-20 17:34:52.147 23019 23019 I A       : Scheduling the PCP local calendar update worker.
+02-20 17:34:52.151 23019 26588 I A       : Calendar refresh worker found. Do not schedule new one.
+02-20 17:34:52.159 30445 32536 D FaceDetectionHelper: RetinaFace initialized successfully
+02-20 17:34:52.159 30445 32536 D FaceDetectionHelper: Input names: [input.1]
+02-20 17:34:52.159 30445 32536 D FaceDetectionHelper: Output names: [448, 471, 494, 451, 474, 497, 454, 477, 500]
+02-20 17:34:52.161 30445 32536 D FaceEmbeddingHelper: Initializing ArcFace R50 via ONNX Runtime
+02-20 17:34:52.161 30445 32536 D FaceEmbeddingHelper: Model already cached: /data/user/0/com.example.sensegallery/cache/arcface_w600k_r50.onnx (166 MB)
+02-20 17:34:52.161 30445 32536 D FaceEmbeddingHelper: Model copied to: /data/user/0/com.example.sensegallery/cache/arcface_w600k_r50.onnx
+02-20 17:34:52.169 23019 26579 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=d5f0786a-a080-443c-a7cd-2dcdeecb5e24, tags={ com.google.apps.tiktok.contrib.work.TikTokListenableWorker,TikTokWorker#com.google.android.apps.search.assistant.platform.pcp.featuredata.localcalendar.LocalCalendarPeriodicSchedulerWorker } ]
+02-20 17:34:52.174 23019 23019 D WM-Processor: oba d5f0786a-a080-443c-a7cd-2dcdeecb5e24 executed; reschedule = false
+02-20 17:34:52.182 23019 26570 D WM-GreedyScheduler: Cancelling work ID d5f0786a-a080-443c-a7cd-2dcdeecb5e24
+02-20 17:34:52.187 23019 26570 D WM-SystemJobScheduler: Scheduling work ID d5f0786a-a080-443c-a7cd-2dcdeecb5e24Job ID 4679
+02-20 17:34:52.189 23019 26570 D WM-GreedyScheduler: Ignoring {WorkSpec: e247da4e-f065-4241-8d39-0b686cdedb08}. Requires ContentUri triggers.
+02-20 17:34:52.304  5037  5195 I FontLog : (REDACTED) Received query %s, URI %s
+02-20 17:34:52.305  5037  5195 I FontLog : (REDACTED) Query [%s] resolved to %s
+02-20 17:34:52.307  5037  5195 I FontLog : (REDACTED) Fetch %s end status %s
+02-20 17:34:52.310  5037  5195 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+02-20 17:34:52.318  5037  5195 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+02-20 17:34:52.794 30445 32536 D FaceEmbeddingHelper: ArcFace R50 initialized ΓÇö 512-d embeddings
+02-20 17:34:52.794 30445 32536 D FaceEmbeddingHelper: Input: [input]
+02-20 17:34:52.794 30445 32536 D FaceEmbeddingHelper: Output: [output]
+02-20 17:34:52.798 30445 32536 D FacePipelineProcessor: Starting ARCFACE+RETINAFACE pipeline for 25 photos
+02-20 17:34:52.805  8941  9072 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpabsolumentgratuitfreefrimagesbenaffleckjpg.jpg. Uid: 10244
+02-20 17:34:52.811  8941  9072 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpabsolumentgratuitfreefrimagesbenaffleckjpg.jpg. Uid: 10244
+02-20 17:34:52.813  1507  1919 I AppsFilter: interaction: PackageSetting{fea5d59 com.localmind.assistant/10216} -> PackageSetting{d998615 com.example.sensegallery/10244} BLOCKED
+02-20 17:34:52.814 30445 32536 I FacePipelineProcessor: ========================================
+02-20 17:34:52.814 30445 32536 I FacePipelineProcessor: [START] Photo 1 (200x300)
+02-20 17:34:52.814 30445 32536 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:34:52.818  1507  2100 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10244; state: ENABLED
+02-20 17:34:52.823  1507  1507 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.google.android.dialer: DDC.oR@B34
+02-20 17:34:52.823 25891 25909 I PermissionControllerServiceImpl: Updating user sensitive for uid 10244
+02-20 17:34:52.826 26546 26640 D IconPackManager: Received intent action android.intent.action.PACKAGE_CHANGED for com.example.sensegallery
+02-20 17:34:52.827  2452  2452 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+02-20 17:34:52.827  1507  2143 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS | 
+02-20 17:34:52.833  1507  2125 I RoleService: Granting default roles...
+02-20 17:34:52.834  2702  2702 D CarrierSvcBindHelper: onPackageModified: com.example.sensegallery
+02-20 17:34:52.835  2702  2702 D CarrierSvcBindHelper: No carrier app for: 0
+02-20 17:34:52.835  1507  2125 D CompatibilityInfo: mCompatibilityFlags - 0
+02-20 17:34:52.835  2702  2702 D CarrierSvcBindHelper: No carrier app for: 1
+02-20 17:34:52.835  1507  2125 D CompatibilityInfo: applicationDensity - 440
+02-20 17:34:52.835  1507  2125 D CompatibilityInfo: applicationScale - 1.0
+02-20 17:34:52.839  2702  2702 D ImsResolver: maybeAddedImsService, packageName: com.example.sensegallery
+02-20 17:34:52.847 25891 32554 W Role    : Cannot get ApplicationInfo for default holder: com.google.android.contacts
+02-20 17:34:52.856 25891 32554 W Role    : Cannot get ApplicationInfo for default holder: com.google.android.gms.supervision
+02-20 17:34:52.859 25891 32554 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+02-20 17:34:52.881 25891 32554 W Role    : Cannot get ApplicationInfo for default holder: com.android.gallery3d
+02-20 17:34:53.592  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:34:53.592  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:34:54.170  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:34:54.170  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:34:54.398  1507  4039 D CoreBackPreview: Window{3ce7107 u0 Toast}: Setting back callback null
+02-20 17:34:54.401  1507  4039 W InputManager-JNI: Input channel object '3ce7107 Toast (client)' was disposed without first being removed with the input manager!
+02-20 17:34:54.404  1507  4039 W NotificationService: Toast already killed. pkg=com.example.sensegallery token=android.os.BinderProxy@5434887
+02-20 17:34:55.283  5037  5037 W ThreadPoolForeg: type=1400 audit(0.0:9212): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=29792 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+02-20 17:34:56.616 30445 32536 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:34:56.646 30445 32536 W FaceDetectionHelper: Missing expected output lengths. Score:true BBox:false KPS:false
+02-20 17:34:56.659 30445 32536 W FaceDetectionHelper: Missing expected output lengths. Score:false BBox:true KPS:false
+02-20 17:34:56.672 30445 32536 W FaceDetectionHelper: Missing expected output lengths. Score:false BBox:false KPS:true
+02-20 17:34:56.673 30445 32536 D FaceDetectionHelper: Before NMS: 0 candidates
+02-20 17:34:56.674 30445 32536 D FaceDetectionHelper: After NMS: 0 faces
+02-20 17:34:56.675 30445 32536 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 3860ms
+02-20 17:34:56.675 30445 32536 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:34:56.675 30445 32536 I FacePipelineProcessor: [END] Photo 1 ΓÇö 0 faces (3860ms total)
+02-20 17:34:56.694  8941  9072 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTENDgMDUODczNDcNTcjpg.jpg. Uid: 10244
+02-20 17:34:56.700  8941  9072 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpafilesbiographycomimageuploadcfillcssrgbdprgfacehqwMTENDgMDUODczNDcNTcjpg.jpg. Uid: 10244
+02-20 17:34:56.704 30445 32536 I FacePipelineProcessor: ========================================
+02-20 17:34:56.704 30445 32536 I FacePipelineProcessor: [START] Photo 2 (300x300)
+02-20 17:34:56.704 30445 32536 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:34:56.887 30445 32511 I le.sensegallery: NativeAlloc concurrent copying GC freed 186018(9128KB) AllocSpace objects, 7(10MB) LOS objects, 75% free, 15MB/61MB, paused 562us,112us total 182.900ms
+02-20 17:34:56.883 30445 30445 W FinalizerDaemon: type=1400 audit(0.0:9213): avc: denied { getopt } for path="/dev/socket/usap_pool_primary" scontext=u:r:untrusted_app:s0:c244,c256,c512,c768 tcontext=u:r:zygote:s0 tclass=unix_stream_socket permissive=0 app=com.example.sensegallery
+02-20 17:34:57.640 30445 32555 D ProfileInstaller: Installing profile for com.example.sensegallery
+02-20 17:35:00.262 30445 32536 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:35:00.284 30445 32536 W FaceDetectionHelper: Missing expected output lengths. Score:true BBox:false KPS:false
+02-20 17:35:00.305 30445 32536 W FaceDetectionHelper: Missing expected output lengths. Score:false BBox:true KPS:false
+02-20 17:35:00.319 30445 32536 W FaceDetectionHelper: Missing expected output lengths. Score:false BBox:false KPS:true
+02-20 17:35:00.319 30445 32536 D FaceDetectionHelper: Before NMS: 0 candidates
+02-20 17:35:00.319 30445 32536 D FaceDetectionHelper: After NMS: 0 faces
+02-20 17:35:00.319 30445 32536 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 3615ms
+02-20 17:35:00.320 30445 32536 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:35:00.320 30445 32536 I FacePipelineProcessor: [END] Photo 2 ΓÇö 0 faces (3615ms total)
+02-20 17:35:00.336  8941  9078 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpbpblogspotcomedLMjVpRGkSWexgsXjkNIAAAAAAAADWgFFtAUqBlhAsjpg.jpg. Uid: 10244
+02-20 17:35:00.343  8941  9078 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpbpblogspotcomedLMjVpRGkSWexgsXjkNIAAAAAAAADWgFFtAUqBlhAsjpg.jpg. Uid: 10244
+02-20 17:35:00.347 30445 32536 I FacePipelineProcessor: ========================================
+02-20 17:35:00.347 30445 32536 I FacePipelineProcessor: [START] Photo 3 (240x320)
+02-20 17:35:00.347 30445 32536 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:35:03.781  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 0
+02-20 17:35:03.781  2604  2604 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+02-20 17:35:03.959 30445 32536 D FaceDetectionHelper: RetinaFace output count: 9
+02-20 17:35:03.981 30445 32536 W FaceDetectionHelper: Missing expected output lengths. Score:true BBox:false KPS:false
+02-20 17:35:03.993  3742  3742 W ThreadPoolForeg: type=1400 audit(0.0:9214): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=29792 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+02-20 17:35:04.004 30445 32536 W FaceDetectionHelper: Missing expected output lengths. Score:false BBox:true KPS:false
+02-20 17:35:04.017 30445 32536 W FaceDetectionHelper: Missing expected output lengths. Score:false BBox:false KPS:true
+02-20 17:35:04.017 30445 32536 D FaceDetectionHelper: Before NMS: 0 candidates
+02-20 17:35:04.017 30445 32536 D FaceDetectionHelper: After NMS: 0 faces
+02-20 17:35:04.018 30445 32536 I FacePipelineProcessor:   [RetinaFace] Done ΓÇö 0 face(s) found in 3671ms
+02-20 17:35:04.018 30445 32536 I FacePipelineProcessor:   [SKIP] No faces detected
+02-20 17:35:04.018 30445 32536 I FacePipelineProcessor: [END] Photo 3 ΓÇö 0 faces (3671ms total)
+02-20 17:35:04.037  8941  9078 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpcsvkmeuaafdfjpg.jpg. Uid: 10244
+02-20 17:35:04.042  8941  9078 I MediaProvider: Open with lower FS for /storage/emulated/0/DCIM/Camera/ben_afflek/httpcsvkmeuaafdfjpg.jpg. Uid: 10244
+02-20 17:35:04.045 30445 32536 I FacePipelineProcessor: ========================================
+02-20 17:35:04.045 30445 32536 I FacePipelineProcessor: [START] Photo 4 (200x264)
+02-20 17:35:04.045 30445 32536 I FacePipelineProcessor:   [RetinaFace] Starting detection...
+02-20 17:35:05.119  1507  1507 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@49869ed
