@@ -1,34 +1,133 @@
-# Sense Gallery 📸
+# Sense Gallery
 
-A privacy-preserving, completely offline-first Android photo gallery app built with Java and modern Machine Learning technologies for grouping photos utilizing advanced unsupervised facial clustering!
+Sense Gallery is an offline Android photo gallery focused on two local-first capabilities:
 
-## 🚀 Key Features
+1. Face clustering for organizing photos by person.
+2. Semantic image search for retrieving photos by visual content such as `cake`, `sunset`, or `beach`.
 
-*   **Offline First**: All image processing and clustering happens 100% on-device! No cloud dependencies or privacy leaks.
-*   **Intelligent Facial Clustering**: Groups all of your photos based around the uniquely identified individuals depicted in them.
-*   **Face Naming & Searching**: Name the individuals recognized and search for them instantly utilizing the comprehensive gallery search bar.
-*   **Asynchronous Processing**: Bulk scanning seamlessly halts, starts, and restores its operations smoothly in the background ensuring that large numbers of images (like thousands of dataset records) are thoroughly processed.
+The application is built in Java on top of Room, WorkManager, Material components, and ONNX Runtime. All inference runs on-device. No photo content, embeddings, or search queries are sent to a server.
 
-## 🧠 Machine Learning Engine 
-Sense Gallery runs highly optimized ONNX Runtime binaries, converting images to feature arrays:
-*   **Detection**: `RetinaFace (det_10g.onnx)` to isolate boundary boxes, identify key landmarks, and filter out low-confidence/blurry features utilizing Laplacian Variance matrix analysis. 
-*   **Alignment**: Calculates 5-point mathematical Similarity Transforms scaling identified features (eyes, nose, mouth) perfectly matching ArcFace's 112x112 standard input boundaries.
-*   **Features Embeddings**: Utilizes the industry standard `ArcFace R50 (arcface_w600k_r50.onnx)` engine computing mathematically robust 512-dimension vector parameters representing structural face mappings.
-*   **Clustering Algorithm**: Leverages custom code operating **Hierarchical Agglomerative Clustering (HAC)** with Average Linkage equations grouping Euclidean sets utilizing a strict similarity threshold metric ensuring identities are organized independently.
+## Core Capabilities
 
-## 🛠 Tech Stack
-- **Language**: Java 17+
-- **Database**: SQLite backed by Android Room (PhotoEntity, FaceEntity, ClusterEntity structures). 
-- **AI Runtimes**: ONNX Runtime API (`onnxruntime-android`).
-- **UI & Navigation**: Fragments & Navigation UI (`BottomNavigationView`), Data binding patterns powered natively by robust MVVM (`GalleryViewModel`). Includes Google's Material Design 3 `SearchBar` layout configuration.
-- **Multithreading**: Coordinated using `WorkManager` & custom `java.util.concurrent.CountDownLatch` signaling. 
+- Face detection with RetinaFace ONNX.
+- Face embedding extraction with ArcFace ONNX.
+- Hierarchical agglomerative clustering for grouping faces into identity clusters.
+- CLIP-based image indexing and text-to-image semantic search.
+- Person search through user-editable cluster labels.
+- Automatic semantic indexing after media permission is granted.
+- Manual reprocessing through the floating action button for face processing and CLIP re-indexing.
 
-## �️ Implementation Overview
-*If you are interested in diving specifically into how the data pipes scale and execute numerically, explore the `ARCHITECTURE.md` file!*
+## Current Search Behavior
 
-## 📱 How to Use
-1. Clone the project locally alongside `Android Studio`.
-2. Extract the model files `det_10g.onnx` and `arcface_w600k_r50.onnx` into `app/src/main/assets/`.
-3. Give Storage permissions upon startup.
-4. Click the purple Scan button in the bottom right corner of the Photos view! The workers will scan in the background natively.
-5. In the Clusters section, tag them and find their generated photo galleries!
+The search surface supports two retrieval modes in the same UI:
+
+- Person search: matches cluster labels such as `John`, `Mom`, or `Virat`.
+- Semantic search: matches image content using CLIP embeddings, for example `cake`, `dog`, or `sunset at beach`.
+
+For short exact item queries such as `cake`, the semantic ranking applies a stricter precision filter so broad related images such as plates, restaurants, or generic food scenes are less likely to appear.
+
+## Technology Stack
+
+- Language: Java 17
+- Minimum SDK: 24
+- Target SDK: 36
+- Database: Room
+- Background execution: WorkManager
+- Image loading: Glide
+- Navigation/UI: Fragments, Navigation Component, Material 3 search components
+- Inference runtime: ONNX Runtime Android
+
+## Models Included
+
+The project currently contains the required model and tokenizer assets under `app/src/main/assets/`:
+
+- `det_10g.onnx`
+- `arcface_w600k_r50.onnx`
+- `image_encoder.onnx`
+- `text_encoder.onnx`
+- `tokenizer.json`
+- `vocab.json`
+- `merges.txt`
+
+## How the App Works
+
+### Face Processing
+
+The face pipeline is triggered manually from the floating action button:
+
+1. Sync photos from MediaStore into Room.
+2. Load unprocessed photos.
+3. Detect faces with RetinaFace.
+4. Reject tiny or blurry faces.
+5. Align faces with a 5-point similarity transform.
+6. Generate 512-dimensional ArcFace embeddings.
+7. Persist face records in Room.
+8. Cluster faces with hierarchical agglomerative clustering.
+
+Clusters are stored with generated labels such as `Person 1` until renamed by the user.
+
+### Semantic Indexing
+
+Semantic indexing is triggered automatically after photo permission is granted and can also be restarted from the floating action button.
+
+1. Sync photos from MediaStore into Room.
+2. Find photos that do not yet have a CLIP embedding.
+3. Load each image as a bitmap.
+4. Generate an image embedding with the CLIP image encoder.
+5. Persist the embedding to the `photos` table.
+
+The indexing worker retries photos that still have no stored CLIP embedding, which allows recovery from earlier failed indexing runs.
+
+### Search Composition
+
+The main search flow combines both local cluster filtering and CLIP similarity:
+
+- If the query matches cluster labels, cluster photos are returned.
+- If the query contains non-person terms, the remaining text is embedded with the CLIP text encoder and matched against indexed photos.
+- If both a person name and image description are present, the final result is the intersection of those two result sets where possible.
+
+## Project Structure
+
+- `app/src/main/java/com/example/sensegallery/MainActivity.java`
+  Main host activity, permission handling, search wiring, and worker scheduling.
+- `app/src/main/java/com/example/sensegallery/gallery/GalleryViewModel.java`
+  Search orchestration, cluster loading, and semantic ranking logic.
+- `app/src/main/java/com/example/sensegallery/workers/FaceProcessingWorker.java`
+  Background face processing entry point.
+- `app/src/main/java/com/example/sensegallery/workers/CLIPIndexingWorker.java`
+  Background semantic indexing entry point.
+- `app/src/main/java/com/example/sensegallery/ai/`
+  ONNX model wrappers and image processing pipeline classes.
+- `app/src/main/java/com/example/sensegallery/data/`
+  Room entities, DAOs, converters, and database setup.
+
+## Development Setup
+
+### Prerequisites
+
+- Android Studio with a recent Android SDK installation
+- Java 17
+- An Android device or emulator with image media available
+
+### Run
+
+1. Open the project in Android Studio.
+2. Sync Gradle.
+3. Install and run the debug build on a device.
+4. Grant the requested media permission.
+5. Wait for automatic CLIP indexing to start.
+6. Use the floating action button when you want to run face detection and clustering.
+
+## Operational Notes
+
+- The app is designed for on-device execution only.
+- CLIP model files are copied from assets to internal app storage and validated before reuse so partial copies do not permanently break search.
+- Room stores image-level CLIP embeddings on `PhotoEntity` and face-level ArcFace embeddings on `FaceEntity`.
+- WorkManager unique work policies are used to avoid overlapping runs.
+
+## Related Documentation
+
+- `ARCHITECTURE.md`
+  Detailed pipeline and system design notes.
+- `test_edge_cases.md`
+  Expected behavior for important runtime and data edge cases.

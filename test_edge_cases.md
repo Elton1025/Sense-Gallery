@@ -1,50 +1,147 @@
-# Sense Gallery - Edge Cases & Testing
+# Sense Gallery Runtime Scenarios and Edge Cases
 
-This document logs specific edge cases, user interruptions, and system limits explored during the development of Sense Gallery, providing a behavioral expectation for each scenario.
+This document records expected runtime behavior for the most important operational scenarios in Sense Gallery.
 
-## 1. Concurrent Execution Limits
+## 1. Repeated Worker Triggers
 
-### Scenario: Pressing the Scan Button Multiple Times
-**Trigger:** User taps the "Scan Face" floating action button repeatedly while a long-running detection phase is actively processing images in the background.
-**Expected Behavior:** 
-- The Android `WorkManager` enqueue structure leverages `ExistingWorkPolicy.KEEP`.
-- The current running instance continues processing photos without interruption.
-- The secondary trigger is safely ignored or queued depending on API level, guaranteeing that the database does not receive duplicated entries or run overlapping threads that crash the active neural network context.
+### Scenario
 
-## 2. Dynamic Image Additions
+The user taps the floating action button multiple times while background work is already running.
 
-### Scenario: Adding Photos During an Active Scan
-**Trigger:** User takes a new photo or downloads images from the internet exactly while the background AI process is in the middle of scanning an older block of photos.
-**Expected Behavior:** 
-- The new photo will **not** be scanned during the current active WorkManager task. 
-- The `processAllPhotos` pipeline isolates the `MediaStore` synchronisation exactly once per execution cycle.
-- The new image will sit untouched in the phone's gallery. The next time the user manually or automatically triggers the background worker, the `MediaStore` sync captures the new image. Because of internal database verification, the worker flies past the previously detected photos and rapidly isolates only the single newest image.
+### Expected Behavior
 
-## 3. Interruptions & Background Process Termination
+- Face processing is enqueued as unique work with `ExistingWorkPolicy.KEEP`.
+- A currently running face-processing job is not duplicated.
+- CLIP indexing triggered from the same action is enqueued with `ExistingWorkPolicy.REPLACE`, allowing the semantic indexing pass to restart cleanly when the user explicitly requests it.
 
-### Scenario: Swiping App Away / OS Killing the Scan
-**Trigger:** User forcibly closes the app from the Recents menu, or Android's extreme battery management kills the process while the worker is precisely halfway through an image queue (e.g., 500 out of 1000 images completed).
-**Expected Behavior:**
-- **No Data Loss:** `FaceEntity` embeddings are written directly into persistent Room storage synchronously image-by-image. The first 500 face structures are safely preserved indefinitely.
-- **Clustering Halt:** The `FaceClusterer.clusterFaces()` calculation is systematically blocked by a `CountDownLatch` and will not trigger if the preceding detection queue is terminated abruptly.
-- **Resumption Sync:** By re-opening the application, WorkManager (which logged the incomplete execution) will resume. The detector flies past the 500 existing photos, finishes the remaining 500, and mathematically calculates the identities for all 1000 items as one complete analytical block.
+## 2. Automatic Semantic Indexing After Permission Grant
 
-## 4. One-To-Many Photo Mapping
+### Scenario
 
-### Scenario: Group Photos with Multiple Individuals
-**Trigger:** The system detects an image featuring 15 different individuals (e.g., a group photo of a cricket team).
-**Expected Behavior:**
-- The system naturally supports one-to-many relationships logically.
-- The `PhotoEntity` table holds exactly 1 reference to that image, preventing storage bloat.
-- RetinaFace physically generates 15 independent `FaceEntity` structures tied to the specific X and Y coordinates inside that single photo frame.
-- Consequently, navigating to "Person A" will show the group photo. Navigating independently to "Person B" will also load the identical group photo efficiently via a unified SQL JOIN execution.
+The app is launched for the first time and the user grants media permission.
 
-## 5. Destructive File Triggers (Deletion)
+### Expected Behavior
 
-### Scenario: Deleting a Processed Image
-**Trigger:** User deletes a photo using an external file manager or gallery application after Sense Gallery has already spent battery mapping it to a human identity cluster.
-**Expected Behavior:**
-- Upon the next execution cycle, the `MediaStore` sync realizes the URI is missing.
-- The internal `PhotoEntity` cache deletes the orphaned row.
-- `ON DELETE CASCADE` automatically activates securely inside the Room SQLite schema, permanently scrubbing all associated facial `FaceEntity` references. 
-- The master `ClusterEntity` (Person Label) is unaffected, cleanly preserving the individual's remaining historical database of pictures.
+- The app immediately schedules CLIP indexing in the background.
+- No manual face-processing action is required for semantic search to begin working.
+- Search quality improves progressively as more photos finish indexing.
+
+## 3. Failed CLIP Indexing Attempt
+
+### Scenario
+
+A photo fails during semantic indexing due to bitmap decode issues, model initialization problems, or temporary runtime failures.
+
+### Expected Behavior
+
+- The photo is not marked as successfully CLIP-processed unless an embedding is actually saved.
+- Photos that still have `clipEmbedding = NULL` remain eligible for retry on later runs.
+- A subsequent app launch or manual restart can recover the missing embedding.
+
+## 4. Corrupt Cached ONNX Model Copy
+
+### Scenario
+
+The app previously copied a model file into internal storage, but the cached file is partial or invalid.
+
+### Expected Behavior
+
+- The CLIP inference layer validates the cached file before reuse.
+- If ONNX session creation fails, the model cache is recopied from packaged assets.
+- Semantic indexing can recover without requiring the user to clear app storage manually.
+
+## 5. Photos Added After Initial Indexing
+
+### Scenario
+
+The user captures or downloads new photos after the first indexing pass has already completed.
+
+### Expected Behavior
+
+- New MediaStore entries are inserted into the `photos` table on the next indexing or face-processing sync.
+- Existing photos are deduplicated by `mediaStoreUri`.
+- Only photos without the required processed state or embedding are revisited.
+
+## 6. Face Detection With No Valid Faces
+
+### Scenario
+
+A photo contains no faces, only tiny faces, or only blurry faces.
+
+### Expected Behavior
+
+- No `FaceEntity` rows are stored for that photo.
+- The photo is still considered processed for the face pipeline.
+- The image remains eligible for semantic indexing because face processing and CLIP indexing are independent workflows.
+
+## 7. Group Photos With Multiple People
+
+### Scenario
+
+A single photo contains many people.
+
+### Expected Behavior
+
+- One `PhotoEntity` row represents the source image.
+- Multiple `FaceEntity` rows can reference the same photo.
+- The same image can appear in several cluster detail screens because multiple faces in that image may belong to different clusters.
+
+## 8. Search Query With Person and Object Terms
+
+### Scenario
+
+The user searches with a mixed query such as `John cake`.
+
+### Expected Behavior
+
+- Cluster labels are matched first.
+- Remaining unmatched terms are embedded and used for CLIP retrieval.
+- The result set prefers photos that satisfy both the person filter and the semantic filter.
+- If no intersection exists, the current implementation falls back to person-only results.
+
+## 9. Single-Word Semantic Query Precision
+
+### Scenario
+
+The user searches for a short exact item term such as `cake`.
+
+### Expected Behavior
+
+- The ranking path applies a stricter score-band filter than it does for broader descriptive queries.
+- The UI should prefer highly confident `cake` images and suppress broader related food or restaurant images when their score falls outside the top confidence band.
+
+## 10. Semantic Search Before Index Completion
+
+### Scenario
+
+The user begins typing semantic queries before CLIP indexing has finished.
+
+### Expected Behavior
+
+- Person-name search can still work because cluster labels and semantic indexing are separate.
+- Semantic-only results may be incomplete or empty until enough photos have stored CLIP embeddings.
+- Once indexing progresses, the same query should return a broader and more stable result set.
+
+## 11. Deleting a Previously Indexed Photo
+
+### Scenario
+
+The user deletes a photo outside the app after it has already been processed.
+
+### Expected Behavior
+
+- On the next synchronization pass, the photo row should no longer be reintroduced if the MediaStore entry is gone.
+- Face rows linked to that photo are protected by foreign key cascade behavior and should be removed with the photo record.
+- Cluster entities remain available for any remaining photos that still belong to the same person.
+
+## 12. App Termination During Long-Running Work
+
+### Scenario
+
+The process is killed while face processing or CLIP indexing is in progress.
+
+### Expected Behavior
+
+- Completed database writes remain durable because embeddings and entities are persisted incrementally.
+- The next scheduled or manual run continues from the persisted state rather than reprocessing the entire library unnecessarily.
+- CLIP indexing can revisit incomplete rows because missing embeddings remain retryable.
