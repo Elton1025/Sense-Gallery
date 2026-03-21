@@ -35,7 +35,10 @@ import java.util.concurrent.Executors;
 public class GalleryViewModel extends AndroidViewModel {
 
     private static final String TAG = "GalleryVM";
-    private static final float CLIP_THRESHOLD = 0.50f;
+    private static final float MIN_CLIP_SCORE = 0.18f;
+    private static final float LOW_CONFIDENCE_CLIP_SCORE = 0.12f;
+    private static final float EXACT_QUERY_RELATIVE_SCORE_FLOOR = 0.92f;
+    private static final float EXACT_QUERY_SCORE_MARGIN = 0.04f;
     private static final int MAX_CLIP_RESULTS = 20;
 
     private final MutableLiveData<List<PhotoItem>> photosLiveData = new MutableLiveData<>();
@@ -350,28 +353,45 @@ public class GalleryViewModel extends AndroidViewModel {
                         if (textEmbedding != null) {
                             com.example.sensegallery.data.PhotoDao photoDao = db.photoDao();
                             List<PhotoEntity> indexed = photoDao.getPhotosWithClipEmbeddings();
-
-                            for (PhotoEntity photo : indexed) {
-                                if (photo.clipEmbedding != null) {
-                                    float[] imgEmb = com.example.sensegallery.data.EmbeddingTypeConverter
-                                            .toFloatArray(photo.clipEmbedding);
-                                    float score = com.example.sensegallery.ai.CLIPInferenceEngine
-                                            .cosineSimilarity(textEmbedding, imgEmb);
-
-                                    if (score >= CLIP_THRESHOLD) {
-                                        clipResults.add(new ScoredPhoto(
-                                                photo.id, photo.mediaStoreUri, photo.dateTaken, score));
-                                    }
-                                }
+                            if (indexed.isEmpty()) {
+                                Log.w(TAG, "No CLIP-indexed photos available yet");
                             }
 
-                            // Sort by similarity descending
-                            clipResults.sort((a, b) -> Float.compare(b.score, a.score));
-                            Log.d(TAG, "CLIP found " + clipResults.size()
-                                    + " results above threshold " + CLIP_THRESHOLD);
+                            Log.d(TAG, "CLIP evaluating " + indexed.size()
+                                    + " indexed photos for query \"" + clipQuery + "\"");
 
-                            // Smart relevance cutoff: detect large score drop
-                            clipResults = filterByRelevanceDrop(clipResults);
+                            for (PhotoEntity photo : indexed) {
+                                if (photo.clipEmbedding == null) {
+                                    continue;
+                                }
+
+                                float[] imgEmb = com.example.sensegallery.data.EmbeddingTypeConverter
+                                        .toFloatArray(photo.clipEmbedding);
+                                if (imgEmb == null || imgEmb.length != textEmbedding.length) {
+                                    continue;
+                                }
+
+                                float score = com.example.sensegallery.ai.CLIPInferenceEngine
+                                        .cosineSimilarity(textEmbedding, imgEmb);
+                                if (Float.isNaN(score) || Float.isInfinite(score)) {
+                                    continue;
+                                }
+
+                                clipResults.add(new ScoredPhoto(
+                                        photo.id, photo.mediaStoreUri, photo.dateTaken, score));
+                            }
+
+                            clipResults.sort((a, b) -> Float.compare(b.score, a.score));
+                            clipResults = filterClipResults(clipResults, clipQuery);
+
+                            if (!clipResults.isEmpty()) {
+                                Log.d(TAG, "CLIP kept " + clipResults.size()
+                                        + " results, best score=" + clipResults.get(0).score);
+                            } else {
+                                Log.d(TAG, "CLIP found no relevant results for query \"" + clipQuery + "\"");
+                            }
+                        } else {
+                            Log.w(TAG, "CLIP text embedding was null for query \"" + clipQuery + "\"");
                         }
                     } else {
                         Log.w(TAG, "CLIP text encoder not ready");
@@ -437,19 +457,62 @@ public class GalleryViewModel extends AndroidViewModel {
      * Example scores: [0.35, 0.33, 0.31, 0.30, 0.22, 0.21, 0.20...]
      * A drop from 0.30 to 0.22 (>25% gap relative to top score) triggers cutoff.
      */
+    private List<ScoredPhoto> filterClipResults(List<ScoredPhoto> sorted, String clipQuery) {
+        List<ScoredPhoto> filtered = filterByRelevanceDrop(sorted);
+        if (filtered.isEmpty()) {
+            return filtered;
+        }
+
+        if (!isExactItemQuery(clipQuery)) {
+            return filtered;
+        }
+
+        float topScore = filtered.get(0).score;
+        float scoreFloor = Math.max(
+                MIN_CLIP_SCORE,
+                Math.max(topScore * EXACT_QUERY_RELATIVE_SCORE_FLOOR, topScore - EXACT_QUERY_SCORE_MARGIN));
+
+        List<ScoredPhoto> strict = new ArrayList<>();
+        for (ScoredPhoto photo : filtered) {
+            if (photo.score >= scoreFloor) {
+                strict.add(photo);
+            }
+        }
+
+        if (strict.isEmpty()) {
+            strict.add(filtered.get(0));
+        }
+
+        Log.d(TAG, "Exact-query filter for \"" + clipQuery + "\" kept " + strict.size()
+                + " of " + filtered.size() + " results (top="
+                + String.format("%.3f", topScore) + ", floor="
+                + String.format("%.3f", scoreFloor) + ")");
+        return strict;
+    }
+
     private List<ScoredPhoto> filterByRelevanceDrop(List<ScoredPhoto> sorted) {
         if (sorted.isEmpty())
             return sorted;
 
-        // Cap at MAX results first
         int limit = Math.min(sorted.size(), MAX_CLIP_RESULTS);
-
-        // Detect relevance drop: if score drops more than 40% of the top score's value
         float topScore = sorted.get(0).score;
-        float dropThreshold = topScore * 0.40f; // 40% relative gap
+        if (topScore < LOW_CONFIDENCE_CLIP_SCORE) {
+            Log.d(TAG, "Rejecting CLIP results because top score is too low: "
+                    + String.format("%.3f", topScore));
+            return new ArrayList<>();
+        }
 
         int cutoff = limit;
-        for (int i = 1; i < limit; i++) {
+        for (int i = 0; i < limit; i++) {
+            float score = sorted.get(i).score;
+            if (score < MIN_CLIP_SCORE) {
+                cutoff = Math.max(1, i);
+                break;
+            }
+        }
+
+        float dropThreshold = Math.max(0.03f, topScore * 0.20f);
+        for (int i = 1; i < cutoff; i++) {
             float gap = sorted.get(i - 1).score - sorted.get(i).score;
             if (gap > dropThreshold) {
                 cutoff = i;
@@ -461,11 +524,25 @@ public class GalleryViewModel extends AndroidViewModel {
             }
         }
 
-        List<ScoredPhoto> filtered = sorted.subList(0, cutoff);
+        List<ScoredPhoto> filtered = sorted.subList(0, Math.max(1, cutoff));
         Log.d(TAG, "Relevance filter: kept " + filtered.size() + " of " + sorted.size()
                 + " (top=" + String.format("%.3f", topScore)
                 + ", last=" + String.format("%.3f", filtered.get(filtered.size() - 1).score) + ")");
         return new ArrayList<>(filtered);
+    }
+
+    private boolean isExactItemQuery(String clipQuery) {
+        if (clipQuery == null) {
+            return false;
+        }
+
+        String[] words = clipQuery.trim().split("\\s+");
+        if (words.length != 1) {
+            return false;
+        }
+
+        String word = words[0];
+        return word.length() >= 3 && word.matches("[a-z0-9-]+");
     }
 
     private PhotoEntity findPhotoById(AppDatabase db, long photoId) {

@@ -22,7 +22,8 @@ import java.util.List;
  * Background worker that indexes all unprocessed photos with CLIP image
  * embeddings.
  * Uses a dedicated single-thread approach to avoid blocking face processing.
- * Skips already-indexed photos via the isClipProcessed flag.
+ * Retries photos that are still missing embeddings, even if an older run
+ * incorrectly marked them as processed.
  */
 public class CLIPIndexingWorker extends Worker {
 
@@ -45,6 +46,11 @@ public class CLIPIndexingWorker extends Worker {
             Context context = getApplicationContext();
             AppDatabase db = AppDatabase.getInstance(context);
             PhotoDao photoDao = db.photoDao();
+
+            // STEP 1: Sync MediaStore to Database
+            // This ensures we have work to do, even if FaceProcessing has not run yet.
+            Log.i(TAG, "[CLIP] Syncing specific photos from MediaStore before indexing...");
+            syncPhotosToDb(context, photoDao);
 
             // Get unprocessed photos
             List<PhotoEntity> unprocessed = photoDao.getClipUnprocessedPhotos();
@@ -109,21 +115,21 @@ public class CLIPIndexingWorker extends Worker {
 
                             byte[] embeddingBytes = EmbeddingTypeConverter.fromFloatArray(embedding);
                             photoDao.updateClipEmbedding(photo.id, embeddingBytes);
+                            photoDao.markClipProcessed(photo.id);
                             embedded++;
+                            processed++;
 
                             Log.d(TAG, "  [DB] Saved " + embeddingBytes.length + " bytes to database");
                         } else {
                             Log.w(TAG, "  [CLIP] Encoder returned null embedding (" + encodeTime + "ms)");
                             failed++;
+                            processed++;
                         }
                     } else {
                         Log.w(TAG, "  [Glide] Failed to load bitmap (null) in " + loadTime + "ms");
                         failed++;
+                        processed++;
                     }
-
-                    // Mark as processed regardless of success
-                    photoDao.markClipProcessed(photo.id);
-                    processed++;
 
                     long photoTime = System.currentTimeMillis() - photoStart;
                     Log.i(TAG, "[END] Photo #" + processed + "/" + total
@@ -131,7 +137,6 @@ public class CLIPIndexingWorker extends Worker {
 
                 } catch (Exception e) {
                     Log.e(TAG, "  [ERROR] Photo " + photo.id + ": " + e.getMessage());
-                    photoDao.markClipProcessed(photo.id);
                     processed++;
                     failed++;
                 }
@@ -155,6 +160,45 @@ public class CLIPIndexingWorker extends Worker {
             if (engine != null) {
                 engine.close();
             }
+        }
+    }
+
+
+
+    private void syncPhotosToDb(Context context, PhotoDao photoDao) {
+        try {
+            android.content.ContentResolver resolver = context.getContentResolver();
+            Uri collection = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            String[] projection = {
+                    android.provider.MediaStore.Images.Media._ID,
+                    android.provider.MediaStore.Images.Media.DATE_TAKEN
+            };
+
+            try (android.database.Cursor cursor = resolver.query(collection, projection, null, null, null)) {
+                if (cursor != null) {
+                    int idCol = cursor.getColumnIndexOrThrow(android.provider.MediaStore.Images.Media._ID);
+                    int dateCol = cursor.getColumnIndex(android.provider.MediaStore.Images.Media.DATE_TAKEN);
+
+                    int count = 0;
+
+                    while (cursor.moveToNext()) {
+                        long id = cursor.getLong(idCol);
+                        long dateTaken = (dateCol >= 0) ? cursor.getLong(dateCol) : System.currentTimeMillis();
+
+                        Uri contentUri = android.content.ContentUris.withAppendedId(
+                                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                                id);
+                        
+                        // Use INSERT OR IGNORE via the DAO method annotated with OnConflictStrategy.IGNORE
+                        PhotoEntity photo = new PhotoEntity(contentUri.toString(), dateTaken, null);
+                        photoDao.insertPhoto(photo);
+                        count++;
+                    }
+                    Log.d(TAG, "[CLIP] Scanned " + count + " photos from MediaStore.");
+                }
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error syncing MediaStore to DB: " + e.getMessage());
         }
     }
 

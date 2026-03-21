@@ -1,17 +1,30 @@
 package com.example.sensegallery;
 
 import org.junit.Test;
+import ai.onnxruntime.OrtEnvironment;
+import ai.onnxruntime.OrtSession;
+import ai.onnxruntime.NodeInfo;
 
-import static org.junit.Assert.*;
+import java.io.File;
+import java.util.Map;
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void testOnnx() throws Exception {
+        OrtEnvironment env = OrtEnvironment.getEnvironment();
+        File modelFile = new File("src/main/assets/det_10g.onnx");
+        if (!modelFile.exists()) {
+            System.out.println("Model not found at: " + modelFile.getAbsolutePath());
+            return;
+        }
+        OrtSession session = env.createSession(modelFile.getAbsolutePath(), new OrtSession.SessionOptions());
+        System.out.println("Inputs:");
+        for (Map.Entry<String, NodeInfo> e : session.getInputInfo().entrySet()) {
+            System.out.println(e.getKey() + ": " + e.getValue().getInfo().toString());
+        }
+        System.out.println("Outputs:");
+        for (Map.Entry<String, NodeInfo> e : session.getOutputInfo().entrySet()) {
+            System.out.println(e.getKey() + ": " + e.getValue().getInfo().toString());
+        }
     }
 }

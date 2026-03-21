@@ -40,7 +40,7 @@ public interface PhotoDao {
     @Query("UPDATE photos SET isFaceProcessed = 1 WHERE id = :photoId")
     void markFaceProcessed(long photoId);
 
-    @Query("SELECT * FROM photos WHERE isClipProcessed = 0 ORDER BY dateTaken DESC")
+    @Query("SELECT * FROM photos WHERE isClipProcessed = 0 OR clipEmbedding IS NULL ORDER BY dateTaken DESC")
     List<PhotoEntity> getClipUnprocessedPhotos();
 
     @Query("UPDATE photos SET isClipProcessed = 1 WHERE id = :photoId")

@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
             isGranted -> {
                 if (!isGranted) {
                     showPermissionDenied();
+                } else {
+                    startClipIndexing(androidx.work.ExistingWorkPolicy.KEEP, false);
                 }
             });
 
@@ -219,16 +221,24 @@ public class MainActivity extends AppCompatActivity {
                 faceWork);
 
         // 2. CLIP indexing
+        startClipIndexing(androidx.work.ExistingWorkPolicy.REPLACE, false);
+
+        Toast.makeText(this, "Face processing + CLIP indexing started!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void startClipIndexing(androidx.work.ExistingWorkPolicy policy, boolean showToast) {
         androidx.work.OneTimeWorkRequest clipWork = new androidx.work.OneTimeWorkRequest.Builder(
                 com.example.sensegallery.workers.CLIPIndexingWorker.class)
                 .build();
 
         androidx.work.WorkManager.getInstance(this).enqueueUniqueWork(
                 "CLIPIndexingWork",
-                androidx.work.ExistingWorkPolicy.KEEP,
+                policy,
                 clipWork);
 
-        Toast.makeText(this, "Face processing + CLIP indexing started!", Toast.LENGTH_SHORT).show();
+        if (showToast) {
+            Toast.makeText(this, "Semantic search indexing started", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void checkAndRequestPermission() {
@@ -241,6 +251,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
             permissionLauncher.launch(permission);
+        } else {
+            startClipIndexing(androidx.work.ExistingWorkPolicy.KEEP, false);
         }
     }
 

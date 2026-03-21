@@ -148,8 +148,19 @@ public class FaceDetectionHelper implements AutoCloseable {
                 List<float[][]> bboxOutputs = new ArrayList<>();
                 List<float[][]> kpsOutputs = new ArrayList<>();
 
-                for (int i = 0; i < 9; i++) {
-                    float[][] arr = (float[][]) output.get(i).getValue();
+                for (int i = 0; i < outputCount; i++) {
+                    Object val = output.get(i).getValue();
+                    float[][] arr;
+                    if (val instanceof float[][][]) {
+                        float[][][] arr3d = (float[][][]) val;
+                        if (arr3d.length == 0)
+                            continue;
+                        arr = arr3d[0];
+                    } else if (val instanceof float[][]) {
+                        arr = (float[][]) val;
+                    } else {
+                        continue;
+                    }
                     if (arr.length == 0)
                         continue;
                     int featureLen = arr[0].length;
@@ -157,7 +168,7 @@ public class FaceDetectionHelper implements AutoCloseable {
                         scoreOutputs.add(arr);
                     else if (featureLen == 4)
                         bboxOutputs.add(arr);
-                    else if (featureLen == 10)
+                    else if (featureLen == 10 || featureLen == 5)
                         kpsOutputs.add(arr);
                 }
 
@@ -219,9 +230,13 @@ public class FaceDetectionHelper implements AutoCloseable {
                 } // end if size==3
             } else if (outputCount == 3) {
                 // Not typical for pure SCRFD without merged outputs, but just in case
-                float[][] out0 = (float[][]) output.get(0).getValue();
-                float[][] out1 = (float[][]) output.get(1).getValue();
-                float[][] out2 = (float[][]) output.get(2).getValue();
+                Object val0 = output.get(0).getValue();
+                Object val1 = output.get(1).getValue();
+                Object val2 = output.get(2).getValue();
+
+                float[][] out0 = (val0 instanceof float[][][]) ? ((float[][][]) val0)[0] : (float[][]) val0;
+                float[][] out1 = (val1 instanceof float[][][]) ? ((float[][][]) val1)[0] : (float[][]) val1;
+                float[][] out2 = (val2 instanceof float[][][]) ? ((float[][][]) val2)[0] : (float[][]) val2;
 
                 float[][] scores = null, bboxes = null, kps = null;
                 float[][][] arrays = { out0, out1, out2 };

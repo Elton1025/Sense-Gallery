@@ -1,6 +1,7 @@
 package com.example.sensegallery.ai;
 
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.util.Log;
 
@@ -10,6 +11,7 @@ import ai.onnxruntime.OrtSession;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.FloatBuffer;
 import java.nio.LongBuffer;
@@ -23,7 +25,8 @@ import java.util.Map;
  * normalization.
  * Text encoder: CPU-only (NNAPI silently fails on attention/transformer ops).
  *
- * Models are copied from assets to filesDir (chunked streaming to avoid OOM).
+ * Models are copied from assets to filesDir and validated before reuse so a
+ * partial copy does not permanently break semantic search.
  */
 public class CLIPInferenceEngine implements AutoCloseable {
 
@@ -33,14 +36,13 @@ public class CLIPInferenceEngine implements AutoCloseable {
     private static final String TEXT_MODEL = "text_encoder.onnx";
 
     private static final int IMAGE_SIZE = 224;
-    private static final int EMBEDDING_DIM = 512;
     private static final int CONTEXT_LENGTH = 77;
 
     // CLIP normalization constants
     private static final float[] MEAN = { 0.48145466f, 0.4578275f, 0.40821073f };
     private static final float[] STD = { 0.26862954f, 0.26130258f, 0.27577711f };
 
-    private OrtEnvironment env;
+    private final OrtEnvironment env;
     private OrtSession imageSession;
     private OrtSession textSession;
     private CLIPTokenizer tokenizer;
@@ -52,9 +54,7 @@ public class CLIPInferenceEngine implements AutoCloseable {
         Log.d(TAG, "Initializing CLIP inference engine...");
         env = OrtEnvironment.getEnvironment();
 
-        // Initialize each component independently
         try {
-            String imagePath = copyModelToFilesDir(context, IMAGE_MODEL);
             OrtSession.SessionOptions imageOptions = new OrtSession.SessionOptions();
             imageOptions.setIntraOpNumThreads(4);
             try {
@@ -63,7 +63,9 @@ public class CLIPInferenceEngine implements AutoCloseable {
             } catch (Exception e) {
                 Log.w(TAG, "NNAPI not available, using CPU for image encoder: " + e.getMessage());
             }
-            imageSession = env.createSession(imagePath, imageOptions);
+
+            String imagePath = copyModelToFilesDir(context, IMAGE_MODEL, false);
+            imageSession = createSessionWithRecovery(context, imagePath, IMAGE_MODEL, imageOptions);
             Log.d(TAG, "Image encoder loaded. Inputs: " + imageSession.getInputNames()
                     + " Outputs: " + imageSession.getOutputNames());
         } catch (Exception e) {
@@ -72,11 +74,11 @@ public class CLIPInferenceEngine implements AutoCloseable {
         }
 
         try {
-            String textPath = copyModelToFilesDir(context, TEXT_MODEL);
             OrtSession.SessionOptions textOptions = new OrtSession.SessionOptions();
             textOptions.setIntraOpNumThreads(4);
-            // NO NNAPI for text encoder — transformer/attention ops not supported
-            textSession = env.createSession(textPath, textOptions);
+
+            String textPath = copyModelToFilesDir(context, TEXT_MODEL, false);
+            textSession = createSessionWithRecovery(context, textPath, TEXT_MODEL, textOptions);
             Log.d(TAG, "Text encoder loaded. Inputs: " + textSession.getInputNames()
                     + " Outputs: " + textSession.getOutputNames());
         } catch (Exception e) {
@@ -103,10 +105,10 @@ public class CLIPInferenceEngine implements AutoCloseable {
     }
 
     /**
-     * Encodes a bitmap into a 512-d CLIP image embedding.
+     * Encodes a bitmap into a CLIP image embedding.
      *
      * @param bitmap Input image (will be scaled to 224x224)
-     * @return L2-normalized 512-d float array, or null on failure
+     * @return L2-normalized float array, or null on failure
      */
     public float[] encodeImage(Bitmap bitmap) {
         if (imageSession == null || bitmap == null)
@@ -115,10 +117,8 @@ public class CLIPInferenceEngine implements AutoCloseable {
         OnnxTensor inputTensor = null;
         OrtSession.Result output = null;
         try {
-            // Scale to 224x224
             Bitmap scaled = Bitmap.createScaledBitmap(bitmap, IMAGE_SIZE, IMAGE_SIZE, true);
 
-            // Convert to NCHW format with CLIP normalization
             int[] pixels = new int[IMAGE_SIZE * IMAGE_SIZE];
             scaled.getPixels(pixels, 0, IMAGE_SIZE, 0, 0, IMAGE_SIZE, IMAGE_SIZE);
 
@@ -129,9 +129,9 @@ public class CLIPInferenceEngine implements AutoCloseable {
                 float g = ((pixel >> 8) & 0xFF) / 255.0f;
                 float b = (pixel & 0xFF) / 255.0f;
 
-                inputData[i] = (r - MEAN[0]) / STD[0]; // R channel
-                inputData[IMAGE_SIZE * IMAGE_SIZE + i] = (g - MEAN[1]) / STD[1]; // G channel
-                inputData[2 * IMAGE_SIZE * IMAGE_SIZE + i] = (b - MEAN[2]) / STD[2]; // B channel
+                inputData[i] = (r - MEAN[0]) / STD[0];
+                inputData[IMAGE_SIZE * IMAGE_SIZE + i] = (g - MEAN[1]) / STD[1];
+                inputData[2 * IMAGE_SIZE * IMAGE_SIZE + i] = (b - MEAN[2]) / STD[2];
             }
 
             if (scaled != bitmap)
@@ -146,7 +146,6 @@ public class CLIPInferenceEngine implements AutoCloseable {
 
             output = imageSession.run(inputs);
 
-            // Extract embedding — handle [1, 512] shape
             float[] embedding = extractFloatEmbedding(output);
             if (embedding != null) {
                 l2Normalize(embedding);
@@ -173,10 +172,10 @@ public class CLIPInferenceEngine implements AutoCloseable {
     }
 
     /**
-     * Encodes a text query into a 512-d CLIP text embedding.
+     * Encodes a text query into a CLIP text embedding.
      *
      * @param text The search query
-     * @return L2-normalized 512-d float array, or null on failure
+     * @return L2-normalized float array, or null on failure
      */
     public float[] encodeText(String text) {
         if (textSession == null || tokenizer == null || !tokenizer.isInitialized())
@@ -267,38 +266,100 @@ public class CLIPInferenceEngine implements AutoCloseable {
     }
 
     /**
-     * Copies ONNX model from assets to filesDir (NOT cache — survives cache
-     * clears).
-     * Uses chunked streaming to avoid OOM on 89MB+ files.
-     * Skips copy if file already exists and has size > 0.
+     * Copies an ONNX model from assets into filesDir. The copy is written to a
+     * temp file first and only replaces the cached model when the byte count
+     * matches the packaged asset.
      */
-    private String copyModelToFilesDir(Context context, String fileName) throws Exception {
+    private String copyModelToFilesDir(Context context, String fileName, boolean forceRefresh) throws Exception {
         File destFile = new File(context.getFilesDir(), fileName);
-        if (destFile.exists() && destFile.length() > 0) {
+        long assetLength = getAssetLength(context, fileName);
+
+        if (!forceRefresh && isUsableCachedModel(destFile, assetLength)) {
             Log.d(TAG, "Model already cached: " + destFile.getAbsolutePath()
-                    + " (" + (destFile.length() / 1024 / 1024) + " MB)");
+                    + " (" + formatMegabytes(destFile.length()) + " MB)");
             return destFile.getAbsolutePath();
+        }
+
+        if (destFile.exists()) {
+            Log.w(TAG, "Replacing cached model " + destFile.getAbsolutePath()
+                    + " (cached=" + destFile.length() + " bytes, asset=" + assetLength + " bytes)");
+        }
+
+        File tempFile = new File(context.getFilesDir(), fileName + ".tmp");
+        if (tempFile.exists() && !tempFile.delete()) {
+            throw new IOException("Could not clear temp model file: " + tempFile.getAbsolutePath());
         }
 
         Log.d(TAG, "Copying " + fileName + " from assets to filesDir...");
         long start = System.currentTimeMillis();
 
-        InputStream is = context.getAssets().open(fileName);
-        FileOutputStream fos = new FileOutputStream(destFile);
-        byte[] buffer = new byte[65536]; // 64KB chunks
-        int bytesRead;
+        byte[] buffer = new byte[65536];
         long totalBytes = 0;
-        while ((bytesRead = is.read(buffer)) != -1) {
-            fos.write(buffer, 0, bytesRead);
-            totalBytes += bytesRead;
+        try (InputStream is = context.getAssets().open(fileName);
+                FileOutputStream fos = new FileOutputStream(tempFile)) {
+            int bytesRead;
+            while ((bytesRead = is.read(buffer)) != -1) {
+                fos.write(buffer, 0, bytesRead);
+                totalBytes += bytesRead;
+            }
+            fos.flush();
         }
-        fos.flush();
-        fos.close();
-        is.close();
+
+        if (assetLength > 0 && totalBytes != assetLength) {
+            if (!tempFile.delete()) {
+                Log.w(TAG, "Failed to delete incomplete temp model: " + tempFile.getAbsolutePath());
+            }
+            throw new IOException("Copied " + totalBytes + " bytes for " + fileName
+                    + " but expected " + assetLength);
+        }
+
+        if (destFile.exists() && !destFile.delete()) {
+            throw new IOException("Could not replace cached model: " + destFile.getAbsolutePath());
+        }
+        if (!tempFile.renameTo(destFile)) {
+            throw new IOException("Could not move temp model into place: " + destFile.getAbsolutePath());
+        }
 
         long elapsed = System.currentTimeMillis() - start;
-        Log.d(TAG, "Model cached: " + (totalBytes / 1024 / 1024) + " MB in " + elapsed + "ms");
+        Log.d(TAG, "Model cached: " + formatMegabytes(totalBytes) + " MB in " + elapsed + "ms");
         return destFile.getAbsolutePath();
+    }
+
+    private OrtSession createSessionWithRecovery(
+            Context context,
+            String modelPath,
+            String fileName,
+            OrtSession.SessionOptions options) throws Exception {
+        try {
+            return env.createSession(modelPath, options);
+        } catch (Exception firstError) {
+            Log.w(TAG, "Failed to open cached " + fileName + ", forcing recopy", firstError);
+            String refreshedPath = copyModelToFilesDir(context, fileName, true);
+            return env.createSession(refreshedPath, options);
+        }
+    }
+
+    private boolean isUsableCachedModel(File destFile, long assetLength) {
+        if (!destFile.exists() || destFile.length() <= 0) {
+            return false;
+        }
+        if (assetLength <= 0) {
+            return true;
+        }
+        return destFile.length() == assetLength;
+    }
+
+    private long getAssetLength(Context context, String fileName) {
+        try (AssetFileDescriptor afd = context.getAssets().openFd(fileName)) {
+            return afd.getLength();
+        } catch (Exception e) {
+            Log.w(TAG, "Unable to determine asset length for " + fileName + ": " + e.getMessage());
+            return -1L;
+        }
+    }
+
+    private long formatMegabytes(long bytes) {
+        return bytes / 1024 / 1024;
     }
 
     @Override
