@@ -47,4 +47,23 @@
     <string name="cluster_curation_rename_title">Edit Name</string>
     <string name="cluster_curation_save">Save</string>
     <string name="cluster_curation_error_missing_cluster">Person data not available.</string>
+    <string name="crop_photo">Crop image</string>
+    <string name="compress_photo">Compress image</string>
+    <string name="compress_dialog_title">Compress JPEG</string>
+    <string name="compress_description">Reduce file size and keep output as JPEG.</string>
+    <string name="compress_hint_default">Higher compression = smaller file and lower quality.</string>
+    <string name="compress_level_value">Compression level: %1$d%%</string>
+    <string name="compress_hint_dynamic">Estimated: quality %1$d, max side %2$d px</string>
+    <string name="compress_action_save">Save copy</string>
+    <string name="compress_processing">Compressing image...</string>
+    <string name="compress_success">Compressed copy saved.</string>
+    <string name="compress_failed">Unable to compress this image.</string>
+    <string name="crop_dialog_title">Crop image</string>
+    <string name="crop_option_square">Square (1:1)</string>
+    <string name="crop_option_portrait">Portrait (4:5)</string>
+    <string name="crop_option_story">Story (9:16)</string>
+    <string name="crop_option_landscape">Landscape (16:9)</string>
+    <string name="crop_processing">Cropping image...</string>
+    <string name="crop_success">Cropped copy saved.</string>
+    <string name="crop_failed">Unable to crop this image.</string>
 </resources>

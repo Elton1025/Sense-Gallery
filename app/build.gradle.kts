@@ -65,6 +65,7 @@ dependencies {
     // Glide
     implementation(libs.glide)
     annotationProcessor(libs.glide.compiler)
+    implementation(libs.exifinterface)
 
     // TensorFlow Lite (kept for backward compatibility)
     implementation(libs.tflite)

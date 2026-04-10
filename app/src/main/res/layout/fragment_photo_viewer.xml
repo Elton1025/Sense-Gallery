@@ -59,6 +59,26 @@
             android:tint="@android:color/white" />
 
         <ImageButton
+            android:id="@+id/cropPhotoButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/crop_photo"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_menu_crop"
+            android:tint="@android:color/white" />
+
+        <ImageButton
+            android:id="@+id/compressPhotoButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/compress_photo"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_menu_save"
+            android:tint="@android:color/white" />
+
+        <ImageButton
             android:id="@+id/infoPhotoButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
