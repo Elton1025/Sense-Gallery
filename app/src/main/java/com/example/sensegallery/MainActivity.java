@@ -45,6 +45,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton processFacesFab;
+    private BottomNavigationView bottomNav;
+    private SearchBar searchBar;
+    private SearchView searchView;
     private GalleryViewModel galleryViewModel;
     private SearchClusterAdapter searchAdapter;
     private GalleryAdapter semanticAdapter;
@@ -75,18 +78,35 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Setup Navigation
+        bottomNav = findViewById(R.id.bottom_navigation);
+        searchBar = findViewById(R.id.search_bar);
+        searchView = findViewById(R.id.search_view);
+
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment);
         if (navHostFragment != null) {
             NavController navController = navHostFragment.getNavController();
-            BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
             NavigationUI.setupWithNavController(bottomNav, navController);
+            navController.addOnDestinationChangedListener((controller, destination, args) -> {
+                updateChromeForDestination(destination.getId());
+            });
+
+            if (navController.getCurrentDestination() != null) {
+                updateChromeForDestination(navController.getCurrentDestination().getId());
+            }
         }
 
         // FAB click: start face processing + CLIP indexing
         processFacesFab = findViewById(R.id.processFacesFab);
         if (processFacesFab != null) {
             processFacesFab.setOnClickListener(v -> startProcessing());
+        }
+
+        if (navHostFragment != null) {
+            NavController navController = navHostFragment.getNavController();
+            if (navController.getCurrentDestination() != null) {
+                updateChromeForDestination(navController.getCurrentDestination().getId());
+            }
         }
 
         // Setup Search Functionality
@@ -97,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupSearch() {
-        SearchView searchView = findViewById(R.id.search_view);
         RecyclerView searchRecyclerView = findViewById(R.id.searchRecyclerView);
         semanticResultsGrid = findViewById(R.id.semanticResultsGrid);
         searchEmptyState = findViewById(R.id.searchEmptyState);
@@ -121,10 +140,19 @@ public class MainActivity extends AppCompatActivity {
         searchRecyclerView.setAdapter(searchAdapter);
 
         // Semantic photo results adapter (grid of 3 columns)
-        semanticAdapter = new GalleryAdapter(position -> {
-            // Click on semantic result photo — open full-screen viewer
-            // For now, just hide the search
+        semanticAdapter = new GalleryAdapter((position, photo) -> {
             searchView.hide();
+
+            Bundle args = new Bundle();
+            args.putInt("initialPosition", 0);
+            args.putString("photoUri", photo.getContentUri().toString());
+
+            NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.nav_host_fragment);
+            if (navHostFragment != null) {
+                navHostFragment.getNavController()
+                        .navigate(R.id.action_global_nav_photo_viewer, args);
+            }
         });
         semanticResultsGrid.setLayoutManager(new GridLayoutManager(this, 3));
         semanticResultsGrid.setAdapter(semanticAdapter);
@@ -258,5 +286,26 @@ public class MainActivity extends AppCompatActivity {
 
     private void showPermissionDenied() {
         Toast.makeText(this, R.string.permission_denied_message, Toast.LENGTH_LONG).show();
+    }
+
+    private void updateChromeForDestination(int destinationId) {
+        boolean isPhotoViewer = destinationId == R.id.nav_photo_viewer;
+        int visibility = isPhotoViewer ? View.GONE : View.VISIBLE;
+
+        if (searchBar != null) {
+            searchBar.setVisibility(visibility);
+        }
+        if (searchView != null) {
+            if (isPhotoViewer) {
+                searchView.hide();
+            }
+            searchView.setVisibility(visibility);
+        }
+        if (bottomNav != null) {
+            bottomNav.setVisibility(visibility);
+        }
+        if (processFacesFab != null) {
+            processFacesFab.setVisibility(isPhotoViewer ? View.GONE : View.VISIBLE);
+        }
     }
 }

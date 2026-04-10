@@ -16,4 +16,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <View
+        android:id="@+id/photoSelectionOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#66009688"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/photoImageView"
+        app:layout_constraintEnd_toEndOf="@id/photoImageView"
+        app:layout_constraintStart_toStartOf="@id/photoImageView"
+        app:layout_constraintTop_toTopOf="@id/photoImageView" />
+
+    <ImageView
+        android:id="@+id/photoSelectionCheckmark"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="6dp"
+        android:contentDescription="@string/photo_selected"
+        android:src="@android:drawable/checkbox_on_background"
+        android:tint="@android:color/white"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/photoImageView"
+        app:layout_constraintTop_toTopOf="@id/photoImageView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

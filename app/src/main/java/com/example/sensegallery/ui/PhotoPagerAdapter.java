@@ -21,8 +21,31 @@ public class PhotoPagerAdapter extends RecyclerView.Adapter<PhotoPagerAdapter.Pa
     private List<PhotoItem> photos = new ArrayList<>();
 
     public void setPhotos(List<PhotoItem> photos) {
-        this.photos = photos;
+        this.photos = new ArrayList<>(photos);
         notifyDataSetChanged();
+    }
+
+    public PhotoItem getPhotoAt(int position) {
+        if (position < 0 || position >= photos.size()) {
+            return null;
+        }
+        return photos.get(position);
+    }
+
+    public int removePhotoByUri(android.net.Uri uri) {
+        if (uri == null) {
+            return -1;
+        }
+
+        for (int i = 0; i < photos.size(); i++) {
+            PhotoItem item = photos.get(i);
+            if (uri.equals(item.getContentUri())) {
+                photos.remove(i);
+                notifyItemRemoved(i);
+                return i;
+            }
+        }
+        return -1;
     }
 
     @NonNull

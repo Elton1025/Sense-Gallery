@@ -38,4 +38,10 @@ public interface FaceDao {
 
     @Query("SELECT * FROM faces WHERE photoId = :photoId AND clusterId = :clusterId LIMIT 1")
     FaceEntity getFaceForCover(long photoId, long clusterId);
+
+    @Query("UPDATE faces SET clusterId = :toClusterId WHERE clusterId = :fromClusterId")
+    void moveAllFacesToCluster(long fromClusterId, Long toClusterId);
+
+    @Query("UPDATE faces SET clusterId = :toClusterId WHERE clusterId = :fromClusterId AND photoId IN (:photoIds)")
+    void moveClusterFacesInPhotos(long fromClusterId, List<Long> photoIds, Long toClusterId);
 }

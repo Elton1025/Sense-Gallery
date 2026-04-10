@@ -43,7 +43,7 @@ public class PhotosFragment extends Fragment {
         emptyStateText = view.findViewById(R.id.emptyStateText);
 
         // Setup RecyclerView
-        adapter = new GalleryAdapter(position -> {
+        adapter = new GalleryAdapter((position, photo) -> {
             Bundle args = new Bundle();
             args.putInt("initialPosition", position);
             // Default to -1L for global photos (already natively handled by default

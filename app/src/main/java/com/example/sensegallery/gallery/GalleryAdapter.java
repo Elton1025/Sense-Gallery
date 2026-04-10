@@ -13,7 +13,9 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.example.sensegallery.R;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * RecyclerView adapter for the photo gallery grid.
@@ -22,11 +24,18 @@ import java.util.List;
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoViewHolder> {
 
     public interface OnPhotoClickListener {
-        void onPhotoClick(int position);
+        void onPhotoClick(int position, PhotoItem photo);
+    }
+
+    public interface OnPhotoLongClickListener {
+        boolean onPhotoLongClick(int position, PhotoItem photo);
     }
 
     private List<PhotoItem> photos = new ArrayList<>();
     private final OnPhotoClickListener listener;
+    private OnPhotoLongClickListener longClickListener;
+    private boolean selectionMode = false;
+    private final Set<String> selectedPhotoUris = new HashSet<>();
 
     public GalleryAdapter(OnPhotoClickListener listener) {
         this.listener = listener;
@@ -34,6 +43,19 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
 
     public void setPhotos(List<PhotoItem> photos) {
         this.photos = photos;
+        notifyDataSetChanged();
+    }
+
+    public void setOnPhotoLongClickListener(OnPhotoLongClickListener listener) {
+        this.longClickListener = listener;
+    }
+
+    public void setSelectionState(boolean selectionMode, Set<String> selectedUris) {
+        this.selectionMode = selectionMode;
+        selectedPhotoUris.clear();
+        if (selectedUris != null) {
+            selectedPhotoUris.addAll(selectedUris);
+        }
         notifyDataSetChanged();
     }
 
@@ -56,11 +78,24 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
                 .placeholder(R.drawable.placeholder_photo)
                 .into(holder.imageView);
 
+        boolean isSelected = selectedPhotoUris.contains(photo.getContentUri().toString());
+        holder.selectionOverlay.setVisibility(selectionMode && isSelected ? View.VISIBLE : View.GONE);
+        holder.checkmarkView.setVisibility(selectionMode && isSelected ? View.VISIBLE : View.GONE);
+        holder.itemView.setAlpha(selectionMode && !isSelected ? 0.75f : 1f);
+
         holder.itemView.setOnClickListener(v -> {
             int currentPosition = holder.getAdapterPosition();
             if (listener != null && currentPosition != RecyclerView.NO_POSITION) {
-                listener.onPhotoClick(currentPosition);
+                listener.onPhotoClick(currentPosition, photos.get(currentPosition));
             }
+        });
+
+        holder.itemView.setOnLongClickListener(v -> {
+            int currentPosition = holder.getAdapterPosition();
+            if (longClickListener != null && currentPosition != RecyclerView.NO_POSITION) {
+                return longClickListener.onPhotoLongClick(currentPosition, photos.get(currentPosition));
+            }
+            return false;
         });
     }
 
@@ -71,10 +106,14 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
 
     static class PhotoViewHolder extends RecyclerView.ViewHolder {
         final ImageView imageView;
+        final View selectionOverlay;
+        final ImageView checkmarkView;
 
         PhotoViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.photoImageView);
+            selectionOverlay = itemView.findViewById(R.id.photoSelectionOverlay);
+            checkmarkView = itemView.findViewById(R.id.photoSelectionCheckmark);
         }
     }
 }

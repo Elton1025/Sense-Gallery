@@ -45,6 +45,10 @@
             android:name="clusterId"
             app:argType="long"
             android:defaultValue="-1L" />
+        <argument
+            android:name="photoUri"
+            app:argType="string"
+            android:defaultValue="@null" />
     </fragment>
 
     <action
