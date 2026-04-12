@@ -38,8 +38,6 @@ android {
 
     androidResources {
         noCompress += "tflite"
-        noCompress += "onnx"
-        noCompress += "gguf"
     }
 }
 
@@ -82,6 +80,9 @@ dependencies {
 
     // On-device LLM runtime (llama.cpp based)
     implementation(libs.llmedge)
+
+    // OpenStreetMap map rendering
+    implementation(libs.osmdroid)
 
     // WorkManager
     implementation(libs.workmanager)

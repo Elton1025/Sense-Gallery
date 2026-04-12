@@ -10,12 +10,15 @@ import ai.onnxruntime.OrtEnvironment;
 import ai.onnxruntime.OrtSession;
 
 import java.io.File;
+import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.nio.FloatBuffer;
 import java.nio.LongBuffer;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,8 +28,8 @@ import java.util.Map;
  * normalization.
  * Text encoder: CPU-only (NNAPI silently fails on attention/transformer ops).
  *
- * Models are copied from assets to filesDir and validated before reuse so a
- * partial copy does not permanently break semantic search.
+ * Models are loaded directly from assets into memory-backed ORT sessions.
+ * Legacy on-disk copies are removed to avoid unnecessary app storage growth.
  */
 public class CLIPInferenceEngine implements AutoCloseable {
 
@@ -37,6 +40,7 @@ public class CLIPInferenceEngine implements AutoCloseable {
 
     private static final int IMAGE_SIZE = 224;
     private static final int CONTEXT_LENGTH = 77;
+    private static final String MODEL_CACHE_DIR = "models";
 
     // CLIP normalization constants
     private static final float[] MEAN = { 0.48145466f, 0.4578275f, 0.40821073f };
@@ -49,10 +53,12 @@ public class CLIPInferenceEngine implements AutoCloseable {
 
     private String imageInitError = null;
     private String textInitError = null;
+    private final List<File> cachedModelFiles = new ArrayList<>();
 
     public CLIPInferenceEngine(Context context) {
         Log.d(TAG, "Initializing CLIP inference engine...");
         env = OrtEnvironment.getEnvironment();
+        cleanupLegacyFilesDirCopies(context);
 
         try {
             OrtSession.SessionOptions imageOptions = new OrtSession.SessionOptions();
@@ -64,8 +70,7 @@ public class CLIPInferenceEngine implements AutoCloseable {
                 Log.w(TAG, "NNAPI not available, using CPU for image encoder: " + e.getMessage());
             }
 
-            String imagePath = copyModelToFilesDir(context, IMAGE_MODEL, false);
-            imageSession = createSessionWithRecovery(context, imagePath, IMAGE_MODEL, imageOptions);
+            imageSession = createSessionFromAsset(context, IMAGE_MODEL, imageOptions);
             Log.d(TAG, "Image encoder loaded. Inputs: " + imageSession.getInputNames()
                     + " Outputs: " + imageSession.getOutputNames());
         } catch (Exception e) {
@@ -77,8 +82,7 @@ public class CLIPInferenceEngine implements AutoCloseable {
             OrtSession.SessionOptions textOptions = new OrtSession.SessionOptions();
             textOptions.setIntraOpNumThreads(4);
 
-            String textPath = copyModelToFilesDir(context, TEXT_MODEL, false);
-            textSession = createSessionWithRecovery(context, textPath, TEXT_MODEL, textOptions);
+            textSession = createSessionFromAsset(context, TEXT_MODEL, textOptions);
             Log.d(TAG, "Text encoder loaded. Inputs: " + textSession.getInputNames()
                     + " Outputs: " + textSession.getOutputNames());
         } catch (Exception e) {
@@ -270,8 +274,13 @@ public class CLIPInferenceEngine implements AutoCloseable {
      * temp file first and only replaces the cached model when the byte count
      * matches the packaged asset.
      */
-    private String copyModelToFilesDir(Context context, String fileName, boolean forceRefresh) throws Exception {
-        File destFile = new File(context.getFilesDir(), fileName);
+    private String copyModelToCacheDir(Context context, String fileName, boolean forceRefresh) throws Exception {
+        File modelDir = new File(context.getCacheDir(), MODEL_CACHE_DIR);
+        if (!modelDir.exists() && !modelDir.mkdirs()) {
+            throw new IOException("Could not create model cache directory: " + modelDir.getAbsolutePath());
+        }
+
+        File destFile = new File(modelDir, fileName);
         long assetLength = getAssetLength(context, fileName);
 
         if (!forceRefresh && isUsableCachedModel(destFile, assetLength)) {
@@ -285,7 +294,7 @@ public class CLIPInferenceEngine implements AutoCloseable {
                     + " (cached=" + destFile.length() + " bytes, asset=" + assetLength + " bytes)");
         }
 
-        File tempFile = new File(context.getFilesDir(), fileName + ".tmp");
+        File tempFile = new File(modelDir, fileName + ".tmp");
         if (tempFile.exists() && !tempFile.delete()) {
             throw new IOException("Could not clear temp model file: " + tempFile.getAbsolutePath());
         }
@@ -322,6 +331,7 @@ public class CLIPInferenceEngine implements AutoCloseable {
 
         long elapsed = System.currentTimeMillis() - start;
         Log.d(TAG, "Model cached: " + formatMegabytes(totalBytes) + " MB in " + elapsed + "ms");
+        cachedModelFiles.add(destFile);
         return destFile.getAbsolutePath();
     }
 
@@ -334,8 +344,47 @@ public class CLIPInferenceEngine implements AutoCloseable {
             return env.createSession(modelPath, options);
         } catch (Exception firstError) {
             Log.w(TAG, "Failed to open cached " + fileName + ", forcing recopy", firstError);
-            String refreshedPath = copyModelToFilesDir(context, fileName, true);
+            String refreshedPath = copyModelToCacheDir(context, fileName, true);
             return env.createSession(refreshedPath, options);
+        }
+    }
+
+    private OrtSession createSessionFromAsset(
+            Context context,
+            String fileName,
+            OrtSession.SessionOptions options) throws Exception {
+        try {
+            byte[] modelBytes = readAssetBytes(context, fileName);
+            return env.createSession(modelBytes, options);
+        } catch (Exception firstError) {
+            Log.w(TAG, "Direct asset session load failed for " + fileName + ", retrying once", firstError);
+            byte[] retryBytes = readAssetBytes(context, fileName);
+            return env.createSession(retryBytes, options);
+        }
+    }
+
+    private byte[] readAssetBytes(Context context, String fileName) throws IOException {
+        try (InputStream is = context.getAssets().open(fileName);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream(1024 * 1024)) {
+            byte[] buffer = new byte[65536];
+            int read;
+            while ((read = is.read(buffer)) != -1) {
+                bos.write(buffer, 0, read);
+            }
+            return bos.toByteArray();
+        }
+    }
+
+    private void cleanupLegacyFilesDirCopies(Context context) {
+        deleteIfExists(new File(context.getFilesDir(), IMAGE_MODEL));
+        deleteIfExists(new File(context.getFilesDir(), TEXT_MODEL));
+        deleteIfExists(new File(context.getFilesDir(), IMAGE_MODEL + ".tmp"));
+        deleteIfExists(new File(context.getFilesDir(), TEXT_MODEL + ".tmp"));
+    }
+
+    private void deleteIfExists(File file) {
+        if (file.exists() && !file.delete()) {
+            Log.w(TAG, "Failed to delete legacy model file: " + file.getAbsolutePath());
         }
     }
 
@@ -353,7 +402,25 @@ public class CLIPInferenceEngine implements AutoCloseable {
         try (AssetFileDescriptor afd = context.getAssets().openFd(fileName)) {
             return afd.getLength();
         } catch (Exception e) {
+            long measuredLength = measureAssetLength(context, fileName);
+            if (measuredLength > 0) {
+                return measuredLength;
+            }
             Log.w(TAG, "Unable to determine asset length for " + fileName + ": " + e.getMessage());
+            return -1L;
+        }
+    }
+
+    private long measureAssetLength(Context context, String fileName) {
+        byte[] buffer = new byte[16384];
+        long total = 0L;
+        try (InputStream is = context.getAssets().open(fileName)) {
+            int read;
+            while ((read = is.read(buffer)) != -1) {
+                total += read;
+            }
+            return total;
+        } catch (Exception e) {
             return -1L;
         }
     }

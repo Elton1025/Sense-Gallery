@@ -1,11 +1,18 @@
 package com.example.sensegallery.workers;
 
+import android.Manifest;
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.exifinterface.media.ExifInterface;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
@@ -16,6 +23,7 @@ import com.example.sensegallery.data.EmbeddingTypeConverter;
 import com.example.sensegallery.data.PhotoDao;
 import com.example.sensegallery.data.PhotoEntity;
 
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -28,6 +36,16 @@ import java.util.List;
 public class CLIPIndexingWorker extends Worker {
 
     private static final String TAG = "CLIPIndexingWorker";
+
+    private static final class GeoCoordinates {
+        final double latitude;
+        final double longitude;
+
+        GeoCoordinates(double latitude, double longitude) {
+            this.latitude = latitude;
+            this.longitude = longitude;
+        }
+    }
 
     public CLIPIndexingWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -167,7 +185,7 @@ public class CLIPIndexingWorker extends Worker {
 
     private void syncPhotosToDb(Context context, PhotoDao photoDao) {
         try {
-            android.content.ContentResolver resolver = context.getContentResolver();
+                ContentResolver resolver = context.getContentResolver();
             Uri collection = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
             String[] projection = {
                     android.provider.MediaStore.Images.Media._ID,
@@ -188,10 +206,27 @@ public class CLIPIndexingWorker extends Worker {
                         Uri contentUri = android.content.ContentUris.withAppendedId(
                                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                                 id);
-                        
-                        // Use INSERT OR IGNORE via the DAO method annotated with OnConflictStrategy.IGNORE
-                        PhotoEntity photo = new PhotoEntity(contentUri.toString(), dateTaken, null);
-                        photoDao.insertPhoto(photo);
+
+                        String uriString = contentUri.toString();
+
+                        // Use INSERT OR IGNORE via the DAO method annotated with OnConflictStrategy.IGNORE.
+                        PhotoEntity photo = new PhotoEntity(uriString, dateTaken, null);
+                        long insertedRow = photoDao.insertPhoto(photo);
+
+                        boolean shouldExtractLocation = insertedRow != -1L;
+                        if (!shouldExtractLocation) {
+                            PhotoEntity existing = photoDao.getPhotoByUri(uriString);
+                            shouldExtractLocation = existing != null
+                                    && (existing.latitude == null || existing.longitude == null);
+                        }
+
+                        if (shouldExtractLocation) {
+                            GeoCoordinates coordinates = readCoordinatesFromExif(context, resolver, contentUri);
+                            if (coordinates != null) {
+                                photoDao.updatePhotoLocation(uriString, coordinates.latitude, coordinates.longitude);
+                            }
+                        }
+
                         count++;
                     }
                     Log.d(TAG, "[CLIP] Scanned " + count + " photos from MediaStore.");
@@ -200,6 +235,50 @@ public class CLIPIndexingWorker extends Worker {
         } catch (Exception e) {
             Log.e(TAG, "Error syncing MediaStore to DB: " + e.getMessage());
         }
+    }
+
+    @Nullable
+    private GeoCoordinates readCoordinatesFromExif(@NonNull Context context,
+            @NonNull ContentResolver resolver,
+            @NonNull Uri contentUri) {
+        Uri candidate = contentUri;
+        boolean usedOriginalUri = false;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+                && ContextCompat.checkSelfPermission(context,
+                        Manifest.permission.ACCESS_MEDIA_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            candidate = android.provider.MediaStore.setRequireOriginal(contentUri);
+            usedOriginalUri = true;
+        }
+
+        GeoCoordinates fromCandidate = readCoordinatesFromUri(resolver, candidate);
+        if (fromCandidate != null || !usedOriginalUri) {
+            return fromCandidate;
+        }
+
+        // Fallback if setRequireOriginal fails for a specific item.
+        return readCoordinatesFromUri(resolver, contentUri);
+    }
+
+    @Nullable
+    private GeoCoordinates readCoordinatesFromUri(@NonNull ContentResolver resolver, @NonNull Uri uri) {
+        try (InputStream inputStream = resolver.openInputStream(uri)) {
+            if (inputStream == null) {
+                return null;
+            }
+
+            ExifInterface exif = new ExifInterface(inputStream);
+            float[] latLong = new float[2];
+            if (exif.getLatLong(latLong)) {
+                return new GeoCoordinates(latLong[0], latLong[1]);
+            }
+        } catch (SecurityException se) {
+            Log.w(TAG, "No permission for exact media location on URI: " + uri);
+        } catch (Exception e) {
+            Log.w(TAG, "Unable to read EXIF location for URI: " + uri + " (" + e.getMessage() + ")");
+        }
+
+        return null;
     }
 
     private String formatTime(long millis) {

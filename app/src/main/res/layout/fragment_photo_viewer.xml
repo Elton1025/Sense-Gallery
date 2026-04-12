@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black">
+    android:background="?attr/colorSurface">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/photoViewPager"
@@ -21,7 +21,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
-        android:background="#66000000"
+        android:background="?attr/colorSurfaceContainerHigh"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="8dp"
@@ -37,7 +37,7 @@
             android:contentDescription="@string/close_viewer"
             android:padding="8dp"
             android:src="@android:drawable/ic_menu_close_clear_cancel"
-            android:tint="@android:color/white" />
+            android:tint="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/photoCounterText"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@android:color/white"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="14sp" />
 
         <ImageButton
@@ -56,7 +56,7 @@
             android:contentDescription="@string/share_photo"
             android:padding="8dp"
             android:src="@android:drawable/ic_menu_share"
-            android:tint="@android:color/white" />
+            android:tint="?attr/colorOnSurface" />
 
         <ImageButton
             android:id="@+id/cropPhotoButton"
@@ -66,7 +66,7 @@
             android:contentDescription="@string/crop_photo"
             android:padding="8dp"
             android:src="@android:drawable/ic_menu_crop"
-            android:tint="@android:color/white" />
+            android:tint="?attr/colorOnSurface" />
 
         <ImageButton
             android:id="@+id/compressPhotoButton"
@@ -76,7 +76,7 @@
             android:contentDescription="@string/compress_photo"
             android:padding="8dp"
             android:src="@android:drawable/ic_menu_save"
-            android:tint="@android:color/white" />
+            android:tint="?attr/colorOnSurface" />
 
         <ImageButton
             android:id="@+id/infoPhotoButton"
@@ -86,7 +86,7 @@
             android:contentDescription="@string/photo_info"
             android:padding="8dp"
             android:src="@android:drawable/ic_menu_info_details"
-            android:tint="@android:color/white" />
+            android:tint="?attr/colorOnSurface" />
 
         <ImageButton
             android:id="@+id/deletePhotoButton"
@@ -96,7 +96,7 @@
             android:contentDescription="@string/delete_photo"
             android:padding="8dp"
             android:src="@android:drawable/ic_menu_delete"
-            android:tint="@android:color/white" />
+            android:tint="?attr/colorOnSurface" />
     </LinearLayout>
 
     <LinearLayout
@@ -106,7 +106,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="12dp"
-        android:background="#73000000"
+        android:background="?attr/colorSurfaceContainer"
         android:orientation="vertical"
         android:padding="12dp"
         android:visibility="gone"
@@ -120,7 +120,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@android:color/white"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="15sp" />
 
         <TextView
@@ -128,7 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:textColor="@android:color/white"
+            android:textColor="?attr/colorOnSurfaceVariant"
             android:textSize="13sp" />
 
         <TextView
@@ -136,7 +136,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:textColor="@android:color/white"
+            android:textColor="?attr/colorOnSurfaceVariant"
             android:textSize="13sp" />
     </LinearLayout>
 

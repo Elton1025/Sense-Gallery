@@ -19,6 +19,11 @@
     </fragment>
 
     <fragment
+        android:id="@+id/nav_map"
+        android:name="com.example.sensegallery.ui.MapFragment"
+        android:label="Places" />
+
+    <fragment
         android:id="@+id/nav_cluster_detail"
         android:name="com.example.sensegallery.ui.ClusterDetailFragment"
         android:label="Cluster Detail">

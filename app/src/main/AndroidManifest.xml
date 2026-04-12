@@ -5,6 +5,13 @@
     <!-- Android 13+ (API 33): granular media permission -->
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
+    <!-- Android 10+ needed for exact EXIF GPS metadata -->
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+
+    <!-- Required by map tile provider -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <!-- Android 12 and below: legacy storage permission -->
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"

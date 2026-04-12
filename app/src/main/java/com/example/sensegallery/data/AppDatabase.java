@@ -15,7 +15,7 @@ import androidx.room.migration.Migration;
  * Main Room database for Sense Gallery.
  * Stores photos, detected faces, and face clusters.
  */
-@Database(entities = { PhotoEntity.class, FaceEntity.class, ClusterEntity.class }, version = 4, exportSchema = true)
+@Database(entities = { PhotoEntity.class, FaceEntity.class, ClusterEntity.class }, version = 5, exportSchema = true)
 @TypeConverters({ EmbeddingTypeConverter.class })
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -43,6 +43,14 @@ public abstract class AppDatabase extends RoomDatabase {
         }
     };
 
+    public static final Migration MIGRATION_4_5 = new Migration(4, 5) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE photos ADD COLUMN latitude REAL");
+            database.execSQL("ALTER TABLE photos ADD COLUMN longitude REAL");
+        }
+    };
+
     /**
      * Returns the singleton database instance, creating it if necessary.
      * Uses fallbackToDestructiveMigration for schema changes (embedding dim
@@ -56,7 +64,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             context.getApplicationContext(),
                             AppDatabase.class,
                             DATABASE_NAME)
-                            .addMigrations(MIGRATION_2_3, MIGRATION_3_4)
+                            .addMigrations(MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
                             .fallbackToDestructiveMigration()
                             .build();
                 }

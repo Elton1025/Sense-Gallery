@@ -5,13 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
+    android:background="?attr/colorSurface"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+        android:background="?attr/colorSurface"
         app:elevation="0dp">
 
         <com.google.android.material.search.SearchBar
@@ -56,7 +56,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="No results found"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="?attr/colorOnSurfaceVariant"
                 android:textSize="16sp"
                 android:visibility="gone" />
 
@@ -78,9 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@android:color/black"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
+        android:background="?attr/colorSurface"
         app:menu="@menu/bottom_nav_menu" />
     
     <!-- Floating Action Button for processing (moved here to apply to all fragments or specific ones) -->
@@ -93,7 +91,8 @@
         android:layout_marginBottom="80dp"
         android:contentDescription="@string/process_faces"
         android:src="@drawable/ic_face_scan"
-        app:tint="@android:color/white"
+        app:backgroundTint="?attr/colorPrimaryContainer"
+        app:tint="?attr/colorOnPrimaryContainer"
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

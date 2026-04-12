@@ -46,7 +46,12 @@ public class ClustersFragment extends Fragment {
                     .navigate(R.id.action_nav_clusters_to_nav_cluster_detail, args);
         });
 
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        int minTileWidthDp = 112;
+        float density = getResources().getDisplayMetrics().density;
+        int spanCount = Math.max(2,
+            (int) (getResources().getDisplayMetrics().widthPixels / (minTileWidthDp * density)));
+
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
         recyclerView.setAdapter(adapter);
 
         viewModel = new ViewModelProvider(requireActivity()).get(GalleryViewModel.class);

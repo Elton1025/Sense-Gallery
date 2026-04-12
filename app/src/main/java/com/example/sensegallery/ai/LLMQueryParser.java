@@ -31,6 +31,7 @@ public class LLMQueryParser implements AutoCloseable {
 
     private static final String TAG = "LLMQueryParser";
     private static final String MODEL_ASSET_NAME = "SmolLM2-135M-Instruct.Q4_K_M.gguf";
+    private static final String LLM_MODEL_CACHE_DIR = "llm";
     private static final int MAX_NAMES_IN_PROMPT = 80;
 
     private final Context appContext;
@@ -39,6 +40,7 @@ public class LLMQueryParser implements AutoCloseable {
     private SmolLM smolLM;
     private boolean loaded;
     private boolean disabled;
+    private boolean legacyCleanupDone;
 
     public LLMQueryParser(Context context) {
         this.appContext = context.getApplicationContext();
@@ -78,7 +80,8 @@ public class LLMQueryParser implements AutoCloseable {
         }
 
         try {
-            String modelPath = copyModelToFilesDir(MODEL_ASSET_NAME, false);
+            cleanupLegacyFilesDirModelCopies();
+            String modelPath = copyModelToCacheDir(MODEL_ASSET_NAME, false);
             SmolLM runtime = new SmolLM(false);
 
             int cpuCount = Runtime.getRuntime().availableProcessors();
@@ -253,8 +256,8 @@ public class LLMQueryParser implements AutoCloseable {
                 .replace("\"", "\\\"");
     }
 
-    private String copyModelToFilesDir(String fileName, boolean forceRefresh) throws IOException {
-        File llmDir = new File(appContext.getFilesDir(), "llm");
+    private String copyModelToCacheDir(String fileName, boolean forceRefresh) throws IOException {
+        File llmDir = new File(appContext.getCacheDir(), LLM_MODEL_CACHE_DIR);
         if (!llmDir.exists() && !llmDir.mkdirs()) {
             throw new IOException("Could not create model cache directory: " + llmDir.getAbsolutePath());
         }
@@ -300,6 +303,31 @@ public class LLMQueryParser implements AutoCloseable {
         return destFile.getAbsolutePath();
     }
 
+    private void cleanupLegacyFilesDirModelCopies() {
+        if (legacyCleanupDone) {
+            return;
+        }
+        legacyCleanupDone = true;
+
+        File oldDir = new File(appContext.getFilesDir(), LLM_MODEL_CACHE_DIR);
+        deleteIfExists(new File(oldDir, MODEL_ASSET_NAME));
+        deleteIfExists(new File(oldDir, MODEL_ASSET_NAME + ".tmp"));
+        if (oldDir.exists()) {
+            File[] children = oldDir.listFiles();
+            if (children == null || children.length == 0) {
+                if (!oldDir.delete()) {
+                    Log.w(TAG, "Failed to delete legacy llm directory: " + oldDir.getAbsolutePath());
+                }
+            }
+        }
+    }
+
+    private void deleteIfExists(File file) {
+        if (file.exists() && !file.delete()) {
+            Log.w(TAG, "Failed to delete legacy llm file: " + file.getAbsolutePath());
+        }
+    }
+
     private boolean isUsableCachedFile(File cached, long assetLength) {
         if (!cached.exists() || cached.length() <= 0) {
             return false;
@@ -314,7 +342,25 @@ public class LLMQueryParser implements AutoCloseable {
         try (AssetFileDescriptor afd = appContext.getAssets().openFd(fileName)) {
             return afd.getLength();
         } catch (Exception e) {
+            long measuredLength = measureAssetLength(fileName);
+            if (measuredLength > 0L) {
+                return measuredLength;
+            }
             Log.w(TAG, "Unable to read asset length for " + fileName + ": " + e.getMessage());
+            return -1L;
+        }
+    }
+
+    private long measureAssetLength(String fileName) {
+        byte[] buffer = new byte[16384];
+        long total = 0L;
+        try (InputStream is = appContext.getAssets().open(fileName)) {
+            int read;
+            while ((read = is.read(buffer)) != -1) {
+                total += read;
+            }
+            return total;
+        } catch (Exception e) {
             return -1L;
         }
     }

@@ -5,12 +5,13 @@
     android:layout_height="wrap_content"
     android:padding="1.5dp">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/photoImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/photo_thumbnail"
         android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/ShapeOverlayPhotoSmall"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +21,8 @@
         android:id="@+id/photoSelectionOverlay"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#66009688"
+        android:alpha="0.70"
+        android:background="?attr/colorPrimaryContainer"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/photoImageView"
         app:layout_constraintEnd_toEndOf="@id/photoImageView"
@@ -34,7 +36,7 @@
         android:layout_margin="6dp"
         android:contentDescription="@string/photo_selected"
         android:src="@android:drawable/checkbox_on_background"
-        android:tint="@android:color/white"
+        android:tint="?attr/colorOnPrimaryContainer"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/photoImageView"
         app:layout_constraintTop_toTopOf="@id/photoImageView" />

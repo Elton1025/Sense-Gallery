@@ -29,6 +29,7 @@ import com.example.sensegallery.gallery.GalleryAdapter;
 import com.example.sensegallery.gallery.GalleryViewModel;
 import com.example.sensegallery.ui.ClusterDisplayItem;
 import com.example.sensegallery.ui.SearchClusterAdapter;
+import com.example.sensegallery.util.StorageMaintenance;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.search.SearchBar;
@@ -55,14 +56,24 @@ public class MainActivity extends AppCompatActivity {
     private TextView searchEmptyState;
     private List<ClusterDisplayItem> allClusters = new ArrayList<>();
 
-    private final ActivityResultLauncher<String> permissionLauncher = registerForActivityResult(
-            new ActivityResultContracts.RequestPermission(),
-            isGranted -> {
-                if (!isGranted) {
+    private final ActivityResultLauncher<String[]> permissionLauncher = registerForActivityResult(
+            new ActivityResultContracts.RequestMultiplePermissions(),
+            result -> {
+                String readPermission = getReadImagesPermission();
+                boolean hasReadPermission = ContextCompat.checkSelfPermission(this,
+                        readPermission) == PackageManager.PERMISSION_GRANTED;
+
+                if (!hasReadPermission) {
                     showPermissionDenied();
-                } else {
-                    startClipIndexing(androidx.work.ExistingWorkPolicy.KEEP, false);
+                    return;
                 }
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && !hasMediaLocationPermission()) {
+                    Toast.makeText(this, R.string.media_location_permission_optional, Toast.LENGTH_LONG)
+                            .show();
+                }
+
+                startClipIndexing(androidx.work.ExistingWorkPolicy.KEEP, false);
             });
 
     @Override
@@ -70,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        // Keep cache-heavy directories bounded to avoid long-term storage growth.
+        new Thread(() -> StorageMaintenance.runStartupCleanup(getApplicationContext()),
+            "storage-cleanup").start();
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -277,18 +292,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkAndRequestPermission() {
-        String permission;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            permission = Manifest.permission.READ_MEDIA_IMAGES;
-        } else {
-            permission = Manifest.permission.READ_EXTERNAL_STORAGE;
+        List<String> missingPermissions = new ArrayList<>();
+        String readPermission = getReadImagesPermission();
+
+        if (ContextCompat.checkSelfPermission(this, readPermission) != PackageManager.PERMISSION_GRANTED) {
+            missingPermissions.add(readPermission);
         }
 
-        if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
-            permissionLauncher.launch(permission);
-        } else {
-            startClipIndexing(androidx.work.ExistingWorkPolicy.KEEP, false);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && !hasMediaLocationPermission()) {
+            missingPermissions.add(Manifest.permission.ACCESS_MEDIA_LOCATION);
         }
+
+        if (!missingPermissions.isEmpty()) {
+            permissionLauncher.launch(missingPermissions.toArray(new String[0]));
+            return;
+        }
+
+        startClipIndexing(androidx.work.ExistingWorkPolicy.KEEP, false);
+    }
+
+    private String getReadImagesPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            return Manifest.permission.READ_MEDIA_IMAGES;
+        }
+        return Manifest.permission.READ_EXTERNAL_STORAGE;
+    }
+
+    private boolean hasMediaLocationPermission() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            return true;
+        }
+
+        return ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_MEDIA_LOCATION) == PackageManager.PERMISSION_GRANTED;
     }
 
     private void showPermissionDenied() {
@@ -297,22 +333,25 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateChromeForDestination(int destinationId) {
         boolean isPhotoViewer = destinationId == R.id.nav_photo_viewer;
-        int visibility = isPhotoViewer ? View.GONE : View.VISIBLE;
+        boolean isMapDestination = destinationId == R.id.nav_map;
+
+        int topChromeVisibility = (isPhotoViewer || isMapDestination) ? View.GONE : View.VISIBLE;
+        int bottomNavVisibility = isPhotoViewer ? View.GONE : View.VISIBLE;
 
         if (searchBar != null) {
-            searchBar.setVisibility(visibility);
+            searchBar.setVisibility(topChromeVisibility);
         }
         if (searchView != null) {
-            if (isPhotoViewer) {
+            if (isPhotoViewer || isMapDestination) {
                 searchView.hide();
             }
-            searchView.setVisibility(visibility);
+            searchView.setVisibility(topChromeVisibility);
         }
         if (bottomNav != null) {
-            bottomNav.setVisibility(visibility);
+            bottomNav.setVisibility(bottomNavVisibility);
         }
         if (processFacesFab != null) {
-            processFacesFab.setVisibility(isPhotoViewer ? View.GONE : View.VISIBLE);
+            processFacesFab.setVisibility((isPhotoViewer || isMapDestination) ? View.GONE : View.VISIBLE);
         }
     }
 }

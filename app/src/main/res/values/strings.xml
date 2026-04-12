@@ -3,6 +3,8 @@
     <string name="photo_thumbnail">Photo thumbnail</string>
     <string name="no_photos_found">No photos found on this device</string>
     <string name="permission_denied_message">Photo access is required to display your gallery. Please grant the permission in Settings.</string>
+    <string name="media_location_permission_optional">Allowing photo location metadata improves Places map coverage.</string>
+    <string name="map_empty_state_message">No geotagged photos found yet.\nAllow location metadata and re-index photos.</string>
     <string name="process_faces">Scan for faces</string>
     <string name="processing_faces">Processing faces…</string>
     <string name="processing_progress">Processing photo %1$d of %2$d (%3$d faces found)</string>

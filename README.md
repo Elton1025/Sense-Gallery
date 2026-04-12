@@ -13,6 +13,7 @@ The application is built in Java on top of Room, WorkManager, Material component
 - Face embedding extraction with ArcFace ONNX.
 - Hierarchical agglomerative clustering for grouping faces into identity clusters.
 - CLIP-based image indexing and text-to-image semantic search.
+- Geotagged Places view with map pins for photos containing GPS metadata.
 - Person search through user-editable cluster labels.
 - Automatic semantic indexing after media permission is granted.
 - Manual reprocessing through the floating action button for face processing and CLIP re-indexing.
@@ -37,6 +38,7 @@ For multi-person conjunction queries such as `virat and rohit`, the search enfor
 - Background execution: WorkManager
 - Image loading: Glide
 - Navigation/UI: Fragments, Navigation Component, Material 3 search components
+- Map UI: OpenStreetMap (osmdroid)
 - Inference runtime: ONNX Runtime Android, llmedge (SmolLM parser)
 
 ## Models Included
@@ -119,14 +121,17 @@ The main search flow combines both local cluster filtering and CLIP similarity:
 2. Sync Gradle.
 3. Install and run the debug build on a device.
 4. Grant the requested media permission.
-5. Wait for automatic CLIP indexing to start.
-6. Use the floating action button when you want to run face detection and clustering.
+5. Optionally grant location metadata access to enable fuller Places map coverage.
+6. Wait for automatic CLIP indexing to start.
+7. Use the floating action button when you want to run face detection and clustering.
 
 ## Operational Notes
 
 - The app is designed for on-device execution only.
-- CLIP model files are copied from assets to internal app storage and validated before reuse so partial copies do not permanently break search.
+- CLIP models are loaded directly from bundled assets into ONNX Runtime sessions, and legacy cached copies are cleaned up on startup.
 - Room stores image-level CLIP embeddings on `PhotoEntity` and face-level ArcFace embeddings on `FaceEntity`.
+- Room also stores optional photo latitude and longitude from EXIF metadata for the Places tab.
+- Map and image disk caches are automatically bounded to avoid unbounded storage growth over time.
 - WorkManager unique work policies are used to avoid overlapping runs.
 
 ## Related Documentation

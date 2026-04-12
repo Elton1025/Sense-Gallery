@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black">
+    android:background="?attr/colorSurface">
 
     <TextView
         android:id="@+id/emptyClustersText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No people clusters found yet.\nStart processing faces!"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/colorOnSurfaceVariant"
         android:textSize="16sp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,6 +24,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
+        android:paddingStart="8dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="12dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -34,6 +34,9 @@ public interface PhotoDao {
     @Query("SELECT * FROM photos WHERE mediaStoreUri = :uri LIMIT 1")
     PhotoEntity getPhotoByUri(String uri);
 
+    @Query("UPDATE photos SET latitude = :latitude, longitude = :longitude WHERE mediaStoreUri = :uri")
+    void updatePhotoLocation(String uri, Double latitude, Double longitude);
+
     @Query("SELECT * FROM photos WHERE isFaceProcessed = 0 ORDER BY dateTaken DESC")
     List<PhotoEntity> getUnprocessedPhotos();
 
@@ -51,4 +54,7 @@ public interface PhotoDao {
 
     @Query("SELECT COUNT(*) FROM photos")
     int getPhotoCount();
+
+    @Query("SELECT id, mediaStoreUri, dateTaken, latitude, longitude FROM photos WHERE latitude IS NOT NULL AND longitude IS NOT NULL ORDER BY dateTaken DESC")
+    List<PhotoLocationItem> getPhotosWithLocation();
 }

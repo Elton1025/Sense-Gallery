@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
@@ -30,6 +31,14 @@ public class PhotoEntity {
     @ColumnInfo(name = "isClipProcessed", defaultValue = "0")
     public boolean isClipProcessed;
 
+    @Nullable
+    @ColumnInfo(name = "latitude")
+    public Double latitude;
+
+    @Nullable
+    @ColumnInfo(name = "longitude")
+    public Double longitude;
+
     /**
      * 512-dimension CLIP vector embedding stored as a byte[] BLOB.
      * Null until the CLIP model processes this photo.
@@ -38,10 +47,18 @@ public class PhotoEntity {
     @ColumnInfo(name = "clipEmbedding", typeAffinity = ColumnInfo.BLOB)
     public byte[] clipEmbedding;
 
+    @Ignore
     public PhotoEntity(@NonNull String mediaStoreUri, long dateTaken, @Nullable byte[] clipEmbedding) {
+        this(mediaStoreUri, dateTaken, clipEmbedding, null, null);
+    }
+
+    public PhotoEntity(@NonNull String mediaStoreUri, long dateTaken, @Nullable byte[] clipEmbedding,
+            @Nullable Double latitude, @Nullable Double longitude) {
         this.mediaStoreUri = mediaStoreUri;
         this.dateTaken = dateTaken;
         this.clipEmbedding = clipEmbedding;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.isFaceProcessed = false;
     }
 }
