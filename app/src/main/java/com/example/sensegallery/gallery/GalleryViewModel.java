@@ -21,7 +21,11 @@ import com.example.sensegallery.data.PhotoEntity;
 import com.example.sensegallery.ui.ClusterDisplayItem;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
@@ -40,6 +44,12 @@ public class GalleryViewModel extends AndroidViewModel {
     private static final float EXACT_QUERY_RELATIVE_SCORE_FLOOR = 0.92f;
     private static final float EXACT_QUERY_SCORE_MARGIN = 0.04f;
     private static final int MAX_CLIP_RESULTS = 20;
+        private static final Set<String> STRICT_CONJUNCTION_WORDS = new HashSet<>(Arrays.asList(
+            "and", "together", "both", "with"));
+    private static final Set<String> QUERY_STOP_WORDS = new HashSet<>(Arrays.asList(
+            "show", "me", "photo", "photos", "image", "images", "pic", "pics", "picture",
+            "pictures", "of", "in", "the", "a", "an", "this", "that", "with", "and", "together",
+            "single", "one", "same", "where", "there", "are", "is", "from", "to", "at", "on", "for"));
 
     private final MutableLiveData<List<PhotoItem>> photosLiveData = new MutableLiveData<>();
     private final MutableLiveData<List<PhotoItem>> clusterPhotosLiveData = new MutableLiveData<>();
@@ -49,6 +59,7 @@ public class GalleryViewModel extends AndroidViewModel {
     private final ExecutorService searchExecutor = Executors.newSingleThreadExecutor();
 
     private com.example.sensegallery.ai.CLIPInferenceEngine clipEngine;
+    private com.example.sensegallery.ai.LLMQueryParser llmQueryParser;
 
     public GalleryViewModel(@NonNull Application application) {
         super(application);
@@ -155,7 +166,11 @@ public class GalleryViewModel extends AndroidViewModel {
             }
 
             List<PhotoItem> items = new ArrayList<>();
+            Set<Long> seenPhotoIds = new HashSet<>();
             for (PhotoEntity entity : photoEntities) {
+                if (!seenPhotoIds.add(entity.id)) {
+                    continue;
+                }
                 items.add(new PhotoItem(Uri.parse(entity.mediaStoreUri), entity.dateTaken));
             }
 
@@ -171,7 +186,7 @@ public class GalleryViewModel extends AndroidViewModel {
     }
 
     /**
-     * Loads all clusters with their cover photo URIs and face counts.
+        * Loads all clusters with their cover photo URIs and unique photo counts.
      * This provides the ClustersAdapter with everything it needs to display
      * cluster cards with face thumbnails and photo counts.
      */
@@ -219,17 +234,17 @@ public class GalleryViewModel extends AndroidViewModel {
                     }
                 }
 
-                // Get face count
-                int faceCount = clusterDao.getFaceCountInCluster(entity.id);
+                // Get unique photo count for card display
+                int photoCount = clusterDao.getPhotoCountInCluster(entity.id);
 
                 displayItems.add(new ClusterDisplayItem(
-                        entity.id, entity.label, coverUri, faceCount,
+                        entity.id, entity.label, coverUri, photoCount,
                         boxLeft, boxTop, boxRight, boxBottom));
             }
 
-            // Sort clusters by face count (descending), then alphabetically
+            // Sort clusters by photo count (descending), then alphabetically
             java.util.Collections.sort(displayItems, (a, b) -> {
-                int countDiff = Integer.compare(b.faceCount, a.faceCount);
+                int countDiff = Integer.compare(b.photoCount, a.photoCount);
                 if (countDiff != 0)
                     return countDiff;
                 if (a.label != null && b.label != null)
@@ -260,6 +275,10 @@ public class GalleryViewModel extends AndroidViewModel {
             clipEngine.close();
             clipEngine = null;
         }
+        if (llmQueryParser != null) {
+            llmQueryParser.close();
+            llmQueryParser = null;
+        }
     }
 
     // --- Semantic Search ---
@@ -281,62 +300,75 @@ public class GalleryViewModel extends AndroidViewModel {
                 AppDatabase db = AppDatabase.getInstance(getApplication());
                 String lowerQuery = query.toLowerCase().trim();
 
-                // Step 1: Check if any cluster names match part of the query
+                // Step 1: Parse query and resolve person names from cluster labels
                 ClusterDao clusterDao = db.clusterDao();
                 FaceDao faceDao = db.faceDao();
                 List<ClusterEntity> allClusters = clusterDao.getAllClusters();
 
+                List<String> queryWords = tokenizeQuery(lowerQuery);
+                Set<String> consumedNameWords = new HashSet<>();
                 Set<Long> facePhotoIds = new HashSet<>();
-                List<String> queryWords = new ArrayList<>();
-                for (String w : lowerQuery.split("\\s+")) {
-                    if (!w.isEmpty())
-                        queryWords.add(w);
+
+                com.example.sensegallery.ai.LLMQueryParser.ParsedQuery llmParsedQuery = null;
+                if (shouldUseLlmParser(queryWords)) {
+                    llmParsedQuery = getOrCreateLlmQueryParser().parse(
+                            lowerQuery,
+                            getKnownClusterLabels(allClusters));
                 }
 
-                // Word-level matching: check each query word against cluster name words
-                // "virat blue" -> ["virat", "blue"]
-                // Cluster "virat kohli" has words ["virat", "kohli"]
-                // "virat" matches -> add cluster photos, keep "blue" for CLIP
-                List<String> unmatchedWords = new ArrayList<>(queryWords);
-
-                for (ClusterEntity cluster : allClusters) {
-                    if (cluster.label == null || cluster.label.isEmpty())
-                        continue;
-
-                    String[] clusterWords = cluster.label.toLowerCase().split("\\s+");
-                    boolean anyWordMatches = false;
-
-                    for (String cw : clusterWords) {
-                        for (String qw : queryWords) {
-                            if (cw.startsWith(qw) || qw.startsWith(cw)) {
-                                anyWordMatches = true;
-                                unmatchedWords.remove(qw);
-                            }
-                        }
-                    }
-
-                    if (anyWordMatches) {
-                        List<PhotoEntity> clusterPhotos = faceDao.getPhotosForCluster(cluster.id);
-                        for (PhotoEntity p : clusterPhotos) {
-                            facePhotoIds.add(p.id);
-                        }
+                List<NameClusterMatch> nameMatches = new ArrayList<>();
+                if (llmParsedQuery != null && !llmParsedQuery.getPersonNames().isEmpty()) {
+                    nameMatches = findExactNameMatches(llmParsedQuery.getPersonNames(), allClusters);
+                    for (String resolvedName : llmParsedQuery.getPersonNames()) {
+                        consumedNameWords.addAll(tokenizeQuery(resolvedName.toLowerCase()));
                     }
                 }
 
-                // Remaining unmatched words become the CLIP query
-                StringBuilder sb = new StringBuilder();
-                for (String w : unmatchedWords) {
-                    if (sb.length() > 0)
-                        sb.append(" ");
-                    sb.append(w);
+                if (nameMatches.isEmpty()) {
+                    nameMatches = findNameMatches(queryWords, lowerQuery, allClusters);
                 }
-                String clipQuery = sb.toString().trim();
+
+                boolean requireAllPeople = shouldRequireAllPeople(
+                        lowerQuery,
+                        queryWords,
+                        llmParsedQuery,
+                        nameMatches);
+
+                if (!nameMatches.isEmpty()) {
+                    if (nameMatches.size() == 1) {
+                        NameClusterMatch single = nameMatches.get(0);
+                        facePhotoIds = getPhotoIdsForCluster(faceDao, single.clusterId);
+                        consumedNameWords.addAll(single.matchedQueryWords);
+                    } else {
+                        List<Long> clusterIds = new ArrayList<>();
+                        for (NameClusterMatch match : nameMatches) {
+                            clusterIds.add(match.clusterId);
+                            consumedNameWords.addAll(match.matchedQueryWords);
+                        }
+
+                        if (!clusterIds.isEmpty()) {
+                            facePhotoIds = new HashSet<>(
+                                    faceDao.getPhotoIdsWithAllClusters(clusterIds, clusterIds.size()));
+                        }
+                    }
+                }
+
+                // Remaining words (excluding person names + stop words) become CLIP query.
+                String clipQuery = "";
+                if (llmParsedQuery != null) {
+                    clipQuery = llmParsedQuery.getSceneDescription();
+                }
+                if (clipQuery == null || clipQuery.trim().isEmpty()) {
+                    clipQuery = buildClipQuery(queryWords, consumedNameWords);
+                }
+                clipQuery = clipQuery.trim();
 
                 boolean hasNameMatch = !facePhotoIds.isEmpty();
                 boolean hasClipQuery = !clipQuery.isEmpty();
 
                 Log.d(TAG, "Search: nameMatch=" + hasNameMatch + " (" + facePhotoIds.size()
-                        + " photos), clipQuery=\"" + clipQuery + "\"");
+                    + " photos), clipQuery=\"" + clipQuery + "\", strictTogether="
+                    + requireAllPeople);
 
                 // Step 2: If there's a CLIP text query, run semantic similarity
                 List<ScoredPhoto> clipResults = new ArrayList<>();
@@ -414,12 +446,16 @@ public class GalleryViewModel extends AndroidViewModel {
                     // Fallback: if intersection is empty (threshold too strict),
                     // show all photos of the matched person instead of nothing
                     if (finalResults.isEmpty()) {
-                        Log.d(TAG, "Intersection empty, falling back to name-only results");
-                        for (Long photoId : facePhotoIds) {
-                            PhotoEntity p = findPhotoById(db, photoId);
-                            if (p != null) {
-                                finalResults.add(new PhotoItem(
-                                        Uri.parse(p.mediaStoreUri), p.dateTaken));
+                        if (requireAllPeople) {
+                            Log.d(TAG, "Intersection empty for strict together query; returning empty results");
+                        } else {
+                            Log.d(TAG, "Intersection empty, falling back to name-only results");
+                            for (Long photoId : facePhotoIds) {
+                                PhotoEntity p = findPhotoById(db, photoId);
+                                if (p != null) {
+                                    finalResults.add(new PhotoItem(
+                                            Uri.parse(p.mediaStoreUri), p.dateTaken));
+                                }
                             }
                         }
                     }
@@ -447,6 +483,198 @@ public class GalleryViewModel extends AndroidViewModel {
                 semanticSearchResults.postValue(new ArrayList<>());
             }
         });
+    }
+
+    private synchronized com.example.sensegallery.ai.LLMQueryParser getOrCreateLlmQueryParser() {
+        if (llmQueryParser == null) {
+            llmQueryParser = new com.example.sensegallery.ai.LLMQueryParser(getApplication());
+        }
+        return llmQueryParser;
+    }
+
+    private boolean shouldUseLlmParser(List<String> queryWords) {
+        if (queryWords == null || queryWords.isEmpty()) {
+            return false;
+        }
+        if (queryWords.size() >= 3) {
+            return true;
+        }
+        for (String word : queryWords) {
+            if ("and".equals(word) || "with".equals(word) || "together".equals(word)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean shouldRequireAllPeople(
+            String lowerQuery,
+            List<String> queryWords,
+            com.example.sensegallery.ai.LLMQueryParser.ParsedQuery llmParsedQuery,
+            List<NameClusterMatch> nameMatches) {
+        if (nameMatches == null || nameMatches.size() < 2) {
+            return false;
+        }
+        if (llmParsedQuery != null && llmParsedQuery.isRequireAllPeople()) {
+            return true;
+        }
+        return hasHeuristicStrictTogetherIntent(lowerQuery, queryWords);
+    }
+
+    private boolean hasHeuristicStrictTogetherIntent(String lowerQuery, List<String> queryWords) {
+        if (lowerQuery != null) {
+            if (lowerQuery.contains("same photo") || lowerQuery.contains("same picture")) {
+                return true;
+            }
+        }
+        if (queryWords == null || queryWords.isEmpty()) {
+            return false;
+        }
+        for (String word : queryWords) {
+            if (STRICT_CONJUNCTION_WORDS.contains(word)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private List<String> getKnownClusterLabels(List<ClusterEntity> allClusters) {
+        Set<String> names = new LinkedHashSet<>();
+        for (ClusterEntity cluster : allClusters) {
+            if (cluster.label == null) {
+                continue;
+            }
+            String trimmed = cluster.label.trim();
+            if (!trimmed.isEmpty()) {
+                names.add(trimmed);
+            }
+        }
+        return new ArrayList<>(names);
+    }
+
+    private List<NameClusterMatch> findExactNameMatches(List<String> resolvedNames, List<ClusterEntity> allClusters) {
+        List<NameClusterMatch> matches = new ArrayList<>();
+        Set<Long> seenClusterIds = new HashSet<>();
+
+        for (String resolvedName : resolvedNames) {
+            if (resolvedName == null) {
+                continue;
+            }
+            String lowerResolved = resolvedName.trim().toLowerCase();
+            if (lowerResolved.isEmpty()) {
+                continue;
+            }
+
+            for (ClusterEntity cluster : allClusters) {
+                if (cluster.label == null) {
+                    continue;
+                }
+                String lowerLabel = cluster.label.trim().toLowerCase();
+                if (lowerLabel.isEmpty()) {
+                    continue;
+                }
+
+                if (lowerLabel.equals(lowerResolved) && !seenClusterIds.contains(cluster.id)) {
+                    Set<String> matchedWords = new HashSet<>(tokenizeQuery(lowerResolved));
+                    matches.add(new NameClusterMatch(cluster.id, 200, matchedWords));
+                    seenClusterIds.add(cluster.id);
+                }
+            }
+        }
+
+        matches.sort(Comparator.comparingInt((NameClusterMatch m) -> m.score).reversed());
+        return matches;
+    }
+
+    private List<String> tokenizeQuery(String lowerQuery) {
+        if (lowerQuery == null || lowerQuery.trim().isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        List<String> words = new ArrayList<>();
+        for (String raw : lowerQuery.split("[^a-z0-9]+")) {
+            String w = raw.trim();
+            if (!w.isEmpty()) {
+                words.add(w);
+            }
+        }
+        return words;
+    }
+
+    private List<NameClusterMatch> findNameMatches(List<String> queryWords,
+            String lowerQuery,
+            List<ClusterEntity> allClusters) {
+        List<NameClusterMatch> matches = new ArrayList<>();
+        Set<Long> seenClusterIds = new HashSet<>();
+
+        for (ClusterEntity cluster : allClusters) {
+            if (cluster.label == null) {
+                continue;
+            }
+
+            String label = cluster.label.trim().toLowerCase();
+            if (label.isEmpty()) {
+                continue;
+            }
+
+            Set<String> matchedQueryWords = new HashSet<>();
+            int score = 0;
+
+            if (lowerQuery.contains(label)) {
+                score += 100;
+                matchedQueryWords.addAll(tokenizeQuery(label));
+            }
+
+            List<String> labelWords = tokenizeQuery(label);
+            for (String queryWord : queryWords) {
+                if (queryWord.length() < 2) {
+                    continue;
+                }
+                for (String labelWord : labelWords) {
+                    if (labelWord.equals(queryWord)) {
+                        score += 20;
+                        matchedQueryWords.add(queryWord);
+                    } else if (queryWord.length() >= 3 && labelWord.startsWith(queryWord)) {
+                        score += 10;
+                        matchedQueryWords.add(queryWord);
+                    }
+                }
+            }
+
+            if (score > 0 && !seenClusterIds.contains(cluster.id)) {
+                matches.add(new NameClusterMatch(cluster.id, score, matchedQueryWords));
+                seenClusterIds.add(cluster.id);
+            }
+        }
+
+        matches.sort(Comparator.comparingInt((NameClusterMatch m) -> m.score).reversed());
+        return matches;
+    }
+
+    private Set<Long> getPhotoIdsForCluster(FaceDao faceDao, long clusterId) {
+        Set<Long> ids = new HashSet<>();
+        List<PhotoEntity> photos = faceDao.getPhotosForCluster(clusterId);
+        for (PhotoEntity photo : photos) {
+            ids.add(photo.id);
+        }
+        return ids;
+    }
+
+    private String buildClipQuery(List<String> queryWords, Set<String> consumedNameWords) {
+        StringBuilder sb = new StringBuilder();
+        for (String word : queryWords) {
+            if (consumedNameWords.contains(word)) {
+                continue;
+            }
+            if (QUERY_STOP_WORDS.contains(word)) {
+                continue;
+            }
+            if (sb.length() > 0) {
+                sb.append(" ");
+            }
+            sb.append(word);
+        }
+        return sb.toString().trim();
     }
 
     /**
@@ -566,6 +794,18 @@ public class GalleryViewModel extends AndroidViewModel {
             this.uri = uri;
             this.dateTaken = dateTaken;
             this.score = score;
+        }
+    }
+
+    private static class NameClusterMatch {
+        final long clusterId;
+        final int score;
+        final Set<String> matchedQueryWords;
+
+        NameClusterMatch(long clusterId, int score, Set<String> matchedQueryWords) {
+            this.clusterId = clusterId;
+            this.score = score;
+            this.matchedQueryWords = matchedQueryWords;
         }
     }
 }

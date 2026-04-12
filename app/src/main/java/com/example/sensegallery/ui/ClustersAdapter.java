@@ -73,10 +73,10 @@ public class ClustersAdapter extends RecyclerView.Adapter<ClustersAdapter.Cluste
         public void bind(ClusterDisplayItem cluster, OnClusterClickListener listener) {
             nameText.setText(cluster.label);
 
-            // Show face count
-            if (cluster.faceCount > 0) {
+            // Show photo count
+            if (cluster.photoCount > 0) {
                 countText.setVisibility(View.VISIBLE);
-                countText.setText(cluster.faceCount + " photo" + (cluster.faceCount != 1 ? "s" : ""));
+                countText.setText(cluster.photoCount + " photo" + (cluster.photoCount != 1 ? "s" : ""));
             } else {
                 countText.setVisibility(View.GONE);
             }

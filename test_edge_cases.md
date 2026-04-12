@@ -97,7 +97,9 @@ The user searches with a mixed query such as `John cake`.
 - Cluster labels are matched first.
 - Remaining unmatched terms are embedded and used for CLIP retrieval.
 - The result set prefers photos that satisfy both the person filter and the semantic filter.
-- If no intersection exists, the current implementation falls back to person-only results.
+- If no intersection exists, fallback behavior depends on intent:
+- Strict conjunction intent (`and`, `together`, `same photo`) returns empty.
+- Non-strict mixed queries can still fall back to person-only results.
 
 ## 9. Single-Word Semantic Query Precision
 

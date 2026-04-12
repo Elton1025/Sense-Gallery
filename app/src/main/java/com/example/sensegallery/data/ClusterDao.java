@@ -38,4 +38,7 @@ public interface ClusterDao {
 
     @Query("SELECT COUNT(*) FROM faces WHERE clusterId = :clusterId")
     int getFaceCountInCluster(long clusterId);
+
+    @Query("SELECT COUNT(DISTINCT photoId) FROM faces WHERE clusterId = :clusterId")
+    int getPhotoCountInCluster(long clusterId);
 }

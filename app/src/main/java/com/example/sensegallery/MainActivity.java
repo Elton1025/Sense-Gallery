@@ -117,6 +117,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupSearch() {
+        if (searchBar != null) {
+            searchBar.setHint("Ask: virat, rohit and dhoni together");
+        }
+        if (searchView != null) {
+            searchView.setHint("Ask naturally: people + scene");
+        }
+
         RecyclerView searchRecyclerView = findViewById(R.id.searchRecyclerView);
         semanticResultsGrid = findViewById(R.id.semanticResultsGrid);
         searchEmptyState = findViewById(R.id.searchEmptyState);

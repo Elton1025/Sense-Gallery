@@ -5,7 +5,7 @@ Sense Gallery is an offline Android photo gallery focused on two local-first cap
 1. Face clustering for organizing photos by person.
 2. Semantic image search for retrieving photos by visual content such as `cake`, `sunset`, or `beach`.
 
-The application is built in Java on top of Room, WorkManager, Material components, and ONNX Runtime. All inference runs on-device. No photo content, embeddings, or search queries are sent to a server.
+The application is built in Java on top of Room, WorkManager, Material components, ONNX Runtime, and an on-device llmedge parser for natural-language query decomposition. All inference runs on-device. No photo content, embeddings, or search queries are sent to a server.
 
 ## Core Capabilities
 
@@ -26,16 +26,18 @@ The search surface supports two retrieval modes in the same UI:
 
 For short exact item queries such as `cake`, the semantic ranking applies a stricter precision filter so broad related images such as plates, restaurants, or generic food scenes are less likely to appear.
 
+For multi-person conjunction queries such as `virat and rohit`, the search enforces strict co-occurrence. Results must contain all requested people in the same photo. If a strict conjunction query also includes scene text and no CLIP scene match is found, the result stays empty instead of falling back to broader name-only results.
+
 ## Technology Stack
 
 - Language: Java 17
-- Minimum SDK: 24
+- Minimum SDK: 30
 - Target SDK: 36
 - Database: Room
 - Background execution: WorkManager
 - Image loading: Glide
 - Navigation/UI: Fragments, Navigation Component, Material 3 search components
-- Inference runtime: ONNX Runtime Android
+- Inference runtime: ONNX Runtime Android, llmedge (SmolLM parser)
 
 ## Models Included
 
@@ -45,6 +47,7 @@ The project currently contains the required model and tokenizer assets under `ap
 - `arcface_w600k_r50.onnx`
 - `image_encoder.onnx`
 - `text_encoder.onnx`
+- `SmolLM2-135M-Instruct.Q4_K_M.gguf`
 - `tokenizer.json`
 - `vocab.json`
 - `merges.txt`
@@ -84,7 +87,8 @@ The main search flow combines both local cluster filtering and CLIP similarity:
 
 - If the query matches cluster labels, cluster photos are returned.
 - If the query contains non-person terms, the remaining text is embedded with the CLIP text encoder and matched against indexed photos.
-- If both a person name and image description are present, the final result is the intersection of those two result sets where possible.
+- If both person names and scene text are present, the final result is the intersection of person matches and CLIP scene matches.
+- For strict conjunction intent (`and`, `together`, `same photo`), all requested people must co-occur in the same photo, and empty intersection remains empty.
 
 ## Project Structure
 

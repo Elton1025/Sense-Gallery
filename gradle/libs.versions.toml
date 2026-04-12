@@ -18,6 +18,7 @@ recyclerview = "1.4.0"
 navigation = "2.8.5"
 onnxruntime = "1.19.2"
 exifinterface = "1.4.1"
+llmedge = "0.3.9"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -60,6 +61,7 @@ recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version
 # ONNX Runtime
 onnxruntime-android = { group = "com.microsoft.onnxruntime", name = "onnxruntime-android", version.ref = "onnxruntime" }
 exifinterface = { group = "androidx.exifinterface", name = "exifinterface", version.ref = "exifinterface" }
+llmedge = { group = "io.github.aatricks", name = "llmedge", version.ref = "llmedge" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

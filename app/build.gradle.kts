@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.sensegallery"
-        minSdk = 24
+        minSdk = 30
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -39,6 +39,7 @@ android {
     androidResources {
         noCompress += "tflite"
         noCompress += "onnx"
+        noCompress += "gguf"
     }
 }
 
@@ -78,6 +79,9 @@ dependencies {
 
     // ONNX Runtime — runs ArcFace R50 + RetinaFace models
     implementation(libs.onnxruntime.android)
+
+    // On-device LLM runtime (llama.cpp based)
+    implementation(libs.llmedge)
 
     // WorkManager
     implementation(libs.workmanager)

@@ -33,8 +33,12 @@ public interface FaceDao {
     @Query("SELECT COUNT(*) FROM faces")
     int getFaceCount();
 
-    @Query("SELECT p.* FROM photos p INNER JOIN faces f ON p.id = f.photoId WHERE f.clusterId = :clusterId")
+    @Query("SELECT DISTINCT p.* FROM photos p INNER JOIN faces f ON p.id = f.photoId WHERE f.clusterId = :clusterId")
     List<PhotoEntity> getPhotosForCluster(long clusterId);
+
+    @Query("SELECT f.photoId FROM faces f WHERE f.clusterId IN (:clusterIds) " +
+            "GROUP BY f.photoId HAVING COUNT(DISTINCT f.clusterId) = :requiredClusterCount")
+    List<Long> getPhotoIdsWithAllClusters(List<Long> clusterIds, int requiredClusterCount);
 
     @Query("SELECT * FROM faces WHERE photoId = :photoId AND clusterId = :clusterId LIMIT 1")
     FaceEntity getFaceForCover(long photoId, long clusterId);
