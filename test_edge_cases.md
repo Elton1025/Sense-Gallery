@@ -1,149 +1,199 @@
 # Sense Gallery Runtime Scenarios and Edge Cases
 
-This document records expected runtime behavior for the most important operational scenarios in Sense Gallery.
+This document captures expected behavior for important runtime scenarios in the current implementation.
 
 ## 1. Repeated Worker Triggers
 
 ### Scenario
 
-The user taps the floating action button multiple times while background work is already running.
+User taps the floating action button multiple times.
 
 ### Expected Behavior
 
-- Face processing is enqueued as unique work with `ExistingWorkPolicy.KEEP`.
-- A currently running face-processing job is not duplicated.
-- CLIP indexing triggered from the same action is enqueued with `ExistingWorkPolicy.REPLACE`, allowing the semantic indexing pass to restart cleanly when the user explicitly requests it.
+- Face pipeline uses unique work with `ExistingWorkPolicy.KEEP`, so overlapping face-processing jobs are not duplicated.
+- CLIP indexing from the same action uses `ExistingWorkPolicy.REPLACE`, allowing explicit user-triggered restart.
 
-## 2. Automatic Semantic Indexing After Permission Grant
+## 2. Automatic CLIP Indexing After Permission Grant
 
 ### Scenario
 
-The app is launched for the first time and the user grants media permission.
+First launch, user grants media permission.
 
 ### Expected Behavior
 
-- The app immediately schedules CLIP indexing in the background.
-- No manual face-processing action is required for semantic search to begin working.
-- Search quality improves progressively as more photos finish indexing.
+- App immediately schedules CLIP indexing.
+- Face processing does not need to run first for semantic search indexing to begin.
 
-## 3. Failed CLIP Indexing Attempt
+## 3. CLIP Indexing Failure on Individual Photos
 
 ### Scenario
 
-A photo fails during semantic indexing due to bitmap decode issues, model initialization problems, or temporary runtime failures.
+Decode/inference fails for one or more photos.
 
 ### Expected Behavior
 
-- The photo is not marked as successfully CLIP-processed unless an embedding is actually saved.
-- Photos that still have `clipEmbedding = NULL` remain eligible for retry on later runs.
-- A subsequent app launch or manual restart can recover the missing embedding.
+- `isClipProcessed` is set only after a valid embedding is saved.
+- Rows with `clipEmbedding = NULL` remain eligible for later retry.
 
-## 4. Corrupt Cached ONNX Model Copy
+## 4. Missing ACCESS_MEDIA_LOCATION Permission
 
 ### Scenario
 
-The app previously copied a model file into internal storage, but the cached file is partial or invalid.
+User grants image read permission but not exact media location.
 
 ### Expected Behavior
 
-- The CLIP inference layer validates the cached file before reuse.
-- If ONNX session creation fails, the model cache is recopied from packaged assets.
-- Semantic indexing can recover without requiring the user to clear app storage manually.
+- CLIP indexing continues normally.
+- EXIF GPS extraction may be skipped or partially unavailable.
+- Places tab works for photos where coordinates are readable; others remain without map pins.
 
 ## 5. Photos Added After Initial Indexing
 
 ### Scenario
 
-The user captures or downloads new photos after the first indexing pass has already completed.
+New camera/download images appear after earlier indexing completed.
 
 ### Expected Behavior
 
-- New MediaStore entries are inserted into the `photos` table on the next indexing or face-processing sync.
-- Existing photos are deduplicated by `mediaStoreUri`.
-- Only photos without the required processed state or embedding are revisited.
+- MediaStore sync inserts new rows with `INSERT IGNORE` semantics.
+- Existing rows are deduplicated by `mediaStoreUri`.
+- Only unprocessed/missing-embedding rows are re-indexed.
 
 ## 6. Face Detection With No Valid Faces
 
 ### Scenario
 
-A photo contains no faces, only tiny faces, or only blurry faces.
+Photo has no faces, tiny faces, or blurry detections.
 
 ### Expected Behavior
 
-- No `FaceEntity` rows are stored for that photo.
-- The photo is still considered processed for the face pipeline.
-- The image remains eligible for semantic indexing because face processing and CLIP indexing are independent workflows.
+- No face rows are inserted.
+- Photo is still marked face-processed for that pass.
+- Photo remains independently eligible for CLIP indexing.
 
 ## 7. Group Photos With Multiple People
 
 ### Scenario
 
-A single photo contains many people.
+One image contains many people.
 
 ### Expected Behavior
 
-- One `PhotoEntity` row represents the source image.
-- Multiple `FaceEntity` rows can reference the same photo.
-- The same image can appear in several cluster detail screens because multiple faces in that image may belong to different clusters.
+- Single `PhotoEntity` row.
+- Multiple `FaceEntity` rows linked by `photoId`.
+- Same photo can appear in multiple cluster views if faces belong to different clusters.
 
-## 8. Search Query With Person and Object Terms
+## 8. Strict Multi-Person Query
 
 ### Scenario
 
-The user searches with a mixed query such as `John cake`.
+Query like `virat and rohit` or `same photo` intent.
 
 ### Expected Behavior
 
-- Cluster labels are matched first.
-- Remaining unmatched terms are embedded and used for CLIP retrieval.
-- The result set prefers photos that satisfy both the person filter and the semantic filter.
-- If no intersection exists, fallback behavior depends on intent:
-- Strict conjunction intent (`and`, `together`, `same photo`) returns empty.
-- Non-strict mixed queries can still fall back to person-only results.
+- Search requires co-occurrence using `getPhotoIdsWithAllClusters(...)`.
+- Only photos containing all requested people are returned.
 
-## 9. Single-Word Semantic Query Precision
+## 9. Mixed Strict Query With No Scene Intersection
 
 ### Scenario
 
-The user searches for a short exact item term such as `cake`.
+Strict person conjunction plus scene text (for example `virat and rohit beach`) where CLIP scene intersection is empty.
 
 ### Expected Behavior
 
-- The ranking path applies a stricter score-band filter than it does for broader descriptive queries.
-- The UI should prefer highly confident `cake` images and suppress broader related food or restaurant images when their score falls outside the top confidence band.
+- Result stays empty.
+- No fallback to broader name-only results.
 
-## 10. Semantic Search Before Index Completion
+## 10. Mixed Non-Strict Query With Empty Intersection
 
 ### Scenario
 
-The user begins typing semantic queries before CLIP indexing has finished.
+Non-strict name+scene query where intersection is empty.
 
 ### Expected Behavior
 
-- Person-name search can still work because cluster labels and semantic indexing are separate.
-- Semantic-only results may be incomplete or empty until enough photos have stored CLIP embeddings.
-- Once indexing progresses, the same query should return a broader and more stable result set.
+- App may fallback to name-only results.
 
-## 11. Deleting a Previously Indexed Photo
+## 11. Single-Word Semantic Precision
 
 ### Scenario
 
-The user deletes a photo outside the app after it has already been processed.
+Query like `cake`.
 
 ### Expected Behavior
 
-- On the next synchronization pass, the photo row should no longer be reintroduced if the MediaStore entry is gone.
-- Face rows linked to that photo are protected by foreign key cascade behavior and should be removed with the photo record.
-- Cluster entities remain available for any remaining photos that still belong to the same person.
+- Additional exact-term score-band filtering is applied after general relevance filtering.
+- Weaker broad matches are trimmed more aggressively than in descriptive multi-word queries.
 
-## 12. App Termination During Long-Running Work
+## 12. Cluster Curation: Move or Split Selected Photos
 
 ### Scenario
 
-The process is killed while face processing or CLIP indexing is in progress.
+User selects photos in cluster detail and applies move/split/remove actions.
 
 ### Expected Behavior
 
-- Completed database writes remain durable because embeddings and entities are persisted incrementally.
-- The next scheduled or manual run continues from the persisted state rather than reprocessing the entire library unnecessarily.
-- CLIP indexing can revisit incomplete rows because missing embeddings remain retryable.
+- Operations run inside Room transactions.
+- Affected face rows are reassigned or unclustered.
+- Cluster cover photos refresh automatically.
+- Empty clusters are deleted.
+
+## 13. Cluster Merge
+
+### Scenario
+
+User merges current cluster into another.
+
+### Expected Behavior
+
+- All source cluster faces move to target cluster.
+- Source cluster is deleted when empty.
+- UI navigates to target cluster view.
+
+## 14. Compression Save Flow
+
+### Scenario
+
+User compresses a photo from viewer.
+
+### Expected Behavior
+
+- Adaptive JPEG compression computes target bytes from compression level.
+- Quality is selected via binary search, with optional downscale retries if needed.
+- Compressed copy is saved to MediaStore and appears after refresh.
+
+## 15. Crop Save Flow
+
+### Scenario
+
+User applies one of the crop presets.
+
+### Expected Behavior
+
+- Center crop with selected aspect ratio is encoded to JPEG.
+- Saved as a new copy in MediaStore.
+- Gallery/cluster list refreshes to surface new image.
+
+## 16. App Kill During Processing
+
+### Scenario
+
+Process dies during face or CLIP worker execution.
+
+### Expected Behavior
+
+- Persisted writes remain durable.
+- Later runs continue from DB state rather than full reprocessing.
+- CLIP indexing can recover missing rows via retryable selection criteria.
+
+## 17. Optional LLM Parser Asset Absent
+
+### Scenario
+
+SmolLM model asset is not packaged.
+
+### Expected Behavior
+
+- Optional parser path fails closed.
+- Search still functions via deterministic token/label heuristic path.

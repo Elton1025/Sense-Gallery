@@ -24,7 +24,9 @@ import com.example.sensegallery.data.PhotoDao;
 import com.example.sensegallery.data.PhotoEntity;
 
 import java.io.InputStream;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Background worker that indexes all unprocessed photos with CLIP image
@@ -185,12 +187,15 @@ public class CLIPIndexingWorker extends Worker {
 
     private void syncPhotosToDb(Context context, PhotoDao photoDao) {
         try {
-                ContentResolver resolver = context.getContentResolver();
+            ContentResolver resolver = context.getContentResolver();
             Uri collection = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
             String[] projection = {
                     android.provider.MediaStore.Images.Media._ID,
                     android.provider.MediaStore.Images.Media.DATE_TAKEN
             };
+
+            Set<String> seenMediaStoreUris = new HashSet<>();
+            boolean scanCompleted = false;
 
             try (android.database.Cursor cursor = resolver.query(collection, projection, null, null, null)) {
                 if (cursor != null) {
@@ -208,6 +213,7 @@ public class CLIPIndexingWorker extends Worker {
                                 id);
 
                         String uriString = contentUri.toString();
+                        seenMediaStoreUris.add(uriString);
 
                         // Use INSERT OR IGNORE via the DAO method annotated with OnConflictStrategy.IGNORE.
                         PhotoEntity photo = new PhotoEntity(uriString, dateTaken, null);
@@ -229,12 +235,32 @@ public class CLIPIndexingWorker extends Worker {
 
                         count++;
                     }
+                    scanCompleted = true;
                     Log.d(TAG, "[CLIP] Scanned " + count + " photos from MediaStore.");
+                }
+            }
+
+            if (scanCompleted) {
+                int removed = pruneDeletedPhotos(photoDao, seenMediaStoreUris);
+                if (removed > 0) {
+                    Log.i(TAG, "[CLIP] Removed " + removed + " stale Room photo rows after MediaStore sync.");
                 }
             }
         } catch (Exception e) {
             Log.e(TAG, "Error syncing MediaStore to DB: " + e.getMessage());
         }
+    }
+
+    private int pruneDeletedPhotos(@NonNull PhotoDao photoDao, @NonNull Set<String> currentUris) {
+        int removed = 0;
+        List<PhotoEntity> dbPhotos = photoDao.getAllPhotos();
+        for (PhotoEntity dbPhoto : dbPhotos) {
+            if (!currentUris.contains(dbPhoto.mediaStoreUri)) {
+                photoDao.deletePhotoById(dbPhoto.id);
+                removed++;
+            }
+        }
+        return removed;
     }
 
     @Nullable

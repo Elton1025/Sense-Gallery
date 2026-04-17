@@ -1,0 +1,309 @@
+\documentclass[conference]{IEEEtran}
+
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\title{Sense Gallery: A Local-First Android Photo Gallery with On-Device Face Clustering, Semantic Search, Geotagging, and Photo Compression}
+
+\author{
+\IEEEauthorblockN{Your Name}
+\IEEEauthorblockA{
+Department of Computer Science and Engineering\\
+Your Institute Name\\
+City, Country\\
+email@domain.com}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This report presents Sense Gallery, an offline Android gallery application that combines person-centric organization and semantic retrieval on device. The system integrates RetinaFace-based detection, ArcFace embeddings, hierarchical agglomerative clustering, and CLIP-based text-image matching using ONNX Runtime Android. Beyond retrieval, the application includes geotag extraction from EXIF for a map-based Places view, user-driven cluster correction workflows for false detections and grouping errors, and non-destructive photo utilities including adaptive JPEG compression and aspect-ratio cropping. The search stack supports mixed person-plus-scene queries, strict conjunction semantics for multi-person co-occurrence, and precision filtering for short exact scene terms. All indexing and query execution run locally with Room-backed persistence and WorkManager orchestration. This document details architecture, implementation, search fusion logic, reliability design, and evaluation strategy for privacy-preserving personal media intelligence on mobile devices.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Android, on-device AI, local-first systems, face clustering, semantic image search, CLIP, ArcFace, RetinaFace, geotagging, privacy-preserving retrieval
+\end{IEEEkeywords}
+
+\section{Introduction}
+Personal photo libraries continue to grow rapidly, yet traditional mobile galleries are still dominated by metadata filters such as date and albums. Users increasingly expect object- and person-level retrieval while also preferring stronger privacy guarantees. Cloud-centric photo intelligence pipelines can provide relevance improvements, but they often require uploading sensitive media or derived metadata.
+
+Sense Gallery addresses this gap through a local-first architecture where image processing, embedding generation, and search execution remain on device. The application is implemented in Java 17 using Room, WorkManager, Android Fragments, and ONNX Runtime Android. The design goal is practical usability under mobile constraints while preserving local data sovereignty.
+
+\section{Problem Statement and Objectives}
+The project targets four main problems:
+\begin{enumerate}
+\item Lack of robust person grouping in local-only galleries.
+\item Limited semantic retrieval over private, on-device images.
+\item Weak support for mixed-intent queries that combine people and scene terms.
+\item Absence of correction tooling when automatic clustering makes mistakes.
+\end{enumerate}
+
+Project objectives are:
+\begin{enumerate}
+\item Perform face detection, embedding, and clustering entirely on device.
+\item Support CLIP-based open-vocabulary scene retrieval over local media.
+\item Provide strict co-occurrence semantics for conjunction queries.
+\item Enable user correction of clustering errors through explicit curation actions.
+\item Preserve usability through resilient background processing and bounded storage growth.
+\end{enumerate}
+
+\section{Contributions}
+This work contributes:
+\begin{enumerate}
+\item A unified local search pipeline that fuses person filtering and scene retrieval.
+\item Deterministic strict-conjunction behavior for queries such as \textit{virat and rohit}.
+\item Cluster curation workflows (merge, move, split, remove) for post-clustering correction.
+\item Integrated geotag extraction and map-based browsing.
+\item Adaptive JPEG compression and crop-based non-destructive edit utilities in the viewer.
+\end{enumerate}
+
+\section{Related Work}
+Face representation and recognition systems have been strongly influenced by FaceNet \cite{schroff2015facenet} and later ArcFace \cite{deng2019arcface}, which improved discriminative embedding quality via angular-margin training. Robust face detection in unconstrained scenes is supported by RetinaFace \cite{deng2020retinaface}. For open-vocabulary text-image retrieval, CLIP established a scalable multimodal embedding approach \cite{radford2021clip}.
+
+From the systems perspective, mobile reliability depends on durable background execution and local persistence. Android WorkManager provides structured scheduling for deferrable tasks \cite{android_workmanager}, and Room provides typed relational persistence on device \cite{android_room}. ONNX Runtime enables efficient model inference in Android environments \cite{onnxruntime_android}.
+
+\section{System Architecture}
+\subsection{Layered Design}
+Sense Gallery follows a five-layer architecture:
+\begin{enumerate}
+\item \textbf{UI Layer}: activity and fragments for gallery, clusters, map, and viewer.
+\item \textbf{Search Orchestration Layer}: query decomposition, branch execution, and result fusion.
+\item \textbf{Inference Layer}: RetinaFace, ArcFace, CLIP image encoder, CLIP text encoder.
+\item \textbf{Data Layer}: Room entities and DAOs for photos, faces, clusters, and projections.
+\item \textbf{Background Layer}: WorkManager workers for face and CLIP pipelines.
+\end{enumerate}
+
+\subsection{High-Level Data Flow}
+\begin{figure}[H]
+\centering
+\setlength{\fboxsep}{6pt}
+\fbox{%
+\parbox{\dimexpr\columnwidth-2\fboxsep-2\fboxrule\relax}{%
+\centering
+\small
+\textbf{MediaStore Sync} $\rightarrow$ \textbf{Room Photos} $\rightarrow$ \textbf{Face Pipeline / CLIP Pipeline}\\[2pt]
+\textbf{Faces + Clusters + CLIP Embeddings} $\rightarrow$ \textbf{Search Fusion} $\rightarrow$ \textbf{UI Results}
+}%
+}
+\caption{Sense Gallery high-level local processing flow.}
+\label{fig:flow}
+\end{figure}
+
+\section{Core Pipelines}
+\subsection{Face Pipeline}
+The face worker performs:
+\begin{enumerate}
+\item MediaStore-to-Room synchronization.
+\item Candidate photo selection with incomplete face processing state.
+\item RetinaFace detection with landmark extraction.
+\item Quality filters for tiny or blurry faces.
+\item Five-point similarity alignment to ArcFace template (112$\times$112).
+\item ArcFace embedding extraction (512-D).
+\item Face row persistence and photo processing-state update.
+\end{enumerate}
+
+\subsection{Face Clustering}
+After extraction, hierarchical agglomerative clustering groups face embeddings:
+\begin{itemize}
+\item Linkage: average linkage.
+\item Distance: Euclidean ($L_2$).
+\item Merge threshold: 1.1.
+\end{itemize}
+
+Existing clusters and unclustered faces are both considered, enabling incremental clustering behavior after new detections.
+
+\subsection{Semantic Indexing}
+The CLIP worker performs:
+\begin{enumerate}
+\item MediaStore-to-Room synchronization.
+\item Selection of photos with missing CLIP state or embedding.
+\item Bitmap loading (Glide, 224$\times$224 target).
+\item CLIP image embedding inference and persistence.
+\item Optional EXIF latitude/longitude extraction and persistence.
+\end{enumerate}
+
+CLIP sessions are created directly from bundled asset bytes, while startup maintenance removes obsolete on-disk model copies.
+
+\section{Search Composition}
+\subsection{Person and Scene Branches}
+For a query $Q$, the system resolves:
+\begin{enumerate}
+\item Person terms from cluster labels.
+\item Remaining scene terms for CLIP text embedding.
+\item Strict conjunction intent from conjunction keywords and phrasing.
+\end{enumerate}
+
+Cosine similarity is used for semantic scoring:
+\begin{equation}
+s(q, i) = \frac{\mathbf{e}_q \cdot \mathbf{e}_i}{\|\mathbf{e}_q\|\|\mathbf{e}_i\|}
+\end{equation}
+with normalized text and image embeddings.
+
+\subsection{Fusion Logic}
+If both person and scene constraints exist, results are fused by intersection:
+\begin{equation}
+R = R_{person} \cap R_{scene}
+\end{equation}
+For strict multi-person intent, person matching uses co-occurrence intersection across requested names.
+
+\begin{algorithm}[t]
+\caption{Mixed Search Fusion in Sense Gallery}
+\label{alg:fusion}
+\begin{algorithmic}[1]
+\Require Query $Q$, indexed photos $P$
+\State Parse $Q$ into names $N$, scene text $S$, strict flag $F$
+\If{$N \neq \emptyset$}
+    \If{$F$}
+        \State $R_{person} \gets \bigcap_{n \in N} MatchCluster(n)$
+    \Else
+        \State $R_{person} \gets \bigcup_{n \in N} MatchCluster(n)$
+    \EndIf
+\Else
+    \State $R_{person} \gets P$
+\EndIf
+\If{$S \neq \emptyset$}
+    \State $R_{scene} \gets RankByCLIP(S, P)$
+\Else
+    \State $R_{scene} \gets P$
+\EndIf
+\State $R \gets R_{person} \cap R_{scene}$
+\If{$R = \emptyset$ and non-strict mixed query}
+    \State fallback to person-only results
+\Else
+    \State keep strict empty result when strict conjunction is requested
+\EndIf
+\State Apply relevance and exact-term precision filters to scene branch
+\State \Return $R$
+\end{algorithmic}
+\end{algorithm}
+
+\section{Cluster Curation Workflows}
+To handle false detections or imperfect grouping, the cluster detail screen supports transactional correction workflows:
+\begin{enumerate}
+\item Rename cluster label.
+\item Merge current cluster into another.
+\item Move selected photo faces to another cluster.
+\item Split selected photo faces into a new cluster.
+\item Remove selected photo faces from cluster (set unclustered).
+\end{enumerate}
+
+After each operation, cluster cover photos are refreshed and empty clusters are deleted.
+
+\section{Geotagging and Places View}
+During CLIP indexing, EXIF metadata is read to extract GPS coordinates when available and permission allows exact media location access. Coordinates are stored per photo row. The Places tab queries geotagged photos and renders map markers using osmdroid. Marker interaction opens the viewer for the corresponding photo URI.
+
+\section{Photo Utilities}
+The photo viewer includes non-destructive operations:
+\begin{enumerate}
+\item Crop presets (square, portrait, story, landscape).
+\item Adaptive JPEG compression with user-selected compression level.
+\item Save-as-copy behavior through MediaStore.
+\item Share and delete actions with platform-compliant URI and permission handling.
+\end{enumerate}
+
+Compression combines quality search and optional iterative downscaling to approach target byte size while preserving reasonable output quality.
+
+\section{Data Model}
+\subsection{Photos}
+`photos` stores URI, timestamps, face/CLIP processing flags, CLIP embedding blob, and optional latitude/longitude.
+
+\subsection{Faces}
+`faces` stores face boxes, ArcFace embedding blob, source photo foreign key, and optional cluster foreign key.
+
+\subsection{Clusters}
+`clusters` stores user-visible labels and cover photo references for person groups.
+
+\section{Scheduling and Reliability}
+\begin{enumerate}
+\item Face processing: unique work with KEEP policy.
+\item CLIP indexing:
+  \begin{itemize}
+  \item auto-scheduled with KEEP after permission grant
+  \item manual restart with REPLACE from floating action button
+  \end{itemize}
+\item Search execution uses a dedicated executor and input debounce.
+\item Startup storage maintenance trims map and image caches and removes obsolete model artifacts.
+\end{enumerate}
+
+These choices improve resilience against app restarts, duplicate work, and long-term storage growth.
+
+\section{Evaluation}
+\subsection{Evaluation Scope}
+This report emphasizes implementation-grounded behavior validation and architectural correctness. Quantitative benchmark values are intentionally left as project-measurement placeholders to avoid fabricated claims.
+
+\subsection{Functional Validation Matrix}
+\begin{table}[t]
+\caption{Functional Validation Scenarios}
+\label{tab:functional}
+\centering
+\begin{tabular}{p{0.25\columnwidth} p{0.29\columnwidth} p{0.34\columnwidth}}
+\toprule
+Scenario & Input Example & Expected Outcome \\
+\midrule
+Strict co-occurrence & virat and rohit & Results only when all requested people co-occur in same photo. \\
+\midrule
+Strict mixed empty & virat and rohit beach & Empty result when person-scene intersection is empty. \\
+\midrule
+Exact short scene & cake & High-confidence score band retained; broad weak matches trimmed. \\
+\midrule
+Cluster correction & move/split/remove selected & Face-to-cluster assignments updated transactionally; covers refreshed. \\
+\midrule
+Places map & geotagged photos present & Marker rendering and click-through to viewer for mapped photos. \\
+\midrule
+Compression utility & compression level chosen & New JPEG copy saved with reduced size and refreshed gallery visibility. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Recommended Quantitative Additions}
+For final submission, collect and insert:
+\begin{enumerate}
+\item Median and P95 latency for RetinaFace, ArcFace, CLIP image encoding, CLIP text encoding.
+\item Initial indexing throughput (photos/minute).
+\item Query latency by mode: person-only, scene-only, mixed strict.
+\item Storage overhead per 1,000 photos (embeddings + metadata).
+\item Battery/thermal behavior during long indexing sessions.
+\end{enumerate}
+
+\section{Discussion}
+\subsection{Strengths}
+\begin{enumerate}
+\item Strong privacy posture through local-only inference and retrieval.
+\item Unified mixed-query behavior with deterministic strict conjunction handling.
+\item Practical recovery and maintenance strategies for long-lived mobile usage.
+\item User-in-the-loop correction for clustering quality improvement.
+\end{enumerate}
+
+\subsection{Limitations}
+\begin{enumerate}
+\item Retrieval quality remains bounded by model domain generalization and heuristic thresholds.
+\item Initial indexing can be time-consuming for very large libraries.
+\item Static HAC threshold may not be optimal across all datasets.
+\item Device heterogeneity affects latency, thermal profile, and indexing speed.
+\end{enumerate}
+
+\section{Future Work}
+\begin{enumerate}
+\item Adaptive per-device thresholds for clustering and semantic filtering.
+\item Incremental clustering strategies that better preserve manual curation intent.
+\item Hardware acceleration tuning across wider Android chipsets.
+\item Extended temporal + geospatial query operators in search.
+\item Formal quantitative benchmarking across representative devices.
+\end{enumerate}
+
+\section{Conclusion}
+Sense Gallery demonstrates that practical photo intelligence can be delivered on Android without cloud dependency by combining local face clustering, CLIP semantic retrieval, geotag-aware browsing, and corrective user workflows. The system balances privacy, usability, and resilience through Room persistence, WorkManager orchestration, and deterministic mixed-query fusion. This implementation provides a strong baseline for privacy-preserving personal media search and organization, with clear paths toward further optimization and formal performance evaluation.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

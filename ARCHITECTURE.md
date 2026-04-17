@@ -2,282 +2,201 @@
 
 ## Overview
 
-Sense Gallery is an offline Android gallery application that combines two independent computer-vision pipelines:
+Sense Gallery is an offline Android gallery that combines local face organization and local semantic retrieval:
 
-- Face organization, built on RetinaFace and ArcFace.
-- Semantic image retrieval, built on CLIP image and text embeddings.
+- Face pipeline: RetinaFace detection, ArcFace embedding, HAC clustering.
+- Semantic pipeline: CLIP image indexing, CLIP text retrieval, relevance filtering.
 
-Both pipelines persist their outputs in Room and are exposed through a single search experience in the main activity.
+Both pipelines persist state in Room and are orchestrated through WorkManager and ViewModel executors.
 
 ## Architectural Goals
 
-- Keep all media processing on-device.
-- Avoid duplicate processing across app launches.
-- Persist intermediate outputs so long-running work can resume.
-- Separate face clustering from semantic indexing so each pipeline can progress independently.
-- Keep the UI responsive by running all inference in background workers or executors.
+- Keep inference and search fully on device.
+- Persist intermediate state so work can resume after interruptions.
+- Avoid duplicate background runs.
+- Keep UI reactive while inference and ranking run off the main thread.
+- Allow user correction of clustering mistakes.
 
 ## High-Level Components
 
-### UI Layer
+### UI and Interaction Layer
 
 - `MainActivity`
-  Hosts navigation, the global search UI, permission handling, and worker scheduling.
+  - runtime permission handling
+  - search UI (Material SearchBar/SearchView)
+  - worker scheduling
+  - navigation host and chrome visibility control
 - `GalleryViewModel`
-  Loads gallery and cluster state, executes semantic search, and combines person-name and CLIP-based results.
-- Fragment layer
-  Displays photo grids, cluster lists, cluster details, and the photo viewer.
+  - cluster loading
+  - mixed person+scene search orchestration
+  - CLIP ranking and relevance filtering
+- `ClusterDetailFragment`
+  - cluster rename, merge, selective move/split/remove curation
+- `PhotoViewerFragment`
+  - viewer pager, metadata panel, share/crop/compress/delete actions
+- `MapFragment`
+  - geotagged photo pin rendering with osmdroid
 
-### Data Layer
+### Data Layer (Room)
 
-- `AppDatabase`
-  Room database singleton.
 - `PhotoEntity`
-  Stores MediaStore URI, timestamps, CLIP processing state, and CLIP embedding.
+  - MediaStore URI, capture time, processing flags, CLIP embedding, optional lat/lon
 - `FaceEntity`
-  Stores detected face geometry, ArcFace embedding, and optional cluster membership.
+  - face box, ArcFace embedding, optional cluster ID
 - `ClusterEntity`
-  Stores user-visible cluster label and cover photo reference.
+  - label and cover photo ID
+- DAOs
+  - optimized queries for cluster photos, strict multi-cluster co-occurrence, and geotagged projections
 
 ### Inference Layer
 
 - `FaceDetectionHelper`
-  RetinaFace ONNX wrapper.
+  - RetinaFace ONNX inference and landmark-aware decoding
 - `FaceEmbeddingHelper`
-  ArcFace ONNX wrapper.
+  - ArcFace ONNX embedding with 2-pass TTA (original + mirrored)
 - `FacePipelineProcessor`
-  Coordinates bitmap loading, detection, filtering, alignment, and embedding persistence.
+  - bitmap loading, quality filtering, alignment, and face persistence
 - `FaceClusterer`
-  Performs hierarchical agglomerative clustering over ArcFace embeddings.
+  - HAC average-linkage clustering with distance matrix updates
 - `CLIPInferenceEngine`
-  Wraps the CLIP image and text encoders and manages validated model caching.
-- `CLIPTokenizer`
-  Pure Java BPE tokenizer for CLIP text input.
+  - CLIP image/text sessions from asset bytes
+  - CLIP tokenizer integration
 
-### Background Workers
+### Background Layer
 
 - `FaceProcessingWorker`
-  Runs face detection and clustering.
+  - executes face extraction then clustering
 - `CLIPIndexingWorker`
-  Runs semantic image indexing.
+  - syncs MediaStore, computes image embeddings, updates EXIF geotags
 
-## End-to-End Data Flow
+## End-to-End Flow
 
-## 1. Media Synchronization
+## 1) Media Synchronization
 
-Both background pipelines begin by reconciling MediaStore with the local Room database.
+Both pipelines reconcile MediaStore with Room:
 
-- MediaStore images are inserted into the `photos` table using `INSERT IGNORE`.
-- The database becomes the source of truth for subsequent inference work.
-- `mediaStoreUri` is unique, which prevents duplicate photo rows.
+- `INSERT IGNORE` into `photos` prevents duplicate rows.
+- `mediaStoreUri` uniqueness acts as deduplication key.
 
-## 2. Face Processing Pipeline
+## 2) Face Pipeline
 
-The face-processing worker is triggered from the floating action button.
+Triggered manually via floating action button.
 
-### Step 1: Load Unprocessed Photos
+1. Load photos with `isFaceProcessed = 0`.
+2. Decode bitmap with bounded dimensions (up to 2048 side).
+3. Detect faces with RetinaFace.
+4. Reject tiny and blurry detections.
+5. Align with 5-point similarity transform to 112x112 template.
+6. Extract ArcFace embeddings (512-d, L2-normalized).
+7. Insert face rows and mark photo face-processed.
 
-- Query `photos` where `isFaceProcessed = 0`.
-- Skip work for photos that already have face rows.
+## 3) Clustering Pipeline
 
-### Step 2: Face Detection
+Runs after face extraction in the same worker.
 
-- Load the photo bitmap from the MediaStore URI.
-- Run RetinaFace (`det_10g.onnx`).
-- Decode multi-scale outputs and run custom non-maximum suppression.
+- Algorithm: HAC with average linkage.
+- Distance: Euclidean/L2 on embeddings.
+- Merge threshold: `1.1f`.
+- Inputs: existing clusters + newly unclustered faces.
+- Outputs:
+  - create new `Person N` clusters when needed
+  - update face `clusterId`
+  - preserve existing clusters unless merged by HAC
 
-### Step 3: Quality Filtering
+## 4) Semantic Indexing Pipeline
 
-- Reject faces below the minimum face size threshold.
-- Reject blurry detections using a Laplacian variance heuristic.
+Auto-started after media permission; manually restartable.
 
-### Step 4: Face Alignment
+1. Sync MediaStore into Room.
+2. Select rows where `isClipProcessed = 0` or embedding is missing.
+3. Load image bitmap (224x224 target via Glide).
+4. Encode with CLIP image encoder.
+5. Persist embedding blob and mark clip-processed.
+6. Read EXIF GPS (with `ACCESS_MEDIA_LOCATION` when available) and store lat/lon.
 
-- Use five facial landmarks when available.
-- Compute a similarity transform into the ArcFace 112x112 canonical template.
-- Fall back to crop-and-resize when landmarks are unavailable.
+## 5) Search Pipeline
 
-### Step 5: Face Embedding
+`GalleryViewModel.semanticSearch(query)` composes two branches:
 
-- Run ArcFace (`arcface_w600k_r50.onnx`).
-- Produce a 512-dimensional embedding.
-- Convert the float array into a BLOB for Room storage.
+- Person branch
+  - match cluster labels by exact/word/prefix scoring
+  - strict co-occurrence query support via `FaceDao.getPhotoIdsWithAllClusters(...)`
+- Scene branch
+  - tokenize residual query text (excluding stop words and consumed name tokens)
+  - CLIP text embedding + cosine similarity over indexed photos
+  - score filtering using confidence floors and relevance-drop cutoff
+  - stricter banding for exact single-word item queries
 
-### Step 6: Persist Face Rows
+Result fusion:
 
-- Insert a `FaceEntity` per accepted face.
-- Mark the source photo as face-processed after the photo-level pass completes.
+- Name-only: return person matches.
+- Scene-only: return CLIP ranking.
+- Name+scene: return intersection.
+- If name+scene intersection is empty:
+  - strict conjunction intent (`and`, `together`, `same photo`) -> keep empty
+  - non-strict mixed query -> fallback to name-only photos
 
-## 3. Face Clustering Pipeline
+## Query Understanding Notes
 
-Clustering runs after face extraction completes.
+- The code includes an optional `LLMQueryParser` path.
+- Current shipped assets do not include a SmolLM `.gguf` model, so parsing effectively relies on deterministic token/label heuristics.
 
-### Algorithm
+## Cluster Curation Architecture
 
-- Hierarchical agglomerative clustering
-- Average linkage
-- Euclidean distance over ArcFace embeddings
-- Merge threshold: `1.1f`
+Cluster correction happens in `ClusterDetailFragment` within Room transactions:
 
-### Output
+- Merge current cluster into another (`moveAllFacesToCluster`).
+- Move selected photo faces to another cluster (`moveClusterFacesInPhotos`).
+- Split selected photo faces into new cluster.
+- Remove selected photo faces from current cluster (set `clusterId = null`).
+- Refresh cover-photo pointer after edits and delete empty clusters.
 
-- New clusters are created as needed.
-- Faces are assigned to cluster IDs.
-- New clusters receive generated labels such as `Person 1`.
-- Existing clusters can be renamed by the user.
+## Photo Editing Utilities
 
-## 4. Semantic Indexing Pipeline
+`PhotoViewerFragment` provides non-destructive editing:
 
-Semantic indexing is started automatically after media permission is granted and can also be restarted manually from the floating action button.
+- crop presets (square, portrait, story, landscape)
+- adaptive JPEG compression
+  - compression-level slider
+  - target byte estimation
+  - binary search over JPEG quality
+  - optional iterative downscale loop
+- save edited copy to MediaStore (and refresh visible lists)
 
-### Step 1: Select Photos for Indexing
+## Geotag and Places Architecture
 
-The worker indexes photos that either:
+- EXIF coordinates are extracted in CLIP indexing worker.
+- Map UI queries `PhotoDao.getPhotosWithLocation()`.
+- Map markers open photo viewer directly for selected URI.
+- osmdroid cache paths and max/trim thresholds are configured per app cache directory.
 
-- are not marked as CLIP-processed, or
-- still have no stored CLIP embedding
+## Concurrency and Scheduling
 
-This makes the indexing path resilient to earlier failed runs.
+- Face processing unique work: `KEEP`.
+- CLIP indexing unique work:
+  - `KEEP` on startup permission flow
+  - `REPLACE` on manual re-index trigger
+- Search:
+  - dedicated `searchExecutor`
+  - text-change debounce in `MainActivity`
 
-### Step 2: CLIP Model Initialization
+## Storage Maintenance
 
-- Load `image_encoder.onnx`
-- Load `text_encoder.onnx`
-- Load tokenizer assets
-- Copy model files from assets into app storage through a validated temp-file flow
-- Recopy automatically if a cached file is corrupt or incomplete
+On startup, `StorageMaintenance.runStartupCleanup(...)`:
 
-### Step 3: Image Embedding
+- trims osmdroid and Glide disk caches to bounded sizes
+- purges legacy CLIP model cache directory
+- removes stale temp files
 
-- Load a photo bitmap through Glide.
-- Resize to 224x224.
-- Normalize using CLIP image statistics.
-- Run the CLIP image encoder.
-- L2-normalize the output embedding.
-- Store the resulting BLOB on `PhotoEntity.clipEmbedding`.
+## Reliability Characteristics
 
-Photos are marked as CLIP-processed only after a valid embedding is successfully stored.
+- Independent persistence for face and CLIP pipelines.
+- CLIP retry behavior for rows with missing embeddings.
+- WorkManager unique names avoid overlapping worker storms.
+- UI remains responsive because heavy work stays off the main thread.
 
-## Search Architecture
+## Known Limits
 
-## Query Parsing
-
-The search bar supports mixed queries that may include:
-
-- a person reference, such as `John`
-- a visual description, such as `cake`
-- a combined query, such as `John cake`
-
-`GalleryViewModel` splits the query into words and compares them against cluster labels first. Terms matched to cluster names are treated as person filters. Remaining terms become the CLIP text query.
-
-## CLIP Retrieval
-
-For semantic search:
-
-1. Encode the CLIP text query.
-2. Load all stored image embeddings.
-3. Compute cosine similarity between the text embedding and each image embedding.
-4. Sort results by descending score.
-5. Apply relevance filtering.
-
-## Precision Filtering
-
-The ranking system uses two layers of filtering:
-
-- General relevance filtering
-  Rejects low-confidence result sets and trims after significant score drops.
-- Exact-item precision filtering
-  For single-word exact queries such as `cake`, only the strongest score band is kept so broad related scenes are less likely to appear.
-
-## Combined Search Results
-
-- Person-only query
-  Return all photos belonging to the matched clusters.
-- Semantic-only query
-  Return CLIP-ranked photos.
-- Person plus semantic query
-  Return the intersection of cluster photos and CLIP matches when possible.
-
-If the intersection is empty, the implementation currently falls back to person-only results rather than returning an empty screen.
-
-## Database Model
-
-## `photos`
-
-Purpose:
-Stores one row per MediaStore image.
-
-Important fields:
-
-- `id`
-- `mediaStoreUri`
-- `dateTaken`
-- `isFaceProcessed`
-- `isClipProcessed`
-- `clipEmbedding`
-
-## `faces`
-
-Purpose:
-Stores one row per detected face.
-
-Important fields:
-
-- `id`
-- `photoId`
-- `boxLeft`
-- `boxTop`
-- `boxRight`
-- `boxBottom`
-- `faceEmbedding`
-- `clusterId`
-
-Relationships:
-
-- `photoId -> photos.id` with `ON DELETE CASCADE`
-- `clusterId -> clusters.id` with `ON DELETE SET NULL`
-
-## `clusters`
-
-Purpose:
-Stores user-visible face groups.
-
-Important fields:
-
-- `id`
-- `label`
-- `coverPhotoId`
-
-## Concurrency and Work Scheduling
-
-### Face Processing
-
-- Enqueued as unique work with `ExistingWorkPolicy.KEEP`
-- Prevents overlapping face-processing runs
-- Uses a `CountDownLatch` inside the worker so clustering starts only after extraction completes
-
-### CLIP Indexing
-
-- Automatically started after permission grant with unique work
-- Manual restart from the floating action button uses `ExistingWorkPolicy.REPLACE`
-- Allows the user to force a fresh semantic indexing run
-
-### UI Search Execution
-
-- Search queries run on a dedicated single-thread executor in `GalleryViewModel`
-- Text changes are debounced in `MainActivity`
-- This avoids blocking the main thread during semantic scoring
-
-## Reliability Considerations
-
-- Model files are copied through a temporary file and validated by size before reuse.
-- Corrupt cached model copies trigger an automatic recopy.
-- CLIP indexing retries rows that still have no image embedding.
-- Face and semantic processing are persisted independently so partial progress is not lost.
-
-## Known Limitations
-
-- Semantic search quality is bounded by the CLIP model and local ranking heuristics.
-- Exact visual object discrimination can still vary for cluttered scenes.
-- Large libraries may require noticeable time for initial indexing.
-- Full rebuild verification depends on local Gradle availability in the development environment.
+- Retrieval quality depends on model generalization and score heuristics.
+- Initial indexing time increases with library size.
+- HAC threshold is static and may need per-device/per-collection tuning.

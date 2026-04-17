@@ -22,6 +22,12 @@ public interface PhotoDao {
     @Query("SELECT * FROM photos ORDER BY dateTaken DESC")
     List<PhotoEntity> getAllPhotos();
 
+    @Query("DELETE FROM photos WHERE id = :photoId")
+    void deletePhotoById(long photoId);
+
+    @Query("DELETE FROM photos WHERE mediaStoreUri = :uri")
+    void deletePhotoByUri(String uri);
+
     @Query("SELECT * FROM photos WHERE clipEmbedding IS NOT NULL")
     List<PhotoEntity> getPhotosWithEmbeddings();
 

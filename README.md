@@ -1,33 +1,41 @@
 # Sense Gallery
 
-Sense Gallery is an offline Android photo gallery focused on two local-first capabilities:
+Sense Gallery is an offline Android photo gallery centered on local-first photo intelligence:
 
-1. Face clustering for organizing photos by person.
-2. Semantic image search for retrieving photos by visual content such as `cake`, `sunset`, or `beach`.
+1. Face detection and clustering for organizing photos by person.
+2. Semantic image search for retrieving photos by visual content.
 
-The application is built in Java on top of Room, WorkManager, Material components, ONNX Runtime, and an on-device llmedge parser for natural-language query decomposition. All inference runs on-device. No photo content, embeddings, or search queries are sent to a server.
+All core inference runs on device. The app does not upload photos, embeddings, or search queries to any remote server.
 
 ## Core Capabilities
 
-- Face detection with RetinaFace ONNX.
-- Face embedding extraction with ArcFace ONNX.
-- Hierarchical agglomerative clustering for grouping faces into identity clusters.
+- RetinaFace ONNX face detection.
+- ArcFace ONNX face embeddings (512-dimensional).
+- Hierarchical agglomerative clustering for identity grouping.
+- User cluster curation for false detections and grouping mistakes:
+  - rename cluster
+  - merge clusters
+  - move selected photos to another cluster
+  - split selected photos into a new person
+  - remove selected photos from a cluster
 - CLIP-based image indexing and text-to-image semantic search.
-- Geotagged Places view with map pins for photos containing GPS metadata.
-- Person search through user-editable cluster labels.
-- Automatic semantic indexing after media permission is granted.
-- Manual reprocessing through the floating action button for face processing and CLIP re-indexing.
+- Geotag extraction from EXIF metadata and Places map view.
+- Photo viewer tools: share, crop presets, adaptive JPEG compression, metadata panel, and delete.
+- Automatic semantic indexing after media permission grant.
+- Manual reprocessing via floating action button (face pipeline + CLIP re-indexing).
 
 ## Current Search Behavior
 
-The search surface supports two retrieval modes in the same UI:
+Search combines person retrieval and semantic retrieval in one surface:
 
-- Person search: matches cluster labels such as `John`, `Mom`, or `Virat`.
-- Semantic search: matches image content using CLIP embeddings, for example `cake`, `dog`, or `sunset at beach`.
+- Person search matches cluster labels such as `John`, `Mom`, or `Virat`.
+- Semantic search matches image content with CLIP text/image embeddings.
 
-For short exact item queries such as `cake`, the semantic ranking applies a stricter precision filter so broad related images such as plates, restaurants, or generic food scenes are less likely to appear.
+For short exact single-term scene queries (for example `cake`), ranking applies stricter score-band filtering to reduce broad related results.
 
-For multi-person conjunction queries such as `virat and rohit`, the search enforces strict co-occurrence. Results must contain all requested people in the same photo. If a strict conjunction query also includes scene text and no CLIP scene match is found, the result stays empty instead of falling back to broader name-only results.
+For strict multi-person conjunction queries (for example `virat and rohit`, `same photo`, `together`), all requested people must co-occur in the same photo. If strict person conjunction and scene text are both present, empty intersection remains empty.
+
+For non-strict mixed queries where name+scene intersection is empty, the app may fall back to name-only results.
 
 ## Technology Stack
 
@@ -37,75 +45,82 @@ For multi-person conjunction queries such as `virat and rohit`, the search enfor
 - Database: Room
 - Background execution: WorkManager
 - Image loading: Glide
-- Navigation/UI: Fragments, Navigation Component, Material 3 search components
+- Navigation/UI: Fragments, Navigation Component, Material 3
 - Map UI: OpenStreetMap (osmdroid)
-- Inference runtime: ONNX Runtime Android, llmedge (SmolLM parser)
+- Inference runtime: ONNX Runtime Android
 
-## Models Included
+## Models and Assets Included
 
-The project currently contains the required model and tokenizer assets under `app/src/main/assets/`:
+Assets under `app/src/main/assets/`:
 
 - `det_10g.onnx`
 - `arcface_w600k_r50.onnx`
 - `image_encoder.onnx`
 - `text_encoder.onnx`
-- `SmolLM2-135M-Instruct.Q4_K_M.gguf`
 - `tokenizer.json`
 - `vocab.json`
 - `merges.txt`
 
+Note: this build does not package a SmolLM `.gguf` model asset.
+
 ## How the App Works
 
-### Face Processing
+### Face Processing (Manual Trigger)
 
-The face pipeline is triggered manually from the floating action button:
-
-1. Sync photos from MediaStore into Room.
-2. Load unprocessed photos.
+1. Sync MediaStore photos into Room.
+2. Load photos where face processing is incomplete.
 3. Detect faces with RetinaFace.
 4. Reject tiny or blurry faces.
-5. Align faces with a 5-point similarity transform.
-6. Generate 512-dimensional ArcFace embeddings.
-7. Persist face records in Room.
-8. Cluster faces with hierarchical agglomerative clustering.
+5. Align faces using a 5-point similarity transform.
+6. Generate ArcFace embeddings.
+7. Store face rows in Room.
+8. Run HAC clustering and assign/update cluster IDs.
 
-Clusters are stored with generated labels such as `Person 1` until renamed by the user.
+### Semantic Indexing (Auto + Manual Trigger)
 
-### Semantic Indexing
+1. Sync MediaStore photos into Room.
+2. Select photos with missing CLIP embedding.
+3. Load bitmap using Glide.
+4. Generate CLIP image embedding.
+5. Persist embedding to `photos.clipEmbedding` and mark clip-processed.
+6. Extract EXIF latitude/longitude (when available/allowed) and persist to photo row.
 
-Semantic indexing is triggered automatically after photo permission is granted and can also be restarted from the floating action button.
+### Cluster Curation
 
-1. Sync photos from MediaStore into Room.
-2. Find photos that do not yet have a CLIP embedding.
-3. Load each image as a bitmap.
-4. Generate an image embedding with the CLIP image encoder.
-5. Persist the embedding to the `photos` table.
+From cluster detail, users can correct clustering outcomes:
 
-The indexing worker retries photos that still have no stored CLIP embedding, which allows recovery from earlier failed indexing runs.
+- rename current cluster
+- merge into another cluster
+- enter selection mode and move selected photos to another cluster
+- split selected photos into a new person cluster
+- remove selected photos from the cluster (set unclustered)
 
-### Search Composition
+Cluster cover photos are refreshed automatically, and empty clusters are removed.
 
-The main search flow combines both local cluster filtering and CLIP similarity:
+### Photo Editing Utilities
 
-- If the query matches cluster labels, cluster photos are returned.
-- If the query contains non-person terms, the remaining text is embedded with the CLIP text encoder and matched against indexed photos.
-- If both person names and scene text are present, the final result is the intersection of person matches and CLIP scene matches.
-- For strict conjunction intent (`and`, `together`, `same photo`), all requested people must co-occur in the same photo, and empty intersection remains empty.
+In photo viewer:
+
+- crop to square, portrait, story, or landscape presets
+- adaptive JPEG compression with level control, quality/max-side tuning, and target-size search
+- save edited copies to MediaStore (`Pictures/SenseGallery` on Android 10+)
 
 ## Project Structure
 
 - `app/src/main/java/com/example/sensegallery/MainActivity.java`
-  Main host activity, permission handling, search wiring, and worker scheduling.
+  Permission handling, global search, worker scheduling, and navigation shell.
 - `app/src/main/java/com/example/sensegallery/gallery/GalleryViewModel.java`
-  Search orchestration, cluster loading, and semantic ranking logic.
+  Search composition, cluster loading, and ranking/filtering logic.
 - `app/src/main/java/com/example/sensegallery/workers/FaceProcessingWorker.java`
-  Background face processing entry point.
+  Face extraction + clustering background entry point.
 - `app/src/main/java/com/example/sensegallery/workers/CLIPIndexingWorker.java`
-  Background semantic indexing entry point.
-- `app/src/main/java/com/example/sensegallery/ai/`
-  ONNX model wrappers and image processing pipeline classes.
-- `app/src/main/java/com/example/sensegallery/data/`
-  Room entities, DAOs, converters, and database setup.
+  CLIP indexing and geotag extraction background entry point.
+- `app/src/main/java/com/example/sensegallery/ui/ClusterDetailFragment.java`
+  Cluster rename/merge/move/split/remove workflows.
+- `app/src/main/java/com/example/sensegallery/ui/PhotoViewerFragment.java`
+  Full-screen viewer with share/crop/compress/delete/info actions.
+- `app/src/main/java/com/example/sensegallery/ui/MapFragment.java`
+  Places tab rendering geotagged photos on OSM map tiles.
 
 ## Development Setup
 
@@ -113,30 +128,28 @@ The main search flow combines both local cluster filtering and CLIP similarity:
 
 - Android Studio with a recent Android SDK installation
 - Java 17
-- An Android device or emulator with image media available
+- Android device or emulator with image media
 
 ### Run
 
 1. Open the project in Android Studio.
 2. Sync Gradle.
-3. Install and run the debug build on a device.
-4. Grant the requested media permission.
-5. Optionally grant location metadata access to enable fuller Places map coverage.
-6. Wait for automatic CLIP indexing to start.
-7. Use the floating action button when you want to run face detection and clustering.
+3. Install and run debug build.
+4. Grant image media permission.
+5. Optionally grant `ACCESS_MEDIA_LOCATION` for fuller Places coverage.
+6. Wait for automatic CLIP indexing.
+7. Use the floating action button to run face processing and re-indexing on demand.
 
 ## Operational Notes
 
-- The app is designed for on-device execution only.
-- CLIP models are loaded directly from bundled assets into ONNX Runtime sessions, and legacy cached copies are cleaned up on startup.
-- Room stores image-level CLIP embeddings on `PhotoEntity` and face-level ArcFace embeddings on `FaceEntity`.
-- Room also stores optional photo latitude and longitude from EXIF metadata for the Places tab.
-- Map and image disk caches are automatically bounded to avoid unbounded storage growth over time.
-- WorkManager unique work policies are used to avoid overlapping runs.
+- Execution is on-device only.
+- CLIP ONNX sessions are created directly from asset bytes.
+- Startup cleanup bounds disk growth by trimming map/glide caches and removing obsolete model cache copies.
+- Room stores CLIP embeddings at photo level and ArcFace embeddings at face level.
+- Room also stores optional EXIF latitude/longitude for the Places tab.
+- WorkManager unique work names prevent overlapping background runs.
 
 ## Related Documentation
 
-- `ARCHITECTURE.md`
-  Detailed pipeline and system design notes.
-- `test_edge_cases.md`
-  Expected behavior for important runtime and data edge cases.
+- `ARCHITECTURE.md` for system architecture and pipeline details.
+- `test_edge_cases.md` for expected runtime behavior under edge conditions.

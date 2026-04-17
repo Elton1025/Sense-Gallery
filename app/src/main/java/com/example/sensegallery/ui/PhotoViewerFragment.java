@@ -41,6 +41,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.sensegallery.R;
+import com.example.sensegallery.data.AppDatabase;
 import com.example.sensegallery.gallery.GalleryViewModel;
 import com.example.sensegallery.gallery.PhotoItem;
 
@@ -913,6 +914,12 @@ public class PhotoViewerFragment extends Fragment {
     private void onPhotoDeleted(Uri photoUri) {
         int removedIndex = adapter.removePhotoByUri(photoUri);
         Toast.makeText(requireContext(), R.string.delete_photo_success, Toast.LENGTH_SHORT).show();
+
+        String deletedUri = photoUri.toString();
+        Context appContext = requireContext().getApplicationContext();
+        imageOperationExecutor.execute(() -> AppDatabase.getInstance(appContext)
+                .photoDao()
+                .deletePhotoByUri(deletedUri));
 
         if (clusterId != -1L) {
             viewModel.loadClusterPhotos(clusterId);
